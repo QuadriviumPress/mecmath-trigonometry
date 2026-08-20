@@ -3,7 +3,7 @@
 Eleventy build of **Trigonometry** by Michael Corral, rendering the original
 LaTeX source to a searchable, offline-capable web textbook.
 
-- **Repository:** https://github.com/QuadriviumPress/MecmathTrigonometryTextbook
+- **Repository:** https://github.com/QuadriviumPress/mecmath-trigonometry
 - **Original text:** https://www.mecmath.net/trig/
 - **License:** [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
 
