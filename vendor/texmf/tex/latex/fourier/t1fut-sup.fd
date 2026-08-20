@@ -1,0 +1,47 @@
+%Filename: t1fut-sup.fd
+%Created by: tex build-fourier
+%Created using fontinst v1.927
+
+%THIS FILE SHOULD BE PUT IN A TEX INPUTS DIRECTORY
+
+\ProvidesFile{t1fut-sup.fd}
+   [2005/12/19 Fontinst v1.927 font definitions for T1/fut-sup.]
+
+\DeclareFontFamily{T1}{fut-sup}{}
+
+\DeclareFontShape{T1}{fut-sup}{m}{n}{
+   <-> futr-sup
+}{}
+
+\DeclareFontShape{T1}{fut-sup}{m}{it}{
+   <-> futri-sup
+}{}
+
+\DeclareFontShape{T1}{fut-sup}{sb}{n}{
+   <-> futs-sup
+}{}
+
+\DeclareFontShape{T1}{fut-sup}{sb}{it}{
+   <-> futsi-sup
+}{}
+
+\DeclareFontShape{T1}{fut-sup}{b}{n}{
+   <-> futb-sup
+}{}
+
+\DeclareFontShape{T1}{fut-sup}{b}{it}{
+   <-> futbi-sup
+}{}
+
+\DeclareFontShape{T1}{fut-sup}{eb}{n}{
+   <-> futc-sup
+}{}
+
+\DeclareFontShape{T1}{fut-sup}{m}{sl}{<->ssub * fut-sup/m/it}{}
+\DeclareFontShape{T1}{fut-sup}{sb}{sl}{<->ssub * fut-sup/sb/it}{}
+\DeclareFontShape{T1}{fut-sup}{b}{sl}{<->ssub * fut-sup/sb/sl}{}
+\DeclareFontShape{T1}{fut-sup}{bx}{sl}{<->ssub * fut-sup/b/sl}{}
+\DeclareFontShape{T1}{fut-sup}{bx}{n}{<->ssub * fut-sup/b/n}{}
+\DeclareFontShape{T1}{fut-sup}{bx}{it}{<->ssub * fut-sup/b/it}{}
+
+\endinput

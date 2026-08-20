@@ -1,0 +1,86 @@
+\NeedsTeXFormat{LaTeX2e}
+\def\fileversion{2.4}
+\def\filedate{2024/09/08}
+\ProvidesPackage{fourier-orns}%
+  [\filedate\space\fileversion\space fourier-ornaments package]
+
+\newif\ifFourier@noOTF
+\newif\ifFourier@TU
+\DeclareOption{noOTF}{\Fourier@noOTFtrue}
+\ProcessOptions
+
+\providecommand\texorpdfstring[2]{#1}
+\RequirePackage{iftex}[2019/10/24]
+\iftutex \Fourier@TUtrue \fi
+\ifFourier@noOTF \Fourier@TUfalse \fi
+\ifFourier@TU
+  \ifdefined\Store@KV@Option % fourier-orns is loaded by fourier-otf.sty
+  \else
+    \RequirePackage{fontspec}
+    \newfontfamily\FourierOrns{FourierOrns-Regular.otf}
+       [BoldFont   = FourierOrns-Regular.otf ,
+        ItalicFont = FourierOrns-Regular.otf ,
+        BoldItalicFont = FourierOrns-Regular.otf ]
+  \fi
+  \newcommand*{\eurologo}{\texorpdfstring{%
+                            {\fontspec{erewhon}[RawFeature=+ss03]€}}%
+                            {\texteuro}}
+\else
+  \newcommand*{\FourierOrns}{\fontencoding{U}\fontfamily{futs}\selectfont}
+  \newcommand*{\eurologo}{\texorpdfstring{{\FourierOrns e}}{\texteuro}}
+\fi
+%
+\newcommand*{\noway}{\texorpdfstring{{\FourierOrns 0}}{\textdagger}}
+\newcommand*{\warning}{\texorpdfstring{{\FourierOrns 1}}{\textdagger}}
+\newcommand*{\caution}{\texorpdfstring{{\FourierOrns 2}}{\textdagger}}
+\newcommand*{\oldpilcrowone}{\texorpdfstring{{\FourierOrns 3}}{\textdagger}}
+\newcommand*{\oldpilcrowtwo}{\texorpdfstring{{\FourierOrns 4}}{\textdagger}}
+\newcommand*{\oldpilcrowthree}{\texorpdfstring{{\FourierOrns 5}}{\textdagger}}
+\newcommand*{\oldpilcrowfour}{\texorpdfstring{{\FourierOrns 6}}{\textdagger}}
+\newcommand*{\oldpilcrowfive}{\texorpdfstring{{\FourierOrns 7}}{\textdagger}}
+\newcommand*{\oldpilcrowsix}{\texorpdfstring{{\FourierOrns 8}}{\textdagger}}
+\newcommand*{\bomb}{\texorpdfstring{{\FourierOrns 9}}{\textdagger}}
+\newcommand*{\aldineleft}{\texorpdfstring{{\FourierOrns A}}{\textdagger}}
+\newcommand*{\aldineright}{\texorpdfstring{{\FourierOrns B}}{\textdagger}}
+\newcommand*{\aldine}{\texorpdfstring{{\FourierOrns C}}{\textdagger}}
+\newcommand*{\aldinesmall}{\texorpdfstring{{\FourierOrns D}}{\textdagger}}
+\newcommand*{\floweroneleft}{\texorpdfstring{{\FourierOrns E}}{\textdagger}}
+\newcommand*{\floweroneright}{\texorpdfstring{{\FourierOrns F}}{\textdagger}}
+\newcommand*{\leafNE}{\texorpdfstring{{\FourierOrns G}}{\textdagger}}
+\newcommand*{\leafNW}{\texorpdfstring{{\FourierOrns H}}{\textdagger}}
+\newcommand*{\leafSE}{\texorpdfstring{{\FourierOrns I}}{\textdagger}}
+\newcommand*{\leafSW}{\texorpdfstring{{\FourierOrns J}}{\textdagger}}
+\newcommand*{\leafright}{\texorpdfstring{{\FourierOrns K}}{\textdagger}}
+\newcommand*{\leafleft}{\texorpdfstring{{\FourierOrns L}}{\textdagger}}
+\newcommand*{\lefthand}{\texorpdfstring{{\FourierOrns M}}{\textdagger}}
+\newcommand*{\righthand}{\texorpdfstring{{\FourierOrns N}}{\textdagger}}
+\newcommand*{\decofourright}{\texorpdfstring{{\FourierOrns O}}{\textdagger}}
+\newcommand*{\decofourleft}{\texorpdfstring{{\FourierOrns P}}{\textdagger}}
+\newcommand*{\decothreeright}{\texorpdfstring{{\FourierOrns Q}}{\textdagger}}
+\newcommand*{\decothreeleft}{\texorpdfstring{{\FourierOrns R}}{\textdagger}}
+\newcommand*{\textxswdown}{\texorpdfstring{{\FourierOrns S}}{\textdagger}}
+\newcommand*{\textxswup}{\texorpdfstring{{\FourierOrns T}}{\textdagger}}
+\newcommand*{\decoone}{\texorpdfstring{{\FourierOrns U}}{\textdagger}}
+\newcommand*{\decosix}{\texorpdfstring{{\FourierOrns V}}{\textdagger}}
+\newcommand*{\decotwo}{\texorpdfstring{{\FourierOrns W}}{\textdagger}}
+\newcommand*{\starredbullet}{\texorpdfstring{{\FourierOrns X}}{\textdagger}}
+\newcommand*{\grimace}{\texorpdfstring{{\FourierOrns Y}}{\textdagger}}
+\newcommand*{\textthing}{\texorpdfstring{{\FourierOrns Z}}{\textdagger}}
+\newcommand*{\aldinesmallup}{\texorpdfstring{{\FourierOrns c}}{\textdagger}}
+\newcommand*{\aldinesmallrevert}{\texorpdfstring{{\FourierOrns d}}{\textdagger}}
+\newcommand*{\leftblackhand}{\texorpdfstring{{\FourierOrns m}}{\textdagger}}
+\newcommand*{\rightblackhand}{\texorpdfstring{{\FourierOrns n}}{\textdagger}}
+%
+\newcommand*{\danger}{\PackageWarning{fourier-orns}{%
+    Command \protect\danger\space is deprecated.\MessageBreak
+    Use \protect\warning\space instead; reported}%
+    \warning}
+%
+\ifFourier@TU
+\newcommand*{\grappe}{\texorpdfstring{{\FourierOrns \char"2766}}{\textdagger}}
+\newcommand*{\leftgrappe}{\texorpdfstring{{\FourierOrns \char"2619}}{\textdagger}}
+\newcommand*{\rightgrappe}{\texorpdfstring{{\FourierOrns \char"2767}}{\textdagger}}
+\fi 
+%
+%
+\endinput

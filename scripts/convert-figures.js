@@ -25,6 +25,13 @@ const srcDir = srcRoot(root);
 const allowFailures = process.argv.includes('--allow-failures');
 const concurrency = Number(process.env.FIGURE_CONCURRENCY || os.cpus().length || 4);
 
+// Prefer the vendored CTAN font tree (fouriernc/fourier/phaistos) over a full
+// texlive-fonts-extra install. Child pdflatex processes inherit TEXMFHOME.
+const vendoredTexmf = path.join(root, 'vendor', 'texmf');
+if (fs.existsSync(vendoredTexmf)) {
+  process.env.TEXMFHOME = vendoredTexmf;
+}
+
 const DVISVGM_OPTS = ['--no-fonts', '--optimize', '--precision=2'];
 
 function toolOk(cmd, args = ['--version']) {

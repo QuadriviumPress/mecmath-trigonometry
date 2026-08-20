@@ -19,6 +19,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    env:
+      # Vendored fouriernc/fourier/phaistos (see vendor/texmf); avoids texlive-fonts-extra.
+      TEXMFHOME: ${{ github.workspace }}/vendor/texmf
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -37,11 +40,14 @@ jobs:
             texlive-latex-base texlive-latex-recommended \
             texlive-fonts-recommended texlive-latex-extra texlive-pictures
 
+      - name: Index vendored TeX fonts
+        run: mktexlsr "$TEXMFHOME"
+
       - name: Cache converted figures
         uses: actions/cache@v4
         with:
           path: generated/figures
-          key: figures-trig-v1-${{ hashFiles('mecmath-trigonometry/**', 'lib/figures.js') }}
+          key: figures-trig-v1-${{ hashFiles('mecmath-trigonometry/**', 'lib/figures.js', 'vendor/texmf/**') }}
 
       - name: Install npm dependencies
         run: npm ci
