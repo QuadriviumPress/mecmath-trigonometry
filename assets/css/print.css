@@ -1,0 +1,564 @@
+/**
+ * Print Stylesheet for Physics Book
+ * Optimizes the book layout for PDF generation and printing
+ */
+
+@media print {
+  /* ==================== Print Variables ==================== */
+  @page {
+    size: letter;
+    margin: 0.75in;
+  }
+
+  @page :first {
+    margin-block-start: 1in;
+  }
+
+  /* CSS Custom Properties for Print */
+  :root {
+    --print-color-primary: #1565c0;
+    --print-color-secondary: #1976d2;
+    --print-color-tertiary: #0288d1;
+    --print-color-border: #64b5f6;
+    --print-color-text: black;
+    --print-color-bg: white;
+    --print-color-code-bg: #f5f5f5;
+    --print-color-code-border: #ddd;
+    --print-color-table-border: #333;
+    --print-color-blockquote-border: #333;
+    --print-color-example: #2196f3;
+    --print-color-example-bg: #e3f2fd;
+    --print-color-note: #4caf50;
+    --print-color-note-bg: #e8f5e9;
+    --print-color-warning: #ff9800;
+    --print-color-warning-bg: #fff3e0;
+    --print-color-tip: #9c27b0;
+    --print-color-tip-bg: #f3e5f5;
+    --print-color-problem-bg: #f5f5f5;
+    --print-color-problem-border: #757575;
+    --print-color-concept-bg: #ffe0b2;
+    --print-color-concept-border: #ff9800;
+    --print-color-summary-bg: #fff9c4;
+    --print-color-summary-border: #fbc02d;
+    --print-color-glossary-bg: #f3e5f5;
+    --print-color-glossary-border: #9c27b0;
+    --print-color-glossary-title: #6a1b9a;
+    --print-color-abstract-bg: #e1f5fe;
+    --print-color-abstract-border: #0288d1;
+
+    --print-border-width-thin: 2px;
+    --print-border-width-medium: 3px;
+    --print-border-width-thick: 4px;
+    --print-border-radius: 4px;
+    --print-border-radius-sm: 3px;
+
+    --print-spacing-sm: 10px;
+    --print-spacing-md: 15px;
+    --print-spacing-lg: 1em;
+
+    --print-font-size-base: 11pt;
+    --print-font-size-h1: 24pt;
+    --print-font-size-h2: 18pt;
+    --print-font-size-h3: 14pt;
+    --print-font-size-h4: 12pt;
+    --print-font-size-small: 0.9em;
+    --print-font-size-tiny: 0.8em;
+  }
+
+  /* ==================== Hide Non-Essential Elements ==================== */
+
+  :is(
+    nav,
+    .navigation,
+    .nav,
+    .sidebar,
+    .menu,
+    .toc-toggle,
+    .book-search,
+    .gitbook-link,
+    #gitbook-toolbar,
+    .toolbar,
+    .book-menu-btn,
+    .font-settings,
+    .pull-right,
+    .dropdown,
+    .social-share,
+    .comments,
+    .footer-links,
+    .edit-link,
+    .btn-group,
+    .pdf-download-btn,
+    header nav,
+    footer nav,
+    .pwa-install,
+    .offline-indicator,
+    .update-notification,
+    .book-summary,
+    .book-header,
+    .no-print
+  ) {
+    display: none !important;
+  }
+
+  /* ==================== Layout Adjustments ==================== */
+
+  body {
+    background: var(--print-color-bg) !important;
+    color: var(--print-color-text) !important;
+    font-size: var(--print-font-size-base);
+    line-height: 1.5;
+  }
+
+  :is(
+    .book,
+    .book-body,
+    .body-inner,
+    .page-wrapper,
+    .page-inner,
+    .markdown-section,
+    main,
+    article,
+    .content
+  ) {
+    inline-size: 100% !important;
+    max-inline-size: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+    position: static !important;
+    overflow: visible !important;
+  }
+
+  /* ==================== Typography ==================== */
+
+  h1 {
+    font-size: var(--print-font-size-h1);
+    page-break-before: always;
+    page-break-after: avoid;
+    margin-block-start: 0;
+    color: var(--print-color-primary) !important;
+    border-block-end: var(--print-border-width-medium) solid var(--print-color-primary);
+    padding-block-end: 8px;
+  }
+
+  h1:first-of-type {
+    page-break-before: avoid;
+  }
+
+  h2 {
+    font-size: var(--print-font-size-h2);
+    page-break-after: avoid;
+    color: var(--print-color-secondary) !important;
+    border-block-end: var(--print-border-width-thin) solid var(--print-color-border);
+    padding-block-end: 6px;
+  }
+
+  h3 {
+    font-size: var(--print-font-size-h3);
+    page-break-after: avoid;
+    color: var(--print-color-tertiary) !important;
+  }
+
+  :is(h4, h5, h6) {
+    font-size: var(--print-font-size-h4);
+    page-break-after: avoid;
+  }
+
+  /* Prevent headings at bottom of page */
+  :is(h1, h2, h3, h4, h5, h6) {
+    page-break-inside: avoid;
+    orphans: 3;
+    widows: 3;
+  }
+
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* ==================== Links ==================== */
+
+  a {
+    color: var(--print-color-text) !important;
+    text-decoration: underline;
+  }
+
+  /* Show URL for external links */
+  a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: var(--print-font-size-tiny);
+    color: #666;
+    word-break: break-all;
+  }
+
+  /* Don't show URL for internal links */
+  :is(
+    a[href^='#']::after,
+    a[href^='/']::after,
+    a[href^='./']::after,
+    a[href^='../']::after,
+    nav a::after,
+    .toc a::after
+  ) {
+    content: '' !important;
+  }
+
+  /* ==================== Images and Figures ==================== */
+
+  img {
+    max-inline-size: 65% !important;
+    max-block-size: 4in !important;
+    block-size: auto !important;
+    inline-size: auto !important;
+    display: block;
+    margin: var(--print-spacing-sm) auto !important;
+    page-break-inside: avoid;
+    object-fit: contain !important;
+  }
+
+  figure {
+    max-inline-size: 65% !important;
+    max-block-size: 4.5in !important;
+    margin: var(--print-spacing-sm) auto !important;
+    page-break-inside: avoid;
+    page-break-after: avoid;
+  }
+
+  figure img {
+    max-inline-size: 100% !important;
+    max-block-size: 4in !important;
+    margin: 0 auto !important;
+    object-fit: contain !important;
+  }
+
+  /* Very small images can be even smaller */
+  :is(img[width], img[height]) {
+    max-inline-size: 50% !important;
+    max-block-size: 3in !important;
+  }
+
+  figcaption {
+    font-size: var(--print-font-size-small);
+    font-style: italic;
+    text-align: center;
+    margin-block-start: 0.5em;
+  }
+
+  /* ==================== Tables ==================== */
+
+  table {
+    border-collapse: collapse;
+    inline-size: 100%;
+    page-break-inside: avoid;
+    margin-block: var(--print-spacing-lg);
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr {
+    page-break-inside: avoid;
+  }
+
+  :is(th, td) {
+    border: 1px solid var(--print-color-table-border);
+    padding: 8px;
+    text-align: start;
+  }
+
+  th {
+    background-color: #f0f0f0 !important;
+    font-weight: bold;
+  }
+
+  /* ==================== Code Blocks ==================== */
+
+  :is(pre, code) {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 10pt;
+    background-color: var(--print-color-code-bg) !important;
+    border: 1px solid var(--print-color-code-border);
+  }
+
+  pre {
+    padding: var(--print-spacing-sm);
+    page-break-inside: avoid;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  code {
+    padding: 2px 4px;
+  }
+
+  pre code {
+    border: none;
+    padding: 0;
+  }
+
+  /* ==================== Math (MathJax) ==================== */
+
+  :is(
+    .MathJax,
+    .MathJax_Display,
+    mjx-container,
+    .math,
+    .katex,
+    .katex-display
+  ) {
+    page-break-inside: avoid !important;
+  }
+
+  /* Scale down math to match text better */
+  :is(
+    mjx-container,
+    mjx-container[display='true'],
+    mjx-container[display='false'],
+    .MathJax,
+    .MathJax_Display,
+    .math,
+    .katex,
+    .katex-display
+  ) {
+    font-size: 0.95em !important;
+  }
+
+  /* Inline math should be even smaller */
+  :is(
+    mjx-container[display='false'],
+    .MathJax:not(.MathJax_Display),
+    .katex:not(.katex-display),
+    span.math
+  ) {
+    font-size: 0.9em !important;
+    vertical-align: baseline !important;
+  }
+
+  /* Ensure math displays properly */
+  :is(
+    .MathJax_Display,
+    mjx-container[display='true'],
+    .katex-display
+  ) {
+    margin-block: var(--print-spacing-lg) !important;
+    overflow-x: visible !important;
+  }
+
+  /* ==================== Blockquotes and Special Boxes ==================== */
+
+  blockquote {
+    border-inline-start: var(--print-border-width-medium) solid var(--print-color-blockquote-border);
+    margin-block: var(--print-spacing-lg);
+    padding: 0.5em 1em;
+    background-color: #f9f9f9 !important;
+    page-break-inside: avoid;
+  }
+
+  /* Example boxes with colorful backgrounds */
+  :is(.example, .worked-example) {
+    page-break-inside: avoid;
+    border-inline-start: var(--print-border-width-thick) solid var(--print-color-example);
+    background-color: var(--print-color-example-bg) !important;
+    padding: var(--print-spacing-md);
+    margin-block: var(--print-spacing-md);
+    border-radius: var(--print-border-radius);
+  }
+
+  :is(.example-title, .example h4:first-child) {
+    font-weight: bold;
+    margin-block-end: 0.5em;
+  }
+
+  /* Note/Warning/Info boxes */
+  :is(.note, .info) {
+    page-break-inside: avoid;
+    border-inline-start: var(--print-border-width-thick) solid var(--print-color-note);
+    background-color: var(--print-color-note-bg) !important;
+    padding: var(--print-spacing-md);
+    margin-block: var(--print-spacing-md);
+    border-radius: var(--print-border-radius);
+  }
+
+  :is(.warning, .important) {
+    page-break-inside: avoid;
+    border-inline-start: var(--print-border-width-thick) solid var(--print-color-warning);
+    background-color: var(--print-color-warning-bg) !important;
+    padding: var(--print-spacing-md);
+    margin-block: var(--print-spacing-md);
+    border-radius: var(--print-border-radius);
+  }
+
+  .tip {
+    page-break-inside: avoid;
+    border-inline-start: var(--print-border-width-thick) solid var(--print-color-tip);
+    background-color: var(--print-color-tip-bg) !important;
+    padding: var(--print-spacing-md);
+    margin-block: var(--print-spacing-md);
+    border-radius: var(--print-border-radius);
+  }
+
+  /* ==================== Lists ==================== */
+
+  :is(ul, ol, dl) {
+    page-break-inside: avoid;
+  }
+
+  li {
+    page-break-inside: avoid;
+  }
+
+  dt {
+    font-weight: bold;
+    margin-block-start: 0.5em;
+  }
+
+  dd {
+    margin-inline-start: 2em;
+    margin-block-end: 0.5em;
+  }
+
+  /* ==================== Physics-Specific Elements ==================== */
+
+  /* Equations that should stay together */
+  :is(.equation, .formula) {
+    page-break-inside: avoid;
+    background-color: var(--print-color-code-bg) !important;
+    padding: var(--print-spacing-sm);
+    margin-block: var(--print-spacing-md);
+    border-radius: var(--print-border-radius-sm);
+    text-align: center;
+  }
+
+  /* Problem sets */
+  :is(.problems, .exercises) {
+    page-break-before: always;
+  }
+
+  /* Exercise and problem boxes */
+  :is(.problem, .exercise) {
+    page-break-inside: avoid;
+    background-color: var(--print-color-problem-bg) !important;
+    border-inline-start: var(--print-border-width-medium) solid var(--print-color-problem-border);
+    padding: 12px;
+    margin-block: 12px;
+    border-radius: var(--print-border-radius-sm);
+  }
+
+  /* Concept checks with orange dashed border */
+  :is(
+    .concept-check,
+    .check-understanding,
+    [data-element-type='check-understanding']
+  ) {
+    page-break-inside: avoid;
+    background-color: var(--print-color-concept-bg) !important;
+    border: 2px dashed var(--print-color-concept-border);
+    padding: var(--print-spacing-md);
+    margin-block: var(--print-spacing-md);
+    border-radius: var(--print-border-radius);
+  }
+
+  /* Hide solutions to end-of-chapter problems */
+  :is(
+    .solution,
+    div.solution,
+    [data-element-type='solution']
+  ) {
+    display: none !important;
+  }
+
+  /* Section summaries with yellow background */
+  :is(
+    .summary,
+    .section-summary,
+    .key-equations,
+    [data-element-type='section-summary']
+  ) {
+    page-break-inside: avoid;
+    background-color: var(--print-color-summary-bg) !important;
+    border: var(--print-border-width-thin) solid var(--print-color-summary-border);
+    border-radius: var(--print-border-radius);
+    padding: var(--print-spacing-md);
+    margin-block: var(--print-spacing-md);
+  }
+
+  /* Glossary with purple background */
+  .glossary {
+    page-break-inside: avoid;
+    background-color: var(--print-color-glossary-bg) !important;
+    border: var(--print-border-width-thin) solid var(--print-color-glossary-border);
+    border-radius: var(--print-border-radius);
+    padding: var(--print-spacing-md);
+    margin-block: var(--print-spacing-md);
+  }
+
+  .glossary-title {
+    color: var(--print-color-glossary-title) !important;
+    border-block-end: var(--print-border-width-thin) solid var(--print-color-glossary-border);
+    padding-block-end: 8px;
+    margin-block-end: 12px;
+  }
+
+  .glossary-term {
+    font-weight: bold;
+  }
+
+  .glossary-definition {
+    margin-inline-start: 1em;
+  }
+
+  /* Abstract/Learning objectives */
+  :is(.abstract, .learning-objectives) {
+    page-break-inside: avoid;
+    background-color: var(--print-color-abstract-bg) !important;
+    border-inline-start: var(--print-border-width-thick) solid var(--print-color-abstract-border);
+    padding: var(--print-spacing-md);
+    margin-block: var(--print-spacing-md);
+    border-radius: var(--print-border-radius);
+  }
+
+  /* ==================== Chapter/Section Headers ==================== */
+
+  .chapter-header {
+    page-break-before: always;
+    text-align: center;
+    margin-block-end: 2em;
+  }
+
+  .chapter-number {
+    font-size: 48pt;
+    color: #333;
+  }
+
+  .chapter-title {
+    font-size: var(--print-font-size-h1);
+    margin-block-start: 0.5em;
+  }
+
+  /* ==================== Utility Classes ==================== */
+
+  .print-only {
+    display: block !important;
+  }
+
+  .page-break-before {
+    page-break-before: always;
+  }
+
+  .page-break-after {
+    page-break-after: always;
+  }
+
+  .avoid-break {
+    page-break-inside: avoid;
+  }
+}
+
+/* Hide print-only elements on screen */
+@media screen {
+  .print-only {
+    display: none !important;
+  }
+}

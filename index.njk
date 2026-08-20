@@ -1,0 +1,28 @@
+---
+title: Home
+layout: default
+---
+
+<div class="landing">
+  <h1 class="page-title">{{ site.title }}</h1>
+  <p><em>{{ site.tagline }}</em></p>
+  <p>{{ site.description }}</p>
+  <p>
+    This is the web edition of the open textbook by {{ site.author }},
+    originally published at
+    <a href="{{ site.sourceUrl }}">mecmath.net/trig</a>, licensed
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license">CC BY-SA 4.0</a>.
+  </p>
+
+  <div class="landing-actions">
+    <a href="/preface/">Start reading</a>
+    <a class="secondary" href="/book-index.html">Index</a>
+  </div>
+
+  <h2>Contents</h2>
+  <ol class="chapter-list">
+    {% for ch in book.chapters %}
+      <li><a href="{{ ch.url }}">{{ ch.displayTitle }}</a></li>
+    {% endfor %}
+  </ol>
+</div>

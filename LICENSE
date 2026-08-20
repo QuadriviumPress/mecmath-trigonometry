@@ -1,0 +1,20 @@
+Electromagnetics Vol. 1 — Web Edition
+
+The textbook content (the LaTeX source in oem-v1_distro-FINAL/ and all HTML
+derived from it) is:
+
+  © 2018 Steven W. Ellingson
+  Licensed under the Creative Commons Attribution-ShareAlike 4.0 International
+  License (CC BY-SA 4.0).
+  https://creativecommons.org/licenses/by-sa/4.0/
+  Print edition of record: https://doi.org/10.21061/electromagnetics-vol-1
+
+The build tooling in this repository (lib/, scripts/, templates, assets
+excluding vendored third-party bundles) is released under the same
+CC BY-SA 4.0 license.
+
+Third-party components retain their own licenses:
+  - MathJax (Apache-2.0), self-hosted via `npm run update:vendor`
+  - MiniSearch (MIT), self-hosted via `npm run update:vendor`
+  - Viewer/search client code adapted from the university-physics-bundle and
+    physics-book2 projects by the same maintainer.

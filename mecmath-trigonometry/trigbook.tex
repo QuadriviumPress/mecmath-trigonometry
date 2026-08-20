@@ -1,0 +1,326 @@
+\documentclass[paper=letter,fontsize=11pt,titlepage,openany,twoside,
+numbers=noenddot,index=totoc]{scrbook}
+\usepackage[dvips]{graphicx}
+\usepackage{float}
+\usepackage[intoc]{nomencl}
+\usepackage{xfrac}
+\usepackage{fancybox}
+\usepackage{pifont}
+\usepackage{phaistos}
+\usepackage{cancel}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{empheq}
+%\usepackage[dvips,gray]{xcolor}
+\usepackage[dvips]{xcolor}
+\usepackage[english]{babel}
+\usepackage{fancyhdr}
+\usepackage{fancyvrb}
+\usepackage{shadethm}
+\usepackage{makeidx}
+\usepackage[T1]{fontenc}
+\usepackage{fouriernc,bm}
+\usepackage[scaled=0.80]{beramono}
+\usepackage{ragged2e}
+\usepackage{paralist}
+\usepackage{mdwlist}
+\usepackage{multicol}
+\usepackage[labelsep=none]{caption}
+\usepackage{subfig}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{patterns}
+\usetikzlibrary{decorations}
+\usetikzlibrary{intersections}
+\usetikzlibrary{matrix}
+\usetikzlibrary{snakes}
+\usetikzlibrary{calc}
+\usetikzlibrary{backgrounds}
+\usepackage{picins}
+\usepackage{framed}
+\usepackage{nextpage}
+\usepackage{colortbl}
+\usepackage{listings}
+\lstloadlanguages{Gnuplot}
+\usepackage[pdfproducer={GPL Ghostscript 9.06},pdfcreator={TeX Live 2012},
+            pdfauthor={Michael Corral},pdftitle={Trigonometry},
+            pdfsubject={Trigonometry},pdfkeywords={trigonometry},
+            pdfdisplaydoctitle=true,dvips,bookmarks,pdfborder={0 0 0},
+            bookmarksnumbered=true,colorlinks=false]{hyperref}
+\usepackage{breakurl}
+
+% Set the sans serif font to Helvetica (for chapter and section headings)
+\renewcommand\sfdefault{phv}
+
+\definecolor{captioncolor}{HTML}{005587}
+\definecolor{linecolor}{HTML}{0074C8}
+\definecolor{fillcolor}{cmyk}{0.1,0.05,0,0}
+\definecolor{brickcolor}{HTML}{F0D8B2}
+\definecolor{blockcolor}{HTML}{B6B6B6}
+\definecolor{groundcolor}{HTML}{E4D8C5}
+\definecolor{earthcolor}{HTML}{C5FFFF}
+\definecolor{watercolor}{cmyk}{0.1,0.05,0,0}
+\definecolor{codecolor}{HTML}{FFF7E0}
+\definecolor{linenumcolor}{HTML}{8C8C8C}
+%\definecolor{headercolor}{HTML}{F5F5F5}
+\definecolor{headercolor}{HTML}{E9EFEF}
+\DeclareCaptionFont{blue}{\color{captioncolor}}
+\captionsetup{labelfont={bf,blue},font={small,blue},textfont={small,blue}}
+\providecommand{\lineacross}{\hrule width \textwidth height 0.5pt}
+\newcommand{\startexercises}{
+ \centerline{\fbox{\textsf{\textbf{\large Exercises}}}}
+}
+\newcommand{\probs}[1]{\par\noindent\textsf{\textbf{\large #1}}}
+\newcommand{\hrulethick}{\leaders\hrule height 5pt depth -2pt\hfill}
+\newcommand{\divider}{\noindent{\color{linecolor}\rule{\linewidth}{3pt}}}
+\setlength{\multicolsep}{2.5mm}
+\setlength{\leftmargini}{1.4em}
+\setlength{\shadeboxrule}{.4pt}
+\theoremstyle{definition}
+\newshadetheorem{defn}{Definition}[chapter]
+\newshadetheorem{thm}{Theorem}[chapter]
+\newshadetheorem{lem}[thm]{Lemma}
+\newshadetheorem{cor}[thm]{Corollary}
+\newtheoremstyle{itexmp}%
+ {\topsep}
+ {\topsep}
+ {\normalfont\small}
+ {0pt}
+ {\itshape\bfseries}{}
+ { }
+ {#1 \textbf{#2} \enskip {\color{linecolor}\hrulethick}\\[6pt]}
+\theoremstyle{itexmp}
+\newtheorem{exmp}{Example}[chapter]
+\newcommand{\statedefn}[2]{
+ \definecolor{shadethmcolor}{HTML}{EDF8FF}
+ \definecolor{shaderulecolor}{cmyk}{0.73,0.19,0,0}
+ \begin{defn}\label{#1}{#2}\end{defn}
+}
+\newcommand{\statethm}[2]{
+ \definecolor{shadethmcolor}{HTML}{FFFFD8}
+ \definecolor{shaderulecolor}{HTML}{9B5900}
+ \begin{thm}\label{#1}{#2}\end{thm}
+}
+\newcommand{\statecor}[2]{
+ \definecolor{shadethmcolor}{HTML}{FAF2FF}
+ \definecolor{shaderulecolor}{HTML}{9B5900}
+ \begin{cor}\label{#1}{#2}\end{cor}
+}
+\newcommand{\statecomment}[2][0.96\textwidth]{
+ \par\noindent\tikzstyle{mybox} = [draw=green!70!black,fill=green!5,thick,rectangle,rounded corners,inner ysep=4pt]
+ \begin{tikzpicture}
+  \node [mybox] (box){%
+   \begin{minipage}{#1}{#2}\end{minipage}
+  };
+ \end{tikzpicture}
+}
+\newcommand*\widefbox[1]{\fbox{\hspace{1em}#1\hspace{1em}}}
+\renewcommand{\CancelColor}{\color{red}}
+\newcommand\myclearpage{\cleartooddpage
+ [\thispagestyle{empty}]}
+\providecommand{\abs}[1]{\lvert\mspace{1mu}#1\mspace{1mu}\rvert}
+\providecommand{\Abs}[1]{\bigl\lvert\mspace{1mu}#1\mspace{1mu}\bigr\rvert}
+\providecommand{\norm}[1]{\lVert\mspace{1mu}#1\mspace{1mu}\rVert}
+\providecommand{\Norm}[1]{\bigl\lVert\mspace{1mu}#1\mspace{1mu}\bigr\rVert}
+\providecommand{\NORM}[1]{\Biggl\lVert\mspace{1mu}#1\mspace{1mu}\Biggr\rVert}
+\providecommand{\ssub}[2]{#1_{\scriptscriptstyle #2}}
+\providecommand{\ssubsum}[3]{#1_{\scriptscriptstyle #3} + #2_{\scriptscriptstyle #3}}
+\providecommand{\Reals}{\mathbb{R}}
+\providecommand{\Complex}{\mathbb{C}}
+\providecommand{\Rationals}{\mathbb{Q}}
+\providecommand{\Naturals}{\mathbb{N}}
+\providecommand{\Integers}{\mathbb{Z}}
+\providecommand{\Degrees}[0]{\ensuremath{^\circ}}
+\providecommand{\ival}[2]{\lbrack #1,#2 \rbrack}
+%\newcommand{\calcbutton}[1]{\setlength\fboxsep{1pt}\cornersize{1}\ovalbox{\small #1}}
+%\newcommand{\calcbutton}[1]{\ovalbox{\small #1}}
+\newenvironment{proofbar}{%
+  \def\FrameCommand{\vrule width 1pt \hspace{5pt}}%
+  \MakeFramed {\advance\hsize-\width \FrameRestore}}%
+ {\endMakeFramed}
+\allowdisplaybreaks[1]
+\numberwithin{figure}{section}
+\setlength\oddsidemargin{20pt}
+\setlength\evensidemargin{20pt}
+\setlength\topmargin{0pt}
+\setlength\headsep{10pt}
+\setlength\textheight{202mm}
+%Change indent after chapter number in TOC from 1.5em to 2.2em, and from 2.3 to 3.0 for sections
+\makeatletter
+\renewcommand*\l@chapter[2]{%
+  \ifnum \c@tocdepth >\m@ne
+    \addpenalty{-\@highpenalty}%
+    \vskip 1.0em \@plus\p@
+    \setlength\@tempdima{2.2em}%
+    \if@tocleft
+      \ifx\toc@l@number\@empty\else
+        \setlength\@tempdima{0\toc@l@number}%
+      \fi
+    \fi
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \sectfont
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+      \penalty\@highpenalty
+    \endgroup
+  \fi}
+\renewcommand*\l@section{\@dottedtocline{1}{2.2em}{3.0em}}
+\makeatother
+\makeindex
+\makenomenclature
+\begin{document}
+\deffootnote[1em]{0em}{1em}{\textsuperscript{\thefootnotemark}}
+\frontmatter
+\pagestyle{empty}
+%Put the front cover here
+\thisfancypage{\setlength{\fboxsep}{1pt}\setlength\fboxrule{1.5pt}\fbox}{}
+
+\includegraphics{cover-top}\vspace{14mm}
+
+\includegraphics{osci-large-color}
+
+%Put the title page here
+\title{Trigonometry}
+\author{\textsf{\textbf{Michael Corral}}}
+\date{\large \textsf{\textsl{Schoolcraft College}}}
+%Put the author/copyright info here
+\uppertitleback{\emph{About the author}:\\
+Michael Corral is an Adjunct Faculty member of the Department of Mathematics at Schoolcraft College. 
+He received a B.A. in Mathematics from the University of California at Berkeley, and received an M.A. in Mathematics and
+an M.S. in Industrial \& Operations Engineering from the University of Michigan.\\\\
+This text was typeset in \LaTeX\medspace with the \textsf{KOMA-Script} bundle, using the GNU Emacs text editor on a
+Fedora Linux system. The graphics were created using TikZ and Gnuplot.}
+\lowertitleback{Copyright \copyright ~2009 ~Michael Corral.\\
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
+Texts. A copy of the license is included in the section entitled ``GNU
+Free Documentation License.''}
+\maketitle
+\pagestyle{fancy}
+\addtokomafont{footnotelabel}{\color{linecolor}}
+\addtokomafont{footnotereference}{\color{linecolor}}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\renewcommand{\qedsymbol}{\textsf{\textbf{\textsc{\small{qed}}}}}
+\fancyhf{}
+\setlength{\headheight}{22.26332pt}
+\renewcommand{\headrulewidth}{0pt}
+\newlength{\fminilength}%
+\setlength{\fminilength}{\textwidth-2\fboxsep-2\fboxrule}%
+\fancyhf{}
+\fancyhead[LE]{\small\thepage}
+\fancyhead[CE]{\small\scshape\leftmark}
+\fancyhead[RO]{\small\thepage}
+\fancyhead[CO]{\small\scshape\leftmark}
+%Put the preface here
+\include{trigbook-preface}
+%\thispagestyle{empty}
+\pdfbookmark[0]{\contentsname}{toc}
+%Put the table of contents here
+\tableofcontents
+%Put a completely blank page here if the TOC has an odd number of pages
+\clearpage{\pagestyle{empty}\cleardoublepage}
+\mainmatter
+\fancyhf{}
+\fancyhead[LE]{\tikzstyle{headbox} = [fill=headercolor,line width=0pt,rectangle,rounded corners]
+ \begin{tikzpicture}
+  \node [headbox] (box){%
+   \begin{minipage}{\fminilength}%
+     \sffamily{\bfseries\thepage\qquad Chapter \thechapter}\enskip $\bullet$ \enskip\leftmark\hfill{\bfseries\S\thesection}
+    \end{minipage}%
+  };
+ \end{tikzpicture}}
+\fancyhead[LO]{\tikzstyle{headbox} = [fill=headercolor,line width=0pt,rectangle,rounded corners]
+ \begin{tikzpicture}
+  \node [headbox] (box){%
+   \begin{minipage}{\fminilength}%
+     \sffamily {}\hfill\rightmark\enskip $\bullet$ \enskip{\bfseries{Section \thesection\qquad\thepage}}
+    \end{minipage}%
+  };
+ \end{tikzpicture}}
+%Put the main chapters here
+\include{trigbook-chapter1}
+\include{trigbook-chapter2}
+\include{trigbook-chapter3}
+\include{trigbook-chapter4}
+\include{trigbook-chapter5}
+\include{trigbook-chapter6}
+\newpage
+%Put the bibliography here
+%\include{trigbook-biblio}
+%Put appendices here
+\fancyhf{}
+\fancyhead[LE]{\tikzstyle{headbox} = [fill=headercolor,line width=0pt,rectangle,rounded corners]
+ \begin{tikzpicture}
+  \node [headbox] (box){%
+   \begin{minipage}{\fminilength}%
+     \sffamily{\bfseries\thepage\qquad \enskip\leftmark}
+    \end{minipage}%
+  };
+ \end{tikzpicture}}
+\fancyhead[LO]{\tikzstyle{headbox} = [fill=headercolor,line width=0pt,rectangle,rounded corners]
+ \begin{tikzpicture}
+  \node [headbox] (box){%
+   \begin{minipage}{\fminilength}%
+     \sffamily {}\hfill{\bfseries{\leftmark\qquad\thepage}}
+    \end{minipage}%
+  };
+ \end{tikzpicture}}
+\include{trigbook-appendixa}
+\include{trigbook-appendixb}
+\newpage
+%Put the GNU FDL here
+\include{gnufdl}
+%Put the history section here
+\addchap{History}
+This section contains the revision history of the book.  For persons making modifications to 
+the book, please record the pertinent information here, following the format in the first item below.
+
+\begin{enumerate}
+
+\item VERSION: 1.0
+\begin{description}
+\item[Date:] 2009-07-01
+\item[Author(s):] Michael Corral
+\item[Title:] Trigonometry
+\item[Modification(s):] Initial version
+\end{description}
+
+\item VERSION: 1.1
+\begin{description}
+\item[Date:] 2010-03-12
+\item[Author(s):] Michael Corral
+\item[Title:] Trigonometry
+\item[Modification(s):] Made the following changes:\\
+ a) Added a section on polar coordinates\\
+ b) Changed the format of the page headers\\
+ c) Changed the format of the examples
+\end{description}
+
+\item VERSION: 1.2
+\begin{description}
+\item[Date:] 2012-06-14
+\item[Author(s):] Michael Corral
+\item[Title:] Trigonometry
+\item[Modification(s):] 
+  Re-licensed under the terms of the GNU Free Documentation License
+    version 1.3.
+\end{description}
+
+\end{enumerate}
+
+\backmatter
+\clearpage
+\phantomsection
+%Put the index here
+\printindex
+
+%Add a blank page at the end to make the number of pages divisible by 4
+\myclearpage
+\end{document}

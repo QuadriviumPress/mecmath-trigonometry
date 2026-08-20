@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trigonometry — Offline</title>
+  <meta name="theme-color" content="#005587" />
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 40rem;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      line-height: 1.5;
+      color: #1e293b;
+    }
+    h1 { color: #005587; }
+    a { color: #0074c8; }
+    button {
+      background: #005587;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-block-start: 12px;
+    }
+    ul { text-align: start; }
+  </style>
+</head>
+<body>
+  <h1>Trigonometry — Offline</h1>
+  <p>You're currently offline, but cached content may still be available.</p>
+
+  <h2>Available sections</h2>
+  <ul>
+    <li><a href="/MecmathTrigonometryTextbook/">Home</a></li>
+    <li><a href="/MecmathTrigonometryTextbook/SUMMARY.html">Table of Contents</a></li>
+    <li>Previously visited pages</li>
+  </ul>
+
+  <h2>Connection status</h2>
+  <p id="connection-status">Checking connection…</p>
+  <button type="button" onclick="checkConnection()">Try to reconnect</button>
+
+  <script>
+    const HOME = '/MecmathTrigonometryTextbook/';
+    function updateConnectionStatus() {
+      const statusEl = document.getElementById('connection-status');
+      if (navigator.onLine) {
+        statusEl.textContent = 'Connected — redirecting…';
+        statusEl.style.color = 'green';
+        setTimeout(() => { window.location.href = HOME; }, 1500);
+      } else {
+        statusEl.textContent = 'Offline — limited content available';
+        statusEl.style.color = '#b91c1c';
+      }
+    }
+    function checkConnection() {
+      updateConnectionStatus();
+      if (navigator.onLine) window.location.href = HOME;
+    }
+    updateConnectionStatus();
+    window.addEventListener('online', updateConnectionStatus);
+    window.addEventListener('offline', updateConnectionStatus);
+  </script>
+</body>
+</html>

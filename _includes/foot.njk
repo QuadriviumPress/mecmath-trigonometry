@@ -1,0 +1,16 @@
+<hr />
+<footer>
+  <em>{{ site.title }}</em> by
+  <a href="{{ site.sourceUrl }}" target="_blank" rel="noopener">{{ site.author }}</a>, licensed under
+  <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license" target="_blank"
+    >Creative Commons Attribution-ShareAlike 4.0 International</a
+  >.
+</footer>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register(window.Book.baseHref + '/sw.js');
+    });
+  }
+</script>

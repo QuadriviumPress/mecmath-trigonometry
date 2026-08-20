@@ -1,0 +1,37 @@
+Version 1.2: 2012-06-14
+
+This is the README file for the LaTeX source code to produce the PDF file
+trigbook.pdf. Compilation uses plain latex (not pdflatex) to convert the
+LaTeX source files to dvi, dvips to convert the dvi file to PostScript, and
+ps2pdf to convert from PostScript to PDF.
+
+You will need a number of packages in order to compile the code. Look
+through the preamble in the trigbook.tex file to see all the package names in
+the "\usepackage" commands at the top of the file.
+Most of these will probably already be installed if you have a reasonably
+up-to-date LaTeX system installed. If not, you should install the latest
+versions of those packages. In particular, you should use the latest
+version of the TikZ graphics package (at least version 2.0).
+Other nonstandard packages you will need are picins and the Phaistos and
+Beramono fonts, which can be found at CTAN (http://www.ctan.org).
+
+The source code was successfully compiled using TeX Live 2011 in Fedora 17,
+though a number of individual packages (such as TikZ) were
+manually updated and others had to be installed because they were not present
+originally. So if compilation fails for you, then install the latest packages
+as much as possible.
+
+A bash script called trigbook.sh is included to automate the creation of
+the PDF file in Linux/UNIX systems. Run it like this:
+
+./trigbook.sh
+
+If you are running some version of Microsoft Windows or Mac OS X, well,
+you're on your own as far as compiling, as I don't use those platforms. :)
+In general, the instructions given above are the extent of whatever
+assistance I can provide with compilation in any operating system.
+
+Michael Corral
+Dept. of Mathematics
+Schoolcraft College
+Livonia, MI

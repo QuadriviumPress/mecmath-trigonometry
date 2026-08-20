@@ -1,0 +1,98 @@
+# Workflow for building and deploying the Trigonometry Eleventy site to GitHub Pages.
+name: Deploy Eleventy site to Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: "npm"
+
+      - name: Install TeX + figure toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            ghostscript dvisvgm mupdf-tools \
+            texlive-latex-base texlive-latex-recommended \
+            texlive-fonts-recommended texlive-latex-extra texlive-pictures
+
+      - name: Cache converted figures
+        uses: actions/cache@v4
+        with:
+          path: generated/figures
+          key: figures-trig-v1-${{ hashFiles('mecmath-trigonometry/**', 'lib/figures.js') }}
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Copy self-hosted MathJax + MiniSearch bundles
+        run: npm run update:vendor
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v6
+
+      - name: Build with Eleventy (figures + search index)
+        run: npm run build
+
+      - name: Verify build
+        run: npm run verify
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Generate chapter PDFs
+        uses: ./.github/actions/generate-chapter-pdfs
+
+      - name: Rebuild with PDF download links
+        run: npm run build
+
+      - name: Re-verify build
+        run: npm run verify
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+      - name: Write build summary
+        if: always()
+        run: |
+          echo "## Build Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Metric | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| **Status** | ${{ job.status == 'success' && '✅ Success' || '❌ Failed' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Chapter PDFs** | $(ls -1 assets/pdf/*.pdf 2>/dev/null | wc -l) |" >> $GITHUB_STEP_SUMMARY
+          echo "| **Commit** | \`${{ github.sha }}\` |" >> $GITHUB_STEP_SUMMARY
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

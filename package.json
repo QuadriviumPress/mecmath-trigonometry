@@ -1,0 +1,33 @@
+{
+  "name": "mecmath-trigonometry-site",
+  "version": "1.0.0",
+  "description": "Eleventy build of Michael Corral's Trigonometry (LaTeX source rendered to HTML)",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "prebuild": "node scripts/convert-figures.js",
+    "build": "eleventy",
+    "postbuild": "node scripts/build-index.js",
+    "serve": "eleventy --serve --port=4000",
+    "verify": "node scripts/verify-build.js",
+    "clean": "rm -rf _site generated/figures",
+    "generate:pdf": "node scripts/generate-pdf-parallel.js",
+    "update:vendor": "npm run update:mathjax && npm run update:minisearch",
+    "update:mathjax": "rm -rf assets/js/mathjax && mkdir -p assets/js/mathjax/fonts/mathjax-newcm-font && cp node_modules/mathjax/tex-chtml.js assets/js/mathjax/ && cp -r node_modules/mathjax/ui node_modules/mathjax/a11y node_modules/mathjax/sre node_modules/mathjax/input assets/js/mathjax/ && cp node_modules/@mathjax/mathjax-newcm-font/chtml.js assets/js/mathjax/fonts/mathjax-newcm-font/ && cp -r node_modules/@mathjax/mathjax-newcm-font/chtml assets/js/mathjax/fonts/mathjax-newcm-font/",
+    "update:minisearch": "rm -rf assets/js/vendor && mkdir -p assets/js/vendor && cp node_modules/minisearch/dist/es/index.js assets/js/vendor/minisearch.js"
+  },
+  "license": "CC-BY-SA-4.0",
+  "devDependencies": {
+    "@11ty/eleventy": "4.0.0-alpha.10",
+    "@playwright/test": "^1.61.1",
+    "chalk": "^5.6.2",
+    "cheerio": "^1.2.0",
+    "glob": "^13.0.6",
+    "mathjax": "^4.1.3",
+    "minisearch": "^7.2.0",
+    "sharp": "^0.35.3"
+  }
+}

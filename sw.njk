@@ -1,0 +1,130 @@
+---js
+{
+  permalink: 'sw.js',
+  eleventyExcludeFromCollections: true,
+}
+---
+// Service worker — offline support for the Electromagnetics Vol. 1 site.
+// Emitted by sw.njk so URLs carry the deployment's path prefix and the cache
+// version tracks the build (see _data/build.js).
+//
+// Strategy:
+//  - install: precache the app shell (viewer CSS/JS, MathJax core, TOC)
+//  - navigations / HTML (incl. the viewer's SPA page fetches): network-first,
+//    falling back to cache when offline
+//  - figures/, MathJax fonts: cache-first (content-stable files)
+//  - everything else same-scope: stale-while-revalidate
+
+const VERSION = '{{ build.time }}';
+const PREFIX = '{{ "/" | url | trimSlash }}'; // '' when root-hosted (Vercel)
+const PRECACHE = `precache-${VERSION}`;
+const RUNTIME = 'runtime-v1';
+
+const PRECACHE_URLS = [
+  `${PREFIX}/`,
+  `${PREFIX}/SUMMARY.html`,
+  `${PREFIX}/manifest.webmanifest`,
+  `${PREFIX}/assets/css/theme.css`,
+  `${PREFIX}/assets/css/book.css`,
+  `${PREFIX}/assets/css/print.css`,
+  `${PREFIX}/assets/js/math-config.js`,
+  `${PREFIX}/assets/js/book-config.js`,
+  `${PREFIX}/assets/js/util.js`,
+  `${PREFIX}/assets/js/icons.js`,
+  `${PREFIX}/assets/js/book-viewer.js`,
+  `${PREFIX}/assets/js/search.js`,
+  `${PREFIX}/assets/js/search-ui.js`,
+  `${PREFIX}/assets/js/vendor/minisearch.js`,
+  `${PREFIX}/assets/js/mathjax/tex-chtml.js`,
+  `${PREFIX}/assets/js/mathjax/fonts/mathjax-newcm-font/chtml.js`,
+];
+
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches
+      .open(PRECACHE)
+      .then(cache => cache.addAll(PRECACHE_URLS))
+      .then(() => self.skipWaiting())
+  );
+});
+
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches
+      .keys()
+      .then(keys =>
+        Promise.all(
+          keys
+            .filter(key => key.startsWith('precache-') && key !== PRECACHE)
+            .map(key => caches.delete(key))
+        )
+      )
+      .then(() => self.clients.claim())
+  );
+});
+
+const isHtml = (request, url) =>
+  request.mode === 'navigate' || url.pathname.endsWith('/') || url.pathname.endsWith('.html');
+
+// Files whose contents never change for a given URL (figure SVGs converted
+// from the distro EPS files, MathJax woff2/dynamic-range files).
+const isImmutable = url =>
+  url.pathname.startsWith(`${PREFIX}/figures/`) ||
+  url.pathname.startsWith(`${PREFIX}/assets/js/mathjax/fonts/`);
+
+async function networkFirst(request) {
+  const cache = await caches.open(RUNTIME);
+  try {
+    const response = await fetch(request);
+    if (response.ok) cache.put(request, response.clone());
+    return response;
+  } catch {
+    const cached = await caches.match(request);
+    if (cached) return cached;
+    throw new Error(`offline and not cached: ${request.url}`);
+  }
+}
+
+async function cacheFirst(request) {
+  const cached = await caches.match(request);
+  if (cached) return cached;
+  const response = await fetch(request);
+  if (response.ok) {
+    const cache = await caches.open(RUNTIME);
+    cache.put(request, response.clone());
+  }
+  return response;
+}
+
+async function staleWhileRevalidate(event, request) {
+  const cached = await caches.match(request);
+  const refresh = fetch(request)
+    .then(async response => {
+      if (response.ok) {
+        const cache = await caches.open(RUNTIME);
+        await cache.put(request, response.clone());
+      }
+      return response;
+    })
+    .catch(() => cached);
+  // Keep the worker alive until the background refresh has been written,
+  // otherwise the cache never updates and stale assets are served forever.
+  event.waitUntil(refresh.then(() => undefined).catch(() => undefined));
+  return cached || refresh;
+}
+
+self.addEventListener('fetch', event => {
+  const { request } = event;
+  if (request.method !== 'GET') return;
+  const url = new URL(request.url);
+  if (url.origin !== self.location.origin) return;
+  if (!url.pathname.startsWith(`${PREFIX}/`)) return;
+
+  if (isHtml(request, url)) {
+    event.respondWith(networkFirst(request));
+  } else if (isImmutable(url)) {
+    event.respondWith(cacheFirst(request));
+  } else {
+    event.respondWith(staleWhileRevalidate(event, request));
+  }
+});

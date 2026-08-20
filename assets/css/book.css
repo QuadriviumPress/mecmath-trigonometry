@@ -1,0 +1,519 @@
+/* Trigonometry (Michael Corral) — book-specific styles */
+/* Generic theme styles are in theme.css */
+
+:root {
+  --physics-color-primary: #005587;
+  --physics-color-primary-hover: #00406a;
+  --physics-color-secondary: #0074c8;
+  --physics-color-accent: #0074c8;
+  --physics-color-note: #005587;
+  --physics-color-note-bg: #eef6fb;
+  --physics-color-example: #0074c8;
+  --physics-color-example-bg: #f0f7fc;
+  --physics-color-exercise: #005587;
+  --physics-color-exercise-bg: #eef6fb;
+  --physics-color-target: #fff7e0;
+  --physics-color-header-link: #0074c8;
+  --physics-color-table-border: #cbd5e1;
+  --example-margin-top: 24px;
+  --transition-opacity: opacity 0.2s ease-in-out 0.1s;
+  --touch-target-min: 44px;
+}
+
+:is(.summary li:not(.visited) > .fa-check, .summary li:not(.visited) .fa-check) {
+  display: none !important;
+}
+
+.summary li.visited > .fa-check,
+.summary li.visited .fa-check {
+  display: inline-block !important;
+}
+
+:target {
+  background-color: var(--physics-color-target);
+}
+
+.header-link {
+  position: absolute;
+  inset-inline-start: -1em;
+  opacity: 0;
+  transition: var(--transition-opacity);
+}
+
+:is(h1:hover, h2:hover, h3:hover, h4:hover) .header-link {
+  opacity: 1;
+  color: var(--physics-color-header-link) !important;
+}
+
+.book .book-body .page-wrapper .page-inner {
+  max-inline-size: calc(80% - 100px);
+}
+
+@media (max-width: 1000px) {
+  .book .book-body .page-wrapper .page-inner {
+    max-inline-size: calc(100% - 100px);
+  }
+}
+
+@media (max-width: 600px) {
+  .book .book-body .page-wrapper .page-inner {
+    max-inline-size: calc(100% - 50px);
+  }
+}
+
+.page-title {
+  font-weight: bold;
+  color: var(--physics-color-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.subheading {
+  color: var(--physics-color-secondary);
+  margin-block: 1.25em 0.5em;
+}
+
+/* Display equations */
+.equation-block {
+  margin-block: 12px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.equation-block.boxed {
+  display: inline-block;
+  border: 1px solid currentColor;
+  padding: 0.35em 0.75em;
+}
+
+/* Theorem / definition / corollary boxes */
+.theorem {
+  margin-block: 20px;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: 1px solid rgb(0 85 135 / 25%);
+  background: #f3f8fb;
+}
+
+.theorem.thm-thm {
+  background: #eef6fb;
+  border-color: rgb(0 116 200 / 35%);
+}
+
+.theorem.thm-defn {
+  background: #f5f9fc;
+  border-color: rgb(0 85 135 / 30%);
+}
+
+.theorem.thm-cor {
+  background: #f0f7fc;
+  border-color: rgb(0 116 200 / 30%);
+}
+
+.theorem-title {
+  font-weight: bold;
+  color: var(--physics-color-primary);
+  margin: 0 0 0.5em;
+}
+
+body.dark-mode .theorem {
+  background: #1a2835;
+  border-color: rgb(0 116 200 / 40%);
+}
+
+/* Worked examples */
+.example {
+  margin-block-start: var(--example-margin-top);
+  padding: 12px 16px;
+  border-inline-start: 4px solid var(--physics-color-accent);
+  background: var(--physics-color-example-bg);
+}
+
+.example-title {
+  font-weight: bold;
+  color: var(--physics-color-primary);
+  margin: 0 0 0.5em;
+}
+
+body.dark-mode .example {
+  background: #1a2835;
+}
+
+/* statecomment note boxes */
+.statecomment {
+  margin-block: 20px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #8bc4a8;
+  background: #edf8f1;
+}
+
+body.dark-mode .statecomment {
+  background: #1a2e24;
+  border-color: #4a8a6a;
+}
+
+/* Proof blocks */
+.proofbar {
+  margin-block: 16px;
+  padding: 8px 12px 8px 16px;
+  border-inline-start: 4px solid var(--physics-color-secondary);
+}
+
+/* Exercises divider */
+.exercises-start {
+  margin-block: 28px 12px;
+  padding: 10px 14px;
+  border: 2px solid var(--physics-color-primary);
+  border-radius: 4px;
+  text-align: center;
+}
+
+.exercises-title {
+  font-weight: bold;
+  font-size: 1.15rem;
+  color: var(--physics-color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+hr.divider {
+  border: none;
+  block-size: 3px;
+  background: var(--physics-color-secondary);
+  margin-block: 24px;
+}
+
+/* Figures */
+figure.figure-float,
+figure.parpic,
+figure.table-float,
+figure.code-float {
+  margin-block: 20px;
+}
+
+.figure-number,
+.table-number {
+  font-weight: bold;
+}
+
+figure img {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+.figure-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-block: 20px;
+}
+
+.figure-row > figure {
+  flex: 1 1 240px;
+  max-inline-size: 100%;
+}
+
+.figure-panels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+figure.panel {
+  flex: 1 1 200px;
+  margin: 0;
+}
+
+.panel-caption {
+  display: block;
+  font-size: 0.9em;
+  text-align: center;
+  margin-block-start: 6px;
+}
+
+/* parpic floats */
+figure.parpic {
+  display: flow-root;
+}
+
+figure.parpic-left {
+  float: inline-start;
+  margin: 0 16px 12px 0;
+  max-inline-size: 45%;
+}
+
+figure.parpic-right {
+  float: inline-end;
+  margin: 0 0 12px 16px;
+  max-inline-size: 45%;
+}
+
+@media (max-width: 700px) {
+  figure.parpic-left,
+  figure.parpic-right {
+    float: none;
+    max-inline-size: 100%;
+    margin: 0 0 12px;
+  }
+}
+
+/* Multicolumn layout */
+.multicols {
+  column-count: var(--cols, 2);
+  column-gap: 24px;
+  margin-block: 12px;
+}
+
+.multicols > * {
+  break-inside: avoid;
+}
+
+@media (max-width: 700px) {
+  .multicols {
+    column-count: 1;
+  }
+}
+
+/* Tabular */
+.tabular-wrap {
+  overflow-x: auto;
+}
+
+table.tabular {
+  border-collapse: collapse;
+  margin-inline: auto;
+  margin-block: 12px;
+}
+
+table.tabular td {
+  padding: 4px 12px;
+}
+
+table.tabular td.align-center {
+  text-align: center;
+}
+
+table.tabular td.align-right {
+  text-align: right;
+}
+
+table.tabular tr.topline td {
+  border-block-start: 1px solid currentColor;
+}
+
+table.tabular.bottomline tr:last-child td {
+  border-block-end: 1px solid currentColor;
+}
+
+/* Code listings */
+figure.code-float pre.code {
+  overflow-x: auto;
+  background: #fff7e0;
+  border: 1px solid #e8d98a;
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 0.9em;
+}
+
+body.dark-mode figure.code-float pre.code {
+  background: #2a2618;
+  border-color: #6b5f2a;
+}
+
+/* Lists */
+.item-label {
+  font-weight: bold;
+}
+
+.desc-list {
+  margin-block: 12px;
+}
+
+.desc-item dt {
+  font-weight: bold;
+}
+
+.desc-item dd {
+  margin-inline-start: 1.5em;
+  margin-block-end: 0.75em;
+}
+
+/* Footnotes */
+.footnotes {
+  font-size: 0.875em;
+  color: var(--color-secondary, #555);
+  margin-block-start: 24px;
+}
+
+.footnote-back {
+  text-decoration: none;
+}
+
+/* Book index */
+.book-index .index-letters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-weight: bold;
+  margin-block-end: 16px;
+}
+
+.book-index .index-entries {
+  list-style: none;
+  padding-inline-start: 0;
+  columns: 2;
+  column-gap: 32px;
+}
+
+@media (max-width: 700px) {
+  .book-index .index-entries {
+    columns: 1;
+  }
+}
+
+.book-index .index-entries li {
+  break-inside: avoid;
+  padding-block: 2px;
+}
+
+.book-index .index-entries ul {
+  list-style: none;
+  padding-inline-start: 20px;
+}
+
+/* Sidebar TOC */
+.book .book-summary ul.summary li.chapter > p {
+  display: contents;
+  margin: 0;
+}
+
+.book .book-summary ul.summary li.chapter > p > a {
+  display: inline !important;
+  font-size: 120%;
+  white-space: normal;
+}
+
+/* Landing page */
+.landing {
+  max-inline-size: 720px;
+  margin-inline: auto;
+  padding: 1rem;
+}
+
+.landing .landing-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-block: 24px;
+}
+
+.landing .landing-actions a {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 6px;
+  background: var(--physics-color-primary);
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.landing .landing-actions a.secondary {
+  background: transparent;
+  color: var(--physics-color-primary);
+  border: 2px solid var(--physics-color-primary);
+}
+
+.landing .chapter-list {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+.landing .chapter-list li {
+  padding-block: 6px;
+}
+
+.chapter-sections ul {
+  list-style: none;
+  padding-inline-start: 0;
+}
+
+.chapter-sections li {
+  padding-block: 4px;
+}
+
+.chapter-pdf {
+  margin-block-start: 24px;
+  padding: 12px;
+  border: 1px dashed var(--physics-color-secondary);
+  border-radius: 6px;
+}
+
+/* Cross-references */
+.missing-ref {
+  color: #b91c1c;
+  border-block-end: 1px dotted #b91c1c;
+}
+
+.figure-missing {
+  min-block-size: 80px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #f3f4f6,
+    #f3f4f6 8px,
+    #e5e7eb 8px,
+    #e5e7eb 16px
+  );
+  border: 1px dashed #9ca3af;
+  border-radius: 4px;
+}
+
+body.dark-mode figure img {
+  background: #fff;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.smallcaps {
+  font-variant: small-caps;
+}
+
+.center,
+.centerline {
+  text-align: center;
+}
+
+.flushleft {
+  text-align: start;
+}
+
+.flushright {
+  text-align: end;
+}
+
+.size-small {
+  font-size: 0.9em;
+}
+
+.size-footnotesize,
+.size-scriptsize,
+.size-tiny {
+  font-size: 0.85em;
+}
+
+.size-large {
+  font-size: 1.1em;
+}
+
+.size-Large {
+  font-size: 1.25em;
+}
+
+@media (max-width: 768px) {
+  .book .book-body .navigation {
+    min-inline-size: 48px;
+    min-block-size: 48px;
+  }
+}

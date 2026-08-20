@@ -1,0 +1,8 @@
+node_modules/
+_site/
+generated/
+pdf-output/
+assets/pdf/
+assets/js/mathjax/
+assets/js/vendor/
+search_index.json

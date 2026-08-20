@@ -1,0 +1,1330 @@
+\chapter{Identities}
+%Begin Section 3.1
+\section{Basic Trigonometric Identities}
+So far we know a few relations between the trigonometric functions. For example, we know the
+reciprocal relations:
+
+\begin{center}\statecomment[0.7\textwidth]{\begin{enumerate}[\bfseries 1.]
+ \item $\csc\;\theta ~=~ \dfrac{1}{\sin\;\theta}$ \qquad when $\sin\;\theta \ne 0$
+ \item $\sec\;\theta ~=~ \dfrac{1}{\cos\;\theta}$ \qquad when $\cos\;\theta \ne 0$
+ \item $\cot\;\theta ~=~ \dfrac{1}{\tan\;\theta}$ \qquad when $\tan\;\theta$ is defined and not $0$
+ \item $\sin\;\theta ~=~ \dfrac{1}{\csc\;\theta}$ \qquad when $\csc\;\theta$ is defined and not $0$
+ \item $\cos\;\theta ~=~ \dfrac{1}{\sec\;\theta}$ \qquad when $\sec\;\theta$ is defined and not $0$
+ \item $\tan\;\theta ~=~ \dfrac{1}{\cot\;\theta}$ \qquad when $\cot\;\theta$ is defined and not $0$
+\end{enumerate}}\end{center}
+
+Notice that each of these equations is true for \emph{all} angles $\theta$ for which both sides
+of the equation are defined. Such equations are called \textbf{identities}\index{identities}, and
+in this section we will discuss several \emph{trigonometric identities}, i.e. identities involving
+the trigonometric functions. These identities are often used to simplify complicated expressions or
+equations. For example, one of the most useful trigonometric identities is the following:
+
+\begin{center}\statecomment{\begin{equation}\label{eqn:identan}
+ \tan\;\theta ~=~ \frac{\sin\;\theta}{\cos\;\theta} \qquad \text{when } \cos\;\theta \ne 0
+\end{equation}}\end{center}
+
+To prove this identity, pick a point $(x,y)$ on the terminal side of $\theta$ a distance $r >0$ from
+the origin, and suppose that $\cos\;\theta \ne 0$. Then $x \ne 0$ (since $\cos\;\theta =
+\frac{x}{r}$), so by definition
+\begin{displaymath}
+ \frac{\sin\;\theta}{\cos\;\theta} ~=~ \dfrac{~\dfrac{y}{r}~}{~\dfrac{x}{r}~} ~=~ \frac{y}{x} ~=~
+ \tan\;\theta ~.
+\end{displaymath}
+Note how we proved the identity by expanding one of its sides ($\frac{\sin\;\theta}{\cos\;\theta}$)
+until we got an expression that was equal to the other side ($\tan\;\theta$). This is probably the
+most common technique for proving identities. Taking reciprocals in the above identity gives:
+
+\begin{center}\statecomment{\begin{equation}\label{eqn:idencot}
+ \cot\;\theta ~=~ \frac{\cos\;\theta}{\sin\;\theta} \qquad \text{when } \sin\;\theta \ne 0
+\end{equation}}\end{center}
+
+\piccaption[]{\label{fig:rdist}}\parpic[r]{\begin{tikzpicture}[every node/.style={font=\small}]
+ \draw [line width=0.5pt,-latex] (0.6,0) arc (0:217:0.6);
+ \draw [dashed] (-1.6,0) -- (-1.6,-1.2);
+ \draw (-1.4,0) -- (-1.4,-0.2) -- (-1.6,-0.2);
+ \draw [black!60,line width=0.3pt,-latex] (-2.2,0) -- (1.2,0) node [right] {$x$};
+ \draw [black!60,line width=0.3pt,-latex] (0,-1.6) -- (0,0.9) node [above] {$y$};
+ \node [black!60,below right] at (0,0) {$0$};
+ \node [right] at (70:0.7) {$\theta$};
+ \begin{scope}[>=latex]
+  \draw [<->|] (-1.9,0) -- (-1.9,-1.2) node [midway,left] {$\abs{y}$};
+  \draw [|<->] (-1.6,0.3) -- (0,0.3) node [midway,above] {$\abs{x}$};
+ \end{scope}
+ \draw [linecolor,line width=1.5pt] (0,0) -- (-1.6,-1.2) node[black,below right,pos=0.6] {$r$};
+ \fill (0,0) circle (2pt);
+ \fill (-1.6,-1.2) circle (2pt) node[below] {$(x,y)$};
+\end{tikzpicture}}
+We will now derive one of the most important trigonometric identities. Let $\theta$ be any angle with
+a point $(x,y)$ on its terminal side a distance $r>0$ from the origin. By the Pythagorean Theorem,
+$r^2 = x^2 + y^2$ (and hence $r=\sqrt{x^2 + y^2}$).
+For example, if $\theta$ is in QIII as in Figure \ref{fig:rdist}, then the legs
+of the right triangle formed by the reference angle have lengths $\abs{x}$ and $\abs{y}$ (we
+use absolute values because $x$ and $y$ are negative in QIII). The same argument holds if $\theta$
+is in the other quadrants or on either axis. Thus,
+\begin{displaymath}
+ r^2 ~=~ \abs{x}^2 ~+~ \abs{y}^2 ~=~ x^2 ~+~ y^2 ~,
+\end{displaymath}
+so dividing both sides of the equation by $r^2$ (which we can do since $r>0$) gives
+\begin{displaymath}
+ \frac{r^2}{r^2} ~=~ \frac{x^2 ~+~ y^2}{r^2} ~=~ \frac{x^2}{r^2} ~+~ \frac{y^2}{r^2} ~=~
+  \left(\frac{x}{r}\right)^2 ~+~ \left(\frac{y}{r}\right)^2 ~.
+\end{displaymath}
+Since $\frac{r^2}{r^2} = 1$, $\frac{x}{r} = \cos\;\theta$, and $\frac{y}{r} = \sin\;\theta$,
+we can rewrite this as:
+
+\begin{center}\statecomment{\begin{equation}\label{eqn:idensincos1}
+ \cos^2 \;\theta ~+~ \sin^2 \;\theta ~=~ 1
+\end{equation}}\end{center}
+You can think of this as sort of a trigonometric variant of the Pythagorean Theorem.
+Note that we use the notation $\sin^2 \;\theta$ to mean $(\sin\;\theta)^2$, likewise for cosine and
+the other trigonometric functions. We will use the same notation for other powers besides $2$.
+
+From the above identity we can derive more identities. For example:
+
+\begin{center}\statecomment{\begin{equation}\label{eqn:idensinsq}
+  \sin^2 \;\theta ~=~ 1 ~-~ \cos^2 \;\theta
+ \end{equation}
+ \begin{equation}\label{eqn:idencossq}
+  \cos^2 \;\theta ~=~ 1 ~-~ \sin^2 \;\theta
+\end{equation}}\end{center}
+from which we get (after taking square roots):
+
+\begin{center}\statecomment{\begin{equation}\label{eqn:idensinsqrt}
+  \sin\;\theta ~=~ \pm\,\sqrt{1 ~-~ \cos^2 \;\theta}
+ \end{equation}
+ \begin{equation}\label{eqn:idencossqrt}
+  \cos\;\theta ~=~ \pm\,\sqrt{1 ~-~ \sin^2 \;\theta}
+\end{equation}}\end{center}
+Also, from the inequalities $0 \le \sin^2 \;\theta = 1 ~-~ \cos^2 \;\theta \le 1$ and
+$0 \le \cos^2 \;\theta = 1 ~-~ \sin^2 \;\theta \le 1$, taking square roots gives us the following
+bounds on sine and cosine:
+
+\begin{center}\statecomment{\begin{equation}\label{eqn:ineqsin1}
+  -1 ~ \le ~ \sin\;\theta ~ \le ~ 1
+ \end{equation}
+ \begin{equation}\label{eqn:ineqcos1}
+  -1 ~ \le ~ \cos\;\theta ~ \le ~ 1
+\end{equation}}\end{center}
+
+The above inequalities are not identities (since they are not equations), but they provide useful
+checks on calculations. Recall that we derived those inequalities from the definitions of sine and
+cosine in Section 1.4.
+
+In formula (\ref{eqn:idensincos1}), dividing both sides of the identity by $\cos^2 \;\theta$ gives
+\begin{displaymath}
+ \frac{\cos^2 \;\theta}{\cos^2 \;\theta} ~+~ \frac{\sin^2 \;\theta}{\cos^2 \;\theta} ~=~
+  \frac{1}{\cos^2 \;\theta} ~~,
+\end{displaymath}
+so since $\tan\;\theta = \frac{\sin\;\theta}{\cos\;\theta}$ and $\sec\;\theta =
+\frac{1}{\cos\;\theta}$, we get:
+\begin{center}\statecomment{\begin{equation}\label{eqn:idensecsq}
+ 1 ~+~ \tan^2 \;\theta ~=~ \sec^2 \;\theta
+\end{equation}}\end{center}
+Likewise, dividing both sides of formula (\ref{eqn:idensincos1}) by $\sin^2 \;\theta$ gives
+\begin{displaymath}
+ \frac{\cos^2 \;\theta}{\sin^2 \;\theta} ~+~ \frac{\sin^2 \;\theta}{\sin^2 \;\theta} ~=~
+ \frac{1}{\sin^2 \;\theta} ~~,
+\end{displaymath}
+so since $\cot\;\theta = \frac{\cos\;\theta}{\sin\;\theta}$ and $\csc\;\theta =
+\frac{1}{\sin\;\theta}$, we get:
+\begin{center}\statecomment{\begin{equation}\label{eqn:idencscsq}
+ \cot^2 \;\theta ~+~ 1 ~=~ \csc^2 \;\theta
+\end{equation}}\end{center}
+
+\begin{exmp}
+ Simplify $\;\cos^2 \;\theta ~ \tan^2 \;\theta\;$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} We can use formula (\ref{eqn:identan}) to simplify:
+ \begin{align*}
+  \cos^2 \;\theta~\tan^2 \;\theta ~ &= ~ \cos^2 \;\theta ~\cdot~
+   \frac{\sin^2 \;\theta}{\cos^2 \;\theta}\\
+  &= ~ \sin^2 \;\theta
+ \end{align*}
+\end{exmp}
+\begin{exmp}
+ Simplify $\;5\sin^2 \;\theta ~+~ 4\cos^2 \;\theta\;$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} We can use formula (\ref{eqn:idencossq}) to simplify:
+ \begin{align*}
+  5\sin^2 \;\theta ~+~ 4\cos^2 \;\theta ~ &= ~ 5\sin^2 \;\theta ~+~
+   4\left( 1 ~-~ \sin^2 \;\theta \right)\\[1mm]
+  &= ~ 5\sin^2 \;\theta ~+~ 4 ~-~ 4\sin^2 \;\theta\\[1mm]
+  &= ~ \sin^2 \;\theta ~+~ 4
+ \end{align*}
+\end{exmp}\vspace{-2mm}
+\divider
+\newpage
+\begin{exmp}
+ Prove that $\;\tan \;\theta ~+~ \cot \;\theta ~=~ \sec \;\theta ~ \csc \;\theta\;$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} We will expand the left side and show that it equals the right side:
+ \begin{alignat*}{3}
+  \tan \;\theta + \cot \;\theta ~ &= ~ \frac{\sin\;\theta}{\cos\;\theta} ~+~
+   \frac{\cos\;\theta}{\sin\;\theta} &{} \qquad &\text{(by (\ref{eqn:identan}) and
+   (\ref{eqn:idencot}))}\\[2mm]
+  &= ~ \frac{\sin\;\theta}{\cos\;\theta} \;\cdot\; \frac{\sin\;\theta}{\sin\;\theta} ~+~
+   \frac{\cos\;\theta}{\sin\;\theta} \;\cdot\; \frac{\cos\;\theta}{\cos\;\theta}
+   &{} \qquad &\text{(multiply both fractions by $1$)}\\[2mm]
+  &= ~ \frac{\sin^2 \;\theta ~+~ \cos^2 \;\theta}{\cos\;\theta ~ \sin\;\theta} &{} \qquad
+  &\text{(after getting a common denominator)}\\[2mm]
+  &= ~ \frac{1}{\cos\;\theta ~ \sin\;\theta} &{} \qquad &\text{(by (\ref{eqn:idensincos1}))}\\[2mm]
+  &= ~ \frac{1}{\cos\;\theta} ~\cdot~ \frac{1}{\sin\;\theta}\\[2mm]
+  &= ~ \sec \;\theta ~ \csc \;\theta
+ \end{alignat*}
+\end{exmp}\vspace{-2mm}
+\divider
+\vspace{1mm}
+
+In the above example, how did we know to expand the left side instead of the right side? In general,
+though this technique does not always work, the more complicated side of the identity is likely to
+be easier to expand. The reason is that, by its complexity, there will be more things that you can
+do with that expression. For example, if you were asked to prove that
+\begin{displaymath}
+ \sec\;\theta ~-~ \sin\;\theta ~ \tan\;\theta ~=~ \cos\;\theta ~,
+\end{displaymath}
+there would not be much that you could do with the right side of that identity; it consists of a
+single term ($\cos\;\theta$) that offers no obvious means of expansion.
+
+\begin{exmp}
+ Prove that $\;\dfrac{1 ~+~ \cot^2 \;\theta}{\sec\;\theta} ~=~ \csc\;\theta ~
+ \cot\;\theta\;$.\vspace{2mm}
+ \par\noindent\textbf{Solution:} Of the two sides, the left side looks more complicated, so we will
+ expand that:
+ \begin{alignat*}{3}
+  \frac{1 ~+~ \cot^2 \;\theta}{\sec\;\theta} ~ &= ~ \frac{\csc^2 \;\theta}{\sec\;\theta}
+   &{} \qquad &\text{(by (\ref{eqn:idencscsq}))}\\[1.5mm]
+  &= ~ \dfrac{\csc\;\theta ~\cdot~ \dfrac{1}{\sin\;\theta}}{\dfrac{1}{\cos\;\theta}} &{}
+   &{}\\[2mm]
+  &= ~ \csc\;\theta ~\cdot~ \frac{\cos\;\theta}{\sin\;\theta} &{} &{}\\[2mm]
+  &= ~ \csc \;\theta ~ \cot \;\theta &{} \qquad &\text{(by (\ref{eqn:idencot}))}
+ \end{alignat*}
+\end{exmp}\vspace{-2mm}
+\divider
+\newpage
+\begin{exmp}
+ Prove that $\;\dfrac{\tan^2 \;\theta ~+~ 2}{1 ~+~ \tan^2 \;\theta} ~=~ 1 ~+~
+ \cos^2 \;\theta\;$.\vspace{2mm}
+ \par\noindent\textbf{Solution:} Expand the left side:
+ \begin{alignat*}{3}
+  \frac{\tan^2 \;\theta ~+~ 2}{1 ~+~ \tan^2 \;\theta} ~ &= ~
+   \frac{\left( \tan^2 \;\theta ~+~ 1 \right) ~+~ 1}{1 ~+~ \tan^2 \;\theta} &{} \qquad &{}\\[2mm]
+  &= ~ \frac{\sec^2 \;\theta ~+~ 1}{\sec^2 \;\theta} &{} \qquad
+   &\text{(by (\ref{eqn:idensecsq}))}\\[2mm]
+  &= ~ \frac{\sec^2 \;\theta}{\sec^2 \;\theta} ~+~ \frac{1}{\sec^2 \;\theta} &{} &{}\\[2mm]
+  &= ~ 1 ~+~ \cos^2 \;\theta\
+ \end{alignat*}
+\end{exmp}\vspace{-2mm}
+\divider
+\vspace{1mm}
+
+When trying to prove an identity where at least one side is a ratio of expressions,
+\emph{cross-multiplying} can be an effective technique:
+\begin{displaymath}
+ \frac{a}{b} ~=~ \frac{c}{d} \quad\text{if and only if}\quad ad ~=~ bc
+\end{displaymath}
+
+\begin{exmp}
+ Prove that $\;\dfrac{1 ~+~ \sin\;\theta}{\cos\;\theta} ~=~ \dfrac{\cos\;\theta}{1 ~-~
+ \sin\;\theta}\;$.\vspace{2mm}
+ \par\noindent\textbf{Solution:} Cross-multiply and reduce both sides until it is clear that they are
+ equal:
+ \begin{align*}
+  ( 1 ~+~ \sin\;\theta ) ( 1 ~-~ \sin\;\theta ) ~ &= ~ \cos\;\theta ~\cdot~ \cos\;\theta\\
+  1 ~-~ \sin^2 \;\theta ~ &= ~ \cos^2 \;\theta
+ \end{align*}
+ By (\ref{eqn:idencossq}) both sides of the last equation are indeed equal. Thus, the original
+ identity holds.
+\end{exmp}
+\begin{exmp}\label{exmp:elimtheta}
+ Suppose that $\;a\,\cos\;\theta = b\;$ and $\;c\,\sin\;\theta = d\;$ for some angle $\theta$ and
+ some constants $a$, $b$, $c$, and $d$. Show that $\;a^2 c^2 = b^2 c^2 + a^2 d^2$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Multiply both sides of the first equation by $c$ and the second
+ equation by $a$:
+ \begin{align*}
+  ac\,\cos\;\theta ~ &= ~ bc\\
+  ac\,\sin\;\theta ~ &= ~ ad
+ \end{align*}
+ Now square each of the above equations then add them together to get:
+ \begin{align*}
+  (ac\,\cos\;\theta)^2 ~+~ (ac\,\sin\;\theta)^2 ~ &= ~ (bc)^2 ~+~ (ad)^2\\
+  (ac)^2 \left( \cos^2 \;\theta ~+~ \sin^2 \;\theta \right)~ &= ~ b^2 c^2 ~+~ a^2 d^2\\
+  a^2 c^2 ~ &= ~ b^2 c^2 ~+~ a^2 d^2 \qquad\text{(by (\ref{eqn:idensincos1}))}
+ \end{align*}
+ Notice how $\theta$ does not appear in our final result. The trick was to get a common coefficient
+ ($ac$) for $\;\cos\;\theta\;$ and $\;\sin\;\theta\;$ so that we could use
+ $\;\cos^2 \;\theta + \sin^2 \;\theta = 1$. This is a common technique for eliminating trigonometric
+ functions from systems of equations.
+\end{exmp}\vspace{-2mm}
+\divider
+\newpage
+\startexercises\label{sec3dot1}
+\vspace{5mm}
+{\small
+\begin{enumerate}[\bfseries 1.]
+ \item We showed that $\;\sin\;\theta ~=~ \pm\,\sqrt{1 ~-~ \cos^2 \;\theta}\;$ for all
+  $\theta$. Give an example of an angle $\theta$ such that
+  $\sin\;\theta ~=~ -\sqrt{1 ~-~ \cos^2 \;\theta}\;$.
+ \item We showed that $\;\cos\;\theta ~=~ \pm\,\sqrt{1 ~-~ \sin^2 \;\theta}\;$ for all
+  $\theta$. Give an example of an angle $\theta$ such that
+  $\cos\;\theta ~=~ -\sqrt{1 ~-~ \sin^2 \;\theta}\;$.
+ \item Suppose that you are given a system of two equations of the following
+  form:\footnote{These types of
+  equations arise in physics, e.g. in the study of photon-electron collisions. See pp. 95-97 in
+  \textsc{W. Rindler}, \emph{Special Relativity}, Edinburgh: Oliver and Boyd, LTD., 1960.}
+ \begin{align*}
+  A\,\cos\;\phi ~ &= ~ B\, \nu_1 ~-~ B\nu_2 \;\cos\;\theta\\
+  A\,\sin\;\phi ~ &= ~ B\, \nu_2 \;\sin\;\theta ~.
+ \end{align*}
+ Show that $\;A ^2 ~=~ B^2 \left( \nu_1^2 ~+~ \nu_2^2 ~-~ 2\nu_1 \nu_2 \;\cos\theta\ \right)$.
+\suspend{enumerate}
+\par\noindent For Exercises 4-16, prove the given identity.
+\resume{enumerate}[{[\bfseries 1.]}]
+\begin{multicols}{2}
+ \item $\cos\;\theta ~ \tan\;\theta ~=~ \sin\;\theta$
+ \item $\sin\;\theta ~ \cot\;\theta ~=~ \cos\;\theta$
+\end{multicols}
+\begin{multicols}{2}
+ \item $\dfrac{\tan\;\theta}{\cot\;\theta} ~=~ \tan^2 \;\theta$
+ \item $\dfrac{\csc\;\theta}{\sin\;\theta} ~=~ \csc^2 \;\theta$
+\end{multicols}
+\begin{multicols}{2}
+ \item $\dfrac{\cos^2 \;\theta}{1 ~+~ \sin\;\theta} ~=~ 1 ~-~ \sin\;\theta$
+ \item $\dfrac{1 ~-~ 2\;\cos^2 \;\theta}{\sin\;\theta ~ \cos\;\theta} ~=~
+  \tan\;\theta ~-~ \cot\;\theta$
+\end{multicols}
+\begin{multicols}{2}
+ \item $\sin^4 \;\theta ~-~ \cos^4 \;\theta ~=~ \sin^2 \;\theta ~-~ \cos^2 \;\theta$
+ \item $\cos^4 \;\theta ~-~ \sin^4 \;\theta ~=~ 1 ~-~ 2\;\sin^2 \;\theta$
+\end{multicols}
+\begin{multicols}{2}
+ \item $\dfrac{1 ~-~ \tan\;\theta}{1 ~+~ \tan\;\theta} ~=~ 
+  \dfrac{\cot\;\theta ~-~ 1}{\cot\;\theta ~+~ 1}$
+ \item $\dfrac{\tan\;\theta ~+~ \tan\;\phi}{\cot\;\theta ~+~ \cot\;\phi} ~=~
+  \tan\;\theta ~ \tan\;\phi$
+\end{multicols}
+\begin{multicols}{2}
+ \item\label{exer:sintan} $\dfrac{\sin^2 \;\theta}{1 ~-~ \sin^2 \;\theta} ~=~ \tan^2 \;\theta$
+ \item $\dfrac{1 ~-~ \tan^2 \;\theta}{1 ~-~ \cot^2 \;\theta} ~=~  1 ~-~ \sec^2 \;\theta$
+\end{multicols}
+ \item\label{exer:sintansq} $\sin\;\theta ~=~ \pm\,\dfrac{\tan\;\theta}{\sqrt{1 ~+~
+  \tan^2 \;\theta}}\qquad$ (\emph{Hint: Solve for $\;\sin^2 \theta\;$ in Exercise
+  \ref{exer:sintan}.})
+\piccaption[]{\label{fig:exer2.1.21}}\parpic[r]{\begin{tikzpicture}[every node/.style={font=\small}]
+  \draw [line width=0.5pt,-latex] (1,0) arc (0:30:1);
+  \draw [black!60,line width=0.3pt,-latex] (-0.5,0) -- (2.7,0) node [right] {$x$};
+  \draw [black!60,line width=0.3pt,-latex] (0,-0.5) -- (0,1) node [above] {$y$};
+  \node [black!60,below left] at (0,0) {$0$};
+  \node [right] at (20:0.5) {$\theta$};
+  \draw [dashed] (1.732,0) -- (30:2);
+  \draw (1.532,0) -- (1.532,0.2) -- (1.732,0.2);
+  \draw [linecolor,line width=1.5pt] (0,0) -- (30:2);
+  \fill (0,0) circle (2pt);
+  \fill (30:2) circle (2pt) node[above right] {$(1,y)$};
+  \draw [decorate,decoration={brace,raise=5pt,mirror},segment amplitude=2mm] (0,0) -- (1.732,0);
+  \node[below] at (0.866,-0.4) {$1$};
+  \draw [decorate,decoration={brace,raise=5pt,mirror},segment amplitude=2mm] (1.732,0) -- (30:2);
+  \node[right] at (2.1,0.5) {$y$};
+ \end{tikzpicture}}
+ \item\label{exer:sintansqg}
+  Sometimes identities can be proved by geometrical methods. For example, to prove the identity
+  in Exercise \ref{exer:sintansq}, draw an acute angle $\theta$ in QI and pick the point $(1,y)$ on
+  its terminal side, as in Figure \ref{fig:exer2.1.21}. What must $y$ equal? Use that to prove the
+  identity for acute $\theta$. Explain the adjustment(s) you would need to make in Figure
+  \ref{fig:exer2.1.21} to prove the identity for $\theta$ in the other quadrants. Does the identity
+  hold if $\theta$ is on either axis?
+\suspend{enumerate}
+\resume{enumerate}[{[\bfseries 1.]}]
+ \item Similar to Exercise \ref{exer:sintansq} , find an expression for $\cos\;\theta$ solely in
+  terms of $\tan\;\theta$.
+ \item Find an expression for $\tan\;\theta$ solely in terms of $\sin\;\theta$, and one solely in
+  terms of $\cos\;\theta$.
+ \item\label{exer:marion} Suppose that a point with coordinates
+  $(x,y)=(a\;(\cos\;\psi\;-\;\epsilon),a\sqrt{1 - \epsilon^2}~\sin\;\psi)$
+  is a distance $r>0$ from the origin, where $a>0$ and $0 < \epsilon < 1$. Use $\;r^2 = x^2 + y^2$
+  to show that $\;r = a\;(1 \;-\; \epsilon\;\cos\;\psi)\;$.\\(Note: These coordinates arise in the
+  study of elliptical orbits of planets.)
+ \item Show that each trigonometric function can be put in terms of the sine function.
+\end{enumerate}}
+
+\newpage
+%Begin Section 3.2
+\section{Sum and Difference Formulas}
+We will now derive identities for the trigonometric functions of the sum and difference of two
+angles. For the sum of any two angles $A$ and $B$, we have the
+\emph{addition formulas}:\index{addition formulas}\index{identities!sum of two angles}
+
+\begin{center}\statecomment{\begin{equation}
+ \sin\;(A+B) ~=~ \sin\;A ~ \cos\;B ~+~ \cos\;A ~ \sin\;B\label{eqn:sumsin}
+\end{equation}
+\begin{equation}
+ \cos\;(A+B) ~=~ \cos\;A ~ \cos\;B ~-~ \sin\;A ~ \sin\;B\label{eqn:sumcos}
+\end{equation}}\end{center}
+
+To prove these, first assume that $A$ and $B$ are acute angles. Then $A+B$ is either acute or
+obtuse, as in Figure \ref{fig:anglesum}. Note in both cases that $\angle\,QPR = A$, since
+\begin{align*}
+ \angle\,QPR ~&=~ \angle\,QPO - \angle\,OPM ~=~ (90\Degrees - B) -
+  (90\Degrees - (A+B)) ~=~ A ~~\text{in Figure \ref{fig:anglesum}(a), and}\\
+ \angle\,QPR ~&=~ \angle\,QPO + \angle\,OPM ~=~ (90\Degrees - B) +
+  (90\Degrees - (180\Degrees - (A+B))) ~=~ A ~~\text{in Figure \ref{fig:anglesum}(b).}
+\end{align*}
+
+\begin{figure}[h]
+ \centering
+ \subfloat[][ $A+B$ acute]{
+  \begin{tikzpicture}[scale=0.7,every node/.style={font=\small}]
+   \draw [dashed] (2.536,0) -- (2.536,9.464);
+   \draw [dashed] (2.536,6) -- (6,6);
+   \draw (1.2,0) arc (0:45:1.2);
+   \draw (45:1.8) arc (45:75:1.8);
+   \draw ([shift={(2.536,9.464)}] -90:1.2) arc (-90:-45:1.2);
+   \draw [-latex] (3,0) arc (0:75:3);
+   \draw [linecolor] (5.6,0) -- (5.6,0.4) -- (6,0.4);
+   \draw [linecolor,rotate around={45:(6,6)}] (5.6,6) -- (5.6,6.4) -- (6,6.4);
+   \draw (2.136,0) -- (2.136,0.4) -- (2.536,0.4);
+   \draw (2.936,6) -- (2.936,6.4) -- (2.536,6.4);
+   \draw [linecolor,line width=1.5pt] (0,0) -- (6,0) -- (6,6) -- (2.536,9.464) -- cycle;
+   \draw [linecolor,line width=1.5pt] (0,0) -- (6,6) node [black,sloped,above,pos=0.17] {$B$};
+   \node [left] at (0,0) {$O$};
+   \node [right] at (6,6) {$Q$};
+   \node [right] at (6,0) {$N$};
+   \node [above] at (2.536,9.464) {$P$};
+   \node [below] at (2.536,0) {$M$};
+   \node [below right] at (2.536,6) {$R$};
+   \node at (0.8,0.3) {$A$};
+   \node [right] at (2.536,8.7) {$A$};
+   \node [above right] at (75:3) {$A+B$};
+  \end{tikzpicture}}
+ \qquad\qquad\qquad
+ \subfloat[][ $A+B$ obtuse]{
+  \begin{tikzpicture}[scale=0.7,every node/.style={font=\small}]
+   \draw [dashed] (0,0) -- (-3.564,0) -- (-3.564,9.464);
+   \draw [dashed] (-3.564,3) -- (3,3);
+   \draw (1.2,0) arc (0:45:1.2);
+   \draw (45:1.4) arc (45:109:1.4);
+   \draw [-latex] (2.3,0) arc (0:109:2.3);
+   \draw [-latex] ([shift={(-3.564,9.464)}] -90:1.8) arc (-90:-44:1.8);
+   \draw [linecolor] (2.6,0) -- (2.6,0.4) -- (3,0.4);
+   \draw [linecolor,rotate around={45:(3,3)}] (2.6,3) -- (2.6,3.4) -- (3,3.4);
+   \draw (-3.164,0) -- (-3.164,0.4) -- (-3.564,0.4);
+   \draw (-3.164,3) -- (-3.164,3.4) -- (-3.564,3.4);
+   \draw [linecolor,line width=1.5pt] (0,0) -- (3,0) -- (3,3) -- (-3.464,9.464) -- cycle;
+   \draw [linecolor,line width=1.5pt] (0,0) -- (3,3) node [black,sloped,above,pos=0.17] {$B$};
+   \node [below] at (0,0) {$O$};
+   \node [right] at (3,3) {$Q$};
+   \node [right] at (3,0) {$N$};
+   \node [above] at (-3.564,9.464) {$P$};
+   \node [below] at (-3.564,0) {$M$};
+   \node [left] at (-3.564,3) {$R$};
+   \node at (0.8,0.3) {$A$};
+   \node [right] at (-3.564,7.5) {$A$};
+   \node [above right] at (80:2.2) {$A+B$};
+  \end{tikzpicture}}\vspace{-2mm}
+ \caption[]{\quad $\sin\;(A+B)$ and $\cos\;(A+B)$ for acute $A$ and $B$}
+ \label{fig:anglesum}
+\end{figure}
+
+\noindent Thus,
+\begin{align}
+ \sin\;(A+B) ~&=~ \frac{MP}{OP} ~=~ \frac{MR+RP}{OP} ~=~ \frac{NQ+RP}{OP} ~=~
+  \frac{NQ}{OP} ~+~ \frac{RP}{OP}\notag\\
+ &=~ \frac{NQ}{OQ}\,\cdot\,\frac{OQ}{OP} ~+~ \frac{RP}{PQ}\,\cdot\,\frac{PQ}{OP}\notag\\
+ &=~ \sin\;A ~ \cos\;B ~+~ \cos\;A ~ \sin\;B ~,\label{eqn:sinsumproof}
+\end{align}
+and
+\begin{align}
+ \cos\;(A+B) ~&=~ \frac{OM}{OP} ~=~ \frac{ON-MN}{OP} ~=~ \frac{ON-RQ}{OP} ~=~
+  \frac{ON}{OP} ~-~ \frac{RQ}{OP}\notag\\
+ &=~ \frac{ON}{OQ}\,\cdot\,\frac{OQ}{OP} ~+~ \frac{RQ}{PQ}\,\cdot\,\frac{PQ}{OP}\notag\\
+ &=~ \cos\;A ~ \cos\;B ~-~ \sin\;A ~ \sin\;B ~.\label{eqn:cossumproof}
+\end{align}
+So we have proved the identities for acute angles $A$ and $B$. It is simple
+to verify that they hold in the special case of $A=B=0\Degrees$. For general
+angles, we will need to use the relations we derived in Section 1.5 which involve adding or
+subtracting $90\Degrees$:
+\begin{alignat*}{4}
+ \sin\;(\theta + 90\Degrees) ~ &= ~ \phantom{-}\cos\;\theta &\qquad\quad
+ \sin\;(\theta - 90\Degrees) ~ &= ~ -\cos\;\theta\\
+ \cos\;(\theta + 90\Degrees) ~ &= ~ -\sin\;\theta &\qquad\quad
+ \cos\;(\theta - 90\Degrees) ~ &= ~ \phantom{-}\sin\;\theta
+\end{alignat*}
+
+These will be useful because \emph{any angle can be written as the sum of an acute angle (or
+$0\Degrees$)
+and integer multiples of $\pm90\Degrees$}. For example, $155\Degrees = 65\Degrees + 90\Degrees$,
+$222\Degrees = 42\Degrees + 2(90\Degrees)$, $-77\Degrees = 13\Degrees - 90\Degrees$, etc. So if
+we can prove that the identities hold when adding or subtracting $90\Degrees$ to or from either $A$
+or $B$, respectively, where $A$ and $B$ are acute or $0\Degrees$, then the identities will also hold
+when repeatedly adding or subtracting $90\Degrees$, and hence will hold for all
+angles. Replacing $A$ by $A+90\Degrees$ and using the relations for adding $90\Degrees$ gives
+\begin{align*}
+ \sin\;((A+90\Degrees) + B) ~&=~ \sin\;((A+B) + 90\Degrees) ~=~ \cos\;(A+B)~,\\
+ &=~ \cos\;A ~ \cos\;B ~-~ \sin\;A ~ \sin\;B ~~\text{(by equation (\ref{eqn:cossumproof}))}\\
+ &=~ \sin\;(A + 90\Degrees)~\cos\;B ~+~ \cos\;(A + 90\Degrees)~\sin\;B ~,
+\intertext{so the identity holds for $A+90\Degrees$ and $B$ (and, similarly, for $A$ and
+$B+90\Degrees$). Likewise,}
+ \sin\;((A-90\Degrees) + B) ~&=~ \sin\;((A+B) - 90\Degrees) ~=~ -\cos\;(A+B)~,\\
+ &=~ -(\cos\;A ~ \cos\;B ~-~ \sin\;A ~ \sin\;B) \\
+ &=~ (-\cos\;A) ~ \cos\;B ~+~ \sin\;A ~ \sin\;B\\
+ &=~ \sin\;(A - 90\Degrees)~\cos\;B ~+~ \cos\;(A - 90\Degrees)~\sin\;B ~,
+\end{align*}
+so the identity holds for $A-90\Degrees$ and $B$ (and, similarly, for $A$ and $B+90\Degrees$).
+Thus, the addition formula (\ref{eqn:sumsin}) for sine holds for \emph{all} $A$ and $B$. A similar
+argument shows that the addition formula (\ref{eqn:sumcos}) for cosine is true for all $A$ and $B$.
+$\qed$
+
+Replacing $B$ by $-B$ in the addition formulas and using the relations
+$\sin\;(-\theta) = -\sin\;\theta$ and $\cos\;(-\theta) = \cos\;\theta$ from Section 1.5 gives us the
+\emph{subtraction formulas}:\index{subtraction formulas}\index{identities!difference of two angles}
+
+\begin{center}\statecomment{\begin{equation}
+ \sin\;(A-B) ~=~ \sin\;A ~ \cos\;B ~-~ \cos\;A ~ \sin\;B\label{eqn:diffsin}
+\end{equation}
+\begin{equation}
+ \cos\;(A-B) ~=~ \cos\;A ~ \cos\;B ~+~ \sin\;A ~ \sin\;B\label{eqn:diffcos}
+\end{equation}}\end{center}
+
+Using the identity $\tan\;\theta = \frac{\sin\;\theta}{\cos\;\theta}$, and the addition formulas
+for sine and cosine, we can derive the addition formula for tangent:
+\begin{align*}
+ \tan\;(A+B) ~&=~ \frac{\sin\;(A+B)}{\cos\;(A+B)}\\[5pt]
+ &=~ \frac{\sin\;A ~ \cos\;B ~+~ \cos\;A ~ \sin\;B}{\cos\;A ~ \cos\;B ~-~ \sin\;A ~ \sin\;B}\\[5pt]
+ &=~ \frac{\dfrac{\sin\;A ~ \cos\;B}{\cos\;A ~ \cos\;B} ~+~
+  \dfrac{\cos\;A ~ \sin\;B}{\cos\;A ~ \cos\;B}}{\dfrac{\cos\;A ~ \cos\;B}{\cos\;A ~ \cos\;B}
+  ~-~ \dfrac{\sin\;A ~ \sin\;B}{\cos\;A ~ \cos\;B}}\quad\text{(divide top and bottom by
+  $\cos\;A ~ \cos\;B$)}\\[5pt]
+ &=~ \frac{\dfrac{\sin\;A}{\cos\;A} \;\cdot\; \cancel{\dfrac{\cos\;B}{\cos\;B}} ~+~
+  \cancel{\dfrac{\cos\;A}{\cos\;A}} \;\cdot\; \dfrac{\sin\;B}{\cos\;B}}{1 ~-~
+  \dfrac{\sin\;A}{\cos\;A} \;\cdot\; \dfrac{\sin\;B}{\cos\;B}}
+  ~=~ \frac{\tan\;A ~+~ \tan\;B}{1 ~-~ \tan\;A ~ \tan\;B}
+\end{align*}
+This, combined with replacing $B$ by $-B$ and using the relation $\tan\;(-\theta) = -\tan\;\theta$,
+gives us the addition and subtraction formulas for tangent:
+
+\begin{center}\statecomment{\begin{equation}
+ \tan\;(A+B) ~=~ \frac{\tan\;A ~+~ \tan\;B}{1 ~-~ \tan\;A ~ \tan\;B}\label{eqn:sumtan}
+\end{equation}\vspace{1mm}
+\begin{equation}
+ \tan\;(A-B) ~=~ \frac{\tan\;A ~-~ \tan\;B}{1 ~+~ \tan\;A ~ \tan\;B}\label{eqn:difftan}
+\end{equation}}\end{center}
+
+\begin{exmp}\label{exmp:sumsincostan}
+ Given angles $A$ and $B$ such that $\sin\;A = \frac{4}{5}$, $\cos\;A = \frac{3}{5}$,
+ $\sin\;B = \frac{12}{13}$, and $\cos\;B = \frac{5}{13}$, find the exact values of $\sin\;(A+B)$,
+ $\cos\;(A+B)$, and $\tan\;(A+B)$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Using the addition formula for sine, we get:
+ \begin{align*}
+  \sin\;(A+B) ~&=~ \sin\;A ~ \cos\;B ~+~ \cos\;A ~ \sin\;B\\
+  &=~ \frac{4}{5} \;\cdot\; \frac{5}{13} ~+~ \frac{3}{5} \;\cdot\; \frac{12}{13}
+   \quad\Rightarrow\quad \boxed{\sin\;(A+B) ~=~ \frac{56}{65}}\\
+  \intertext{Using the addition formula for cosine, we get:}
+  \cos\;(A+B) ~&=~ \cos\;A ~ \cos\;B ~-~ \sin\;A ~ \sin\;B\\
+  &=~ \frac{3}{5} \;\cdot\; \frac{5}{13} ~-~ \frac{4}{5} \;\cdot\; \frac{12}{13}
+   \quad\Rightarrow\quad \boxed{\cos\;(A+B) ~=~ -\frac{33}{65}}\\
+  \intertext{Instead of using the addition formula for tangent, we can use the results above:}
+  \tan\;(A+B) ~&=~ \frac{\sin\;(A+B)}{\cos\;(A+B)}
+  ~=~ \frac{\frac{56}{65}}{-\frac{33}{65}}
+  \quad\Rightarrow\quad \boxed{\tan\;(A+B) ~=~ -\frac{56}{33}}
+ \end{align*}
+\end{exmp}\vspace{-1mm}
+\divider\vspace{-2mm}
+\newpage
+\begin{exmp}\label{exmp:sumsinabc}
+ Prove the following identity:
+ \begin{displaymath}
+  \sin\;(A+B+C) ~=~ \sin\;A~\cos\;B~\cos\;C \;+\; \cos\;A~\sin\;B~\cos\;C \;+\; 
+                    \cos\;A~\cos\;B~\sin\;C \;-\; \sin\;A~\sin\;B~\sin\;C
+ \end{displaymath}
+ \textbf{Solution:} Treat $A+B+C$ as $(A+B)+C$ and use the addition formulas three times:
+ \begin{align*}
+  \sin\;(A+B+C) ~&=~ \sin\;((A+B)+C)\\
+  &=~ \sin\;(A+B)~\cos\;C \;+\; \cos\;(A+B)~\sin\;C\\
+  &=~ (\sin\;A ~ \cos\;B \;+\; \cos\;A ~ \sin\;B)~\cos\;C \;+\;
+      (\cos\;A ~ \cos\;B \;-\; \sin\;A ~ \sin\;B)~\sin\;C\\
+  &=~ \sin\;A~\cos\;B~\cos\;C \;+\; \cos\;A~\sin\;B~\cos\;C \;+\; 
+      \cos\;A~\cos\;B~\sin\;C \;-\; \sin\;A~\sin\;B~\sin\;C
+ \end{align*}
+\end{exmp}\vspace{-5mm}
+\begin{exmp}\label{exmp:sumtantriangle}
+ For any triangle $\triangle\,ABC$, show that $\tan\;A + \tan\;B + \tan\;C =
+ \tan\;A~\tan\;B~\tan\;C$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Note that this is \emph{not} an identity which holds for \emph{all}
+ angles; since $A$, $B$, and $C$ are the angles of a triangle, it holds when $A$, $B$, $C$
+ $> 0\Degrees$ and $A + B + C = 180\Degrees$. So using $C = 180\Degrees - (A+B)$ and the relation
+ $\;\tan\;(180\Degrees - \theta) = -\tan\;\theta\;$ from Section 1.5, we get:
+ \begin{align*}
+  \tan\;A \;+\; \tan\;B \;+\; \tan\;C ~&=~ \tan\;A \;+\; \tan\;B \;+\; \tan\;(180\Degrees - (A+B))\\
+  &=~ \tan\;A \;+\; \tan\;B \;-\; \tan\;(A+B)\\
+  &=~ \tan\;A \;+\; \tan\;B \;-\; \frac{\tan\;A + \tan\;B}{1 - \tan\;A ~ \tan\;B}\\
+  &=~ (\tan\;A \;+\; \tan\;B)~\left( 1 \;-\; \dfrac{1}{1 - \tan\;A ~ \tan\;B} \right)\\
+  &=~ (\tan\;A \;+\; \tan\;B)~\left( \dfrac{1 - \tan\;A ~ \tan\;B}{1 - \tan\;A ~ \tan\;B} \;-\;
+   \dfrac{1}{1 - \tan\;A ~ \tan\;B} \right)\\
+  &=~ (\tan\;A \;+\; \tan\;B)\;\cdot\;\left( \frac{-\tan\;A ~ \tan\;B}{{1 - \tan\;A ~ \tan\;B}}
+   \right)\\
+  &=~ \tan\;A ~ \tan\;B \;\cdot\; \left( -\frac{\tan\;A \;+\; \tan\;B}{{1 - \tan\;A ~ \tan\;B}}
+   \right)\\
+  &=~ \tan\;A ~ \tan\;B \;\cdot\; (-\tan\;(A+B))\\
+  &=~ \tan\;A ~ \tan\;B \;\cdot\; (\tan\;(180\Degrees - (A+B)))\\
+  &=~ \tan\;A ~ \tan\;B ~ \tan\;C
+ \end{align*}
+\end{exmp}\vspace{-5mm}
+\begin{exmp}\label{exmp:ptolemytrig}
+ Let $A$, $B$, $C$, and $D$ be positive angles such that $A+B+C+D=180\Degrees$. Show
+ that\footnote{This is the ``trigonometric form'' of \emph{Ptolemy's Theorem}\index{Ptolemy's
+ Theorem}, which says that a quadrilateral can be inscribed in a circle if and only if
+ the sum of the products of its opposite sides equals the product of its diagonals.}
+ \begin{displaymath}
+  \sin\;A~\sin\;B ~+~ \sin\;C~\sin\;D ~=~ \sin\;(A+C)~\sin\;(B+C) ~.
+ \end{displaymath}
+ \par\noindent\textbf{Solution:} It may be tempting to expand the right side, since it
+ appears more complicated. However, notice that the right side has no $D$ term. So instead, we
+ will expand the left side, since we can eliminate the $D$ term on that side by using
+ $D=180\Degrees - (A+B+C)$ and the relation
+ \[\sin\;(180\Degrees -(A+B+C)) ~=~ \sin\;(A+B+C).\]
+\newpage
+ \noindent So since $\;\sin\;D = \sin\;(A+B+C)$, we get
+ \begin{align*}\begin{split}
+  \sin\;A~\sin\;B ~+~ \sin\;C~\sin\;D ~&=~ \sin\;A~\sin\;B ~+~ \sin\;C~\sin\;(A+B+C) ~,~\text{so by
+   Example \ref{exmp:sumsinabc} we get}\\
+  &=~ \sin\;A~\sin\;B ~+~ \sin\;C~(\sin\;A~\cos\;B~\cos\;C \;+\; \cos\;A~\sin\;B~\cos\;C\\
+  &\mathrel{\phantom{=}} {}  +\;   \cos\;A~\cos\;B~\sin\;C \;-\; \sin\;A~\sin\;B~\sin\;C)\\
+  &=~ \sin\;A~\sin\;B ~+~ \sin\;C~\sin\;A~\cos\;B~\cos\;C ~+~ \sin\;C~\cos\;A~\sin\;B~\cos\;C\\
+  &\mathrel{\phantom{=}} {} +~ \sin\;C~\cos\;A~\cos\;B~\sin\;C ~-~
+   \sin\;C~\sin\;A~\sin\;B~\sin\;C ~.\\
+  \intertext{It may not be immediately obvious where to go from here, but it is not completely
+   guesswork. We need to end up with $\sin\;(A+C)~\sin\;(B+C)$, and we know that $\sin\;(B+C) =
+   \sin\;B~\cos\;C + \cos\;B~\sin\;C$. There are two terms involving $\;\cos\;B~\sin\;C$, so group
+   them together to get}
+  \sin\;A~\sin\;B ~+~ \sin\;C~\sin\;D ~
+  &=~ \sin\;A~\sin\;B ~-~ \sin\;C~\sin\;A~\sin\;B~\sin\;C ~+~ \sin\;C~\cos\;A~\sin\;B~\cos\;C\\
+  &\mathrel{\phantom{=}} {} +~ \cos\;B~\sin\;C~(\sin\;A~\cos\;C ~+~ \cos\;A~\sin\;C)\\
+  &=~ \sin\;A~\sin\;B~(1 - \sin^2 \;C) ~+~ \sin\;C~\cos\;A~\sin\;B~\cos\;C\\
+  &\mathrel{\phantom{=}} {} +~ \cos\;B~\sin\;C~\sin\;(A+C)\\
+  &=~ \sin\;A~\sin\;B~\cos^2 \;C ~+~ \sin\;C~\cos\;A~\sin\;B~\cos\;C\\
+  &\mathrel{\phantom{=}} {} +~ \cos\;B~\sin\;C~\sin\;(A+C)~.\\
+  \intertext{We now have two terms involving $\;\sin\;B~\cos\;C$, which we can factor out:}
+  \sin\;A~\sin\;B ~+~ \sin\;C~\sin\;D ~
+  &=~ \sin\;B~\cos\;C~(\sin\;A~\cos\;C + \cos\;A~\sin\;C~)\\
+  &\mathrel{\phantom{=}} {} +~ \cos\;B~\sin\;C~\sin\;(A+C)\end{split}\\
+  &=~ \sin\;B~\cos\;C~\sin\;(A+C) ~+~ \cos\;B~\sin\;C~\sin\;(A+C)\\
+  &=~ \sin\;(A+C)~(\sin\;B~\cos\;C + \cos\;B~\sin\;C)\\
+  &=~ \sin\;(A+C)~\sin\;(B+C)
+ \end{align*}
+\end{exmp}\vspace{-1mm}
+\begin{exmp}\label{exmp:fresnel}
+ In the study of the propagation of electromagnetic waves,
+ \emph{Snell's law}\index{Snell's law} gives the relation
+ \begin{equation}
+  n_1 ~\sin\;\theta_1 ~=~ n_2 ~\sin\;\theta_2\label{eqn:snell} ~,
+ \end{equation}
+ where $\theta_1$ is the \emph{angle of incidence}\index{angle!of incidence} at which a wave
+ strikes the planar boundary between two mediums, $\theta_2$ is the \emph{angle of
+ transmission}\index{angle!of transmission} of the wave through the new medium, and $n_1$ and $n_2$
+ are the \emph{indexes of refraction}\index{index of refraction} of the two mediums. The quantity
+ \begin{equation}\label{eqn:fresnelsr}
+  r_{1\;2\;s} ~=~ \frac{n_1 ~\cos\;\theta_1 ~-~ n_2 ~\cos\;\theta_2}{n_1 ~\cos\;\theta_1 ~+~
+  n_2 ~\cos\;\theta_2}
+ \end{equation}
+ is called the \emph{Fresnel coefficient}\index{Fresnel coefficients} for normal
+ incidence reflection of the wave for \emph{s-polarization}. Show that this can be written as:
+ \begin{displaymath}
+  r_{1\;2\;s} ~=~ \frac{\sin\;(\theta_2 - \theta_1)}{\sin\;(\theta_2 + \theta_1)}
+ \end{displaymath}
+ \par\noindent\textbf{Solution:} Multiply the top and bottom of $r_{1\;2\;s}$ by $\;\sin\;\theta_1 ~
+ \sin\;\theta_2\;$ to get:
+ \begin{align*}
+  r_{1\;2\;s} ~&=~ \frac{n_1 ~\cos\;\theta_1 ~-~ n_2 ~\cos\;\theta_2}{n_1 ~\cos\;\theta_1 ~+~
+   n_2 ~\cos\;\theta_2} \;\cdot\; \frac{\sin\;\theta_1 ~ \sin\;\theta_2}{\sin\;\theta_1 ~
+   \sin\;\theta_2}\\[7pt]
+  &=~ \frac{(n_1 ~\sin\;\theta_1)~\sin\;\theta_2 ~\cos\;\theta_1 ~-~
+            (n_2 ~\sin\;\theta_2)~\cos\;\theta_2 ~\sin\;\theta_1}{
+            (n_1 ~\sin\;\theta_1)~\sin\;\theta_2 ~\cos\;\theta_1 ~+~
+            (n_2 ~\sin\;\theta_2)~\cos\;\theta_2 ~\sin\;\theta_1}\\[7pt]
+  &=~ \frac{(n_1 ~\sin\;\theta_1)~\sin\;\theta_2 ~\cos\;\theta_1 ~-~
+            (n_1 ~\sin\;\theta_1)~\cos\;\theta_2 ~\sin\;\theta_1}{
+            (n_1 ~\sin\;\theta_1)~\sin\;\theta_2 ~\cos\;\theta_1 ~+~
+            (n_1 ~\sin\;\theta_1)~\cos\;\theta_2 ~\sin\;\theta_1}
+			\qquad\text{(by Snell's law)}\\[7pt]
+  &=~ \frac{\sin\;\theta_2 ~\cos\;\theta_1 ~-~
+           \cos\;\theta_2 ~\sin\;\theta_1}{
+           \sin\;\theta_2 ~\cos\;\theta_1 ~+~
+           \cos\;\theta_2 ~\sin\;\theta_1}\\[7pt]
+  &=~ \frac{\sin\;(\theta_2 - \theta_1)}{\sin\;(\theta_2 + \theta_1)}
+ \end{align*}
+\end{exmp}\vspace{-2mm}
+\divider
+\vspace{1mm}
+
+The last two examples demonstrate an important aspect of how identities are used in practice:
+recognizing terms which are part of known identities, so that they can be factored out.
+This is a common technique.
+
+\divider
+\vspace{2mm}
+
+\startexercises\label{sec3dot2}
+\vspace{5mm}
+{\small
+\begin{enumerate}[\bfseries 1.]
+ \item\label{exer:sumzero} Verify the addition formulas (\ref{eqn:sumsin}) and (\ref{eqn:sumcos})
+ for $A=B=0\Degrees$.
+\suspend{enumerate}
+For Exercises 2 and 3, find the exact values of $\sin\;(A+B)$, $\cos\;(A+B)$, and $\tan\;(A+B)$.
+\resume{enumerate}[{[\bfseries 1.]}]
+\begin{multicols}{2}
+ \item $\sin\;A = \frac{8}{17}$, $\cos\;A = \frac{15}{17}$, $\sin\;B = \frac{24}{25}$,
+  $\cos\;B = \frac{7}{25}$
+ \item $\sin\;A = \frac{40}{41}$, $\cos\;A = \frac{9}{41}$, $\sin\;B = \frac{20}{29}$,
+  $\cos\;B = \frac{21}{29}$
+\end{multicols}
+ \item Use $75\Degrees = 45\Degrees + 30\Degrees$ to find the exact value of $\;\sin\;75\Degrees$.
+ \item Use $15\Degrees = 45\Degrees - 30\Degrees$ to find the exact value of $\;\tan\;15\Degrees$.
+ \item\label{exer:sinpluscos} Prove the identity $\;\sin\;\theta + \cos\;\theta =
+  \sqrt{2}\;\sin\;(\theta + 45\Degrees)\;$. Explain why this shows that
+ \begin{displaymath}
+  -\sqrt{2} ~\le~ \;\sin\;\theta ~+~ \cos\;\theta ~\le~ \sqrt{2}
+ \end{displaymath}
+ for all angles $\theta$. For which $\theta$ between $0\Degrees$ and $360\Degrees$ would
+ $\;\sin\;\theta \;+\; \cos\;\theta\;$ be the largest?
+\suspend{enumerate}
+For Exercises \ref{exer:iden32start}-\ref{exer:iden32end}, prove the given identity.
+\resume{enumerate}[{[\bfseries 1.]}]
+ \item\label{exer:iden32start} $\cos\;(A+B+C) \;=\; \cos\;A~\cos\;B~\cos\;C \;-\;
+  \cos\;A~\sin\;B~\sin\;C \;-\; \sin\;A~\cos\;B~\sin\;C \;-\; \sin\;A~\sin\;B~\cos\;C$\vspace{1mm}
+ \item $\tan\;(A+B+C) ~=~ \dfrac{\tan\;A \;+\; \tan\;B \;+\; \tan\;C \;-\;
+  \tan\;A~\tan\;B~\tan\;C}{1 \;-\; \tan\;B~\tan\;C \;-\; \tan\;A~\tan\;C \;-\;
+  \tan\;A~\tan\;B}$\vspace{3mm}
+\begin{multicols}{2}
+ \item\label{exer:sumcot} $\cot\;(A+B) ~=~ \dfrac{\cot\;A~\cot\;B \;-\; 1}{\cot\;A \;+\; \cot\;B}$
+ \item $\cot\;(A-B) ~=~ \dfrac{\cot\;A~\cot\;B \;+\; 1}{\cot\;B \;-\; \cot\;A}$
+\end{multicols}
+\begin{multicols}{2}
+ \item $\tan\;(\theta + 45\Degrees) ~=~ \dfrac{1 \;+\; \tan\;\theta}{1 \;-\; \tan\;\theta}$
+ \item $\dfrac{\cos\;(A+B)}{\sin\;A~\cos\;B} ~=~ \cot\;A \;-\; \tan\;B$
+\end{multicols}
+\suspend{enumerate}
+\resume{enumerate}[{[\bfseries 1.]}]
+\begin{multicols}{2}
+ \item $\cot\;A ~+~ \cot\;B ~=~ \dfrac{\sin\;(A+B)}{\sin\;A~\sin\;B}$
+ \item\label{exer:iden32end} $\dfrac{\sin\;(A-B)}{\sin\;(A+B)} ~=~
+  \dfrac{\cot\;B \;-\; \cot\;A}{\cot\;B \;+\; \cot\;A}$
+\end{multicols}
+ \item Generalize Exercise \ref{exer:sinpluscos}: For any $a$ and $b$,
+ $-\sqrt{a^2 + b^2} \;\le\; a\;\sin\;\theta \;+\; b\;\cos\;\theta \;\le\; \sqrt{a^2 + b^2}\;$ for
+ all $\theta$.
+ \item Continuing Example \ref{exmp:fresnel}, use Snell's law to show that the
+ \emph{s-polarization transmission Fresnel coefficient}\index{Fresnel coefficients}
+  \begin{equation}
+   t_{1\;2\;s} ~=~ \frac{2\;n_1 ~\cos\;\theta_1}{n_1 ~\cos\;\theta_1 ~+~ n_2 ~\cos\;\theta_2}
+  \end{equation}
+ can be written as:
+ \begin{displaymath}
+   t_{1\;2\;s} ~=~ \frac{2\;\cos\;\theta_1~\sin\;\theta_2}{\sin\;(\theta_2 + \theta_1)}
+ \end{displaymath}
+\parpic[r]{\begin{tikzpicture}[every node/.style={font=\small}]
+ \draw [black!60,line width=0.3pt,-latex] (-1.5,0) -- (2.3,0) node [right] {$x$};
+ \draw [black!60,line width=0.3pt,-latex] (0,-0.8) -- (0,1.7) node [above] {$y$};
+ \node [below left] at (0,0) {$0$};
+ \draw [linecolor,line width=1.5pt,name path=m1] (-0.3,-0.8) -- (1.6,0.7);
+ \draw [linecolor,line width=1.5pt,name path=m2] (-0.3,1.0) -- (2,-0.4);
+ \node [name intersections={of=m1 and m2}, above] at (intersection-1) {$\theta$};
+ \draw ([shift={(intersection-1)}] 42:0.45) arc (42:145:0.45);
+ \node [above] at (2,0.7) {$y=m_{1}x+b_1$};
+ \node [above left] at (0,1.0) {$y=m_{2}x+b_2$};
+\end{tikzpicture}}
+ \item\label{exer:tanslope} Suppose that two lines with slopes $m_1$ and $m_2$, respectively,
+  intersect at an angle $\theta$ and are not perpendicular (i.e. $\theta \ne 90\Degrees$), as in
+  the figure on the right. Show that
+  \begin{displaymath}
+   \tan\;\theta ~=~ \left| \frac{m_1 ~-~ m_2}{1 ~+~ m_1 \; m_2} \right| ~.
+  \end{displaymath}
+ (\emph{Hint: Use Example \ref{exmp:slope} from Section 1.5.})
+\suspend{enumerate}
+\resume{enumerate}[{[\bfseries 1.]}]
+ \item Use Exercise \ref{exer:tanslope} to find the angle between the lines $y=2x+3$ and $y=-5x-4$.
+ \item For any triangle $\triangle\,ABC$, show that $\;\cot\;A~\cot\;B ~+~ \cot\;B~\cot\;C ~+~
+ \cot\;C~\cot\;A ~=~ 1$.\\(\emph{Hint: Use Exercise \ref{exer:sumcot} and $C=180\Degrees - (A+B)$.})
+ \item For any positive angles $A$, $B$, and $C$ such that $A+B+C=90\Degrees$, show that
+ \begin{displaymath}
+  \tan\;A~\tan\;B ~+~ \tan\;B~\tan\;C ~+~ \tan\;C~\tan\;A ~=~ 1 ~.
+ \end{displaymath}
+ \item Prove the identity
+    $\;\sin\;(A+B)~\cos\;B ~-~ \cos\;(A+B)~\sin\;B ~=~ \sin\;A$.\\Note
+  that the right side depends only on $A$, while the left side depends on both $A$ and $B$.
+ \item A line segment of length $r > 0$ from the origin to the point
+  $(x,y)$ makes an angle $\alpha$ with the positive $x$-axis, so that
+  $(x,y) = (r\;\cos\;\alpha,r\;\sin\;\alpha)$, as in the figure below.
+  What are the endpoint's new coordinates $(x',y')$ after a counterclockwise rotation by an angle
+  $\beta\;$?
+  Your answer should be in terms of $r$, $\alpha$, and $\beta$.
+
+ \begin{center}
+  \begin{tikzpicture}[scale=1.2,every node/.style={font=\small}]
+   \draw [black!60,line width=0.3pt,-latex] (-3,0) -- (3,0) node [right] {$x$};
+   \draw [black!60,line width=0.3pt,-latex] (0,-0.2) -- (0,2.2) node [above] {$y$};
+   \draw [dashed] (1.43394,0) -- (55:2.5);
+   \draw (1.23394,0) -- (1.23394,0.2) -- (1.43394,0.2);
+   \node [below left] at (0,0) {$0$};
+   \node [right] at (40:0.2) {$\alpha$};
+   \draw (0:0.6) arc (0:55:0.6);
+   \draw [-latex] (55:0.8) arc (55:165:0.8);
+   \node [below] at (110:0.8) {$\beta$};
+   \draw [linecolor,line width=1.5pt] (0,0) -- (55:2.5) node[black,above,midway] {$r$};
+   \draw [dashed,linecolor,line width=1.5pt] (0,0) -- (165:2.5) node[black,above,midway] {$r$};
+   \fill (0,0) circle (1.66pt);
+   \fill (55:2.5) circle (1.66pt) node[above right] {$(x,y) = (r\;\cos\;\alpha,r\;\sin\;\alpha)$};
+   \fill (165:2.5) circle (1.66pt) node[above] {$(x',y')$};
+  \end{tikzpicture}
+ \end{center}
+ \end{enumerate}}
+\newpage
+%Begin Section 3.3
+\section{Double-Angle and Half-Angle Formulas}
+A special case of the addition formulas is when the two angles being added are equal, resulting in
+the \emph{double-angle formulas}:\index{double-angle formulas}\index{identities!double-angle}
+
+\begin{center}\statecomment{\vspace{-5mm}\begin{align}
+ \sin\;2\theta ~&=~ 2\;\sin\;\theta ~ \cos\;\theta\label{eqn:doublesin}\\
+ \cos\;2\theta ~&=~ \cos^2 \;\theta ~-~ \sin^2 \;\theta\label{eqn:doublecos}\\
+ \tan\;2\theta ~&=~ \frac{2\;\tan\;\theta}{1 ~-~ \tan^2 \;\theta}\label{eqn:doubletan}
+\end{align}}\end{center}
+
+To derive the sine double-angle formula, we see that
+\begin{align*}
+ \sin\;2\theta ~&=~ \sin\;(\theta+\theta) ~=~ \sin\;\theta ~ \cos\;\theta ~+~ \cos\;\theta ~ \sin\;\theta ~=~ 2\;\sin\;\theta ~ \cos\;\theta~.\\
+\intertext{Likewise, for the cosine double-angle formula, we have}
+ \cos\;2\theta ~&=~ \cos\;(\theta+\theta) ~=~ \cos\;\theta~\cos\;\theta ~-~ \sin\;\theta~\sin\;\theta ~=~ \cos^2 \;\theta ~-~ \sin^2 \;\theta~,\\
+\intertext{and for the tangent we get}
+ \tan\;2\theta ~&=~ \tan\;(\theta+\theta) ~=~ \frac{\tan\;\theta ~+~ \tan\;\theta}{1 ~-~ \tan\;\theta ~ \tan\;\theta} ~=~
+  \frac{2\;\tan\;\theta}{1 ~-~ \tan^2 \;\theta}
+\end{align*}
+
+Using the identities $\;\sin^2 \;\theta = 1 - \cos^2 \;\theta$ and $\;\cos^2 \;\theta = 1 - \sin^2 \;\theta$, we get the
+following useful alternate forms for the cosine double-angle formula:
+
+\begin{center}\statecomment{\vspace{-5mm}\begin{align}
+ \cos\;2\theta ~&=~ 2\;\cos^2 \;\theta ~-~ 1\label{eqn:doublecosalt1}\\
+ &=~ 1 ~-~ 2\;\sin^2 \;\theta\label{eqn:doublecosalt2}
+\end{align}}\end{center}
+
+\begin{exmp}
+ Prove that $\;\sin\;3\theta ~=~ 3\;\sin\;\theta ~-~ 4\;\sin^3 \;\theta\;$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Using $3\theta = 2\theta + \theta$, the addition formula for sine, and the
+ double-angle formulas (\ref{eqn:doublesin}) and (\ref{eqn:doublecosalt2}), we get:
+ \begin{align*}
+  \sin\;3\theta ~&=~ \sin\;(2\theta+\theta)\\
+  &=~ \sin\;2\theta~\cos\;\theta ~+~ \cos\;2\theta~\sin\;\theta\\
+  &=~ (2\;\sin\;\theta~\cos\;\theta)\;\cos\;\theta ~+~ (1 - 2\;\sin^2 \;\theta)\;\sin\;\theta\\
+  &=~ 2\;\sin\;\theta~\cos^2 \;\theta ~+~ \sin\;\theta ~-~ 2\;\sin^3 \;\theta\\
+  &=~ 2\;\sin\;\theta\;(1 - \sin^2 \;\theta) ~+~ \sin\;\theta ~-~ 2\;\sin^3 \;\theta\\
+  &=~ 3\;\sin\;\theta ~-~ 4\;\sin^3 \;\theta
+ \end{align*}
+\end{exmp}
+\divider
+\newpage
+\begin{exmp}
+ Prove that $\;\sin\;4z ~=~ \dfrac{4\;\tan\;z~(1 - \tan^2 \;z)}{(1 + \tan^2 \;z)^2}\;$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Expand the right side and use $1 + \tan^2 \;z= \sec^2 \;z\,$:
+ \begin{align*}
+  \dfrac{4\;\tan\;z~(1 - \tan^2 \;z)}{(1 + \tan^2 \;z)^2} ~&=~
+   \dfrac{4 \;\cdot\; \dfrac{\sin\;z}{\cos\;z} \;\cdot\; \left( \dfrac{\cos^2 \;z}{\cos^2 \;z} -
+   \dfrac{\sin^2 \;z}{\cos^2 \;z} \right)}{( \sec^2 \;z )^2}\\[6pt]
+  &=~ \dfrac{4 \;\cdot\; \dfrac{\sin\;z}{\cos\;z} \;\cdot\; \dfrac{\cos\;2z}{\cos^2 \;z}}{\left(
+   \dfrac{1}{\cos^2 \;z} \right)^2}\quad\qquad\text{(by formula (\ref{eqn:doublecos}))}\\[5pt]
+  &=~ (4\;\sin\;z~\cos\;2z)\;\cos\;z\\
+  &=~ 2\;(2\;\sin\;z~\cos\;z)\;\cos\;2z\\
+  &=~ 2\;\sin\;2z~\cos\;2z\quad\qquad\text{(by formula (\ref{eqn:doublesin}))}\\
+  &=~ \sin\;4z\quad\qquad\text{(by formula (\ref{eqn:doublesin}) with $\theta$ replaced by $2z$)}
+ \end{align*}
+ Note: Perhaps surprisingly, this seemingly obscure identity has found a use in physics,
+ in the derivation of a solution of the \emph{sine-Gordon equation}\index{sine-Gordon equation} in
+ the theory of nonlinear waves.\footnote{See p.331 in \textsc{L.A. Ostrovsky and A.I.Potapov},
+ \emph{Modulated Waves: Theory and Applications}, Baltimore: The Johns Hopkins University Press,
+ 1999.}
+\end{exmp}\vspace{-3mm}
+\divider
+\vspace{1mm}
+
+Closely related to the double-angle formulas are the
+\emph{half-angle formulas}:\index{half-angle formulas}\index{identities!half-angle}
+
+\begin{center}\statecomment{\vspace{-5mm}\begin{align}
+ \sin^2 \;\tfrac{1}{2}\theta ~&=~ \frac{1 \;-\; \cos\;\theta}{2}\label{eqn:halfsin}\\
+ \cos^2 \;\tfrac{1}{2}\theta ~&=~ \frac{1 \;+\; \cos\;\theta}{2}\label{eqn:halfcos}\\
+ \tan^2 \;\tfrac{1}{2}\theta ~&=~ \frac{1 \;-\; \cos\;\theta}{1 \;+\; \cos\;\theta}\label{eqn:halftan}
+\end{align}}\end{center}
+
+\noindent These formulas are just the double-angle formulas rewritten with $\theta$ replaced by
+$\tfrac{1}{2}\theta$:
+\begin{align*}
+ \cos\;2\theta \;&=\; 1 \;-\; 2\;\sin^2 \;\theta ~\Rightarrow~ \sin^2 \;\theta \;=\; \frac{1 \;-\; \cos\;2\theta}{2}
+  ~\Rightarrow~ \sin^2 \;\tfrac{1}{2}\theta \;=\; \frac{1 \;-\; \cos\;2\,(\tfrac{1}{2}\theta)}{2} \;=\;
+  \frac{1 \;-\; \cos\;\theta}{2}\\
+ \cos\;2\theta \;&=\; 2\;\cos^2  \;\theta\;-\; 1 ~\Rightarrow~ \cos^2 \;\theta \;=\; \frac{1 \;+\; \cos\;2\theta}{2}
+  ~\Rightarrow~ \cos^2 \;\tfrac{1}{2}\theta \;=\; \frac{1 \;+\; \cos\;2\,(\tfrac{1}{2}\theta)}{2} \;=\;
+  \frac{1 \;+\; \cos\;\theta}{2}
+\end{align*}
+The tangent half-angle formula then follows easily:
+\begin{displaymath}
+ \tan^2 \;\tfrac{1}{2}\theta \;=\; \left( \dfrac{\sin\;\tfrac{1}{2}\theta}{\cos\;\tfrac{1}{2}\theta} \right)^2
+  \;=\; \dfrac{\sin^2 \;\tfrac{1}{2}\theta}{\cos^2 \;\tfrac{1}{2}\theta} \;=\;
+  \dfrac{\tfrac{1 \;-\; \cos\;\theta}{2}}{\tfrac{1 \;+\; \cos\;\theta}{2}} \;=\;
+  \frac{1 \;-\; \cos\;\theta}{1 \;+\; \cos\;\theta}
+\end{displaymath}
+The half-angle formulas are often used (e.g. in calculus) to replace a squared trigonometric
+function by a nonsquared function, especially when $2\theta$ is used instead of $\theta$.
+\newpage
+By taking square roots, we can write the above formulas in an alternate form:
+
+\begin{center}\statecomment{\vspace{-5mm}\begin{align}
+ \sin\;\tfrac{1}{2}\theta ~&=~ \pm\;\sqrt{\frac{1 \;-\; \cos\;\theta}{2}}\label{eqn:halfsinsq}\\
+ \cos\;\tfrac{1}{2}\theta ~&=~ \pm\;\sqrt{\frac{1 \;+\; \cos\;\theta}{2}}\label{eqn:halfcossq}\\
+ \tan\;\tfrac{1}{2}\theta ~&=~ \pm\;\sqrt{\frac{1 \;-\; \cos\;\theta}{1 \;+\; \cos\;\theta}}\label{eqn:halftansq}
+\end{align}}\end{center}
+
+In the above form, the sign in front of the square root is determined by the quadrant in which
+the angle $\tfrac{1}{2}\theta$ is located. For example, if $\theta=300\Degrees$ then $\tfrac{1}{2}\theta =
+150\Degrees$ is in QII. So in this case $\cos\;\tfrac{1}{2}\theta < 0$ and hence we would have
+$\cos\;\tfrac{1}{2}\theta = -\;\sqrt{\frac{1 \;+\; \cos\;\theta}{2}}$.
+
+In formula (\ref{eqn:halftansq}), multiplying the numerator and denominator inside the square root
+by $(1 - \cos\;\theta)$ gives
+\begin{displaymath}
+ \tan\;\tfrac{1}{2}\theta ~=~ \pm\;\sqrt{\frac{1 - \cos\;\theta}{1 + \cos\;\theta} \,\cdot\,
+  \frac{1 - \cos\;\theta}{1 - \cos\;\theta}} ~=~
+   \pm\;\sqrt{\frac{(1 - \cos\;\theta)^2}{1 - \cos^2 \;\theta}} ~=~
+   \pm\;\sqrt{\frac{(1 - \cos\;\theta)^2}{\sin^2 \;\theta}} ~=~ \pm\;\frac{1 - \cos\;\theta}{\sin\;\theta} ~.
+\end{displaymath}
+But $1 - \cos\;\theta \ge 0$, and it turns out (see Exercise \ref{exer:halftanaltpos})
+that $\tan\;\tfrac{1}{2}\theta$ and $\sin\;\theta$ always have the same sign.
+Thus, the minus sign in front of the last expression is not possible (since that would switch the
+signs of $\tan\;\tfrac{1}{2}\theta$ and $\sin\;\theta$), so we have:
+
+\begin{center}\statecomment{\begin{equation}
+ \tan\;\tfrac{1}{2}\theta ~=~ \frac{1 \;-\; \cos\;\theta}{\sin\;\theta}\label{eqn:halftanalt1}
+\end{equation}}\end{center}
+
+\noindent Multiplying the numerator and denominator in formula (\ref{eqn:halftanalt1}) by
+$1 + \cos\;\theta$ gives
+\begin{displaymath}
+ \tan\;\tfrac{1}{2}\theta ~=~ \frac{1 \;-\; \cos\;\theta}{\sin\;\theta} \;\cdot\;
+  \frac{1 \;+\; \cos\;\theta}{1 \;+\; \cos\;\theta} ~=~ \frac{1 \;-\; \cos^2 \;\theta}{\sin\;\theta\;(1 \;+\; \cos\;\theta)}
+  ~=~ \frac{\sin^2 \;\theta}{\sin\;\theta\;(1 \;+\; \cos\;\theta)} ~,
+\end{displaymath}
+so we also get:
+
+\begin{center}\statecomment{\begin{equation}
+ \tan\;\tfrac{1}{2}\theta ~=~ \frac{\sin\;\theta}{1 \;+\; \cos\;\theta}\label{eqn:halftanalt2}
+\end{equation}}\end{center}
+
+\noindent Taking reciprocals in formulas (\ref{eqn:halftanalt1}) and (\ref{eqn:halftanalt2}) gives:
+
+\begin{center}\statecomment{\begin{equation}
+ \cot\;\tfrac{1}{2}\theta ~=~ \frac{\sin\;\theta}{1 \;-\; \cos\;\theta} ~=~
+  \frac{1 \;+\; \cos\;\theta}{\sin\;\theta}\label{eqn:halfcot}
+\end{equation}}\end{center}
+\newpage
+\begin{exmp}
+ Prove the identity $\;\sec^2 \;\tfrac{1}{2}\theta ~=~\dfrac{2\;\sec\;\theta}{\sec\;\theta \;+\; 1}\;$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Since secant is the reciprocal of cosine, taking the reciprocal of
+ formula (\ref{eqn:halfcos}) for $\;\cos^2 \;\tfrac{1}{2}\theta$ gives us
+ \begin{displaymath}
+  \sec^2 \;\tfrac{1}{2}\theta ~=~ \frac{2}{1 \;+\; \cos\;\theta}
+  ~=~ \frac{2}{1 \;+\; \cos\;\theta} \;\cdot\; \frac{\sec\;\theta}{\sec\;\theta}
+  ~=~ \frac{2\;\sec\;\theta}{\sec\;\theta \;+\; 1} ~.
+ \end{displaymath}
+\end{exmp}\vspace{-1mm}
+\divider
+\vspace{2mm}
+
+\startexercises\label{sec3dot3}
+\vspace{5mm}
+{\small
+\noindent For Exercises 1-8, prove the given identity.
+\begin{enumerate}[\bfseries 1.]
+\begin{multicols}{2}
+ \item $\cos\;3\theta ~=~ 4\;\cos^3 \;\theta ~-~ 3\;\cos\;\theta$
+ \item $\tan\;\tfrac{1}{2}\theta ~=~ \csc\;\theta ~-~ \cot\;\theta$
+\end{multicols}
+\begin{multicols}{2}
+ \item $\dfrac{\sin\;2\theta}{\sin\;\theta} ~-~ \dfrac{\cos\;2\theta}{\cos\;\theta} ~=~ \sec\;\theta$
+ \item $\dfrac{\sin\;3\theta}{\sin\;\theta} ~-~ \dfrac{\cos\;3\theta}{\cos\;\theta} ~=~ 2$
+\end{multicols}
+\begin{multicols}{2}
+ \item $\tan\;2\theta ~=~ \dfrac{2}{\cot\;\theta \;-\; \tan\;\theta}$
+ \item $\tan\;3\theta ~=~ \dfrac{3\;\tan\;\theta \;-\; \tan^3 \;\theta}{1 \;-\; 3\;\tan^2 \;\theta}$
+\end{multicols}
+\begin{multicols}{2}
+ \item $\tan^2 \;\tfrac{1}{2}\theta ~=~ \dfrac{\tan\;\theta \;-\; \sin\;\theta}{\tan\;\theta \;+\; \sin\;\theta}$
+ \item $\dfrac{\cos^2 \;\psi}{\cos^2 \;\theta} ~=~ \dfrac{1 \;+\; \cos\;2\psi}{1 \;+\;
+  \cos\;2\theta}$
+\end{multicols}
+ \item Some trigonometry textbooks used to claim incorrectly that
+  $\;\sin\;\theta ~+~ \cos\;\theta ~=~ \sqrt{1 \;+\; \sin\;2\theta}$ was an identity. Give an example of a specific
+  angle $\theta$ that would make that equation false. Is
+  $\;\sin\;\theta ~+~ \cos\;\theta ~=~ \pm\;\sqrt{1 \;+\; \sin\;2\theta}$ an identity? Justify your answer.
+ \item\label{exer:halftanaltpos} Fill out the rest of the table below for the angles $0\Degrees < \theta
+  < 720\Degrees$ in increments of $90\Degrees$, showing $\theta$, $\tfrac{1}{2}\theta$, and the signs ($+$
+  or $-$) of $\sin\;\theta$ and $\tan\;\tfrac{1}{2}\theta$.
+\suspend{enumerate}
+\begin{minipage}[t]{7.5cm}
+ \begin{center}
+  \begin{tabular}{@{}cccc@{}}
+  \hline
+  $\theta$ & $\tfrac{1}{2}\theta$ & $\sin\;\theta$ & $\tan\;\tfrac{1}{2}\theta$\\
+  \hline
+  $0\Degrees - 90\Degrees$ & $0\Degrees - 45\Degrees$ & $+$ & $+$\\
+  $90\Degrees - 180\Degrees$ & $45\Degrees - 90\Degrees$ & {} & {}\\
+  $180\Degrees - 270\Degrees$ & $90\Degrees - 135\Degrees$ & {} & {}\\
+  $270\Degrees - 360\Degrees$ & $135\Degrees - 180\Degrees$ & {} & {}\\
+  \hline
+  \end{tabular}
+ \end{center}
+\end{minipage}
+\begin{minipage}[t]{7.5cm}
+ \begin{center}
+  \begin{tabular}{@{}cccc@{}}
+  \hline
+  $\theta$ & $\tfrac{1}{2}\theta$ & $\sin\;\theta$ & $\tan\;\tfrac{1}{2}\theta$\\
+  \hline
+  $360\Degrees - 450\Degrees$ & $180\Degrees - 225\Degrees$ & {} & {}\\
+  $450\Degrees - 540\Degrees$ & $225\Degrees - 270\Degrees$ & {} & {}\\
+  $540\Degrees - 630\Degrees$ & $270\Degrees - 315\Degrees$ & {} & {}\\
+  $630\Degrees - 720\Degrees$ & $315\Degrees - 360\Degrees$ & {} & {}\\
+  \hline
+  \end{tabular}
+ \end{center}
+\end{minipage}
+\resume{enumerate}[{[\bfseries 1.]}]
+ \item In general, what is the largest value that $\;\sin\;\theta~\cos\;\theta\;$ can take?
+  Justify your answer.
+\suspend{enumerate}
+\noindent For Exercises \ref{exer:rt33start}-\ref{exer:rt33end}, prove the given
+ identity for any right triangle $\triangle\,ABC$ with $C=90\Degrees$.
+\resume{enumerate}[{[\bfseries 1.]}]
+\begin{multicols}{2}
+ \item\label{exer:rt33start} $\sin\;(A-B) ~=~ \cos\;2B$
+ \item $\cos\;(A-B) ~=~ \sin\;2A$
+\end{multicols}
+\begin{multicols}{2}
+ \item $\sin\;2A ~=~ \dfrac{2\;ab}{c^2}$
+ \item $\cos\;2A ~=~ \dfrac{b^2 - a^2}{c^2}$
+\end{multicols}
+\begin{multicols}{2}
+ \item $\tan\;2A ~=~ \dfrac{2\;ab}{b^2 - a^2}$
+ \item\label{exer:rt33end} $\tan\;\tfrac{1}{2}A ~=~ \dfrac{c - b}{a} ~=~ \dfrac{a}{c + b}$
+\end{multicols}
+ \item Continuing Exercise \ref{exer:marion} from Section 3.1, it can be shown that
+  \begin{align*}
+   r\;(1 \;-\; \cos\;\theta) ~&=~ a\;(1 \;+\; \epsilon)\,(1 \;-\; \cos\;\psi) ~,~\text{and}\\
+   r\;(1 \;+\; \cos\;\theta) ~&=~ a\;(1 \;-\; \epsilon)\,(1 \;+\; \cos\;\psi) ~,
+  \end{align*}
+  where $\theta$ and $\psi$ are always in the same quadrant. Show that
+  $\;\tan\;\tfrac{1}{2}\theta ~=~ \sqrt{\frac{1 \;+\; \epsilon}{1 \;-\; \epsilon}}~
+  \tan\;\tfrac{1}{2}\psi\;$.
+\end{enumerate}}
+
+\newpage
+%Begin Section 3.4
+\section{Other Identities}
+Though the identities in this section fall under the category of ``other'', they are perhaps
+(along with $\cos^2 \;\theta + \sin^2 \;\theta = 1$) the most widely used identities in practice.
+It is very common to encounter terms such as $\;\sin\;A + \sin\;B\;$ or $\;\sin\;A~\cos\;B\;$ in
+calculations, so we will now derive identities for those expressions. First, we have what are often
+called the \emph{product-to-sum formulas}:\index{product-to-sum
+formulas}\index{identities!product-to-sum}
+
+\begin{center}\statecomment{\vspace{-5mm}\begin{align}
+ \sin\;A~\cos\;B ~&=~ \phantom{-}\tfrac{1}{2}\;(\sin\;(A+B) ~+~ \sin\;(A-B))\label{eqn:p2ssincos}\\
+ \cos\;A~\sin\;B ~&=~ \phantom{-}\tfrac{1}{2}\;(\sin\;(A+B) ~-~ \sin\;(A-B))\label{eqn:p2scossin}\\
+ \cos\;A~\cos\;B ~&=~ \phantom{-}\tfrac{1}{2}\;(\cos\;(A+B) ~+~ \cos\;(A-B))\label{eqn:p2scoscos}\\
+ \sin\;A~\sin\;B ~&=~ -\tfrac{1}{2}\;(\cos\;(A+B) ~-~ \cos\;(A-B))\label{eqn:p2ssinsin}
+\end{align}}\end{center}
+
+We will prove the first formula; the proofs of the others are similar (see Exercises
+\ref{exer:p2s1}-\ref{exer:p2s3}). We see that
+\begin{align*}
+ \sin\;(A+B) ~+~ \sin\;(A-B) ~&=~ (\sin\;A~\cos\;B ~+~ \cancel{\cos\;A~\sin\;B}) ~+~
+  (\sin\;A~\cos\;B ~-~ \cancel{\cos\;A~\sin\;B})\\
+ &=~ 2\;\sin\;A~\cos\;B ~,
+\end{align*}
+so formula (\ref{eqn:p2ssincos}) follows upon dividing both sides by $2$. Notice how in each of the
+above identities a product (e.g. $\sin\;A~\cos\;B$) of trigonometric functions is shown to be
+equivalent to a sum (e.g. $\tfrac{1}{2}\;(\sin\;(A+B) ~+~ \sin\;(A-B))$) of such functions. We can
+go in the opposite direction, with the \emph{sum-to-product formulas}:\index{sum-to-product
+formulas}\index{identities!sum-to-product}
+
+\begin{center}\statecomment{\vspace{-5mm}\begin{align}
+ \sin\;A ~+~ \sin\;B ~&=~ \phantom{-}2\;\sin\;\tfrac{1}{2}(A+B)~
+  \cos\;\tfrac{1}{2}(A-B)\label{eqn:s2psinpsin}\\
+ \sin\;A ~-~ \sin\;B ~&=~ \phantom{-}2\;\cos\;\tfrac{1}{2}(A+B)~
+  \sin\;\tfrac{1}{2}(A-B)\label{eqn:s2psinmsin}\\
+ \cos\;A ~+~ \cos\;B ~&=~ \phantom{-}2\;\cos\;\tfrac{1}{2}(A+B)~
+  \cos\;\tfrac{1}{2}(A-B)\label{eqn:s2pcospcos}\\
+ \cos\;A ~-~ \cos\;B ~&=~ -2\;\sin\;\tfrac{1}{2}(A+B)~\sin\;\tfrac{1}{2}(A-B)\label{eqn:s2pcosmcos}
+\end{align}}\end{center}
+
+These formulas are just the product-to-sum formulas rewritten by using some clever
+substitutions: let $x=\frac{1}{2}(A+B)$ and $y=\frac{1}{2}(A-B)$. Then $x+y=A$ and $x-y=B$.
+For example, to derive formula (\ref{eqn:s2pcospcos}), make the above substitutions in formula
+(\ref{eqn:p2scoscos}) to get
+\begin{align*}
+ \cos\;A ~+~ \cos\;B ~&=~ \cos\;(x+y) ~+~ \cos\;(x-y)\\
+ &=~ 2\;\cdot\;\tfrac{1}{2}(\cos\;(x+y) ~+~ \cos\;(x-y))\\
+ &=~ 2\;\cos\;x~\cos\;y\qquad\qquad\text{(by formula (\ref{eqn:p2scoscos}))}\\
+ &=~ 2\;\cos\;\tfrac{1}{2}(A+B)~\cos\;\tfrac{1}{2}(A-B) ~.
+\end{align*}
+The proofs of the other sum-to-product formulas are similar (see Exercises
+\ref{exer:s2p1}-\ref{exer:s2p3}).
+\newpage
+\begin{exmp}\label{exmp:mollweideproof}
+ We are now in a position to prove Mollweide's equations, which we introduced in Section 2.3: For
+ any triangle $\triangle\,ABC$,
+ \begin{displaymath}
+  \frac{a-b}{c} ~=~ \frac{\sin\;\frac{1}{2}(A-B)}{\cos\;\frac{1}{2}C} \qquad\text{and}\qquad
+  \frac{a+b}{c} ~=~ \frac{\cos\;\frac{1}{2}(A-B)}{\sin\;\frac{1}{2}C} ~.
+ \end{displaymath}
+ First, since $C=2\;\cdot\;\tfrac{1}{2}C$, by the double-angle formula we have
+ $\;\sin\;C = 2\;\sin\;\tfrac{1}{2}C~\cos\;\tfrac{1}{2}C$. Thus,
+ \begin{align*}
+  \frac{a-b}{c} ~&=~ \frac{a}{c} ~-~ \frac{b}{c}
+  ~=~ \frac{\sin\;A}{\sin\;C} ~-~ \frac{\sin\;B}{\sin\;C}\quad\text{(by the Law of Sines)}\\
+  &=~ \frac{\sin\;A ~-~ \sin\;B}{\sin\;C} ~=~
+   \frac{\sin\;A ~-~ \sin\;B}{2\;\sin\;\tfrac{1}{2}C~\cos\;\tfrac{1}{2}C}\\
+  &=~ \frac{2\;\cos\;\tfrac{1}{2}(A+B)~\sin\;\tfrac{1}{2}(A-B)}{2\;\sin\;\tfrac{1}{2}C~
+   \cos\;\tfrac{1}{2}C}\quad\text{(by formula (\ref{eqn:s2psinmsin}))}\\
+  &=~ \frac{\cos\;\tfrac{1}{2}(180\Degrees - C)~\sin\;\tfrac{1}{2}(A-B)}{\sin\;\tfrac{1}{2}C~
+   \cos\;\tfrac{1}{2}C}\quad\text{(since $A+B=180\Degrees - C$)}\\
+  &=~ \frac{\cancel{\cos\;(90\Degrees - \tfrac{1}{2}C)}~\sin\;\tfrac{1}{2}(A-B)}{
+  \cancel{\sin\;\tfrac{1}{2}C}~\cos\;\tfrac{1}{2}C}\\
+  &=~ \frac{\sin\;\frac{1}{2}(A-B)}{\cos\;\frac{1}{2}C}\quad\text{(since $\;\cos\;(90\Degrees -
+   \tfrac{1}{2}C) = \sin\;\tfrac{1}{2}C$)}~.
+ \end{align*}
+ This proves the first equation. The proof of the other equation is similar (see Exercise
+ \ref{exer:mollproof2}).
+\end{exmp}
+\begin{exmp}\label{exmp:lawtanproof}
+ Using Mollweide's equations, we can prove the Law of Tangents: For any triangle $\triangle\,ABC$,
+ \begin{displaymath}
+  \frac{a-b}{a+b} ~=~ \frac{\tan\;\frac{1}{2}(A-B)}{\tan\;\frac{1}{2}(A+B)} ~,\quad
+  \frac{b-c}{b+c} ~=~ \frac{\tan\;\frac{1}{2}(B-C)}{\tan\;\frac{1}{2}(B+C)} ~,\quad
+  \frac{c-a}{c+a} ~=~ \frac{\tan\;\frac{1}{2}(C-A)}{\tan\;\frac{1}{2}(C+A)} ~.
+ \end{displaymath}
+ We need only prove the first equation; the other two are obtained by cycling through the letters.
+ We see that
+ \begin{align*}
+  \frac{a-b}{a+b} ~&=~ \dfrac{\dfrac{a-b}{c}}{\dfrac{a+b}{c}} ~=~
+   \dfrac{\dfrac{\sin\;\tfrac{1}{2}(A-B)}{\cos\;\tfrac{1}{2}C}}{
+   \dfrac{\cos\;\tfrac{1}{2}(A-B)}{\sin\;\tfrac{1}{2}C}}\quad\text{(by Mollweide's equations)}\\
+  &=~ \dfrac{\sin\;\tfrac{1}{2}(A-B)}{\cos\;\tfrac{1}{2}(A-B)} \;\cdot\;
+      \dfrac{\sin\;\tfrac{1}{2}C}{\cos\;\tfrac{1}{2}C}\\
+  &=~ \tan\;\tfrac{1}{2}(A-B) \;\cdot\; \tan\;\tfrac{1}{2}C ~=~
+      \tan\;\tfrac{1}{2}(A-B) \;\cdot\; \tan\;(90\Degrees - \tfrac{1}{2}(A+B))
+   \quad\text{(since $C=180\Degrees - (A+B)$)}\\
+  &=~ \tan\;\tfrac{1}{2}(A-B) \;\cdot\; \cot\;\tfrac{1}{2}(A+B)\quad\text{(since $\tan\;(90\Degrees
+     - \tfrac{1}{2}(A+B)) = \cot\;\tfrac{1}{2}(A+B)$, see Section 1.5)}\\
+  &=~ \frac{\tan\;\frac{1}{2}(A-B)}{\tan\;\frac{1}{2}(A+B)} ~.\quad\qed
+ \end{align*}
+\end{exmp}
+\divider\vspace{-2mm}
+\newpage
+\begin{exmp}\label{exmp:cosabctri}
+ For any triangle $\triangle\,ABC$, show that
+ \begin{displaymath}
+  \cos\;A ~+~ \cos\;B ~+~ \cos\;C ~=~ 1 ~+~
+   4\;\sin\;\tfrac{1}{2}A~\sin\;\tfrac{1}{2}B~\sin\;\tfrac{1}{2}C ~.
+ \end{displaymath}
+ \textbf{Solution:} Since $\;\cos\;(A+B+C) = \cos\;180\Degrees = -1$, we can rewrite the left side as
+ \begin{align*}
+  \cos\;A \;+\; \cos\;B \;+\; \cos\;C ~&=~ 1 \;+\; (\cos\;(A+B+C) \;+\; \cos\;C) \;+\; (\cos\;A
+   \;+\; \cos\;B)~~\text{, so by formula (\ref{eqn:s2pcospcos})}\\
+  &=~ 1 \;+\; 2\;\cos\;\tfrac{1}{2}(A+B+2C)~\cos\;\tfrac{1}{2}(A+B) \;+\;
+   2\;\cos\;\tfrac{1}{2}(A+B)~\cos\;\tfrac{1}{2}(A-B)\\
+  &=~ 1 \;+\; 2\;\cos\;\tfrac{1}{2}(A+B)~\left( \cos\;\tfrac{1}{2}(A+B+2C) \;+\;
+   \cos\;\tfrac{1}{2}(A-B) \right) ~~\text{, so}\\
+  &=~ 1 \;+\; 2\;\cos\;\tfrac{1}{2}(A+B)\;\cdot\;2\;\cos\;\tfrac{1}{2}(A+C)~
+   \cos\;\tfrac{1}{2}(B+C)~~\text{by formula (\ref{eqn:s2pcospcos}),}\\
+  \intertext{since
+  $\tfrac{1}{2}\left( \tfrac{1}{2}(A+B+2C) + \tfrac{1}{2}(A-B) \right) = \tfrac{1}{2}(A+C)$ and
+  $\tfrac{1}{2}\left( \tfrac{1}{2}(A+B+2C) - \tfrac{1}{2}(A-B) \right) = \tfrac{1}{2}(B+C)$. Thus,}
+  \cos\;A \;+\; \cos\;B \;+\; \cos\;C ~&=~
+   1 \;+\; 4\;\cos\;(90\Degrees - \tfrac{1}{2}C)~\cos\;(90\Degrees - \tfrac{1}{2}B)~
+   \cos\;(90\Degrees - \tfrac{1}{2}A)\\
+  &=~ 1 \;+\; 4\;\sin\;\tfrac{1}{2}C~\sin\;\tfrac{1}{2}B~\sin\;\tfrac{1}{2}A
+  ~~,\text{ so rearranging the order gives}\\
+  &=~ 1 \;+\; 4\;\sin\;\tfrac{1}{2}A~\sin\;\tfrac{1}{2}B~\sin\;\tfrac{1}{2}C ~.
+ \end{align*}
+\end{exmp}
+\begin{exmp}\label{exmp:sinhalftri}
+ For any triangle $\triangle\,ABC$, show that $\;\sin\;\tfrac{1}{2}A~\sin\;\tfrac{1}{2}B~
+ \sin\;\tfrac{1}{2}C \;\le\; \frac{1}{8}\;$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Let $u=\sin\;\tfrac{1}{2}A~\sin\;\tfrac{1}{2}B~\sin\;\tfrac{1}{2}C$.
+ Apply formula (\ref{eqn:p2ssinsin}) to the first two terms in $u$ to get
+ \begin{displaymath}
+  u ~=~ -\tfrac{1}{2}\;(\cos\;\tfrac{1}{2}(A+B) \;-\; \cos\;\tfrac{1}{2}(A-B))~
+   \sin\;\tfrac{1}{2}C ~=~ \tfrac{1}{2}\;(\cos\;\tfrac{1}{2}(A-B) \;-\;
+   \cos\;\tfrac{1}{2}(A+B))~\cos\;\tfrac{1}{2}(A+B) ~,
+ \end{displaymath}
+ since $\;\sin\;\tfrac{1}{2}C = \cos\;\tfrac{1}{2}(A+B)$, as we saw in Example \ref{exmp:cosabctri}.
+ Multiply both sides by $2$ to get
+ \begin{displaymath}
+  \cos^2 \;\tfrac{1}{2}(A+B) ~-~ \cos\;\tfrac{1}{2}(A-B)~\cos\;\tfrac{1}{2}(A+B) ~+~ 2u ~=~ 0 ~,
+ \end{displaymath}
+ after rearranging the terms. Notice that the expression above is a quadratic equation in the
+ term $\;\cos\;\tfrac{1}{2}(A+B)$. So by the quadratic formula,
+ \begin{displaymath}
+  \cos\;\tfrac{1}{2}(A+B) ~=~ \frac{\cos\;\tfrac{1}{2}(A-B) \;\pm\;
+   \sqrt{\cos^2 \;\tfrac{1}{2}(A-B) - 4(1)(2u)}}{2} ~~,
+ \end{displaymath}
+ which has a real solution only if the quantity inside the square root is nonnegative. But we know
+ that $\;\cos\;\tfrac{1}{2}(A+B)\;$ is a real number (and, hence, a solution exists), so we must
+ have
+ \begin{displaymath}
+  \cos^2 \;\tfrac{1}{2}(A-B) \;- \; 8u ~\ge~ 0 \quad\Rightarrow\quad u ~\le~ \tfrac{1}{8}\;
+  \cos^2 \;\tfrac{1}{2}(A-B) ~\le~ \tfrac{1}{8} \quad\Rightarrow\quad
+  \;\sin\;\tfrac{1}{2}A~\sin\;\tfrac{1}{2}B~\sin\;\tfrac{1}{2}C ~\le~ \tfrac{1}{8} ~.
+ \end{displaymath}
+\end{exmp}
+\begin{exmp}\label{exmp:cosabcmax}
+ For any triangle $\triangle\,ABC$, show that $\;1 ~<~ \cos\;A + \cos\;B + \cos\;C ~\le~
+ \tfrac{3}{2}\;$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Since $0\Degrees < A,\; B,\; C < 180\Degrees$, the sines of
+ $\tfrac{1}{2}A$, $\tfrac{1}{2}B$, and $\tfrac{1}{2}C$ are all positive, so
+ \begin{displaymath}
+  \cos\;A \;+\; \cos\;B \;+\; \cos\;C ~=~ 1 \;+\;
+   4\;\sin\;\tfrac{1}{2}A~\sin\;\tfrac{1}{2}B~\sin\;\tfrac{1}{2}C ~ > ~ 1
+ \end{displaymath}
+ by Example \ref{exmp:cosabctri}. Also, by Examples \ref{exmp:cosabctri} and \ref{exmp:sinhalftri}
+ we have
+ \begin{displaymath}
+  \cos\;A \;+\; \cos\;B \;+\; \cos\;C ~=~ 1 \;+\;
+   4\;\sin\;\tfrac{1}{2}A~\sin\;\tfrac{1}{2}B~\sin\;\tfrac{1}{2}C ~\le~ 1 \;+\;
+   4\;\cdot\;\tfrac{1}{8} ~=~ \tfrac{3}{2} ~.
+ \end{displaymath}
+ Hence, $\;1 ~<~ \cos\;A + \cos\;B + \cos\;C ~\le~ \tfrac{3}{2}\;$.
+\end{exmp}
+\divider\vspace{-2mm}
+\newpage
+\begin{exmp}\label{exmp:fresnelp}
+ Recall Snell's law from Example \ref{exmp:fresnel} in Section 3.2: $n_1 ~\sin\;\theta_1 =
+ n_2 ~\sin\;\theta_2$. Use it to show that the \emph{p-polarization transmission Fresnel
+ coefficient}\index{Fresnel coefficients} defined by
+ \begin{equation}
+  t_{1\;2\;p} ~=~ \frac{2\;n_1 ~\cos\;\theta_1}{n_2 ~\cos\;\theta_1 ~+~ n_1 ~\cos\;\theta_2}
+ \end{equation}
+ can be written as:
+ \begin{displaymath}
+  t_{1\;2\;p} ~=~ \frac{2\;\cos\;\theta_1~\sin\;\theta_2}{\sin\;(\theta_1 + \theta_2)~
+   \cos\;(\theta_1 - \theta_2)} ~.
+ \end{displaymath}
+ \par\noindent\textbf{Solution:} Multiply the top and bottom of $t_{1\;2\;p}$ by $\;\sin\;\theta_1
+  ~\sin\;\theta_2\;$ to get:
+ \begin{align*}
+  t_{1\;2\;p} ~&=~ \frac{2\;n_1 ~\cos\;\theta_1}{n_2 ~\cos\;\theta_1 ~+~ n_1 ~\cos\;\theta_2}
+    \;\cdot\; \frac{\sin\;\theta_1 ~ \sin\;\theta_2}{\sin\;\theta_1 ~
+   \sin\;\theta_2}\\[7pt]
+  &=~ \frac{2\;(n_1 ~\sin\;\theta_1)~\cos\;\theta_1 ~\sin\;\theta_2}{
+            (n_2 ~\sin\;\theta_2)~\sin\;\theta_1 ~\cos\;\theta_1 ~+~
+            (n_1 ~\sin\;\theta_1)~\sin\;\theta_2 ~\cos\;\theta_2}\\[7pt]
+  &=~ \frac{2\;\cos\;\theta_1~\sin\;\theta_2}{
+            \sin\;\theta_1 ~\cos\;\theta_1 ~+~ \sin\;\theta_2 ~\cos\;\theta_2}
+			\qquad\text{(by Snell's law)}\\[7pt]
+  &=~ \frac{2\;\cos\;\theta_1~\sin\;\theta_2}{
+            \tfrac{1}{2}\;(\sin\;2\,\theta_1 ~+~ \sin\;2\theta_2)}
+			\qquad\text{(by the double-angle formula)}\\[7pt]
+  &=~ \frac{2\;\cos\;\theta_1~\sin\;\theta_2}{
+            \tfrac{1}{2}\;(2\;\sin\;\tfrac{1}{2}(2\theta_1 + 2\theta_2)~
+			\cos\;\tfrac{1}{2}(2\theta_1 - 2\theta_2))}
+			\qquad\text{(by formula (\ref{eqn:s2psinpsin}))}\\[7pt]
+  &=~ \frac{2\;\cos\;\theta_1~\sin\;\theta_2}{\sin\;(\theta_1 + \theta_2)~
+   \cos\;(\theta_1 - \theta_2)}
+ \end{align*}
+\end{exmp}
+\begin{exmp}\label{exmp:acpower}
+ In an AC electrical circuit, the \emph{instantaneous power} $p(t)$ delivered to the entire circuit
+ in the \emph{sinusoidal steady state} at time $t$ is given by
+ \begin{displaymath}
+  p(t) ~=~ v(t)\;i(t) ~,
+ \end{displaymath}
+ where the \emph{voltage} $v(t)$ and \emph{current} $i(t)$ are given by
+ \begin{align*}
+  v(t) ~&=~ V_m \;\cos\;\omega t ~,\\
+  i(t) ~&=~ I_m \;\cos\;(\omega t + \phi)~,
+ \end{align*}
+ for some constants $V_m$, $I_m$, $\omega$, and $\phi$. Show that the instantaneous power can be
+ written as
+ \begin{displaymath}
+  p(t) ~=~ \tfrac{1}{2}\,V_m \; I_m \;\cos\;\phi ~+~
+   \tfrac{1}{2}\,V_m \; I_m \;\cos\;(2\omega t + \phi) ~.
+ \end{displaymath}
+ \noindent\textbf{Solution:} By definition of $p(t)$, we have
+ \begin{alignat*}{2}
+  p(t) ~&=~ V_m \;I_m \;\cos\;\omega t~\cos\;(\omega t + \phi)\\
+  &=~ V_m \;I_m \;\cdot\;\tfrac{1}{2}(\cos\;(2\omega t + \phi) \;+\; \cos\;(-\phi))
+  \qquad&&\text{(by formula (\ref{eqn:s2pcospcos}))}\\
+  &=~ \tfrac{1}{2}\,V_m \; I_m \;\cos\;\phi ~+~
+  \tfrac{1}{2}\,V_m \; I_m \;\cos\;(2\omega t + \phi)
+  \qquad&&\text{(since $\cos\;(-\phi) = \cos\;\phi$)}~.
+ \end{alignat*}
+\end{exmp}
+\divider
+\newpage
+\startexercises\label{sec3dot4}
+\vspace{5mm}
+{\small
+\begin{enumerate}[\bfseries 1.]
+\begin{multicols}{3}
+ \item\label{exer:p2s1} Prove formula (\ref{eqn:p2scossin}).
+ \item\label{exer:p2s2} Prove formula (\ref{eqn:p2scoscos}).
+ \item\label{exer:p2s3} Prove formula (\ref{eqn:p2ssinsin}).
+\end{multicols}
+\begin{multicols}{3}
+ \item\label{exer:s2p1} Prove formula (\ref{eqn:s2psinpsin}).
+ \item\label{exer:s2p2} Prove formula (\ref{eqn:s2psinmsin}).
+ \item\label{exer:s2p3} Prove formula (\ref{eqn:s2pcosmcos}).
+\end{multicols}
+ \item\label{exer:mollproof2} Prove Mollweide's second equation: For any triangle $\triangle\,ABC$,
+  $~\dfrac{a+b}{c} ~=~ \dfrac{\cos\;\tfrac{1}{2}(A-B)}{\sin\;\tfrac{1}{2}C}$~.
+ \item Continuing Example \ref{exmp:fresnelp}, use Snell's law to show that the
+  \emph{p-polarization reflection Fresnel coefficient}\index{Fresnel coefficients}
+  \begin{equation}
+   r_{1\;2\;p} ~=~ \frac{n_2 ~\cos\;\theta_1 ~-~ n_1 ~\cos\;\theta_2}{n_2 ~\cos\;\theta_1 ~+~
+  n_1 ~\cos\;\theta_2}
+  \end{equation}
+  can be written as:
+  \begin{displaymath}
+   r_{1\;2\;p} ~=~ \frac{\tan\;(\theta_1 - \theta_2)}{\tan\;(\theta_1 + \theta_2)}
+  \end{displaymath}
+ \item There is a more general form for the instantaneous power $p(t) = v(t)\;i(t)$ in an electrical
+  circuit than the one in Example \ref{exmp:acpower}. The voltage $v(t)$ and current $i(t)$ can be
+  given by
+  \begin{align*}
+   v(t) ~&=~ V_m \;\cos\;(\omega t + \theta)~,\\
+   i(t) ~&=~ I_m \;\cos\;(\omega t + \phi)~,
+  \end{align*}
+  where $\theta$ is called the \emph{phase angle}.\footnote{Though it does not matter for this
+  exercise, none of the angles in these formulas are measured in degrees. We will discuss their
+  unit of measurement in Chapter 4.} Show that $p(t)$ can be written as
+  \begin{displaymath}
+   p(t) ~=~ \tfrac{1}{2}\,V_m \; I_m \;\cos\;(\theta - \phi) ~+~
+    \tfrac{1}{2}\,V_m \; I_m \;\cos\;(2\omega t + \theta + \phi) ~.
+  \end{displaymath}
+ \suspend{enumerate}
+ For Exercises \ref{exer:tri34start}-\ref{exer:tri34end}, prove the given identity or inequality
+ for any triangle $\triangle\,ABC$.
+ \resume{enumerate}[{[\bfseries 1.]}]
+ \item\label{exer:tri34start} $\sin\;A \;+\; \sin\;B \;+\; \sin\;C ~=~ 
+  4\;\cos\;\tfrac{1}{2}A~\cos\;\tfrac{1}{2}B~\cos\;\tfrac{1}{2}C$\\ (\emph{Hint: Mimic Example
+  \ref{exmp:cosabctri} using $(\sin\;A \;+\; \sin\;B) \;+\; (\sin\;C \;-\; \sin\;(A+B+C))$.})
+ \item\label{exer:cosapbmc} $\cos\;A \;+\; \cos\;(B-C) ~=~ 2\;\sin\;B~\sin\;C$
+ \item $\sin\;2A \;+\; \sin\;2B \;+\; \sin\;2C ~=~ 4\;\sin\;A~\sin\;B~\sin\;C$\\ (\emph{Hints: Group
+  $\sin\;2B$ and $\sin\;2C$ together, use the double-angle formula for $\sin\;2A$, use Exercise
+  \ref{exer:cosapbmc}.})
+ \item $\dfrac{a-b}{a+b} ~=~ \dfrac{\sin\;A \;-\; \sin\;B}{\sin\;A \;+\; \sin\;B}$
+ \item $\cos\;\tfrac{1}{2}A ~=~ \sqrt{\dfrac{s\;(s-a)}{bc}}~~$ and
+  $~~\sin\;\tfrac{1}{2}A ~=~ \sqrt{\dfrac{(s-b)\;(s-c)}{bc}}\;$, \;where
+  $s=\tfrac{1}{2}(a+b+c)$\\ (\emph{Hint: Use the Law of Cosines to show that $2bc\;(1 + \cos\;A) ~=~
+  4s\;(s-a)$.})
+ \item\label{exer:tri34end} $\tfrac{1}{2}\;(\sin\;A \;+\; \sin\;B) ~\le~
+  \sin\;\tfrac{1}{2}(A+B)$\\ (\emph{Hint: Show that $\sin\;\tfrac{1}{2}(A+B) \;-\;
+  \tfrac{1}{2}\;(\sin\;A \;+\; \sin\;B) \;\ge\; 0$.})
+ \item In Example \ref{exmp:cosabcmax}, which angles $A$, $B$, $C$ give the maximum value of
+  $\cos\;A \;+\; \cos\;B \;+\; \cos\;C\;$?
+\end{enumerate}}

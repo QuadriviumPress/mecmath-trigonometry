@@ -1,0 +1,48 @@
+---
+permalink: /book-index.html
+layout: page
+title: Index
+eleventyExcludeFromCollections: true
+---
+
+<article class="book-index">
+  <nav class="index-letters" aria-label="Index navigation">
+    {% for group in book.bookIndex %}
+      <a href="#index-{{ group.letter }}">{{ group.letter }}</a>
+    {% endfor %}
+  </nav>
+
+  {% for group in book.bookIndex %}
+    <section id="index-{{ group.letter }}">
+      <h2>{{ group.letter }}</h2>
+      <ul class="index-entries">
+        {% for entry in group.entries %}
+          <li>
+            <span class="index-term">{{ entry.display }}</span>
+            {%- for ref in entry.refs %},
+              <a href="{{ ref.url }}#{{ ref.id }}">{{ ref.label }}</a>
+            {%- endfor %}
+            {%- for target in entry.see %},
+              <em>see {{ target }}</em>
+            {%- endfor %}
+            {% if entry.subs.length %}
+              <ul>
+                {% for sub in entry.subs %}
+                  <li>
+                    <span class="index-term">{{ sub.display }}</span>
+                    {%- for ref in sub.refs %},
+                      <a href="{{ ref.url }}#{{ ref.id }}">{{ ref.label }}</a>
+                    {%- endfor %}
+                    {%- for target in sub.see %},
+                      <em>see {{ target }}</em>
+                    {%- endfor %}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endfor %}
+</article>

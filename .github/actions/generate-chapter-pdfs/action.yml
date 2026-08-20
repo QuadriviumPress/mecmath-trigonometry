@@ -1,0 +1,49 @@
+name: Generate Chapter PDFs
+description: >-
+  Start Eleventy serve, generate chapter PDFs with Playwright, and copy them to
+  assets/pdf/.
+
+inputs:
+  max-concurrency:
+    description: Parallel browser count for PDF generation
+    required: false
+    default: "4"
+
+runs:
+  using: composite
+  steps:
+    - name: Generate chapter PDFs
+      shell: bash
+      env:
+        MAX_CONCURRENCY: ${{ inputs.max-concurrency }}
+      run: |
+        set -euo pipefail
+
+        cleanup() {
+          pkill -f 'eleventy.*--serve' 2>/dev/null || pkill -f eleventy 2>/dev/null || true
+        }
+        trap cleanup EXIT
+
+        nohup npx @11ty/eleventy --serve --port=4000 > /tmp/eleventy-serve.log 2>&1 &
+        for i in $(seq 1 30); do
+          if curl -sf http://localhost:4000/MecmathTrigonometryTextbook/ > /dev/null; then
+            echo "Eleventy server is ready"
+            break
+          fi
+          if [ "$i" -eq 30 ]; then
+            echo "::error::Eleventy server failed to start"
+            cat /tmp/eleventy-serve.log || true
+            exit 1
+          fi
+          echo "Waiting for Eleventy server... ($i/30)"
+          sleep 2
+        done
+
+        node scripts/generate-pdf-parallel.js
+
+        mkdir -p assets/pdf
+        if compgen -G "pdf-output/*.pdf" > /dev/null; then
+          cp -v pdf-output/*.pdf assets/pdf/
+        fi
+        pdf_count=$(ls -1 assets/pdf/*.pdf 2>/dev/null | wc -l || echo 0)
+        echo "Copied ${pdf_count} PDF(s) to assets/pdf/"

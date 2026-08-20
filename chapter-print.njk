@@ -1,0 +1,17 @@
+---js
+{
+  pagination: {
+    data: "book.chapters",
+    size: 1,
+    alias: "ch",
+    addAllPagesToCollections: false,
+  },
+  permalink: "/print/{{ ch.printSlug }}/index.html",
+  layout: "print",
+  eleventyExcludeFromCollections: true,
+  eleventyComputed: {
+    title: data => data.ch.displayTitle,
+  },
+}
+---
+{{ ch.printHtml | safe }}

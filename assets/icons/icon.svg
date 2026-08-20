@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Electromagnetics Vol. 1 site icon: an E-field sinusoid over a maroon field -->
+  <rect width="512" height="512" rx="96" fill="#861F41"/>
+  <path d="M48 256 C 96 128, 160 128, 208 256 S 320 384, 368 256 S 448 160, 464 208"
+        fill="none" stroke="#ffffff" stroke-width="28" stroke-linecap="round"/>
+  <path d="M48 256 H 464" stroke="#E5751F" stroke-width="10" stroke-dasharray="4 22" stroke-linecap="round"/>
+  <text x="256" y="452" font-family="Georgia, serif" font-size="120" font-weight="bold"
+        fill="#ffffff" text-anchor="middle">E&#8407;</text>
+</svg>

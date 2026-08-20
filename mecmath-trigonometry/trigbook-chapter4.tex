@@ -1,0 +1,1261 @@
+\chapter{Radian Measure}
+%Begin Section 4.1
+\section{Radians and Degrees}
+So far we have been using degrees as our unit of measurement for angles. However, there is
+another way of measuring angles that is often more convenient. The idea is simple: associate a
+central angle of a circle with the arc that it intercepts.
+
+Consider a circle of radius $r>0$, as in Figure \ref{fig:radians}. In geometry you learned that
+the circumference\index{circumference}\index{circle!circumference} $C$ of the circle is
+$C = 2\;\pi\;r$, where $\pi = 3.14159265...$.
+
+\begin{figure}[h]
+ \centering
+ \subfloat[][ $\theta = 90\Degrees$]{
+  \begin{tikzpicture}[every node/.style={font=\small}]
+   \draw (0,0) circle (1.2);
+   \fill (0,0) circle (2pt);
+   \node [below] at (0,0) {$O$};
+   \draw (0,0) -- (0:1.2);
+   \node [right] at (0:1.2) {$A$};
+   \draw (0,0) -- (90:1.2);
+   \node [above] at (90:1.2) {$B$};
+   \draw [linecolor,line width=1.5pt] (0:1.2) arc (0:90:1.2);
+   \fill (0:1.2) circle (2pt);
+   \fill (90:1.2) circle (2pt);
+   \node [above] at (90:1.6) {$\wideparen{AB} = \tfrac{1}{4}C = \tfrac{\pi}{2}\,r$};
+   \node at (45:0.4) {$90\Degrees$};
+   \draw [dashed,-latex] (0:0.7) arc (0:90:0.7);
+  \end{tikzpicture}}
+ \qquad\qquad
+ \subfloat[][ $\theta = 180\Degrees$]{
+  \begin{tikzpicture}[every node/.style={font=\small}]
+   \draw (0,0) circle (1.2);
+   \fill (0,0) circle (2pt);
+   \node [below] at (0,0) {$O$};
+   \draw (0,0) -- (0:1.2);
+   \node [right] at (0:1.2) {$A$};
+   \draw (0,0) -- (180:1.2);
+   \node [left] at (180:1.2) {$B$};
+   \draw [linecolor,line width=1.5pt] (0:1.2) arc (0:180:1.2);
+   \fill (0:1.2) circle (2pt);
+   \fill (180:1.2) circle (2pt);
+   \node [above] at (90:1.6) {$\wideparen{AB} = \tfrac{1}{2}C = \pi\;r$};
+   \node at (90:0.4) {$180\Degrees$};
+   \draw [dashed,-latex] (0:0.7) arc (0:180:0.7);
+  \end{tikzpicture}}
+ \qquad\qquad
+ \subfloat[][ $\theta = 360\Degrees$]{
+  \begin{tikzpicture}[every node/.style={font=\small}]
+   \draw (0,0) circle (1.2);
+   \fill (0,0) circle (2pt);
+   \node [below] at (0,0) {$O$};
+   \draw (0,0) -- (0:1.2);
+   \node [above right] at (0:1.2) {$A$};
+   \node [below right] at (360:1.2) {$B$};
+   \draw [linecolor,line width=1.5pt] (0:1.2) arc (0:360:1.2);
+   \fill (0:1.2) circle (2pt);
+   \node [above] at (90:1.6) {$\wideparen{AB} = C = 2\;\pi\;r$};
+   \node at (90:0.4) {$360\Degrees$};
+   \draw [dashed,-latex] (0:0.7) arc (0:360:0.7);
+  \end{tikzpicture}}\vspace{-2mm}
+ \caption[]{\quad Angle $\theta$ and intercepted arc $\wideparen{AB}$ on circle of circumference
+  $C=2\pi r$}
+ \label{fig:radians}
+\end{figure}
+
+In Figure \ref{fig:radians} we see that a central angle of $90\Degrees$ cuts off an arc of length
+$\tfrac{\pi}{2}\,r$, a central angle of $180\Degrees$ cuts off an arc of length $\pi\,r$, and a
+central angle of $360\Degrees$ cuts off an arc of length $2\pi\,r$, which is the same as the
+circumference of the circle. So associating the central angle with its intercepted arc, we could
+say, for example, that
+\begin{displaymath}
+ 360\Degrees \quad\text{``equals''}\quad 2\pi\,r \quad\text{(or $2\pi$ `radiuses').}
+\end{displaymath}
+The radius $r$ was arbitrary, but the $2\pi$ in front of it stays the same. So instead of using
+the awkward ``radiuses'' or ``radii'', we use the term \textbf{radians}\index{radians}:
+\begin{equation}\label{eqn:deg360rad2pi}
+ \boxed{360\Degrees ~=~ 2\pi ~~\text{radians}}
+\end{equation}
+The above relation gives us any easy way to convert between degrees and radians:
+
+\begin{center}\statecomment{\vspace{-5mm}\begin{alignat}{3}
+ \text{\textbf{Degrees to radians:}}&\quad
+ x~~\text{degrees}\quad&=\quad \left( \frac{\pi}{180} \;\cdot\; x \right)
+ ~~\text{radians}\label{eqn:deg2rad}\\[2pt]
+ \text{\textbf{Radians to degrees:}}&\quad
+ x~~\text{radians}\quad&=\quad \left( \frac{180}{\pi} \;\cdot\; x \right)
+ ~~\text{degrees}\label{eqn:rad2deg}
+\end{alignat}}\end{center}
+\newpage
+Formula (\ref{eqn:deg2rad}) follows by dividing both sides of equation
+(\ref{eqn:deg360rad2pi}) by $360$, so that $1\Degrees = \frac{2\pi}{360} = \frac{\pi}{180}$ radians,
+then multiplying both sides by $x$. Formula (\ref{eqn:rad2deg}) is similarly derived
+by dividing both sides of equation (\ref{eqn:deg360rad2pi}) by $2\pi$ then multiplying both sides
+by $x$.
+
+The statement $\theta = 2\pi$ radians is usually abbreviated as $\theta = 2\pi$ rad, or
+just $\theta = 2\pi$ when it is clear that we are using radians. When an angle is given as some
+multiple of $\pi$, you can assume that the units being used are radians.
+
+\begin{exmp}
+ Convert $18\Degrees$ to radians.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Using the conversion formula (\ref{eqn:deg2rad}) for degrees to
+ radians, we get
+ \begin{displaymath}
+  18\Degrees ~=~ \frac{\pi}{180} \;\cdot\; 18 ~=~ \boxed{\frac{\pi}{10} ~~\text{rad}} ~.
+ \end{displaymath}
+\end{exmp}\vspace{-6mm}
+\begin{exmp}
+ Convert $\frac{\pi}{9}$ radians to degrees.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Using the conversion formula (\ref{eqn:rad2deg}) for radians to
+ degrees, we get
+ \begin{displaymath}
+  \frac{\pi}{9} ~~\text{rad} ~=~ \frac{180}{\pi} \;\cdot\; \frac{\pi}{9} ~=~ \boxed{20\Degrees} ~.
+ \end{displaymath}
+\end{exmp}\vspace{-3mm}
+\divider
+\vspace{-3mm}
+
+\begin{table}[h]\centering
+\caption{\quad \textbf{Commonly used angles in radians}}\vspace{3mm}
+\renewcommand\arraystretch{2.0}
+\begin{tabular}{|rc|rc|rc|rc|}
+\hline
+Degrees & Radians & Degrees & Radians & Degrees & Radians & Degrees & Radians\\
+\hline
+$0\Degrees$ & $0$ & $90\Degrees$ & $\dfrac{\pi}{2}$ & $180\Degrees$ & $\pi$ & $270\Degrees$ & $\dfrac{3\pi}{2}$\\[4pt]
+\hline
+$30\Degrees$ & $\dfrac{\pi}{6}$ & $120\Degrees$ & $\dfrac{2\pi}{3}$ & $210\Degrees$ & $\dfrac{7\pi}{6}$ & $300\Degrees$ & $\dfrac{5\pi}{3}$\\[4pt]
+\hline
+$45\Degrees$ & $\dfrac{\pi}{4}$ & $135\Degrees$ & $\dfrac{3\pi}{4}$ & $225\Degrees$ & $\dfrac{5\pi}{4}$ & $315\Degrees$& $\dfrac{7\pi}{4}$\\[4pt]
+\hline
+$60\Degrees$ & $\dfrac{\pi}{3}$ & $150\Degrees$ & $\dfrac{5\pi}{6}$ & $240\Degrees$ & $\dfrac{4\pi}{3}$ & $330\Degrees$ & $\dfrac{11\pi}{6}$\\[4pt]
+\hline
+\end{tabular}\label{tbl:radians}
+\end{table}\vspace{-1mm}
+
+\piccaption[]{\label{fig:raddefn}}\parpic[r]{\begin{tikzpicture}[every node/.style={font=\small}]
+ \draw (0,0) circle (1.2);
+ \fill (0,0) circle (2pt);
+ \node [below] at (0,0) {$O$};
+ \draw (0,0) -- (0:1.2) node[below,midway] {$r$};
+ \draw (0,0) -- (57.3:1.2);
+ \draw [linecolor,line width=1.5pt] (0:1.2) arc (0:57.3:1.2);
+ \fill (0:1.2) circle (2pt);
+ \fill (57.3:1.2) circle (2pt);
+ \node [above right] at (28:1.2) {$r$};
+ \node at (28:0.4) {$\theta$};
+ \draw [dashed,-latex] (0:0.7) arc (0:57.3:0.7);
+ \node [below] at (270:1.2) {$\theta = 1$ radian};
+\end{tikzpicture}}
+\picskip{5}
+Table \ref{tbl:radians} shows the conversion between degrees and radians for some common angles.
+Using the conversion formula (\ref{eqn:rad2deg}) for radians to degrees, we see that
+\begin{displaymath}
+ 1 ~~\text{radian} ~~=~~ \frac{180}{\pi}~~\text{degrees} ~~\approx~~ 57.3\Degrees ~.
+\end{displaymath}
+\picskip{2}
+Formally, a radian is defined as the central angle in a circle of radius $r$ which intercepts an arc
+of length $r$, as in Figure \ref{fig:raddefn}. This definition does not depend on the choice of $r$
+(imagine resizing Figure \ref{fig:raddefn}).
+\newpage
+One reason why radians are used is that the scale is smaller than for degrees.
+One revolution in radians is $2\pi \approx 6.283185307$, which is much smaller
+than $360$, the number of degrees in one revolution. The smaller scale makes the graphs of
+trigonometric functions (which we will discuss in Chapter 5) have similar scales for the horizontal
+and vertical axes.
+Another reason is that often in physical applications the variables being used are in terms of
+arc length, which makes radians a natural choice.
+
+The default mode in most scientific calculators is to use degrees for entering angles. On many
+calculators there is a button labeled {\setlength\fboxsep{2pt}\ovalbox{\footnotesize DRG}} for
+switching between degree mode (D),
+radian mode (R), and \emph{gradian}\index{gradian} mode (G).\footnote{A gradian is defined as
+$\tfrac{1}{400}$ of a circle, i.e. there are $400$ gradians in one revolution. Compared to the
+more common $360\Degrees$ in one revolution, gradians appear to be easier to work with, since a
+right angle is $100$ gradians (thus making integer multiples of a right angle easier to remember).
+Outside of a few specialized areas (e.g. artillery calculations), gradians are nevertheless not
+widely used today.} On some graphing calculators, such as the the TI-83, there is a
+{\setlength\fboxsep{2pt}\ovalbox{\footnotesize MODE}} button for changing between degrees and
+radians. Make sure that your calculator is in the correct angle mode \emph{before} entering angles,
+or your answers will likely be way off. For example,
+\begin{align*}
+ \sin\;4\Degrees ~&=~ \phantom{-}0.0698 ~,\\
+ \sin\;(4~\text{rad}) ~&=~ -0.7568 ~,
+\end{align*}
+so the values are not only off in magnitude, but do not even have the same sign.
+Using your calculator's {\setlength\fboxsep{1pt}\ovalbox{\footnotesize $\sin^{-1}$}},
+{\setlength\fboxsep{1pt}\ovalbox{\footnotesize $\cos^{-1}$}}, and
+{\setlength\fboxsep{1pt}\ovalbox{\footnotesize $\tan^{-1}$}} buttons in radian mode will of course
+give you the angle as a decimal, not an expression in terms of $\pi$.
+
+You should also be aware that the math functions in many computer programming languages use
+radians, so you would have to write your own angle conversions.\footnote{One exception is Octave,
+which has functions cosd(), sind(), tand() that take angles in degrees as parameters, in addition to
+the usual cos(), sin(), tan() functions which use radians.}
+
+\divider
+\vspace{2mm}
+
+\startexercises\label{sec4dot1}
+\vspace{5mm}
+{\small
+\par\noindent For Exercises 1-5, convert the given angle to radians.
+\begin{enumerate}[\bfseries 1.]
+\begin{multicols}{5}
+ \item $4\Degrees$
+ \item $15\Degrees$
+ \item $130\Degrees$
+ \item $275\Degrees$
+ \item $-108\Degrees$
+\end{multicols}
+\suspend{enumerate}
+ For Exercises 6-10, convert the given angle to degrees.
+\resume{enumerate}[{[\bfseries 1.]}]
+\begin{multicols}{5}
+ \item $4$ rad
+ \item $\dfrac{\pi}{5}$ rad
+ \item $\dfrac{11\pi}{9}$ rad
+ \item $\dfrac{29\pi}{30}$ rad
+ \item $35$ rad
+\end{multicols}
+ \item\label{exer:cosxeqx}
+ Put your calculator in radian mode and take the cosine of $0$. Whatever the answer is, take
+ its cosine. Then take the cosine of the new answer. Keep repeating this. On most calculators after
+ about $50$-$60$ iterations you should start to see the same answer repeating. What is that
+ number? Try starting with a number different from $0$. Do you get the same answer repeating after
+ roughly the same number of iterations as before? Try the same procedure in degree mode, starting
+ with $0\Degrees$. Does the same thing happen? If so, does it take fewer iterations for the answer
+ to start repeating than in radian mode, or more?
+\end{enumerate}}
+
+\newpage
+%Begin Section 4.2
+\section{Arc Length}
+In Section 4.1 we saw that one revolution has a radian measure of $2\pi$ rad. Note that $2\pi$
+is the ratio of the circumference (i.e. total arc length) $C$ of a circle to its radius $r$:
+\begin{displaymath}
+ \text{Radian measure of 1 revolution} ~=~ 2\pi ~=~ \frac{2\pi\,r}{r} ~=~
+  \frac{C}{r} ~=~ \frac{\text{total arc length}}{\text{radius}}
+\end{displaymath}
+Clearly, that ratio is independent of $r$.\index{arc length}
+In general, the radian measure of an angle is the ratio of the arc length cut off by the
+corresponding central angle in a circle to the radius of the circle, independent of the radius.
+
+To see this, recall our formal definition of a radian: the central angle in a circle of radius $r$
+which intercepts an arc of length $r$. So suppose that we have a circle of radius $r$ and we place
+a central angle with radian measure $1$ on top of another central angle with radian measure $1$, as
+in Figure \ref{fig:arclendef}(a). Clearly, the combined central angle of the two
+angles has radian measure $1+1=2$, and the combined arc length is $r+r=2r$.
+
+\begin{figure}[h]
+ \centering
+ \subfloat[][ $2$ radians]{
+  \begin{tikzpicture}[every node/.style={font=\small}]
+   \draw (0,0) circle (2);
+   \draw (0,0) -- (57.3:2);
+   \draw [linecolor,dashed] (0,0) -- (114.6:2);
+   \draw [linecolor,line width=1.5pt] (0:2) arc (0:114.6:2);
+   \fill (0,0) circle (2pt);
+   \fill (0:2) circle (2pt);
+   \fill (57.3:2) circle (2pt);
+   \fill (114.6:2) circle (2pt);
+   \node [above right] at (28:2) {$r$};
+   \node [above right] at (84:2) {$r$};
+   \node at (28:0.4) {$1$};
+   \draw [dashed,-latex] (0:0.7) arc (0:57.3:0.7);
+   \node at (84:0.4) {$1$};
+   \draw [dashed,-latex] (57.3:0.7) arc (57.3:114.6:0.7);
+   \node at (90:1.3) {$2$};
+   \draw [linecolor,line width=0.5pt,dashed,-latex] (0:1.1) arc (0:114.6:1.1);
+   \draw (0,0) -- (0:2) node[below,midway] {$r$};
+  \end{tikzpicture}}
+ \qquad\qquad\qquad
+ \subfloat[][ $\tfrac{1}{2}$ radian]{
+  \begin{tikzpicture}[every node/.style={font=\small}]
+   \draw (0,0) circle (2);
+   \draw (0,0) -- (57.3:2);
+   \draw [linecolor,dashed] (0,0) -- (28.65:2);
+   \draw [linecolor,line width=1.5pt] (0:2) arc (0:57.3:2);
+   \fill (0,0) circle (2pt);
+   \fill (0:2) circle (2pt);
+   \fill (57.3:2) circle (2pt);
+   \fill (28.65:2) circle (2pt);
+   \node [above right] at (14:2) {$r/2$};
+   \node [above right] at (42:2) {$r/2$};
+   \node at (14:0.9) {$1/2$};
+   \draw [linecolor,dashed,-latex] (0:1.2) arc (0:28.65:1.2);
+   \node at (42:1.3) {$1$};
+   \draw [dashed,-latex] (0:1.5) arc (0:57.3:1.5);
+   \draw (0,0) -- (0:2) node[below,midway] {$r$};
+  \end{tikzpicture}}\vspace{-2mm}
+ \caption[]{\quad Radian measure and arc length}
+ \label{fig:arclendef}
+\end{figure}
+
+Now suppose that we cut the angle with radian measure $1$ in half, as in Figure
+\ref{fig:arclendef}(b).
+Clearly, this cuts the arc length $r$ in half as well. Thus, we see that
+\begin{alignat*}{4}
+ \text{Angle} ~&=~ 1~\text{radian} \quad&\Rightarrow\quad \text{arc length} ~&=~ r ~,\\
+ \text{Angle} ~&=~ 2~\text{radians} \quad&\Rightarrow\quad \text{arc length} ~&=~ 2\,r ~,\\
+ \text{Angle} ~&=~ \tfrac{1}{2}~\text{radian} \quad&\Rightarrow\quad \text{arc length} ~&=~
+  \tfrac{1}{2}\,r ~,\\
+ \intertext{and in general, for any $\theta \ge 0$,}
+ \text{Angle} ~&=~ \theta~\text{radians} \quad&\Rightarrow\quad \text{arc length} ~&=~ \theta\,r ~,
+\end{alignat*}
+so that
+\begin{displaymath}
+ \theta ~=~ \frac{\text{arc length}}{\text{radius}} ~~.
+\end{displaymath}
+\newpage
+Intuitively, it is obvious that shrinking or magnifying a circle preserves the measure of a
+central angle even as the radius changes. The above discussion says more, namely that the ratio
+of the length $s$ of an intercepted arc to the radius $r$ is preserved, precisely because that
+ratio is the measure of the central angle in radians (see Figure \ref{fig:radianratio}).
+
+\begin{figure}[h]
+ \centering
+ \subfloat[][ Angle $\theta$, radius $r$]{
+  \begin{tikzpicture}[every node/.style={font=\small}]
+   \draw (0,0) circle (1.2);
+   \fill (0,0) circle (2pt);
+   \node [below] at (0,0) {$O$};
+   \draw (0,0) -- (0:1.2) node[below,midway] {$r$};
+   \draw (0,0) -- (65:1.2);
+   \draw [linecolor,line width=1.5pt] (0:1.2) arc (0:65:1.2);
+   \fill (0:1.2) circle (2pt);
+   \fill (65:1.2) circle (2pt);
+   \node [above right] at (32:1.2) {$s=r\theta$};
+   \node at (32:0.4) {$\theta$};
+   \draw [dashed,-latex] (0:0.7) arc (0:65:0.7);
+  \end{tikzpicture}}
+ \qquad\qquad\qquad
+ \subfloat[][ Angle $\theta$, radius $r'$]{
+  \begin{tikzpicture}[scale=1.5,every node/.style={font=\small}]
+   \draw (0,0) circle (1.2);
+   \fill (0,0) circle (1.33pt);
+   \node [below] at (0,0) {$O$};
+   \draw (0,0) -- (0:1.2) node[below,midway] {$r'$};
+   \draw (0,0) -- (65:1.2);
+   \draw [linecolor,line width=1.5pt] (0:1.2) arc (0:65:1.2);
+   \fill (0:1.2) circle (1.33pt);
+   \fill (65:1.2) circle (1.33pt);
+   \node [above right] at (32:1.2) {$s=r'\theta$};
+   \node at (32:0.4) {$\theta$};
+   \draw [dashed,-latex] (0:0.7) arc (0:65:0.7);
+  \end{tikzpicture}}\vspace{-1mm}
+ \caption[]{\quad Circles with the same central angle, different radii}
+ \label{fig:radianratio}
+\end{figure}
+
+We thus get a simple formula for the length of an arc:\index{arc length}
+
+\begin{center}\statecomment{In a circle of radius $r$, let $s$ be the length of an arc intercepted
+by a central angle with radian measure $\theta \ge 0$. Then the arc length $s$ is:
+\begin{equation}\label{eqn:arclen}
+ s ~=~ r\,\theta
+\end{equation}}\end{center}
+
+\begin{exmp}
+ In a circle of radius $r=2$ cm, what is the length $s$ of the arc intercepted by a central angle of
+ measure $\theta = 1.2$ rad\,?\vspace{1mm}
+ \par\noindent\textbf{Solution:} Using formula (\ref{eqn:arclen}), we get:
+ \begin{displaymath}
+  s ~=~ r\,\theta ~=~ (2)\,(1.2) ~=~ \boxed{2.4~\text{cm}}
+ \end{displaymath}
+\end{exmp}
+\begin{exmp}
+ In a circle of radius $r=10$ ft, what is the length $s$ of the arc intercepted by a central angle
+ of measure $\theta = 41\Degrees\;$?\vspace{1mm}
+ \par\noindent\textbf{Solution:} Using formula (\ref{eqn:arclen}) blindly with $\theta = 41\Degrees$,
+ we would get $\;s = r\,\theta = (10)\,(41) = 410$ ft. But this impossible, since a circle of
+ radius $10$ ft has a circumference of only $2\pi\,(10) \approx 62.83$ ft! Our error was in using
+ the angle $\theta$ measured in \emph{degrees}, not \emph{radians}. So first convert $\theta =
+ 41\Degrees$ to radians, then use $s=r\,\theta$:
+ \begin{displaymath}
+ \theta = 41\Degrees ~=~ \frac{\pi}{180} \;\cdot\; 41 ~=~ 0.716~\text{rad}
+  \quad\Rightarrow\quad s ~=~ r\,\theta ~=~ (10)\,(0.716) ~=~ \boxed{7.16~\text{ft}}
+ \end{displaymath}
+\end{exmp}
+\divider
+\vspace{1mm}
+
+Note that since the arc length $s$ and radius $r$ are usually given in the same units, radian
+measure is really unitless, since you can think of the units canceling in the ratio $\frac{s}{r}$,
+which is just $\theta$. This is another reason why radians are so widely used.
+\newpage
+\begin{exmp}
+ A central angle in a circle of radius $5$ m cuts off an arc of length $2$ m.
+ What is the measure of the angle in radians? What is the measure in degrees?\vspace{1mm}
+ \par\noindent\textbf{Solution:} Letting $r=5$ and $s=2$ in formula (\ref{eqn:arclen}), we get:
+ \begin{displaymath}
+  \theta ~=~ \frac{s}{r} ~=~ \frac{2}{5} ~=~ \boxed{0.4~\text{rad}}
+ \end{displaymath}
+ In degrees, the angle is:
+ \begin{displaymath}
+ \theta = 0.4~\text{rad} ~=~ \frac{180}{\pi} \;\cdot\; 0.4 ~=~ \boxed{22.92\Degrees}
+ \end{displaymath}
+\end{exmp}
+\divider
+\vspace{1mm}
+
+For central angles $\theta > 2\pi$ rad, i.e. $\theta > 360\Degrees$, it may not be clear what is
+meant by the intercepted arc, since the angle is larger than one revolution and hence ``wraps
+around'' the circle more than once. We will take the approach that such an arc consists of the full
+circumference plus any additional arc length determined by the angle. In other words, formula
+(\ref{eqn:arclen}) is still valid for angles $\theta > 2\pi$ rad.
+
+What about negative angles? In this case using $s=r\,\theta$ would mean that the arc length is
+negative, which violates the usual concept of length. So we will adopt the convention of only using
+nonnegative central angles when discussing arc length.
+
+\begin{exmp}
+\piccaption[]{\label{fig:rope}}\parpic[r]{\begin{tikzpicture}[every node/.style={font=\small}]
+ \draw (0,0) circle (1);
+ \draw (-1.5,2) -- (-1.5,-2);
+ \draw [dashed] (-1.5,0) -- (1,0);
+ \draw [dashed] (0,0) -- (-1.5,2);
+ \draw [dashed] (0,0) -- (60.5:1) node [left,pos=0.75] {$2$};
+ \draw [linecolor,line width=1.5pt] (-1.5,2) -- (60.5:1) arc (60:-60:1) -- (-1.5,-2);
+ \fill (-1.5,2) circle (2pt);
+ \node [above] at (-1.5,2) {$A$};
+ \node [above right] at (60.5:1) {$B$};
+ \node [left] at (-1.5,0) {$D$};
+ \node [right] at (0:1) {$C$};
+ \node [below] at (0,0) {$E$};
+ \node [below] at (-1.25,0) {$3$};
+ \node [left] at (-1.5,1) {$4$};
+ \node [left] at (-1.5,-1) {$4$};
+ \node at (0.3,0.2) {$\theta$};
+ \fill (-1.5,-2) circle (2pt);
+\end{tikzpicture}}
+\noindent A rope is fastened to a wall in two places $8$ ft apart at the same height. A cylindrical container
+ with a radius of $2$ ft is pushed away from the wall as far as it can go while being held in by
+ the rope, as in Figure \ref{fig:rope} which shows the top view. If the center of the
+ container is $3$ feet away from the point on the wall midway between the ends of the rope, what
+ is the length $L$ of the rope?\vspace{1mm}
+ \par\noindent\textbf{Solution:} We see that, by symmetry, the total length of the rope is
+ $\;L = 2\;(AB + \wideparen{BC})$.
+ Also, notice that $\triangle\,ADE$ is a right triangle, so the hypotenuse
+ has length $AE = \sqrt{DE^2 + DA^2} = \sqrt{3^2 + 4^2} = 5$ ft,  by the Pythagorean Theorem.
+ Now since $\overline{AB}$ is tangent to the circular container, we know that $\angle\,ABE$ is a
+ right angle. So by the Pythagorean Theorem we have
+ \begin{displaymath}
+  AB ~=~ \sqrt{AE^2 - BE^2} ~=~ \sqrt{5^2 - 2^2} ~=~ \sqrt{21} ~\text{ft}.
+ \end{displaymath}
+
+ \noindent By formula (\ref{eqn:arclen}) the arc $\wideparen{BC}$ has length $BE \cdot \theta$,
+ where $\theta = \angle\,BEC$ is the supplement of $\angle\,AED + \angle\,AEB$. So since
+ \begin{displaymath}
+  \tan\,\angle\,AED ~=~ \frac{4}{3} ~\Rightarrow~ \angle\,AED ~=~ 53.1\Degrees \quad\text{and}\quad
+  \cos\,\angle\,AEB ~=~ \frac{BE}{AE} ~=~ \frac{2}{5} ~\Rightarrow~ \angle\,AEB ~=~ 66.4\Degrees ~,
+ \end{displaymath}
+ we have
+ \begin{displaymath}
+  \theta ~=~ \angle\,BEC ~=~ 180\Degrees \;-\; (\angle\,AED + \angle\,AEB) ~=~ 180\Degrees \;-\;
+  (53.1\Degrees + 66.4\Degrees) ~=~ 60.5\Degrees ~.
+ \end{displaymath}
+ Converting to radians, we get $\;\theta = \frac{\pi}{180} \;\cdot\; 60.5 = 1.06$ rad. Thus,
+ \begin{displaymath}
+  L ~=~ 2\,(AB \;+\; \cdot \wideparen{BC}) ~=~ 2\,(\sqrt{21} \;+\; BE \cdot \theta) ~=~
+   2\,(\sqrt{21} \;+\; (2)\,( 1.06)) ~=~ \boxed{13.4 ~\text{ft}} ~.
+ \end{displaymath}
+\end{exmp}
+\divider
+\newpage
+\begin{exmp}\label{exmp:pulleys}
+ The centers of two belt pulleys, with radii of $5$ cm and $8$ cm, respectively, are $15$ cm apart.
+ Find the total length $L$ of the belt around the pulleys.\vspace{1mm}
+ \par\noindent\textbf{Solution:} In Figure \ref{fig:pulley} we see that, by symmetry,
+ $\;L = 2\;(\wideparen{DE} + EF + \wideparen{FG})$.
+
+\begin{figure}[h]
+ \begin{center}
+  \begin{tikzpicture}[scale=0.8,every node/.style={font=\small}]
+   \draw [line width=1pt] (0,0) circle (2.5);
+   \draw [line width=1pt] (7.5,0) circle (4);
+   \draw [dashed] (7.5,0) circle (1.5);
+   \draw [dashed] (0,0) -- ++(11.54:7.348);
+   \draw [dashed] (-2.5,0) -- (0,0) node [left,pos=0.0] {$D$};
+   \draw [dashed] (11.5,0) -- (7.5,0) node [right,pos=0.0] {$G$};
+   \draw [dashed] (101.54:2.5) -- (0,0) -- (7.5,0) -- ++(101.54:4) node[right,pos=0.22] {$3$}
+    node[right,pos=0.7] {$5$} node[above left,pos=0.375] {$C$} node[above,pos=1.0] {$F$};
+   \node [left] at (101.54:1.25) {$5$};
+   \node [below] at (0,0) {$A$};
+   \node [below] at (7.5,0) {$B$};
+   \node [above] at (101.54:2.5) {$E$};
+   \begin{scope}[>=latex]
+    \draw [dashed,|<->|] (0,-0.85) -- (7.5,-0.85) node[pos=0.4,fill=white] {$15$};
+   \end{scope}
+   \draw [linecolor,line width=1.5pt] (258.46:2.5) arc (258.46:101.54:2.5) --
+    ([shift={(7.5,0)}] 101.54:4) arc (101.54:-101.54:4) -- (258.46:2.5);
+  \end{tikzpicture}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad Belt pulleys with radii $5$ cm and $8$ cm}
+ \label{fig:pulley}
+\end{figure}
+
+ First, at the center $B$ of the pulley with radius $8$, draw a circle of radius $3$, which is the
+ difference in the radii of the two pulleys. Let $C$ be the point where this circle intersects
+ $\overline{BF}$. Then we know that the tangent line $\overline{AC}$ to
+ this smaller circle is perpendicular to the line segment  $\overline{BF}$. Thus,
+ $\angle\,ACB$ is a right angle, and so the length of $\overline{AC}$ is
+ \begin{displaymath}
+  AC ~=~ \sqrt{AB^2 - BC^2} ~=~ \sqrt{15^2 - 3^2} ~=~ \sqrt{216} ~=~ 6\,\sqrt{6}
+ \end{displaymath}
+ by the Pythagorean Theorem. Now since $\overline{AE} \perp \overline{EF}$ and
+ $\overline{EF} \perp \overline{CF}$ and $\overline{CF} \perp \overline{AC}$, the quadrilateral
+ $AEFC$ must be a rectangle. In particular, $EF = AC$, so $EF = 6\,\sqrt{6}$.
+ 
+ By formula (\ref{eqn:arclen}) we know that $\;\wideparen{DE} = EA \cdot \angle\,DAE\;$ and
+ $\;\wideparen{FG} = BF \cdot \angle\,GBF$, where the angles are measured in radians. So thinking
+ of angles in radians (using $\pi$ rad $= 180\Degrees$), we see from Figure \ref{fig:pulley} that 
+ \begin{displaymath}
+  \angle\,DAE ~=~ \pi \;-\; \angle\,EAC \;-\; \angle\,BAC ~=~ \pi \;-\; \frac{\pi}{2} \;-\;
+   \angle\,BAC ~=~ \frac{\pi}{2} \;-\; \angle\,BAC ~,
+ \end{displaymath}
+ where
+ \begin{displaymath}
+  \sin\;\angle\,BAC ~=~ \frac{BC}{AB} ~=~ \frac{3}{15} ~=~ 0.2 \quad\Rightarrow\quad
+  \angle\,BAC ~=~ 0.201~\text{rad.}
+ \end{displaymath}
+ Thus, $\;\angle\,DAE = \frac{\pi}{2} \,-\, 0.201 = 1.37$ rad. So since $\overline{AE}$ and
+ $\overline{BF}$ are parallel, we have $\;\angle\,ABC = \angle\,DAE = 1.37$ rad. Thus,
+ $\;\angle\,GBF = \pi \,-\, \angle\,ABC = \pi \,-\, 1.37 = 1.77$ rad. Hence,
+ \begin{displaymath}
+  L ~=~ 2\;(\wideparen{DE} \;+\; EF \;+\; \wideparen{FG}) ~=~ 2\;(5\;(1.37) \;+\; 6\,\sqrt{6} \;+\;
+   8\;(1.77)) ~=~ \boxed{71.41~\text{cm}} ~.
+ \end{displaymath}
+\end{exmp}
+\divider
+\newpage
+\startexercises\label{sec4dot2}
+\vspace{5mm}
+{\small
+\par\noindent For Exercises 1-4, find the length of the arc cut off by the given central angle
+$\theta$ in a circle of radius $r$.
+\begin{enumerate}[\bfseries 1.]
+\begin{multicols}{3}
+ \item $\theta=0.8$ rad, $r=12$ cm
+ \item $\theta=171\Degrees$, $r=8$ m
+ \item $\theta=\pi$ rad, $r=11$ in
+\end{multicols}
+ \item A central angle in a circle of radius $2$ cm cuts off an arc of length $4.6$ cm.
+  What is the measure of the angle in radians? What is the measure of the angle in degrees?
+ \item The centers of two belt pulleys, with radii of $3$ inches and $6$ inches, respectively, are
+  $13$ inches apart. Find the total length $L$ of the belt around the pulleys.
+ \item\label{exer:wallpulley1} In Figure \ref{fig:exerwallpulley1} one end of a $4$ ft iron rod is
+  attached to the center of a pulley with radius $0.5$ ft. The other end is attached at a
+  $40\Degrees$ angle to a wall, at a spot $6$ ft above the lower end of a steel wire supporting a
+  box. The other end of the wire comes out of the wall straight across from the top of the pulley.
+  Find the length $L$ of the wire from the wall to the box.
+\begin{figure}[h]
+\begin{minipage}[t]{7.5cm}
+ \begin{center}
+  \begin{tikzpicture}[scale=0.7,every node/.style={font=\small}]
+   \fill [brickcolor] (-2.57,0.5) -- (-2.57,-7) -- (-3.5,-7) -- (-3.5,0.5) -- (-2.57,0.5);
+   \pattern[pattern color=white,pattern=bricks] (-2.57,0.5) -- (-2.57,-7) -- (-3.5,-7) -- (-3.5,0.5)
+	-- (-2.57,0.5);
+   \draw [line width=1pt] (0,0) circle (0.5);
+   \draw [line width=1pt] (-2.57,-3.06) -- (0,0) node[pos=0.6,below] {$4$};
+   \draw [linecolor,line width=1.5pt] (-2.57,0.5) -- (90:0.5) arc (90:0:0.5) -- (0.5,-6);
+   \draw [line width=1pt] (-2.57,0.5) -- (-2.57,-7) -- (1.5,-7);
+   \fill (0,0) circle (2pt);
+   \node [right] at (-2.7,-2.16) {$40\Degrees$};
+   \draw [dashed] ([shift={(-2.57,-3.06)}] 90:1.4) arc (90:50:1.4);
+   \begin{scope}[>=latex]
+	\draw [dashed,|<->|] (-3,-3.06) -- (-3,-6) node[pos=0.5,left] {$6$};
+   \end{scope}
+   \filldraw [line width=1pt,fill=blockcolor] (0,-6.5) rectangle (1,-6);
+  \end{tikzpicture}\vspace{-5mm}
+ \end{center}
+ \caption[]{\quad Exercise \ref{exer:wallpulley1}}
+ \label{fig:exerwallpulley1}
+\end{minipage}
+\begin{minipage}[t]{7.5cm}
+ \begin{center}
+  \begin{tikzpicture}[scale=0.7,every node/.style={font=\small}]
+   \fill [brickcolor] (-2.57,0.5) -- (-2.57,-7) -- (-3.5,-7) -- (-3.5,0.5) -- (-2.57,0.5);
+   \pattern[pattern color=white,pattern=bricks] (-2.57,0.5) -- (-2.57,-7) -- (-3.5,-7) -- (-3.5,0.5)
+	-- (-2.57,0.5);
+   \draw [line width=1pt] (0,0) circle (0.5);
+   \draw [line width=1pt] (-2.57,-3.06) -- (0,0) node[pos=0.6,below] {$4$};
+   \draw [linecolor,line width=1.5pt] (-2.57,-1.06) -- (122.77:0.5) arc (122.77:0:0.5) -- (0.5,-6);
+   \draw [line width=1pt] (-2.57,0.5) -- (-2.57,-7) -- (1.5,-7);
+   \fill (0,0) circle (2pt);
+   \node [right] at (-2.7,-2.16) {$40\Degrees$};
+   \draw [dashed] ([shift={(-2.57,-3.06)}] 90:1.4) arc (90:50:1.4);
+   \begin{scope}[>=latex]
+	\draw [dashed,|<->|] (-3,-1.06) -- (-3,-3.06) node[pos=0.5,left] {$2$};
+	\draw [dashed,<->|] (-3,-3.06) -- (-3,-6) node[pos=0.5,left] {$6$};
+   \end{scope}
+   \filldraw [line width=1pt,fill=blockcolor] (0,-6.5) rectangle (1,-6);
+  \end{tikzpicture}\vspace{-5mm}
+ \end{center}
+ \caption[]{\quad Exercise \ref{exer:wallpulley2}}
+ \label{fig:exerwallpulley2}
+\end{minipage}
+\end{figure}\vspace{-2mm}
+ \item\label{exer:wallpulley2} Figure \ref{fig:exerwallpulley2} shows the same setup as in
+  Exercise \ref{exer:wallpulley1} but now the wire comes out of the wall $2$ ft above where the
+  rod is attached. Find the length $L$ of the wire from the wall to the box.
+\piccaption[]{\label{fig:figure8}}\parpic[r]{\begin{tikzpicture}[scale=0.5,
+every node/.style={font=\small}]
+ \draw [dashed] (0,0) circle (2);
+ \draw [dashed] (10,0) circle (2);
+ \draw [dashed] (0,0) -- (66.42:2) node[midway,left] {$2$};
+ \draw [dashed] (10,0) -- ++(113.58:2) node[midway,right] {$2$};
+ \draw [dashed] (0,0) -- (10,0);
+ \fill (0,0) circle (2.5pt);
+ \fill (10,0) circle (2.5pt);
+ \node [below] at (0,0) {$A$};
+ \node [below] at (10,0) {$B$};
+ \begin{scope}[>=latex]
+  \draw [dashed,|<->|] (0,-1.1) -- (10,-1.1) node[pos=0.5,fill=white] {$10$};
+ \end{scope}
+ \draw [linecolor,line width=1.5pt] (293.58:2) arc (293.58:66.42:2) --
+  ([shift={(10,0)}] -113.58:2) arc (-113.58:113.58:2) -- (293.58:2);
+\end{tikzpicture}}
+ \item\label{exer:figure8len} Find the total length $L$ of the figure eight shape in Figure
+  \ref{fig:figure8}.
+ \item Repeat Exercise \ref{exer:figure8len} but with the circle at $A$ having a radius of $3$
+  instead of $2$. (\emph{Hint: Draw a circle of radius $5$ centered at $A$, then draw a tangent
+  line to that circle from $B$.})
+\suspend{enumerate}
+\resume{enumerate}[{[\bfseries 1.]}]
+ \item Suppose that in Figure \ref{fig:figure8} the lines do not criss-cross but instead go
+  straight across, as in a belt pulley system. Find the total length $L$ of the resulting shape.
+ \item Find the lengths of the two arcs cut off by a chord of length $3$ in a circle of radius $2$.
+ \item Find the perimeter of a \emph{regular dodecagon}\index{dodecagon} (i.e. a $12$-sided polygon
+  with sides of equal length) inscribed inside a circle of radius $\frac{1}{2}$. Compare it to the
+  circumference of the circle.\index{chord}
+\end{enumerate}}
+
+\newpage
+%Begin Section 4.3
+\section{Area of a Sector}
+\piccaption[]{\label{fig:sector}}\parpic[r]{\begin{tikzpicture}[every node/.style={font=\small}]
+ \draw [line width=1pt] (0,0) circle (1.2);
+ \filldraw [linecolor,fill=fillcolor,line width=1pt] (0,0) -- (70:1.2)
+  node[black,midway,above left] {$r$} arc (70:15:1.2) -- (0,0);
+ \fill (0,0) circle (2pt);
+ \node at (43:0.45) {$\theta$};
+ \draw [linecolor,dashed] (15:0.7) arc (15:70:0.7);
+\end{tikzpicture}}
+In geometry you learned that the area of a circle of radius $r$ is $\pi r^2$. We will now learn
+how to find the area of a \textbf{sector}\index{sector}\index{area!sector} of a circle. A sector
+is the region bounded by a central angle and its intercepted arc, such as the shaded region in
+Figure \ref{fig:sector}.\index{circle!area}\index{area!circle}
+
+Let $\theta$ be a central angle in a circle of radius $r$ and let $A$ be the area of its sector.
+Similar to arc length, the ratio of $A$ to the area of the entire circle is the same as the ratio
+of $\theta$ to one revolution. In other words, again using radian measure,
+\begin{displaymath}
+ \frac{\text{area of sector}}{\text{area of entire circle}} ~=~
+ \frac{\text{sector angle}}{\text{one revolution}} \quad\Rightarrow\quad
+ \frac{A}{\pi\,r^2} ~=~ \frac{\theta}{2\pi} ~.
+\end{displaymath}
+Solving for $A$ in the above equation, we get the following formula:
+
+\begin{center}\statecomment{In a circle of radius $r$, the area $A$ of the sector inside a central
+ angle $\theta$ is
+ \begin{equation}
+  A ~=~ \tfrac{1}{2}\,r^2 \;\theta ~,\label{eqn:sectorarea}
+ \end{equation}
+ where $\theta$ is measured in radians.
+}\end{center}
+
+\begin{exmp}
+ Find the area of a sector whose angle is $\frac{\pi}{5}$ rad in a circle of radius $4$
+ cm.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Using $\theta=\frac{\pi}{5}$ and $r=4$ in formula
+ (\ref{eqn:sectorarea}), the area $A$ of the sector is
+ \begin{displaymath}
+  A ~=~ \tfrac{1}{2}\,r^2 \;\theta ~= \tfrac{1}{2}\,(4)^2 \;\cdot\;\tfrac{\pi}{5}
+   ~=~ \boxed{\tfrac{8\pi}{5}~\text{cm}^2} ~.
+ \end{displaymath}
+\end{exmp}
+\begin{exmp}
+ Find the area of a sector whose angle is $117\Degrees$ in a circle of radius $3.5$ m.\vspace{1mm}
+ \par\noindent\textbf{Solution:} As with arc length, we have to make sure that the angle is measured
+ in radians or else the answer will be way off. So converting $\theta=117\Degrees$ to radians and
+ using $r=3.5$ in formula (\ref{eqn:sectorarea}) for the area $A$ of the sector, we get
+ \begin{displaymath}
+  \theta ~=~ 117\Degrees ~=~ \frac{\pi}{180} \;\cdot\; 117 ~=~ 2.042~\text{rad}
+  \quad\Rightarrow\quad
+  A ~=~ \tfrac{1}{2}\,r^2 \;\theta ~= \tfrac{1}{2}\,(3.5)^2 \;(2.042)
+   ~=~ \boxed{12.51~\text{m}^2} ~.
+ \end{displaymath}
+\end{exmp}
+\divider
+\vspace{1mm}
+
+For a sector whose angle is $\theta$ in a circle of radius $r$, the length of the arc cut off by
+that angle is $s=r\,\theta$. Thus, by formula (\ref{eqn:sectorarea}) the area $A$ of the sector
+can be written as:\footnote{In some texts this formula is taken as a result from elementary geometry
+and then used to prove formula (\ref{eqn:sectorarea}).}
+\begin{equation}
+ \boxed{ A ~=~ \tfrac{1}{2}\,rs}\label{eqn:sectorarc}
+\end{equation}
+Note: The central angle $\theta$ that intercepts an arc is sometimes called the angle
+\textbf{subtended}\index{subtended angle}\index{angle!subtended} by the arc.
+\newpage
+\begin{exmp}
+ Find the area of a sector whose arc is $6$ cm in a circle of radius $9$ cm.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Using $s=6$ and $r=9$ in formula (\ref{eqn:sectorarc}) for the area
+ $A$, we get
+ \begin{displaymath}
+  A ~=~ \tfrac{1}{2}\,rs ~=~ ~=~ \tfrac{1}{2}\,(9)\,(6) ~=~ \boxed{27~\text{cm}^2} ~.
+ \end{displaymath}
+ Note that the angle subtended by the arc is $\theta = \frac{s}{r} = \frac{2}{3}$ rad.
+\end{exmp}
+\begin{exmp}\label{exmp:pulleyarea}
+ Find the area $K$ inside the belt pulley system from Example \ref{exmp:pulleys} in Section
+ 4.2.\vspace{1mm}
+\par\noindent\textbf{Solution:} Recall that the belt pulleys have radii of $5$ cm and $8$ cm, and
+their centers are $15$ cm apart. We showed in Example \ref{exmp:pulleys} that $EF=AC=6\,\sqrt{6}$,
+$\angle\,DAE=1.37$ rad, and $\angle\,GBF=1.77$ rad. We see from Figure \ref{fig:pulleyarea} that,
+by symmetry, the total area $K$ enclosed by the belt is twice the area above the line
+$\overline{DG}$, that is,
+\begin{align*}
+ K ~=~ 2\,( (&\text{Area of sector $DAE$}) ~+~ (\text{Area of rectangle $AEFC$})\\
+ &+~ (\text{Area of triangle $\triangle\,ABC$}) ~+~ (\text{Area of sector $GBF$}) )~.
+\end{align*}
+
+\begin{figure}[h]
+ \begin{center}
+  \begin{tikzpicture}[scale=0.8,every node/.style={font=\small}]
+   \draw [line width=1pt] (0,0) circle (2.5);
+   \draw [line width=1pt] (7.5,0) circle (4);
+   \draw [dashed,-latex] ([shift={(7.5,0)}] 0:1.5) arc (0:101.54:1.5);
+   \node at (9.2,1.2) {$1.77$};
+   \draw [dashed] (0,0) -- ++(11.54:7.348) node[pos=0.7,above,sloped] {$6\,\sqrt{6}$};
+   \draw [dashed] (-2.5,0) -- (0,0) node [left,pos=0.0] {$D$};
+   \draw [dashed] (11.5,0) -- (7.5,0) node [right,pos=0.0] {$G$};
+   \draw [dashed] (101.54:2.5) -- (0,0) -- (7.5,0) -- ++(101.54:4) node[left,pos=0.22] {$3$}
+    node[right,pos=0.7] {$5$} node[above left,pos=0.375] {$C$} node[above,pos=1.0] {$F$};
+   \node [right] at (101.54:1.25) {$5$};
+   \node [below] at (0,0) {$A$};
+   \node [below] at (7.5,0) {$B$};
+   \node [above] at (101.54:2.5) {$E$};
+   \begin{scope}[>=latex]
+    \draw [dashed,|<->|] (0,-0.85) -- (7.5,-0.85) node[pos=0.4,fill=white] {$15$};
+   \end{scope}
+   \draw [linecolor,line width=1.5pt] (258.46:2.5) arc (258.46:101.54:2.5) --
+    ([shift={(7.5,0)}] 101.54:4) node[black,sloped,above,midway] {$6\,\sqrt{6}$}
+	arc (101.54:-101.54:4) -- (258.46:2.5);
+  \draw [dashed,-latex] (180:0.7) arc (180:101.54:0.7);
+  \node at (145:1.2) {$1.37$};
+  \end{tikzpicture}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad Belt pulleys with radii $5$ cm and $8$ cm}
+ \label{fig:pulleyarea}
+\end{figure}
+
+Since $AEFC$ is a rectangle with sides $5$ and $6\,\sqrt{6}$, its area is $30\,\sqrt{6}$. And since
+$\triangle\,ABC$ is a right triangle whose legs have lengths $3$ and $6\,\sqrt{6}$, its area is
+$\frac{1}{2}\,(3)\,(6\,\sqrt{6}) = 9\,\sqrt{6}$. Thus, using formula (\ref{eqn:sectorarea}) for the
+areas of sectors $DAE$ and $GBF$, we have
+\begin{align*}
+ K ~&=~ 2\,\left( (\text{Area of sector $DAE$}) \;+\; 30\,\sqrt{6} \;+\; 9\,\sqrt{6} \;+\;
+  (\text{Area of sector $GBF$}) \right)\\
+ &=~ 2\,\left( \tfrac{1}{2}\,(5)^2 \,(1.37) ~+~ 30\,\sqrt{6} ~+~ 9\,\sqrt{6} ~+~
+  \tfrac{1}{2}\,(8)^2 \,(1.77) \right)\\
+ &=~ \boxed{338.59~\text{cm}^2}~.
+\end{align*}
+\end{exmp}
+\divider
+\newpage
+\piccaption[]{\label{fig:insector}}\parpic[r]{\begin{tikzpicture}[every node/.style={font=\small}]
+ \draw [line width=1pt] (0,0) circle (1.5);
+ \filldraw [linecolor,fill=fillcolor,line width=1pt] (180:1.5) -- (60:1.5) node[black,midway,above]
+  {$a$} arc (60:-50:1.5) -- (180:1.5) node[black,midway,below] {$b$};
+ \draw [linecolor,dashed] (0,0) -- (60:1.5) node[black,midway,right] {$r$};
+ \draw [linecolor,dashed] (0,0) -- (-50:1.5);
+ \draw [linecolor,dashed] (0,0) -- (180:1.5);
+ \fill (0,0) circle (2pt);
+ \draw [line width=1pt] (170:1.5) arc (170:190:1.5);
+\end{tikzpicture}}
+So far we have dealt with the area cut off by a central angle. How would you find the area of a
+region cut off by an inscribed angle, such as the shaded region in Figure \ref{fig:insector}? In
+this picture, the center of the circle is inside the inscribed angle, and the lengths $a$ and $b$
+of the two
+chords are given, as is the radius $r$ of the circle. Drawing line segments from the center of the
+circle to the endpoints of the chords indicates how to solve this problem: add up the areas of the
+two triangles and the sector formed by the central angle. The areas and angles of the two triangles
+can be determined (since all three sides are known) using methods from Chapter 2. Also, recall
+(Theorem \ref{thm:centralangle} in Section 2.5) that a central angle has twice the measure of any
+inscribed angle which intercepts the same arc. In the exercises you will be asked to solve problems
+like this (including the cases where the center of the circle is outside or on the inscribed angle).
+
+\piccaption[]{\label{fig:segment}}\parpic[r]{\begin{tikzpicture}[every node/.style={font=\small}]
+ \draw [line width=1pt] (0,0) circle (1.5);
+ \draw [line width=1pt] (0,0) -- (70:1.5);
+ \draw [line width=1pt] (0,0) -- (5:1.5);
+ \filldraw [linecolor,fill=fillcolor,line width=1pt] (70:1.5) arc (70:5:1.5) -- (70:1.5);
+ \draw [line width=1pt] (0,0) -- (70:1.5) node[black,midway,above left] {$r$} arc (70:365:1.5)
+  -- (0,0) node[black,midway,below right] {$r$};
+ \fill (0,0) circle (2pt);
+ \node at (43:0.45) {$\theta$};
+ \node [below left] at (0,0) {$O$};
+ \node [above] at (70:1.5) {$A$};
+ \node [right] at (5:1.5) {$B$};
+ \draw [dashed] (5:0.7) arc (5:70:0.7);
+\end{tikzpicture}}
+Another type of region we can consider is a \textbf{segment}\index{segment}\index{circle!segment} of
+a circle, which is the region between a chord and the arc it cuts off. In Figure \ref{fig:segment}
+the segment formed by the chord $\overline{AB}$ is the shaded region between the arc
+$\wideparen{AB}$ and the triangle $\triangle\,OAB$. By formula (\ref{eqn:areacase1a}) in Section
+2.4 for the area of a triangle given two sides and their included angle, we know that
+\begin{displaymath}
+ \text{area of } \triangle\,OAB ~=~ \tfrac{1}{2}\,(r)\,(r)\,\sin\;\theta ~=~
+  \tfrac{1}{2}\,r^2 \,\sin\;\theta ~.
+\end{displaymath}
+\picskip{1}
+Thus, since the area $K$ of the segment is the area of the sector $AOB$ minus the area of the
+triangle $\triangle\,OAB$, we have
+\begin{equation}
+ \text{area $K$ of segment } AB ~=~ \tfrac{1}{2}\,r^2 \;\theta ~-~ \tfrac{1}{2}\,r^2 \,\sin\;\theta
+  ~=~ \boxed{\tfrac{1}{2}\,r^2 \,(\theta - \sin\;\theta)} ~.\label{eqn:segment}
+\end{equation}
+Note that as a consequence of formula (\ref{eqn:segment}) we must have $\;\theta > \sin\;\theta$
+for $0 < \theta \le \pi$ (measured in radians), since the area of a segment is positive for those
+angles.
+
+\begin{exmp}
+\piccaption[]{\label{fig:exmpseg}}\parpic[r]{\begin{tikzpicture}[every node/.style={font=\small}]
+ \draw [line width=1pt] (0,0) circle (1.5);
+ \draw [line width=1pt] (0,0) -- (102.18:1.5);
+ \draw [line width=1pt] (0,0) -- (5:1.5);
+ \filldraw [linecolor,fill=fillcolor,line width=1pt] (102.18:1.5) arc (102.18:5:1.5) --
+  (102.18:1.5) node[black,pos=0.51,left] {$3$};
+ \draw [line width=1pt] (0,0) -- (102.18:1.5) node[black,midway,left] {$2$} arc
+  (102.18:365:1.5) -- (0,0) node[black,midway,below right] {$2$};
+ \fill (0,0) circle (2pt);
+ \node at (54:0.3) {$\theta$};
+ \draw [dashed] (5:0.55) arc (5:102.18:0.55);
+\end{tikzpicture}}
+\noindent Find the area of the segment formed by a chord of length $3$ in a circle of radius $2$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Figure \ref{fig:exmpseg} shows the segment formed by a chord
+ of length $3$ in a circle of radius $r=2$. We can use the Law of Cosines to find
+ the subtended central angle $\theta$:
+ \begin{displaymath}
+  \cos\;\theta ~=~ \frac{2^2 + 2^2 - 3^2}{2\,(2)\,(2)} ~=~ -0.125 \quad\Rightarrow\quad
+   \theta ~=~ 1.696~\text{rad}
+ \end{displaymath}
+ Thus, by formula (\ref{eqn:segment}) the area $K$ of the segment is:
+ \begin{displaymath}
+  K ~=~ \tfrac{1}{2}\,r^2 \,(\theta - \sin\;\theta) ~=~ \tfrac{1}{2}\,(2)^2 \,
+  (1.696 - \sin\;1.696) ~=~ \boxed{1.408}
+ \end{displaymath}
+\end{exmp}
+\divider
+\newpage
+\begin{exmp}
+ The centers of two circles are $7$ cm apart, with one circle having a radius of $5$ cm and the
+ other a radius of $3$ cm. Find the area $K$ of their intersection.\vspace{1mm}
+ \par\noindent\textbf{Solution:} In Figure \ref{fig:circintersect}(a), we see that the intersection
+ of the two circles is the union of the segments formed by the chord $\overline{CD}$ in each circle.
+ Thus, once we determine the angles $\angle\,CAD$ and $\angle\,CBD$ we can calculate the area of
+ each segment and add those areas together to get $K$.\vspace{-1mm}
+
+\begin{figure}[h]
+ \centering
+ \subfloat[][ $\angle\,BAC = \frac{1}{2}\,\angle\,CAD$, $\angle\,ABC = \frac{1}{2}\,\angle\,CBD$]{
+  \begin{tikzpicture}[every node/.style={font=\small}]
+   \begin{scope}
+    \draw [clip] (0,0) circle (2.5);
+    \fill [fillcolor] (3.5,0) circle (2);
+   \end{scope}
+   \draw [line width=1pt,name path=c5] (0,0) circle (2.5);
+   \draw [line width=1pt,name path=c4] (3.5,0) circle (2);
+   \node [name intersections={of=c5 and c4},above] at (intersection-1) {$C$};
+   \node [below] at (intersection-2) {$D$};
+   \draw [dashed] (0,0) --  (intersection-1) node[above,midway] {$5$} -- (3.5,0)
+    node[above,midway] {$4$} -- (intersection-2) -- (0,0);
+   \draw [dashed] (intersection-1) -- (intersection-2);
+   \draw [dashed] (0,0) -- (3.5,0);
+   \fill (0,0) circle (2pt);
+   \node [left] at (0,0) {$A$};
+   \node [right] at (3.5,0) {$B$};
+   \node [below] at (1.2,0) {$7$};
+   \fill (3.5,0) circle (2pt);
+  \end{tikzpicture}}
+ \quad
+ \subfloat[][ Triangle $\triangle\,ABC$]{
+  \begin{tikzpicture}[scale=0.6,every node/.style={font=\small}]
+   \draw [line width=1pt] (0,0) -- ++(34.05:5) node[midway,above left] {$5$} -- (7,0)
+    node[pos=0.0,above] {$C$} node[midway,above right] {$4$} -- cycle;
+   \node [below] at (3.5,0) {$7$};
+   \node [left] at (0,0) {$A$};
+   \node [right] at (7,0) {$B$};
+   \node at (1,0.3) {$\alpha$};
+   \node at (6.0,0.3) {$\beta$};
+  \end{tikzpicture}}\vspace{-2mm}
+ \caption[]{}
+ \label{fig:circintersect}
+\end{figure}\vspace{-1mm}
+
+By symmetry, we see that $\angle\,BAC = \frac{1}{2}\,\angle\,CAD$ and
+$\angle\,ABC = \frac{1}{2}\,\angle\,CBD$. So let $\alpha = \angle\,BAC$ and $\beta = \angle\,ABC$,
+as in Figure \ref{fig:circintersect}(b). By the Law of Cosines, we have
+\begin{alignat*}{7}
+ \cos\;\alpha ~&=~ \frac{7^2 + 5^2 - 4^2}{2\,(7)\,(5)} ~&=~ 0.8286 \quad&\Rightarrow\quad
+ \alpha ~&=~ 0.594~\text{rad} \quad&\Rightarrow\quad \angle\,CAD ~&=~2\,(0.594) = 1.188~\text{rad}\\
+ \cos\;\beta ~&=~ \frac{7^2 + 4^2 - 5^2}{2\,(7)\,(4)} ~&=~ 0.7143 \quad&\Rightarrow\quad
+ \beta ~&=~ 0.775~\text{rad} \quad&\Rightarrow\quad \angle\,CBD ~&=~ 2\,(0.775) = 1.550~\text{rad}
+\end{alignat*}
+Thus, the area $K$ is
+\begin{align*}
+ K ~&=~ (\text{Area of segment $CD$ in circle at $A$}) ~+~
+  (\text{Area of segment $CD$ in circle at $B$})\\
+ &=~ \tfrac{1}{2}\,(5)^2 \,(1.188 - \sin\;1.188) ~+~ \tfrac{1}{2}\,(4)^2 \,(1.550 - \sin\;1.550)\\
+ &=~ \boxed{7.656~\text{cm}^2} ~.
+\end{align*}
+\end{exmp}\vspace{-4mm}
+\divider
+\vspace{2mm}
+
+\startexercises\label{sec4dot3}
+\vspace{4mm}
+{\small
+\par\noindent For Exercises 1-3, find the area of the sector for the given angle $\theta$ and
+radius $r$.
+\begin{enumerate}[\bfseries 1.]
+\begin{multicols}{3}
+ \item $\theta = 2.1$ rad, $r = 1.2$ cm
+ \item $\theta = \frac{3\pi}{7}$ rad, $r = 3.5$ ft
+ \item $\theta = 78\Degrees$, $r = 6$ m
+\end{multicols}
+ \item The centers of two belt pulleys, with radii of $3$ cm and $6$ cm, respectively, are $13$ cm
+  apart. Find the total area $K$ enclosed by the belt.
+ \item In Exercise 4 suppose that both belt pulleys have the same radius of $6$ cm.
+  Find the total area $K$ enclosed by the belt.
+ \item Find the area enclosed by the figure eight in Exercise \ref{exer:figure8len} from
+  Section 4.2.
+\suspend{enumerate}
+%%\newpage
+\par\noindent For Exercises \ref{exer:secstart}-\ref{exer:secend}, find the area of the sector for
+the given radius $r$ and arc length $s$.
+\resume{enumerate}[{[\bfseries 1.]}]
+\begin{multicols}{3}
+ \item\label{exer:secstart} $r = 5$ cm, $s = 2$ cm
+ \item $r = a$, $s = a$
+ \item\label{exer:secend} $r = 1$ cm, $s = \pi$ cm
+\end{multicols}
+\suspend{enumerate}
+\par\noindent For Exercises \ref{exer:segstart}-\ref{exer:segend}, find the area of the segment
+formed by a chord of length $a$ in a circle of radius $r$.
+\resume{enumerate}[{[\bfseries 1.]}]
+\begin{multicols}{3}
+ \item\label{exer:segstart} $a = 4$ cm, $r = 4$ cm
+ \item $a = 1$ cm, $r = 5$ cm
+ \item\label{exer:segend} $a = 2$ cm, $r = 5$ cm
+\end{multicols}
+ \item\label{exer:insareain} Find the area of the shaded region in Figure \ref{fig:exerinsareain}.
+\begin{figure}[h]
+\begin{minipage}[b]{5cm}
+ \begin{center}
+  \begin{tikzpicture}[every node/.style={font=\small}]
+   \draw [line width=1pt] (0,0) circle (1.5);
+   \filldraw [linecolor,fill=fillcolor,line width=1pt] (180:1.5) -- (80:1.5)
+    node[black,midway,above] {$4$} arc (80:-65:1.5) -- (180:1.5) node[black,midway,below] {$5$};
+   \draw [linecolor,dashed] (0,0) -- (80:1.5) node[black,midway,right] {$3$};
+   \fill (0,0) circle (2pt);
+   \draw [line width=1pt] (170:1.5) arc (170:190:1.5);
+  \end{tikzpicture}\vspace{-5mm}
+ \end{center}
+ \caption[]{\enskip Exercise \ref{exer:insareain}}
+ \label{fig:exerinsareain}
+\end{minipage}
+\begin{minipage}[b]{5cm}
+ \begin{center}
+  \begin{tikzpicture}[every node/.style={font=\small}]
+   \draw [line width=1pt] (0,0) circle (1.5);
+   \filldraw [linecolor,fill=fillcolor,line width=1pt] (150:1.5) -- (70:1.5)
+    node[black,pos=0.85,below] {$7$} arc (70:20:1.5) -- (150:1.5) node[black,pos=0.3,below] {$9$};
+   \draw [linecolor,dashed] (0,0) -- (150:1.5) node[black,midway,below] {$5$};
+   \fill (0,0) circle (2pt);
+   \draw [line width=1pt] (140:1.5) arc (140:160:1.5);
+  \end{tikzpicture}\vspace{-5mm}
+ \end{center}
+ \caption[]{\enskip Exercise \ref{exer:insareaout}}
+ \label{fig:exerinsareaout}
+\end{minipage}
+\begin{minipage}[b]{5cm}
+ \begin{center}
+  \begin{tikzpicture}[every node/.style={font=\small}]
+   \draw [line width=1pt] (0,0) circle (1.5);
+   \filldraw [linecolor,fill=fillcolor,line width=1pt] (180:1.5) -- (65:1.5)
+    node[black,midway,above] {$8$} arc (65:0:1.5) -- (180:1.5) node[black,pos=0.25,below] {$6$}
+	node[black,pos=0.75,below] {$6$};
+   \fill (0,0) circle (2pt);
+   \draw [line width=1pt] (170:1.5) arc (170:190:1.5);
+  \end{tikzpicture}\vspace{-5mm}
+ \end{center}
+ \caption[]{\enskip Exercise \ref{exer:insareaon}}
+ \label{fig:exerinsareaon}
+\end{minipage}
+\end{figure}
+ \item\label{exer:insareaout} Find the area of the shaded region in Figure \ref{fig:exerinsareaout}.
+ (\emph{Hint: Draw two central angles.})
+ \item\label{exer:insareaon} Find the area of the shaded region in Figure \ref{fig:exerinsareaon}.
+ \item The centers of two circles are $4$ cm apart, with one circle having a radius of $3$ cm and
+  the other a radius of $2$ cm. Find the area of their intersection.
+ \item\label{exer:circ421} Three circles with radii of $4$ m, $2$ m, and $1$ m are externally
+  tangent to each other. Find the area of the curved region between the circles, as in Figure
+  \ref{fig:exercirc421}. (\emph{Hint: Connect the centers of the circles.})
+\begin{figure}[h]
+\begin{minipage}[b]{7.5cm}
+ \begin{center}
+  \begin{tikzpicture}[every node/.style={font=\small}]
+   \fill [fillcolor] (0,0) -- (29.93:2.5) -- (3,0) -- (0,0);
+   \filldraw [fill=white,line width=1pt] (0,0) circle (2);
+   \filldraw [fill=white,line width=1pt] (29.93:2.5) circle (0.5);
+   \filldraw [fill=white,line width=1pt] (3,0) circle (1);
+   \fill (0,0) circle (1.5pt);
+   \fill (29.93:2.5) circle (1.5pt);
+   \fill (3,0) circle (1.5pt);
+   \draw (0,0) -- (-2,0) node[above,midway] {$4$};
+   \draw (3,0) -- (4,0) node[above,midway] {$2$};
+   \draw (29.93:2.5) -- ++(0.5,0) node[above,pos=0.3] {$1$};
+  \end{tikzpicture}\vspace{-5mm}
+ \end{center}
+ \caption[]{\quad Exercise \ref{exer:circ421}}
+ \label{fig:exercirc421}
+\end{minipage}
+\begin{minipage}[b]{7.5cm}
+ \begin{center}
+  \begin{tikzpicture}[every node/.style={font=\small}]
+   \draw [line width=1pt] (0,0) circle (1);
+   \draw [line width=1pt] (2,0) circle (1);
+   \draw [line width=1pt] (60:2) circle (1);
+   \fill (0,0) circle (1.5pt);
+   \fill (60:2) circle (1.5pt);
+   \fill (2,0) circle (1.5pt);
+   \draw (0,0) -- (-1,0) node[above,midway] {$r$};
+   \draw (2,0) -- (3,0) node[above,midway] {$r$};
+   \draw (60:2) -- ++(1,0) node[above,midway] {$r$};
+   \draw [linecolor,line width=1.5pt] (270:1) arc (270:150:1) -- ([shift={(60:2)}] 150:1) arc
+    (150:30:1) -- ([shift={(2,0)}] 30:1) arc (30:-90:1) -- cycle;
+  \end{tikzpicture}\vspace{-5mm}
+ \end{center}
+ \caption[]{\quad Exercise \ref{exer:3circloop}}
+ \label{fig:exer3circloop}
+\end{minipage}
+\end{figure}
+ \item\label{exer:3circloop} Show that the total area enclosed by the loop around the three circles
+  of radius $r$ in Figure \ref{fig:exer3circloop} is $\;(\pi + 6 + \sqrt{3})\,r^2$.
+ \item For a fixed central angle $\theta$, how much does the area of its sector increase when the
+  radius of the circle is doubled? How much does the length of its intercepted arc increase?
+\end{enumerate}}
+\newpage
+%Begin Section 4.4
+\section{Circular Motion: Linear and Angular Speed}
+\piccaption[]{\label{fig:circmotion}}\parpic[r]{\begin{tikzpicture}[every node/.style={font=\small}]
+ \draw [line width=1pt] (40:1.5) arc (40:340:1.5);
+ \node [right] at (10:1.5) {distance $s$};
+ \draw [dashed] (0,0) -- (-20:1.5) node[black,midway,below] {$r$};
+ \draw [dashed] (0,0) -- (40:1.5);
+ \draw [-latex,dashed] (-20:0.7) arc (-20:40:0.7);
+ \draw [linecolor,-latex,line width=1.5pt] (-20:1.5) arc (-20:39:1.5);
+ \fill (0,0) circle (2pt);
+ \fill (-20:1.5) circle (2pt);
+ \fill (40:1.5) circle (2pt);
+ \node at (10:0.5) {$\theta$};
+ \node [below right] at (-20:1.5) {time $t=0$};
+ \node [above right] at (40:1.5) {time $t>0$};
+\end{tikzpicture}}
+Radian measure and arc length can be applied to the study of \emph{circular
+motion}\index{circular motion}. In physics the \emph{average speed} of an object
+is defined as:\index{average speed}
+\begin{displaymath}
+ \text{average speed} ~=~ \frac{\text{distance traveled}}{\text{time elapsed}}
+\end{displaymath}
+So suppose that an object moves along a circle of radius $r$, traveling
+a distance $s$ over a period of time $t$, as in Figure \ref{fig:circmotion}. Then it makes sense to
+define the (average) \textbf{linear speed}\index{linear speed} $\nu$ of the object as:
+
+\begin{center}\statecomment{\begin{equation}
+ \nu ~=~ \frac{s}{t}\label{eqn:linspeed}
+\end{equation}}\end{center}
+
+Let $\theta$ be the angle swept out by the object in that period of time. Then we define the
+(average) \textbf{angular speed}\index{angular speed} $\omega$ of the object as:
+
+\begin{center}\statecomment{\begin{equation}
+ \omega ~=~ \frac{\theta}{t}\label{eqn:angspeed}
+\end{equation}}\end{center}
+
+Angular speed gives the rate at which the central angle swept out by the object changes as the
+object moves around the circle, and it is thus measured in radians per unit time. Linear speed is
+measured in distance units per unit time (e.g. feet per second). The word linear is used because
+straightening out the arc traveled by the object along the circle results in a line of the same
+length, so that the usual definition of speed as distance over time can be used. We will usually
+omit the word average when discussing linear and angular speed here.\footnote{Many trigonometry
+texts assume \emph{uniform} motion, i.e. constant speeds. We do not make that assumption. Also, many
+texts use the word \emph{velocity} instead of speed. Technically they are not the same; velocity has
+a direction and a magnitude, whereas speed is just a magnitude.}
+
+Since the length $s$ of the arc cut off by a central angle $\theta$ in a circle of radius $r$ is
+$s=r\,\theta$, we see that
+\begin{displaymath}
+ \nu ~=~ \frac{s}{t} ~=~ \frac{r\,\theta}{t} ~=~ \frac{\theta}{t} \;\cdot\; r ~,
+\end{displaymath}
+so that we get the following relation between linear and angular speed:
+
+\begin{center}\statecomment{\begin{equation}
+ \nu ~=~ \omega\,r\label{eqn:linang}
+\end{equation}}\end{center}
+\newpage
+\begin{exmp}\label{exmp:linang}
+ An object sweeps out a central angle of $\frac{\pi}{3}$ radians in $0.5$ seconds as it moves along
+ a circle of radius $3$ m. Find its linear and angular speed over that time period.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Here we have $t=0.5$ sec, $r=3$ m, and $\theta = \frac{\pi}{3}$ rad.
+ So the angular speed $\omega$ is
+ \begin{displaymath}
+  \omega ~=~ \frac{\theta}{t} ~=~ \frac{\dfrac{\pi}{3}~\text{rad}}{0.5~\text{sec}}
+   \quad\Rightarrow\quad \boxed{\omega ~=~ \frac{2\pi}{3}~\text{rad/sec}} ~,
+ \end{displaymath}
+ and thus the linear speed $\nu$ is
+ \begin{displaymath}
+  \nu ~=~ \omega\,r ~=~ \left( \frac{2\pi}{3}~\text{rad/sec} \right) \,(3~\text{m})
+   \quad\Rightarrow\quad \boxed{\nu ~=~ 2\pi~\text{m/sec}} ~.
+ \end{displaymath}
+ Note that the units for $\omega$ are rad/sec and the units of $\nu$ are m/sec. Recall that radians
+ are actually unitless, which is why in the formula $\nu=\omega\,r$ the radian units disappear.
+\end{exmp}
+\begin{exmp}
+ An object travels a distance of $35$ ft in $2.7$ seconds as it moves along
+ a circle of radius $2$ ft. Find its linear and angular speed over that time period.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Here we have $t=2.7$ sec, $r=2$ ft, and $s=35$ ft. So the linear
+ speed $\nu$ is
+ \begin{displaymath}
+  \nu ~=~ \frac{s}{t} ~=~ \frac{35~\text{feet}}{2.7~\text{sec}} \quad\Rightarrow\quad
+   \boxed{\nu ~=~ 12.96~\text{ft/sec}} ~,
+ \end{displaymath}
+ and thus the angular speed $\omega$ is given by
+ \begin{displaymath}
+  \nu ~=~ \omega\,r \quad\Rightarrow\quad 12.96~\text{ft/sec} ~=~ \omega\,(2~\text{ft})
+   \quad\Rightarrow\quad \boxed{\omega ~=~ 6.48~\text{rad/sec}} ~.
+ \end{displaymath} 
+\end{exmp}
+\begin{exmp}
+ An object moves at a constant linear speed of $10$ m/sec around a circle of radius $4$ m. How large
+ of a central angle does it sweep out in $3.1$ seconds?\vspace{1mm}
+ \par\noindent\textbf{Solution:} Here we have $t=3.1$ sec, $\nu=10$ m/sec, and $r=4$ m. Thus, the
+ angle $\theta$ is given by
+ \begin{displaymath}
+  s ~=~ r\,\theta \quad\Rightarrow\quad \theta ~=~ \frac{s}{r} ~=~ \frac{\nu\,t}{r} ~=~
+   \frac{(10~\text{m/sec})\,(3.1~\text{sec})}{4~\text{m}} ~=~ \boxed{7.75~\text{rad}} ~.
+ \end{displaymath}
+\end{exmp}
+\divider
+\vspace{1mm}
+
+In many physical applications angular speed is given in \emph{revolutions per minute}, abbreviated
+as \emph{rpm}.\index{rpm} To convert from rpm to, say, radians per second, notice that since there
+are $2\pi$ radians in one revolution and $60$ seconds in one minute, we can convert $N$ rpm to
+radians per second by ``canceling the units'' as follows:
+\begin{displaymath}
+ N~\text{rpm} ~=~ N~\frac{\cancel{\text{rev}}}{\cancel{\text{min}}} \;\cdot\;
+  \frac{2\pi~\text{rad}}{1~\cancel{\text{rev}}}
+  \;\cdot\; \frac{1~\cancel{\text{min}}}{60~\text{sec}} ~=~ \frac{N \cdot 2\pi}{60}~\text{rad/sec}
+\end{displaymath}
+This works because all we did was multiply by $1$ twice. Converting to other units for angular
+speed works in a similar way. Going in the opposite direction, say, from rad/sec to rpm, gives:
+\begin{displaymath}
+ N~\text{rad/sec} ~=~ \frac{N \cdot 60}{2\pi}~\text{rpm}
+\end{displaymath}
+\newpage
+\begin{exmp}\label{exmp:gears}
+ A gear with an outer radius of $r_1 = 5$ cm moves in the clockwise direction, causing an
+ interlocking gear with an outer radius of $r_2 = 4$ cm to move in the counterclockwise direction
+ at an angular speed of $\omega_2 = 25$ rpm. What is the angular speed $\omega_1$ of the larger
+ gear?\index{gears}
+
+\piccaption[]{\label{fig:gears}}\parpic[r]{\begin{tikzpicture}[every node/.style={font=\small}]
+ \foreach \i in {1,...,10}
+  \draw [fill=black,rounded corners=0.25ex,rotate around={18*\i:(0,0)}]
+   (-10ex,-0.6ex) -- (10ex,-0.6ex) -- (10ex,0.6ex) -- (-10ex,0.6ex) -- cycle;
+ \draw [fill=black] (0,0) circle (8ex);
+ \draw [fill=white] (0,0) circle (6ex);
+ \foreach \j in {1,...,4}
+  \draw [fill=black,rotate around={90*\j:(0,0)}] (-6ex,0.8ex) .. controls (-4ex,0.2ex) ..
+  (0ex,0.8ex) -- (0ex,-0.8ex) .. controls (-4ex,-0.2ex) .. (-6ex,-0.8ex) -- (-6ex,0.8ex);
+ \draw [fill=black] (0,0) circle (2ex);
+ \draw [fill=white] (0,0) circle (0.8ex);
+ \draw [-latex] (135:12ex) arc (135:70:12ex);
+ \node [above] at (90:12.5ex) {$r_1 = 5$ cm};
+ \begin{scope}[scale=0.8,shift={(3.32,-0.9)}]
+  \foreach \i in {1,...,8}
+   \draw [fill=black,rounded corners=0.25ex,rotate around={22.5*\i:(0,0)}]
+   (-10ex,-0.6ex) -- (10ex,-0.6ex) -- (10ex,0.6ex) -- (-10ex,0.6ex) -- cycle;
+  \draw [fill=black] (0,0) circle (8ex);
+  \draw [fill=white] (0,0) circle (6ex);
+  \foreach \j in {1,...,4}
+   \draw [fill=black,rotate around={90*\j:(0,0)}] (-6ex,0.8ex) .. controls (-4ex,0.2ex) ..
+    (0ex,0.8ex) -- (0ex,-0.8ex) .. controls (-4ex,-0.2ex) .. (-6ex,-0.8ex) -- (-6ex,0.8ex);
+  \draw [fill=black] (0,0) circle (2ex);
+  \draw [fill=white] (0,0) circle (0.8ex);
+  \draw [-latex] (45:12ex) arc (45:110:12ex);
+  \node [above] at (90:12.5ex) {$r_2 = 4$ cm};
+  \node [above] at (90:15ex) {$\omega_2 = 25$ rpm};
+ \end{scope}
+\end{tikzpicture}}
+ \par\noindent\textbf{Solution:} Imagine a particle on the outer radius of each gear. After the gears
+ have rotated for a period of time $t>0$, the circular displacement of each particle will be the
+ same. In other words, $s_1 = s_2$, where $s_1$ and $s_2$ are the distances traveled by the particles
+ on the gears with radii $r_1$ and $r_2$, respectively.
+
+ But $s_1 = \nu_1 \,t$ and $s_2 = \nu_2 \,t$, where $\nu_1$ and $\nu_2$ are the linear speeds of the
+ gears with radii $r_1$ and $r_2$, respectively. Thus,
+ \begin{displaymath}
+  \nu_1 \,t = \nu_2 \,t \quad\Rightarrow\quad \nu_1 = \nu_2 ~, 
+ \end{displaymath}
+ so by formula (\ref{eqn:linang}) we get the fundamental relation between the two gears:
+ \begin{equation}
+  \boxed{\omega_1 \,r_1 ~=~ \omega_2 \,r_2}\label{eqn:gears}
+ \end{equation}
+ Note that this holds for any two gears. So in our case, we have
+ \begin{displaymath}
+  \omega_1 \,(5) ~=~ (25) \,(4) \quad\Rightarrow\quad \boxed{\omega_1 ~=~ 20~\text{rpm}} ~.
+ \end{displaymath}
+\end{exmp}
+\divider
+\vspace{2mm}
+
+\startexercises\label{sec4dot4}
+\vspace{5mm}
+{\small
+\par\noindent For Exercises 1-6, assume that a particle moves along a circle of radius $r$ for a
+period of time $t$. Given either the arc length $s$ or the central angle $\theta$ swept out by the
+particle, find the linear and angular speed of the particle.
+\begin{enumerate}[\bfseries 1.]
+\begin{multicols}{3}
+ \item $r=4$ m, $t=2$ sec, $\theta=3$ rad
+ \item $r=8$ m, $t=2$ sec, $\theta=3$ rad
+ \item $r=7$ m, $t=3.2$ sec, $\theta=172\Degrees$
+\end{multicols}
+\begin{multicols}{3}
+ \item $r=1$ m, $t=1.6$ sec, $s=3$ m
+ \item $r=2$ m, $t=1.6$ sec, $s=6$ m
+ \item $r=1.5$ ft, $t=0.3$ sec, $s=4$ in
+\end{multicols}
+ \item An object moves at a constant linear speed of $6$ m/sec around a circle of radius $3.2$ m.
+  How large of a central angle does it sweep out in $1.8$ seconds?
+ \item Two interlocking gears have outer radii of $6$ cm and $9$ cm, respectively. If the smaller
+  gear rotates at $40$ rpm, how fast does the larger gear rotate?
+ \item Three interlocking gears have outer radii of $2$ cm, $3$ cm, and $4$ cm, respectively. If the
+  largest gear rotates at $16$ rpm, how fast do the other gears rotate?
+ \item In Example \ref{exmp:gears}, does equation (\ref{eqn:gears}) still hold if the radii
+  $r_1$ and $r_2$ are replaced by the number of teeth  $N_1$ and $N_2$, respectively, of the two
+  gears as shown in Figure \ref{fig:gears}?
+ \item A $78$ rpm music record has a diameter of $10$ inches. What is the linear speed of a speck
+  of dust on the outer edge of the record in inches per second?
+ \item The \emph{centripetal acceleration}\index{centripetal acceleration} $\alpha$ of an object
+  moving along a circle of radius $r$ with a linear speed $\nu$ is defined as $\;\alpha =
+  \frac{\nu^2}{r}$. Show that $\;\alpha = \omega^2 \,r$, where $\omega$ is the angular speed.
+\end{enumerate}}

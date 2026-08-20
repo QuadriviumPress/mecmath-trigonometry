@@ -1,0 +1,2185 @@
+\chapter{Graphing and Inverse Functions}
+%Begin Section 5.1
+The trigonometric functions can be graphed just like any other function, as we will now show.
+In the graphs we will always use radians for the angle measure.\index{graphs}\index{trigonometric
+functions!graphs of}
+
+\section{Graphing the Trigonometric Functions}
+\piccaption[]{\label{fig:unitcircle}}\parpic[r]{\begin{tikzpicture}[every node/.style={font=\small}]
+ \draw[black!60,line width=0.3pt,-latex] (-2,0) -- (2,0) node[right] {$x$};
+ \draw[black!60,line width=0.3pt,-latex] (0,-1.8) -- (0,2) node[above] {$y$};
+ \draw [line width=1pt] (60:1.5) arc (60:360:1.5);
+ \node [right] at (35:1.5) {$s=r\,\theta=\theta$};
+ \draw [dashed] (0,0) -- (60:1.5) node[black,midway,above] {$1$};
+ \draw [-latex,dashed] (0:0.6) arc (0:60:0.6);
+ \draw [linecolor,-latex,line width=1.5pt] (0:1.5) arc (0:59:1.5);
+ \fill (0:1.5) circle (2pt);
+ \fill (60:1.5) circle (2pt);
+ \node at (35:0.4) {$\theta$};
+ \node [below right] at (0:1.5) {$1$};
+ \node [below left] at (0:0) {$0$};
+ \node [above right] at (60:1.5) {$(x,y)=(\cos\;\theta,\sin\;\theta)$};
+ \node [right] at (-2,1.8) {$x^2 + y^2 = 1$};
+\end{tikzpicture}}
+The first function we will graph is the sine function. We will describe a geometrical way to
+create the graph, using the \emph{unit circle}.\index{unit circle}\index{circle!unit} This is the
+circle of radius $1$ in the $xy$-plane consisting of all points $(x,y)$ which satisfy the equation
+$x^2 + y^2 = 1$.
+
+We see in Figure \ref{fig:unitcircle} that any point on the unit circle has coordinates
+$(x,y)=(\cos\;\theta,\sin\;\theta)$, where $\theta$ is the angle that the line segment from the
+origin to $(x,y)$ makes with the positive $x$-axis (by definition of sine and cosine).
+So as the point $(x,y)$ goes around the circle, its $y$-coordinate is $\sin\;\theta$.
+
+We thus get a correspondence between the $y$-coordinates of points on the unit circle and the
+values $f(\theta)=\sin\;\theta$, as shown by the horizontal lines from the unit circle to the graph
+of $f(\theta)=\sin\;\theta$ in Figure \ref{fig:sinecircle} for the angles $\theta = 0$,
+$\tfrac{\pi}{6}$, $\tfrac{\pi}{3}$, $\tfrac{\pi}{2}$.
+
+\begin{figure}[h]
+ \begin{center}
+  \begin{tikzpicture}[scale=1.2,every node/.style={font=\small}]
+   \begin{scope}[shift={(3,0)},color=linecolor,line width=1.5pt,x=12cm/360]
+	\draw[black!60,line width=0.3pt,-latex] (-5,0) -- (200,0) node[right] {$\theta$};
+	\draw[black!60,line width=0.3pt,-latex] (0,-0.5) -- (0,2.4) node[above] {$f(\theta)$};
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{0,5,...,180}{\pgfpointxy{\x}{2*sin(\x)}}
+	\pgfusepath{stroke}
+	\node[black,below left] at (0,0) {$0$};
+	\foreach \pos in {30,60,90,120,150,180}
+	 \draw[black!60,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {2}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt) node[black,left]
+	  {$1$};
+	\node[black,below] at (30,-0.1) {$\tfrac{\pi}{6}$};
+	\node[black,below] at (60,-0.1) {$\tfrac{\pi}{3}$};
+	\node[black,below] at (90,-0.1) {$\tfrac{\pi}{2}$};
+	\node[black,below] at (120,-0.1) {$\tfrac{2\pi}{3}$};
+	\node[black,below] at (150,-0.1) {$\tfrac{5\pi}{6}$};
+	\node[black,below] at (180,-0.1) {$\pi$};
+	\node[black,above] at (180,1) {$f(\theta)=\sin\;\theta$};
+   \end{scope}
+   \draw[black!60,line width=0.3pt] (-2.2,0) -- (0,0);
+   \draw[black,-latex] (0:0.8) arc (0:30:0.8);
+   \draw[red,line width=0.3pt] (0,0) -- ++(30:2) node[black,pos=0.7,fill=white] {$\tfrac{\pi}{6}$}
+	-- ++(2.268,0) -- ++(0,-1);
+   \draw[green!60!black,line width=0.3pt] (0,0) -- ++(60:2) node[black,pos=0.7,fill=white]
+	{$\tfrac{\pi}{3}$} -- ++(4,0) -- ++(0,-1.732);
+   \draw[yellow!60!black,line width=0.3pt] (0,0) -- ++(90:2) node[black,pos=0.7,fill=white]
+	{$\tfrac{\pi}{2}$} -- ++(6,0) -- ++(0,-2);
+   \draw[cyan!80!black,line width=0.3pt] (0,0) -- (3,0) node[black,pos=0.46,fill=white] {$0$};
+   \draw [black,line width=1pt] (0:2) arc (0:180:2);
+   \node [black,below] at (2,0) {$1$};
+   \node [black,above left] at (0,2) {$1$};
+   \node [black,below] at (0,-0.2) {$x^2 + y^2 = 1$};
+   \node [black] at (15:0.6) {$\theta$};
+   \fill (0,0) circle (2pt);
+  \end{tikzpicture}\vspace{-4mm}
+ \end{center}
+ \caption[]{\quad Graph of sine function based on $y$-coordinate of points on unit circle}
+ \label{fig:sinecircle}
+\end{figure}
+
+We can extend the above picture to include angles from $0$ to $2\pi$ radians, as in Figure
+\ref{fig:sinefullcircle}. This illustrates what is sometimes called the \emph{unit circle
+definition of the sine function}.\index{sine!unit circle definition of}
+\newpage
+\begin{figure}[h]
+ \begin{center}
+  \begin{tikzpicture}[scale=1.2,every node/.style={font=\small}]
+   \begin{scope}[shift={(3,0)},color=linecolor,line width=1.5pt,x=6cm/360]
+	\draw[black!60,line width=0.3pt,-latex] (-5,0) -- (380,0) node[right] {$\theta$};
+	\draw[black!60,line width=0.3pt,-latex] (0,-1.2) -- (0,1.3) node[above] {$f(\theta)$};
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{0,5,...,360}{\pgfpointxy{\x}{sin(\x)}}
+	\pgfusepath{stroke}
+	\node[black,below left] at (0,0) {$0$};
+	\foreach \pos in {30,60,90,120,150,180,225,270,315,360}
+	 \draw[black!60,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {-1,1}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt) node[black,left]
+	  {$\pos$};
+	\node[black,below] at (30,-0.1) {$\tfrac{\pi}{6}$};
+	\node[black,below] at (60,-0.1) {$\tfrac{\pi}{3}$};
+	\node[black,below] at (90,-0.1) {$\tfrac{\pi}{2}$};
+	\node[black,below] at (120,-0.1) {$\tfrac{2\pi}{3}$};
+	\node[black,below] at (150,-0.1) {$\tfrac{5\pi}{6}$};
+	\node[black,below] at (180,-0.1) {$\pi$};
+	\node[black,below] at (225,-0.1) {$\tfrac{5\pi}{4}$};
+	\node[black,below] at (270,-0.1) {$\tfrac{3\pi}{2}$};
+	\node[black,below] at (315,-0.1) {$\tfrac{7\pi}{4}$};
+	\node[black,below] at (360,-0.1) {$2\pi$};
+	\node[black,above] at (180,1) {$f(\theta)=\sin\;\theta$};
+   \end{scope}
+   \draw[black!60,line width=0.3pt,-latex] (-1.5,0) -- (1.5,0) node[below right] {$x$};
+   \draw[black!60,line width=0.3pt,-latex] (0,-1) -- (0,1.3) node[above] {$y$};
+   \draw[black,-latex] (0:0.8) arc (0:30:0.8);
+   \draw[red,line width=0.3pt] (0,0) -- ++(30:1);
+   \draw[red,line width=0.3pt] (0,0) -- ++(150:1) -- ++(4.366,0) -- ++(0,-0.5);
+   \draw[red,line width=0.3pt] (3.5,0.5) -- (5.5,0.5) -- (5.5,0);
+   \draw[green!60!black,line width=0.3pt] (0,0) -- ++(60:1);
+   \draw[green!60!black,line width=0.3pt] (0,0) -- ++(120:1) -- ++(4.5,0) -- ++(0,-0.866);
+   \draw[green!60!black,line width=0.3pt] (4,0.866) -- (5,0.866) -- (5,0);
+   \draw[yellow!60!black,line width=0.3pt] (0,0) -- ++(90:1) -- ++(4.5,0) -- ++(0,-1);
+   \draw[cyan!80!black,line width=0.3pt] (0,0) -- (3,0);
+   \draw[blue,line width=0.3pt] (0,0) -- (225:1) -- ++(7.457,0) -- ++(0,0.707);
+   \draw[blue,line width=0.3pt] (0,0) -- (315:1) -- ++(7.543,0) -- ++(0,0.707);
+   \draw [black,line width=1pt] (0,0) circle (1);
+   \node [black,below right] at (1,0) {$1$};
+   \node [black,below] at (0,-1) {$x^2 + y^2 = 1$};
+   \node [black] at (15:0.6) {$\theta$};
+  \end{tikzpicture}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad Unit circle definition of the sine function}
+ \label{fig:sinefullcircle}
+\end{figure}
+
+Since the trigonometric functions repeat every $2\pi$ radians ($360\Degrees$), we get, for example,
+the following graph of the function $y=\sin\;x$ for $x$ in the interval $\ival{-2\pi}{2\pi}$:
+
+\begin{figure}[h]
+ \begin{center}
+  \begin{tikzpicture}[scale=1.1,every node/.style={font=\small}]
+   \begin{scope}[shift={(3,0)},color=linecolor,line width=1.5pt,x=6cm/360]
+    \draw[black!60,line width=0.3pt,dotted] (-360,-1) grid[xstep=45,ystep=1] (360,1);
+	\draw[black!60,line width=0.3pt,-latex] (-380,0) -- (380,0) node[right] {$x$};
+	\draw[black!60,line width=0.3pt,-latex] (0,-1.2) -- (0,1.5) node[above] {$y$};
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{-360,-355,...,360}{\pgfpointxy{\x}{sin(\x)}}
+	\pgfusepath{stroke}
+	\node[black,below right] at (0,0) {$0$};
+	\foreach \pos in {-360,-315,-270,-225,-180,-135,-90,-45,45,90,135,180,225,270,315,360}
+	 \draw[black!60,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {-1,1}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt) node[black,left]
+      {$\pos$};
+	\node[black,below] at (45,-0.1) {$\tfrac{\pi}{4}$};
+	\node[black,below] at (90,-0.1) {$\tfrac{\pi}{2}$};
+	\node[black,below] at (135,-0.1) {$\tfrac{3\pi}{4}$};
+	\node[black,below] at (180,-0.1) {$\pi$};
+	\node[black,below] at (225,-0.1) {$\tfrac{5\pi}{4}$};
+	\node[black,below] at (270,-0.1) {$\tfrac{3\pi}{2}$};
+	\node[black,below] at (315,-0.1) {$\tfrac{7\pi}{4}$};
+	\node[black,below] at (360,-0.1) {$2\pi$};
+	\node[black,below] at (-45,-0.1) {$-\tfrac{\pi}{4}$};
+	\node[black,below] at (-90,-0.1) {$-\tfrac{\pi}{2}$};
+	\node[black,below] at (-135,-0.1) {$-\tfrac{3\pi}{4}$};
+	\node[black,below] at (-180,-0.1) {$-\pi$};
+	\node[black,below] at (-225,-0.1) {$-\tfrac{5\pi}{4}$};
+	\node[black,below] at (-270,-0.1) {$-\tfrac{3\pi}{2}$};
+	\node[black,below] at (-315,-0.1) {$-\tfrac{7\pi}{4}$};
+	\node[black,below] at (-360,-0.1) {$-2\pi$};
+	\node[black,above] at (180,1) {$y=\sin\;x$};
+   \end{scope}
+  \end{tikzpicture}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad Graph of $y=\sin\;x$}
+ \label{fig:sinegraph}
+\end{figure}
+
+To graph the cosine function, we could again use the unit circle idea (using the $x$-coordinate of
+a point that moves around the circle), but there is an easier way. Recall from Section 1.5 that
+$\cos\;x = \sin\;(x+90\Degrees)$ for all $x$. So $\cos\;0\Degrees$ has the same value as
+$\sin\;90\Degrees$, $\cos\;90\Degrees$ has the same value as $\sin\;180\Degrees$,
+$\cos\;180\Degrees$ has the same value as $\sin\;270\Degrees$,
+and so on. In other words, the graph of the cosine function is just the
+graph of the sine function shifted to the \emph{left} by $90\Degrees = \pi/2$ radians,
+as in Figure \ref{fig:cosinegraph}:\index{sine!graph of}\index{cosine!graph of}
+
+\begin{figure}[h]
+ \begin{center}
+  \begin{tikzpicture}[scale=1.1,every node/.style={font=\small}]
+   \begin{scope}[shift={(3,0)},color=linecolor,line width=1.5pt,x=6cm/360]
+    \draw[black!60,line width=0.3pt,dotted] (-360,-1) grid[xstep=45,ystep=1] (360,1);
+	\draw[black!60,line width=0.3pt,-latex] (-380,0) -- (380,0) node[right] {$x$};
+	\draw[black!60,line width=0.3pt,-latex] (0,-1.2) -- (0,1.5) node[above] {$y$};
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{-360,-355,...,360}{\pgfpointxy{\x}{cos(\x)}}
+	\pgfusepath{stroke}
+	\node[black,below left] at (0,0) {$0$};
+	\foreach \pos in {-360,-315,-270,-225,-180,-135,-90,-45,45,90,135,180,225,270,315,360}
+	 \draw[black!60,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {-1,1}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt) node[black,left]
+      {$\pos$};
+	\node[black,below] at (45,-0.1) {$\tfrac{\pi}{4}$};
+	\node[black,below] at (90,-0.1) {$\tfrac{\pi}{2}$};
+	\node[black,below] at (135,-0.1) {$\tfrac{3\pi}{4}$};
+	\node[black,below] at (180,-0.1) {$\pi$};
+	\node[black,below] at (225,-0.1) {$\tfrac{5\pi}{4}$};
+	\node[black,below] at (270,-0.1) {$\tfrac{3\pi}{2}$};
+	\node[black,below] at (315,-0.1) {$\tfrac{7\pi}{4}$};
+	\node[black,below] at (360,-0.1) {$2\pi$};
+	\node[black,below] at (-45,-0.1) {$-\tfrac{\pi}{4}$};
+	\node[black,below] at (-90,-0.1) {$-\tfrac{\pi}{2}$};
+	\node[black,below] at (-135,-0.1) {$-\tfrac{3\pi}{4}$};
+	\node[black,below] at (-180,-0.1) {$-\pi$};
+	\node[black,below] at (-225,-0.1) {$-\tfrac{5\pi}{4}$};
+	\node[black,below] at (-270,-0.1) {$-\tfrac{3\pi}{2}$};
+	\node[black,below] at (-315,-0.1) {$-\tfrac{7\pi}{4}$};
+	\node[black,below] at (-360,-0.1) {$-2\pi$};
+	\node[black,above] at (180,1) {$y=\cos\;x$};
+   \end{scope}
+  \end{tikzpicture}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad Graph of $y=\cos\;x$}
+ \label{fig:cosinegraph}
+\end{figure}
+
+To graph the tangent function, use $\tan\;x = \frac{\sin\;x}{\cos\;x}$ to get the following graph:
+\newpage
+\begin{figure}[h]
+ \begin{center}
+  \begin{tikzpicture}[scale=1.1,every node/.style={font=\small}]
+   \begin{scope}[shift={(3,0)},color=linecolor,line width=1.5pt,x=6cm/360,y=4cm/10]
+    \draw[black!60,line width=0.3pt,dotted] (-360,-10) grid[xstep=45,ystep=2] (360,10);
+	\draw[black!60,line width=0.3pt,-latex] (-380,0) -- (380,0) node[right] {$x$};
+	\draw[black!60,line width=0.3pt,-latex] (0,-10) -- (0,10) node[above] {$y$};
+	\draw[linecolor,line width=0.5pt,dashed] (90,-10) -- (90,10);
+	\draw[linecolor,line width=0.5pt,dashed] (270,-10) -- (270,10);
+	\draw[linecolor,line width=0.5pt,dashed] (-90,-10) -- (-90,10);
+	\draw[linecolor,line width=0.5pt,dashed] (-270,-10) -- (-270,10);
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{-360,-356,...,-276}{\pgfpointxy{\x}{tan(\x)}}
+	\pgfplotfunction{\x}{-264,-260,...,-96}{\pgfpointxy{\x}{tan(\x)}}
+	\pgfplotfunction{\x}{-84,-80,...,84}{\pgfpointxy{\x}{tan(\x)}}
+	\pgfplotfunction{\x}{96,100,...,264}{\pgfpointxy{\x}{tan(\x)}}
+	\pgfplotfunction{\x}{276,280,...,360}{\pgfpointxy{\x}{tan(\x)}}
+	\pgfusepath{stroke}
+	\node[black,below right] at (0,0) {$0$};
+	\foreach \pos in {-360,-315,-270,-225,-180,-135,-90,-45,45,90,135,180,225,270,315,360}
+	 \draw[black!60,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {-8,-6,-4,-2,2,4,6,8}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt) node[black,left]
+      {$\pos$};
+	\node[black,below] at (45,-0.1) {$\tfrac{\pi}{4}$};
+	\node[black,below] at (90,-0.1) {$\tfrac{\pi}{2}$};
+	\node[black,below] at (135,-0.1) {$\tfrac{3\pi}{4}$};
+	\node[black,below] at (180,-0.1) {$\pi$};
+	\node[black,below] at (225,-0.1) {$\tfrac{5\pi}{4}$};
+	\node[black,below] at (270,-0.1) {$\tfrac{3\pi}{2}$};
+	\node[black,below] at (315,-0.1) {$\tfrac{7\pi}{4}$};
+	\node[black,below] at (360,-0.1) {$2\pi$};
+	\node[black,below] at (-45,-0.1) {$-\tfrac{\pi}{4}$};
+	\node[black,below] at (-90,-0.1) {$-\tfrac{\pi}{2}$};
+	\node[black,below] at (-135,-0.1) {$-\tfrac{3\pi}{4}$};
+	\node[black,below] at (-180,-0.1) {$-\pi$};
+	\node[black,below] at (-225,-0.1) {$-\tfrac{5\pi}{4}$};
+	\node[black,below] at (-270,-0.1) {$-\tfrac{3\pi}{2}$};
+	\node[black,below] at (-315,-0.1) {$-\tfrac{7\pi}{4}$};
+	\node[black,below] at (-360,-0.1) {$-2\pi$};
+	\node[black,above] at (180,1) {$y=\tan\;x$};
+   \end{scope}
+  \end{tikzpicture}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad Graph of $y=\tan\;x$}
+ \label{fig:tangentgraph}
+\end{figure}
+
+Recall that the tangent is positive for angles in QI and QIII, and is negative in QII and QIV, and
+that is indeed what the graph in Figure \ref{fig:tangentgraph} shows. We know that $\tan\;x$ is
+not defined when $\cos\;x = 0$, i.e. at odd multiples of $\frac{\pi}{2}$: $x=\pm\,\frac{\pi}{2}$,
+$\pm\,\frac{3\pi}{2}$, $\pm\,\frac{5\pi}{2}$, etc. We can figure out what happens \emph{near} those
+angles by looking at the sine and cosine functions. For example, for $x$ in QI near $\frac{\pi}{2}$,
+$\sin\;x$ and $\cos\;x$ are both positive, with $\sin\;x$ very close to $1$ and $\cos\;x$ very close
+to $0$, so the quotient $\tan\;x = \frac{\sin\;x}{\cos\;x}$ is a positive number that is very large.
+And the closer $x$ gets to $\frac{\pi}{2}$, the larger $\tan\;x$ gets. Thus, $x=\frac{\pi}{2}$ is a
+\emph{vertical asymptote}\index{vertical asymptote}\index{asymptote!vertical} of the graph of
+$y=\tan\;x$.\index{tangent!graph of}\index{asymptote}
+
+Likewise, for $x$ in QII very close to $\frac{\pi}{2}$, $\sin\;x$ is very close to $1$ and $\cos\;x$
+is negative and very close to $0$, so the quotient $\tan\;x = \frac{\sin\;x}{\cos\;x}$ is a negative
+number that is very large, and it gets larger in the negative direction the closer $x$ gets to
+$\frac{\pi}{2}$. The graph shows this. Similarly, we get vertical asymptotes at $x=-\frac{\pi}{2}$,
+$x=\frac{3\pi}{2}$, and $x=-\frac{3\pi}{2}$, as in Figure \ref{fig:tangentgraph}. Notice that
+the graph of the tangent function repeats every $\pi$ radians, i.e. two times faster than the
+graphs of sine and cosine repeat.
+
+The graphs of the remaining trigonometric functions can be determined by looking at the graphs of
+their reciprocal functions. For example, using $\csc\;x = \frac{1}{\sin\;x}$ we can just look at
+the graph of $y=\sin\;x$ and invert the values. We will get vertical asymptotes when $\sin\;x=0$,
+namely at multiples of $\pi$: $x=0$, $\pm\,\pi$, $\pm\,2\pi$, etc. Figure \ref{fig:cosecantgraph}
+shows the graph of $y=\csc\;x$, with the graph of $y=\sin\;x$ (the dashed curve) for reference.
+\newpage
+\begin{figure}[h]
+ \begin{center}
+  \begin{tikzpicture}[scale=1.1,every node/.style={font=\small}]
+   \begin{scope}[shift={(3,0)},dashed,x=6cm/360,y=3cm/4]
+    \draw[black!60,line width=0.3pt,dotted] (-360,-4) grid[xstep=45,ystep=1] (360,4);
+	\draw[black!60,solid,line width=0.3pt,-latex] (-380,0) -- (380,0) node[right] {$x$};
+	\draw[black!60,solid,line width=0.3pt,-latex] (0,-4.2) -- (0,4.5) node[above] {$y$};
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{-360,-355,...,360}{\pgfpointxy{\x}{sin(\x)}}
+	\pgfusepath{stroke}
+	\node[black,below right] at (0,0) {$0$};
+	\foreach \pos in {-360,-315,-270,-225,-180,-135,-90,-45,45,90,135,180,225,270,315,360}
+	 \draw[black!60,solid,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {-4,-3,-2,-1,1,2,3,4}
+	 \draw[black!60,solid,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt)
+	  node[black,left] {$\pos$};
+	\node[black,below] at (45,-0.1) {$\tfrac{\pi}{4}$};
+	\node[black,below] at (90,-0.1) {$\tfrac{\pi}{2}$};
+	\node[black,below] at (135,-0.1) {$\tfrac{3\pi}{4}$};
+	\node[black,below] at (180,-0.1) {$\pi$};
+	\node[black,below] at (225,-0.1) {$\tfrac{5\pi}{4}$};
+	\node[black,below] at (270,-0.1) {$\tfrac{3\pi}{2}$};
+	\node[black,below] at (315,-0.1) {$\tfrac{7\pi}{4}$};
+	\node[black,below] at (360,-0.1) {$2\pi$};
+	\node[black,below] at (-45,-0.1) {$-\tfrac{\pi}{4}$};
+	\node[black,below] at (-90,-0.1) {$-\tfrac{\pi}{2}$};
+	\node[black,below] at (-135,-0.1) {$-\tfrac{3\pi}{4}$};
+	\node[black,below] at (-180,-0.1) {$-\pi$};
+	\node[black,below] at (-225,-0.1) {$-\tfrac{5\pi}{4}$};
+	\node[black,below] at (-270,-0.1) {$-\tfrac{3\pi}{2}$};
+	\node[black,below] at (-315,-0.1) {$-\tfrac{7\pi}{4}$};
+	\node[black,below] at (-360,-0.1) {$-2\pi$};
+	\node[black,above] at (90,3) {$y=\csc\;x$};
+   \end{scope}
+   \begin{scope}[shift={(3,0)},color=linecolor,line width=1.5pt,x=6cm/360,y=3cm/4]
+	\draw[line width=0.5pt,dashed] (360,-4) -- (360,4);
+	\draw[line width=0.5pt,dashed] (180,-4) -- (180,4);
+	\draw[line width=0.5pt,dashed] (-360,-4) -- (-360,4);
+	\draw[line width=0.5pt,dashed] (-180,-4) -- (-180,4);
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{-345,-340,...,-195}{\pgfpointxy{\x}{1/sin(\x)}}
+	\pgfplotfunction{\x}{-165,-160,...,-15}{\pgfpointxy{\x}{1/sin(\x)}}
+	\pgfplotfunction{\x}{15,20,...,165}{\pgfpointxy{\x}{1/sin(\x)}}
+	\pgfplotfunction{\x}{195,200,...,345}{\pgfpointxy{\x}{1/sin(\x)}}
+	\pgfusepath{stroke}
+   \end{scope}
+  \end{tikzpicture}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad Graph of $y=\csc\;x$}
+ \label{fig:cosecantgraph}
+\end{figure}
+
+Likewise, Figure \ref{fig:secantgraph} shows the graph of $y=\sec\;x$, with the graph of
+$y=\cos\;x$ (the dashed curve) for reference. Note the vertical asymptotes at\index{secant!graph of}
+$x=\pm\,\frac{\pi}{2}$, $\pm\,\frac{3\pi}{2}$. Notice also that the graph is just the graph of
+the cosecant function shifted to the left by $\frac{\pi}{2}$ radians.\index{cosecant!graph of}
+
+\begin{figure}[H]
+ \begin{center}
+  \begin{tikzpicture}[scale=1.1,every node/.style={font=\small}]
+   \begin{scope}[shift={(3,0)},dashed,x=6cm/360,y=3cm/4]
+    \draw[black!60,line width=0.3pt,dotted] (-360,-4) grid[xstep=45,ystep=1] (360,4);
+	\draw[black!60,solid,line width=0.3pt,-latex] (-380,0) -- (380,0) node[right] {$x$};
+	\draw[black!60,solid,line width=0.3pt,-latex] (0,-4.2) -- (0,4.5) node[above] {$y$};
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{-360,-355,...,360}{\pgfpointxy{\x}{cos(\x)}}
+	\pgfusepath{stroke}
+	\node[black,below right] at (0,0) {$0$};
+	\foreach \pos in {-360,-315,-270,-225,-180,-135,-90,-45,45,90,135,180,225,270,315,360}
+	 \draw[black!60,solid,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {-4,-3,-2,-1,1,2,3,4}
+	 \draw[black!60,solid,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt)
+	  node[black,left] {$\pos$};
+	\node[black,below] at (45,-0.1) {$\tfrac{\pi}{4}$};
+	\node[black,below] at (90,-0.1) {$\tfrac{\pi}{2}$};
+	\node[black,below] at (135,-0.1) {$\tfrac{3\pi}{4}$};
+	\node[black,below] at (180,-0.1) {$\pi$};
+	\node[black,below] at (225,-0.1) {$\tfrac{5\pi}{4}$};
+	\node[black,below] at (270,-0.1) {$\tfrac{3\pi}{2}$};
+	\node[black,below] at (315,-0.1) {$\tfrac{7\pi}{4}$};
+	\node[black,below] at (360,-0.1) {$2\pi$};
+	\node[black,below] at (-45,-0.1) {$-\tfrac{\pi}{4}$};
+	\node[black,below] at (-90,-0.1) {$-\tfrac{\pi}{2}$};
+	\node[black,below] at (-135,-0.1) {$-\tfrac{3\pi}{4}$};
+	\node[black,below] at (-180,-0.1) {$-\pi$};
+	\node[black,below] at (-225,-0.1) {$-\tfrac{5\pi}{4}$};
+	\node[black,below] at (-270,-0.1) {$-\tfrac{3\pi}{2}$};
+	\node[black,below] at (-315,-0.1) {$-\tfrac{7\pi}{4}$};
+	\node[black,below] at (-360,-0.1) {$-2\pi$};
+	\node[black,above] at (180,3) {$y=\sec\;x$};
+   \end{scope}
+   \begin{scope}[shift={(3,0)},color=linecolor,line width=1.5pt,x=6cm/360,y=3cm/4]
+	\draw[line width=0.5pt,dashed] (270,-4) -- (270,4);
+	\draw[line width=0.5pt,dashed] (90,-4) -- (90,4);
+	\draw[line width=0.5pt,dashed] (-270,-4) -- (-270,4);
+	\draw[line width=0.5pt,dashed] (-90,-4) -- (-90,4);
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{-360,-355,...,-285}{\pgfpointxy{\x}{1/cos(\x)}}
+	\pgfplotfunction{\x}{-255,-250,...,-105}{\pgfpointxy{\x}{1/cos(\x)}}
+	\pgfplotfunction{\x}{-75,-70,...,75}{\pgfpointxy{\x}{1/cos(\x)}}
+	\pgfplotfunction{\x}{105,110,...,255}{\pgfpointxy{\x}{1/cos(\x)}}
+	\pgfplotfunction{\x}{285,290,...,360}{\pgfpointxy{\x}{1/cos(\x)}}
+	\pgfusepath{stroke}
+   \end{scope}
+  \end{tikzpicture}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad Graph of $y=\sec\;x$}
+ \label{fig:secantgraph}
+\end{figure}
+\newpage
+The graph of $y=\cot\;x$ can also be determined by using $\cot\;x = \frac{1}{\cot\;x}$.
+Alternatively, we can\index{cotangent!graph of}
+use the relation $\cot\;x = -\tan\;(x+90\Degrees)$ from Section 1.5, so that the graph of the
+cotangent function is just the graph of the tangent function shifted to the left by $\frac{\pi}{2}$
+radians and then reflected about the $x$-axis, as in Figure \ref{fig:cotangentgraph}:
+
+\begin{figure}[h]
+ \begin{center}
+  \begin{tikzpicture}[scale=1.1,every node/.style={font=\small}]
+   \begin{scope}[shift={(3,0)},color=linecolor,line width=1.5pt,x=6cm/360,y=4cm/10]
+    \draw[black!60,line width=0.3pt,dotted] (-360,-10) grid[xstep=45,ystep=2] (360,10);
+	\draw[black!60,line width=0.3pt,-latex] (-380,0) -- (380,0) node[right] {$x$};
+	\draw[black!60,line width=0.3pt,-latex] (0,-10) -- (0,10) node[above] {$y$};
+	\draw[linecolor,line width=0.5pt,dashed] (180,-10) -- (180,10);
+	\draw[linecolor,line width=0.5pt,dashed] (360,-10) -- (360,10);
+	\draw[linecolor,line width=0.5pt,dashed] (-180,-10) -- (-180,10);
+	\draw[linecolor,line width=0.5pt,dashed] (-360,-10) -- (-360,10);
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{-354,-348,...,-186}{\pgfpointxy{\x}{-tan(90+\x)}}
+	\pgfplotfunction{\x}{-174,-168,...,-6}{\pgfpointxy{\x}{-tan(90+\x)}}
+	\pgfplotfunction{\x}{6,12,...,174}{\pgfpointxy{\x}{-tan(90+\x)}}
+	\pgfplotfunction{\x}{186,192,...,354}{\pgfpointxy{\x}{-tan(90+\x)}}
+	\pgfusepath{stroke}
+	\node[black,below right] at (0,0) {$0$};
+	\foreach \pos in {-360,-315,-270,-225,-180,-135,-90,-45,45,90,135,180,225,270,315,360}
+	 \draw[black!60,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {-8,-6,-4,-2,2,4,6,8}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt) node[black,left]
+      {$\pos$};
+	\node[black,below] at (45,-0.1) {$\tfrac{\pi}{4}$};
+	\node[black,below] at (90,-0.1) {$\tfrac{\pi}{2}$};
+	\node[black,below] at (135,-0.1) {$\tfrac{3\pi}{4}$};
+	\node[black,below] at (180,-0.1) {$\pi$};
+	\node[black,below] at (225,-0.1) {$\tfrac{5\pi}{4}$};
+	\node[black,below] at (270,-0.1) {$\tfrac{3\pi}{2}$};
+	\node[black,below] at (315,-0.1) {$\tfrac{7\pi}{4}$};
+	\node[black,below] at (360,-0.1) {$2\pi$};
+	\node[black,below] at (-45,-0.1) {$-\tfrac{\pi}{4}$};
+	\node[black,below] at (-90,-0.1) {$-\tfrac{\pi}{2}$};
+	\node[black,below] at (-135,-0.1) {$-\tfrac{3\pi}{4}$};
+	\node[black,below] at (-180,-0.1) {$-\pi$};
+	\node[black,below] at (-225,-0.1) {$-\tfrac{5\pi}{4}$};
+	\node[black,below] at (-270,-0.1) {$-\tfrac{3\pi}{2}$};
+	\node[black,below] at (-315,-0.1) {$-\tfrac{7\pi}{4}$};
+	\node[black,below] at (-360,-0.1) {$-2\pi$};
+	\node[black,above] at (90,1) {$y=\cot\;x$};
+   \end{scope}
+  \end{tikzpicture}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad Graph of $y=\cot\;x$}
+ \label{fig:cotangentgraph}
+\end{figure}
+
+\begin{exmp}
+ Draw the graph of $y=-\sin\;x$ for $0 \le x \le 2\pi$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Multiplying a function by $-1$ just reflects its graph around the
+ $x$-axis. So reflecting the graph of $y=\sin\;x$ around the $x$-axis gives us the graph of
+ $y=-\sin\;x$:
+
+ \begin{center}
+  \begin{tikzpicture}[scale=1.2,every node/.style={font=\small}]
+   \begin{scope}[shift={(3,0)},color=linecolor,line width=1.5pt,x=6cm/360]
+    \draw[black!60,line width=0.3pt,dotted] (0,-1) grid[xstep=45,ystep=1] (360,1);
+	\draw[black!60,line width=0.3pt,-latex] (0,0) -- (380,0) node[right] {$x$};
+	\draw[black!60,line width=0.3pt,-latex] (0,-1.2) -- (0,1.5) node[above] {$y$};
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{0,5,...,360}{\pgfpointxy{\x}{-sin(\x)}}
+	\pgfusepath{stroke}
+	\node[black,left] at (0,0) {$0$};
+	\foreach \pos in {45,90,135,180,225,270,315,360}
+	 \draw[black!60,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {-1,1}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt) node[black,left]
+      {$\pos$};
+	\node[black,below] at (45,-0.1) {$\tfrac{\pi}{4}$};
+	\node[black,below] at (90,-0.1) {$\tfrac{\pi}{2}$};
+	\node[black,below] at (135,-0.1) {$\tfrac{3\pi}{4}$};
+	\node[black,below] at (180,-0.1) {$\pi$};
+	\node[black,below] at (225,-0.1) {$\tfrac{5\pi}{4}$};
+	\node[black,below] at (270,-0.1) {$\tfrac{3\pi}{2}$};
+	\node[black,below] at (315,-0.1) {$\tfrac{7\pi}{4}$};
+	\node[black,below] at (360,-0.1) {$2\pi$};
+	\node[black,above] at (180,1) {$y=-\sin\;x$};
+   \end{scope}
+  \end{tikzpicture}
+ \end{center}
+
+\noindent Note that this graph is the same as the graphs of $y=\sin\;(x \pm \pi)$ and
+ $y=\cos\;(x+\frac{\pi}{2})$.
+\end{exmp}
+\divider
+\newpage
+It is worthwhile to remember the general shapes of the graphs of the six trigonometric functions,
+especially for sine, cosine, and tangent. In particular, the graphs of the sine and cosine functions
+are called \emph{sinusoidal}\index{sinusoidal curves} curves. Many phenomena in nature exhibit
+sinusoidal behavior, so recognizing the general shape is important.
+
+\begin{exmp}
+ Draw the graph of $y=1+\cos\;x$ for $0 \le x \le 2\pi$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Adding a constant to a function just moves its graph up or down by
+ that amount, depending on whether the constant is positive or negative, respectively. So adding
+ $1$ to $\cos\;x$ moves the graph of $y=\cos\;x$ upward by $1$, giving us the graph of
+ $y=1+\cos\;x$:
+
+ \begin{center}
+  \begin{tikzpicture}[scale=1.2,every node/.style={font=\small}]
+   \begin{scope}[shift={(3,0)},color=linecolor,line width=1.5pt,x=6cm/360]
+    \draw[black!60,line width=0.3pt,dotted] (0,0) grid[xstep=45,ystep=1] (360,2);
+	\draw[black!60,line width=0.3pt,-latex] (0,0) -- (380,0) node[right] {$x$};
+	\draw[black!60,line width=0.3pt,-latex] (0,0) -- (0,2.5) node[above] {$y$};
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{0,5,...,360}{\pgfpointxy{\x}{1+cos(\x)}}
+	\pgfusepath{stroke}
+	\node[black,below left] at (0,0) {$0$};
+	\foreach \pos in {45,90,135,180,225,270,315,360}
+	 \draw[black!60,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {1,2}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt) node[black,left]
+      {$\pos$};
+	\node[black,below] at (45,-0.1) {$\tfrac{\pi}{4}$};
+	\node[black,below] at (90,-0.1) {$\tfrac{\pi}{2}$};
+	\node[black,below] at (135,-0.1) {$\tfrac{3\pi}{4}$};
+	\node[black,below] at (180,-0.1) {$\pi$};
+	\node[black,below] at (225,-0.1) {$\tfrac{5\pi}{4}$};
+	\node[black,below] at (270,-0.1) {$\tfrac{3\pi}{2}$};
+	\node[black,below] at (315,-0.1) {$\tfrac{7\pi}{4}$};
+	\node[black,below] at (360,-0.1) {$2\pi$};
+	\node[black,above] at (180,1) {$y=1+\cos\;x$};
+   \end{scope}
+  \end{tikzpicture}
+ \end{center}
+\end{exmp}\vspace{-4mm}
+\divider
+\vspace{2mm}
+
+\startexercises\label{sec5dot1}
+\vspace{4mm}
+{\small
+\par\noindent For Exercises 1-12, draw the graph of the given function for $0 \le x \le 2\pi$.
+\begin{enumerate}[\bfseries 1.]
+\begin{multicols}{4}
+ \item $y=-\cos\;x$
+ \item $y=1+\sin\;x$
+ \item $y=2-\cos\;x$
+ \item $y=2-\sin\;x$
+\end{multicols}
+\begin{multicols}{4}
+ \item $y=-\tan\;x$
+ \item $y=-\cot\;x$
+ \item $y=1+\sec\;x$
+ \item $y=-1-\csc\;x$
+\end{multicols}
+\begin{multicols}{4}
+ \item $y=2\sin\;x$
+ \item $y=-3\cos\;x$
+ \item $y=-2\tan\;x$
+ \item $y=-2\sec\;x$
+\end{multicols}
+\piccaption[]{\label{fig:linedef}}\parpic[r]{\begin{tikzpicture}[every node/.style={font=\small},
+scale=0.8]
+ \draw[black!60,line width=0.3pt,-latex] (-2.2,0) -- (2.8,0) node[right] {$x$};
+ \draw[black!60,line width=0.3pt,-latex] (0,-2.2) -- (0,2.8) node[above] {$y$};
+ \draw [linecolor,line width=1.5pt] (0,0) circle (2);
+ \draw [line width=1pt] (0,0) -- (2,3.464) -- (2,0);
+ \draw [line width=1pt] (60:2) -- (1,0);
+ \draw [line width=1pt] (0,2) -- (1.155,2);
+ \fill (0,0) circle (2pt);
+ \node [below left] at (0,0) {$O$};
+ \node [below] at (1,0) {$M$};
+ \node [above right] at (2,0) {$N$};
+ \node [left] at (60:1.9) {$P$};
+ \node [right] at (2,3.464) {$Q$};
+ \node [above left] at (0.1,2) {$R$};
+ \node [above] at (1.1,2) {$S$};
+ \node [below right] at (2,0) {$1$};
+ \node at (0.4,0.2) {$\theta$};
+ \draw [dashed] (0:0.7) arc (0:60:0.7);
+\end{tikzpicture}}
+ \item\label{exmp:linedef}
+  We can extend the unit circle definition of the sine and cosine functions to all six
+  trigonometric functions. Let $P$ be a point in QI on the unit circle, so that the line segment
+  $\overline{OP}$ in Figure \ref{fig:linedef} has length $1$ and makes an acute angle $\theta$
+  with the positive $x$-axis. Identify each of the six trigonometric functions of $\theta$ with
+  exactly one of the line segments in Figure \ref{fig:linedef}, keeping in mind that the radius of
+  the circle is $1$. To get you started, we have $\sin\;\theta = MP$ (why?).
+ \item For Exercise \ref{exmp:linedef},
+  how would you draw the line segments in Figure \ref{fig:linedef} if $\theta$ was in QII?
+  Recall that some of the trigonometric functions are negative in QII, so you will have to come up
+  with a convention for how to treat some of the line segment lengths as negative.
+ \item For any point $(x,y)$ on the unit circle and any angle $\alpha$, show that the point
+  $R_{\alpha} (x,y)$ defined by $R_{\alpha} (x,y)
+  = (x\,\cos\;\alpha \,-\, y\,\sin\;\alpha , x\,\sin\;\alpha \,+\, y\,\cos\;\alpha)$ is also on the
+  unit circle. What is the geometric interpretation of $R_{\alpha} (x,y)$? Also, show that
+  $R_{-\alpha} (R_{\alpha} (x,y)) = (x,y)$ and $R_{\beta} (R_{\alpha} (x,y)) = R_{\alpha + \beta}
+  (x,y)$.
+\end{enumerate}}
+
+\newpage
+%Begin Section 5.2
+\section{Properties of Graphs of Trigonometric Functions}
+We saw in Section 5.1 how the graphs of the trigonometric functions repeat every $2\pi$ radians.
+In this section we will discuss this and other properties of graphs, especially for the sinusoidal
+functions (sine and cosine).
+
+First, recall that the \textbf{domain}\index{domain} of a function $f(x)$ is the
+set of all numbers $x$ for which the function is defined. For example, the domain of $f(x) =
+\sin\;x$ is the set of all real numbers, whereas the domain of $f(x) = \tan\;x$ is the set of all
+real numbers except $x=\pm\,\frac{\pi}{2}$, $\pm\,\frac{3\pi}{2}$, $\pm\,\frac{5\pi}{2}$, $...$.
+The \textbf{range}\index{range} of a function $f(x)$ is the set of all values that
+$f(x)$ can take over its domain. For example, the range of $f(x)=\sin\;x$ is the set of all real
+numbers between $-1$ and $1$ (i.e. the interval $\ival{-1}{1}$), whereas the range of $f(x) =
+\tan\;x$ is the set of all real numbers, as we can see from their graphs.
+
+A function $f(x)$ is \textbf{periodic} if there exists a number $p>0$ such that $x+p$ is
+in the domain of $f(x)$ whenever $x$ is, and if the following relation holds:
+\begin{equation}\label{eqn:periodic}
+ f(x+p) ~=~ f(x) \quad\text{for all $x$}
+\end{equation}
+There could be many numbers $p$ that satisfy the above requirements. If there is a smallest such
+number $p$, then we call that number the \textbf{period}\index{period of a function} of the
+function $f(x)$.
+
+\begin{exmp}
+ The functions $\sin\;x$, $\cos\;x$, $\csc\;x$, and $\sec\;x$ all have the same period: $2\pi$
+ radians. We
+ saw in Section 5.1 that the graphs of $y=\tan\;x$ and $y=\cot\;x$ repeat every $2\pi$ radians
+ but they also repeat every $\pi$ radians. Thus, the functions $\tan\;x$ and $\cot\;x$ have a period
+ of $\pi$ radians.
+\end{exmp}
+\begin{exmp}
+ What is the period of $f(x)=\sin\;2x\,$?\vspace{1mm}
+ \par\noindent\textbf{Solution:} The graph of $y=\sin\;2x$ is shown in Figure \ref{fig:sine2x}, along
+ with the graph of $y=\sin\;x$ for comparison, over the interval $\ival{0}{2\pi}$.
+ Note that $\sin\;2x$ ``goes twice as fast'' as $\sin\;x$.
+
+\begin{figure}[h]
+ \begin{center}
+  \begin{tikzpicture}[scale=1.2,every node/.style={font=\small}]
+   \begin{scope}[shift={(3,0)},dashed,line width=1pt,x=6cm/360]
+    \draw[black!60,line width=0.3pt,dotted] (0,-1) grid[xstep=45,ystep=1] (360,1);
+	\draw[black!60,line width=0.3pt,-latex] (0,0) -- (380,0) node[right] {$x$};
+	\draw[black!60,line width=0.3pt,-latex] (0,-1.2) -- (0,1.5) node[above] {$y$};
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{0,5,...,360}{\pgfpointxy{\x}{sin(\x)}}
+	\pgfusepath{stroke}
+	\node[black,left] at (0,0) {$0$};
+	\foreach \pos in {45,90,135,180,225,270,315,360}
+	 \draw[black!60,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {-1,1}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt) node[black,left]
+      {$\pos$};
+	\node[black,below] at (45,-0.1) {$\tfrac{\pi}{4}$};
+	\node[black,below] at (90,-0.1) {$\tfrac{\pi}{2}$};
+	\node[black,below] at (135,-0.1) {$\tfrac{3\pi}{4}$};
+	\node[black,below] at (180,-0.1) {$\pi$};
+	\node[black,below] at (225,-0.1) {$\tfrac{5\pi}{4}$};
+	\node[black,below] at (270,-0.1) {$\tfrac{3\pi}{2}$};
+	\node[black,below] at (315,-0.1) {$\tfrac{7\pi}{4}$};
+	\node[black,below] at (360,-0.1) {$2\pi$};
+   \end{scope}
+   \begin{scope}[shift={(3,0)},color=linecolor,line width=1.5pt,x=6cm/360]
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{0,5,...,360}{\pgfpointxy{\x}{sin(2*\x)}}
+	\pgfusepath{stroke}
+   \end{scope}
+  \draw [linecolor,line width=1.5pt] (0,1) -- (0.5,1) node[black,right] {$y=\sin\;2x$};
+  \draw [dashed,line width=1pt] (0,0.5) -- (0.5,0.5) node[right] {$y=\sin\;x$};
+  \end{tikzpicture}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad Graph of $y=\sin\;2x$}
+ \label{fig:sine2x}
+\end{figure}
+
+ For example, for $x$ from $0$ to $\frac{\pi}{2}$, $\sin\;x$ goes from $0$ to $1$, but $\sin\;2x$
+ is able to go from $0$ to $1$ quicker, just over the interval $\ival{0}{\frac{\pi}{4}}$.
+ While $\sin\;x$ takes a full $2\pi$ radians to go through an entire \emph{cycle}\index{cycle} (the
+ largest part of the graph that does not repeat), $\sin\;2x$ goes through an entire cycle in just
+ $\pi$ radians. So the period of $\sin\;2x$ is $\pi$ radians.
+\end{exmp}
+\divider
+\newpage
+The above example made use of the graph of $\sin\;2x$, but the period can be found analytically.
+Since $\sin\;x$ has period $2\pi$,\footnote{We will usually leave out the ``radians'' part when
+discussing periods from now on.} we know that $\sin\;(x+2\pi) = \sin\;x$ for all $x$. Since $2x$
+is a number for all $x$, this means in particular that $\sin\;(2x+2\pi) = \sin\;2x$ for all $x$.
+Now define $f(x)=\sin\;2x$. Then
+\begin{align*}
+ f(x+\pi) ~&=~ \sin\;2\,(x+\pi)\\
+ &=~ \sin\;(2x+2\pi)\\
+ &=~ \sin\;2x \quad\text{(as we showed above)}\\
+ &=~ f(x)
+\end{align*}
+for all $x$, so the period $p$ of $\sin\;2x$ is \emph{at most} $\pi$, by our definition of period.
+We have to show that $p>0$ can not be smaller than $\pi$. To do this, we will use a \emph{proof by
+contradiction}. That is, assume that $0<p<\pi$, then show that this leads to some
+contradiction, and hence can not be true. So suppose $0<p<\pi$. Then $0<2p<2\pi$, and hence
+\begin{align*}
+ \sin\;2x ~&=~ f(x)\\
+ &=~ f(x+p) \quad\text{(since $p$ is the period of $f(x)$)}\\
+ &=~ \sin\;2(x+p)\\
+ &=~ \sin\;(2x+2p)
+\end{align*}
+for all $x$. Since any number $u$ can be written as $2x$ for some $x$ (i.e $u = 2(u/2)$), this
+means that $\sin\;u = \sin\;(u+2p)$ for all real numbers $u$, and hence the period of $\sin\;x$ is
+as most $2p$. This is a contradiction. Why? Because the period of $\sin\;x$ is $2\pi > 2p$. Hence,
+the period $p$ of $\sin\;2x$ can not be less than $\pi$, so the period must equal $\pi$.
+
+The above may seem like a lot of work to prove something that was visually obvious from the graph
+(and intuitively obvious by the ``twice as fast'' idea). Luckily, we do not need to go through all
+that work for each function, since a similar argument works when $\sin\;2x$ is replaced by
+$\sin\;\omega x$ for any positive real number $\omega$: instead of dividing $2\pi$ by $2$ to get
+the period, divide by $\omega$. And the argument works for the other trigonometric functions as
+well. Thus, we get:
+
+\begin{center}\statecomment{For any number $\omega >0$:
+ \begin{alignat*}{4}
+  \sin\;\omega x ~~&\text{has period}~~ \frac{2\pi}{\omega}
+   \qquad\quad&\csc\;\omega x ~~&\text{has period}~~ \frac{2\pi}{\omega}\\[2pt]
+  \cos\;\omega x ~~&\text{has period}~~ \frac{2\pi}{\omega}
+   \qquad\quad&\sec\;\omega x ~~&\text{has period}~~ \frac{2\pi}{\omega}\\[2pt]
+  \tan\;\omega x ~~&\text{has period}~~ \frac{\pi}{\omega}
+   \qquad\quad&\cot\;\omega x ~~&\text{has period}~~ \frac{\pi}{\omega}
+ \end{alignat*}
+}\end{center}
+
+If $\omega < 0$, then use $\sin\;(-A) = -\sin\;A$ and $\cos\;(-A) = \cos\;A$ (e.g.
+$\sin\;(-3x) = -\sin\;3x$).
+
+\newpage
+\begin{exmp}
+ The period of $y=\cos\;3x$ is $\frac{2\pi}{3}$ and the period of $y=\cos\;\frac{1}{2}x$ is $4\pi$.
+ The graphs of both functions are shown in Figure \ref{fig:cosine3x}:
+
+\begin{figure}[h]
+ \begin{center}
+  \begin{tikzpicture}[scale=1.1,every node/.style={font=\small}]
+   \begin{scope}[shift={(0,0)},dashed,line width=1pt,x=6cm/360]
+    \draw[black!60,line width=0.3pt,dotted] (0,-1) grid[xstep=45,ystep=1] (720,1);
+	\draw[black!60,line width=0.3pt,-latex] (0,0) -- (740,0) node[right] {$x$};
+	\draw[black!60,line width=0.3pt,-latex] (0,-1.2) -- (0,1.5) node[above] {$y$};
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{0,5,...,720}{\pgfpointxy{\x}{cos(3*\x)}}
+	\pgfusepath{stroke}
+	\node[black,left] at (0,0) {$0$};
+	\foreach \pos in {30,60,90,120,150,180,210,240,270,300,330,360,390,420,450,480,510,540,570,600,
+	 630,660,690,720}
+	 \draw[black!60,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {-1,1}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt) node[black,left]
+      {$\pos$};
+	\node[black,below] at (30,-0.1) {$\tfrac{\pi}{6}$};
+	\node[black,below] at (60,-0.1) {$\tfrac{\pi}{3}$};
+	\node[black,below] at (90,-0.1) {$\tfrac{\pi}{2}$};
+	\node[black,below] at (120,-0.1) {$\tfrac{2\pi}{3}$};
+	\node[black,below] at (150,-0.1) {$\tfrac{5\pi}{6}$};
+	\node[black,below] at (180,-0.1) {$\pi$};
+	\node[black,below] at (210,-0.1) {$\tfrac{7\pi}{6}$};
+	\node[black,below] at (240,-0.1) {$\tfrac{4\pi}{3}$};
+	\node[black,below] at (270,-0.1) {$\tfrac{3\pi}{2}$};
+	\node[black,below] at (300,-0.1) {$\tfrac{5\pi}{3}$};
+	\node[black,below] at (330,-0.1) {$\tfrac{11\pi}{6}$};
+	\node[black,below] at (360,-0.1) {$2\pi$};
+	\node[black,below] at (390,-0.1) {$\tfrac{13\pi}{6}$};
+	\node[black,below] at (420,-0.1) {$\tfrac{7\pi}{3}$};
+	\node[black,below] at (450,-0.1) {$\tfrac{5\pi}{2}$};
+	\node[black,below] at (480,-0.1) {$\tfrac{8\pi}{3}$};
+	\node[black,below] at (510,-0.1) {$\tfrac{17\pi}{6}$};
+	\node[black,below] at (540,-0.1) {$3\pi$};
+	\node[black,below] at (570,-0.1) {$\tfrac{19\pi}{6}$};
+	\node[black,below] at (600,-0.1) {$\tfrac{10\pi}{3}$};
+	\node[black,below] at (630,-0.1) {$\tfrac{7\pi}{2}$};
+	\node[black,below] at (660,-0.1) {$\tfrac{11\pi}{3}$};
+	\node[black,below] at (690,-0.1) {$\tfrac{23\pi}{6}$};
+	\node[black,below] at (720,-0.1) {$4\pi$};
+   \end{scope}
+   \begin{scope}[shift={(0,0)},color=linecolor,line width=1.5pt,x=6cm/360]
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{0,5,...,720}{\pgfpointxy{\x}{cos(0.5*\x)}}
+	\pgfusepath{stroke}
+   \end{scope}
+  \draw [linecolor,line width=1.5pt] (2,2) -- (2.5,2) node[black,right] {$y=\cos\;\frac{1}{2}x$};
+  \draw [dashed,line width=1pt] (2,1.5) -- (2.5,1.5) node[right] {$y=\cos\;3x$};
+  \end{tikzpicture}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad Graph of $y=\cos\;3x$ and $y=\cos\;\frac{1}{2}x$}
+ \label{fig:cosine3x}
+\end{figure}
+\end{exmp}
+\divider
+\vspace{1mm}
+
+We know that $\;-1 \le \sin\;x \le 1\;$ and $\;-1 \le \cos\;x \le 1\;$ for all $x$. Thus, for a
+constant $A \ne 0$,
+\begin{displaymath}
+ -\abs{A} ~\le~ A\,\sin\;x ~\le~ \abs{A} \quad\text{and}\quad
+ -\abs{A} ~\le~ A\,\cos\;x ~\le~ \abs{A}
+\end{displaymath}
+for all $x$. In this case, we call $\abs{A}$ the \textbf{amplitude}\index{amplitude} of the
+functions $y=A\,\sin\;x$ and $y=A\,\cos\;x$. In general, the amplitude of a periodic curve $f(x)$
+is half the difference of the largest and smallest values that $f(x)$ can take:
+\begin{displaymath}
+ \text{Amplitude of $f(x)$} ~=~ \frac{\text{(maximum of $f(x)$)} ~-~ \text{(minimum of $f(x)$)}}{2}
+\end{displaymath}
+In other words, the amplitude is the distance from either the top or bottom of the curve to the
+horizontal line that divides the curve in half, as in Figure \ref{fig:amplitude}.
+
+\begin{figure}[h]
+ \begin{center}
+  \begin{tikzpicture}[scale=1.2,every node/.style={font=\small}]
+   \begin{scope}[shift={(0,0)},color=linecolor,line width=1.5pt,x=6cm/360]
+    \draw[black!60,line width=0.3pt,dotted] (0,-1) grid[xstep=45,ystep=1] (360,1);
+	\draw[black!60,line width=0.3pt,-latex] (0,0) -- (380,0) node[right] {$x$};
+	\draw[black!60,line width=0.3pt,-latex] (0,-1.2) -- (0,1.5) node[above] {$y$};
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{0,5,...,360}{\pgfpointxy{\x}{sin(2*\x)}}
+	\pgfusepath{stroke}
+	\node[black,left] at (0,0) {$0$};
+	\foreach \pos in {45,90,135,180,225,270,315,360}
+	 \draw[black!60,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {-1,1}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt);
+	\node[black,left] at (0,1) {$\abs{A}$};
+	\node[black,left] at (0,-1) {$-\abs{A}$};
+	\node[black,below] at (45,-0.1) {$\tfrac{\pi}{4}$};
+	\node[black,below] at (90,-0.1) {$\tfrac{\pi}{2}$};
+	\node[black,below] at (135,-0.1) {$\tfrac{3\pi}{4}$};
+	\node[black,below] at (180,-0.1) {$\pi$};
+	\node[black,below] at (225,-0.1) {$\tfrac{5\pi}{4}$};
+	\node[black,below] at (270,-0.1) {$\tfrac{3\pi}{2}$};
+	\node[black,below] at (315,-0.1) {$\tfrac{7\pi}{4}$};
+	\node[black,below] at (360,-0.1) {$2\pi$};
+   \end{scope}
+   \begin{scope}[>=latex]
+    \draw [|<->|] (-1,-1) -- (-1,1) node[midway,fill=white] {$2\,\abs{A}$};
+    \draw [|<->|] (7,0) -- (7,1) node[midway,right] {$\abs{A}$};
+    \draw [<->|] (7,0) -- (7,-1) node[midway,right] {$\abs{A}$};
+   \end{scope}
+  \end{tikzpicture}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad Amplitude $= \frac{\text{max} - \text{min}}{2} = \frac{\abs{A} - (-\abs{A})}{2} =
+  \abs{A}$}
+ \label{fig:amplitude}
+\end{figure}
+
+Not all periodic curves have an amplitude. For example, $\tan\;x$ has neither a maximum nor a
+minimum, so its amplitude is undefined. Likewise, $\cot\;x$, $\csc\;x$, and $\sec\;x$ do not have
+an amplitude. Since the amplitude involves vertical distances, it has no effect on the period of
+a function, and vice versa.
+\newpage
+\begin{exmp}
+ Find the amplitude and period of $y=3\,\cos\;2x$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} The amplitude is $\abs{3} = 3$ and the period is
+ $\frac{2\pi}{2}=\pi$. The graph is shown in Figure \ref{fig:exmp3cos2x}:\vspace{-2mm}
+
+\begin{figure}[h]
+ \begin{center}
+  \begin{tikzpicture}[scale=1.2,every node/.style={font=\small}]
+   \begin{scope}[shift={(0,0)},color=linecolor,line width=1.5pt,x=8cm/360,y=1.5cm/3]
+    \draw[black!60,line width=0.3pt,dotted] (0,-3) grid[xstep=45,ystep=1] (360,3);
+	\draw[black!60,line width=0.3pt,-latex] (0,0) -- (380,0) node[right] {$x$};
+	\draw[black!60,line width=0.3pt,-latex] (0,-3.2) -- (0,3.5) node[above] {$y$};
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{0,5,...,360}{\pgfpointxy{\x}{3*cos(2*\x)}}
+	\pgfusepath{stroke}
+	\node[black,left] at (0,0) {$0$};
+	\foreach \pos in {30,60,90,120,150,180,210,240,270,300,330,360}
+	 \draw[black!60,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {-3,-2,-1,1,2,3}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt) node[black,left]
+      {$\pos$};
+	\node[black,below] at (30,-0.1) {$\tfrac{\pi}{6}$};
+	\node[black,below] at (60,-0.1) {$\tfrac{\pi}{3}$};
+	\node[black,below] at (90,-0.1) {$\tfrac{\pi}{2}$};
+	\node[black,below] at (120,-0.1) {$\tfrac{2\pi}{3}$};
+	\node[black,below] at (150,-0.1) {$\tfrac{5\pi}{6}$};
+	\node[black,below] at (180,-0.1) {$\pi$};
+	\node[black,below] at (210,-0.1) {$\tfrac{7\pi}{6}$};
+	\node[black,below] at (240,-0.1) {$\tfrac{4\pi}{3}$};
+	\node[black,below] at (270,-0.1) {$\tfrac{3\pi}{2}$};
+	\node[black,below] at (300,-0.1) {$\tfrac{5\pi}{3}$};
+	\node[black,below] at (330,-0.1) {$\tfrac{11\pi}{6}$};
+	\node[black,below] at (360,-0.1) {$2\pi$};
+   \end{scope}
+   \begin{scope}[>=latex]
+    \draw [|<->|] (-1,-1.5) -- (-1,1.5) node[midway,fill=white] {$6$};
+    \draw [|<->|] (9,0) -- (9,1.5) node[midway,right] {$3$};
+    \draw [<->|] (9,0) -- (9,-1.5) node[midway,right] {$3$};
+   \end{scope}
+  \end{tikzpicture}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad $y=3\,\cos\;2x$}
+ \label{fig:exmp3cos2x}
+\end{figure}
+\end{exmp}\vspace{-7mm}
+\begin{exmp}
+ Find the amplitude and period of $y=2 - 3\,\sin\;\frac{2\pi}{3}x$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} The amplitude of $-3\,\sin\;\frac{2\pi}{3}x$ is $\abs{-3} =3$. Adding
+ $2$ to that function to get the function
+ $y=2 - 3\,\sin\;\frac{2\pi}{3}x$ does not change the amplitude, even
+ though it does change the maximum and minimum. It just shifts the entire graph upward by $2$. So
+ in this case, we have
+ \begin{displaymath}
+  \text{Amplitude} ~=~ \frac{\text{max} ~-~ \text{min}}{2} ~=~ \frac{5 ~-~ (-1)}{2} ~=~ \frac{6}{2}
+   ~=~ 3 ~.
+ \end{displaymath}
+ The period is $\dfrac{2\pi}{\frac{2\pi}{3}}=3$. The graph is shown in Figure \ref{fig:exmp2m3sinx}:\vspace{-1mm}
+
+\begin{figure}[h]
+ \begin{center}
+  \begin{tikzpicture}[scale=1.2,every node/.style={font=\small}]
+   \begin{scope}[shift={(0,0)},color=linecolor,line width=1.5pt,x=8cm/540,y=2cm/3]
+    \draw[black!60,line width=0.3pt,dotted] (0,-1) grid[xstep=45,ystep=1] (540,5);
+	\draw[black!60,line width=0.3pt,-latex] (0,0) -- (560,0) node[right] {$x$};
+	\draw[black!60,line width=0.3pt,-latex] (0,-1.2) -- (0,5.5) node[above] {$y$};
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{0,5,...,540}{\pgfpointxy{\x}{2-3*sin(2*\x/3)}}
+	\pgfusepath{stroke}
+	\node[black,left] at (0,0) {$0$};
+	\foreach \pos in {135,270,405,540}
+	 \draw[black!60,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {-1,1,2,3,4,5}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt) node[black,left]
+      {$\pos$};
+	\node[black,below] at (135,-0.1) {$\tfrac{3}{4}$};
+	\node[black,below] at (270,-0.1) {$\tfrac{3}{2}$};
+	\node[black,below] at (405,-0.1) {$\tfrac{9}{4}$};
+	\node[black,below] at (540,-0.1) {$3$};
+    \draw[dashed,black!60,line width=0.5pt] (0,2) -- (540,2);
+   \end{scope}
+   \begin{scope}[>=latex]
+    \draw [|<->|] (-1,-0.67) -- (-1,3.33) node[midway,fill=white] {$6$};
+    \draw [|<->|] (9,1.33) -- (9,3.33) node[midway,right] {$3$};
+    \draw [<->|] (9,1.33) -- (9,-0.67) node[midway,right] {$3$};
+   \end{scope}
+  \end{tikzpicture}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad $y=2-3\,\sin\;\frac{2\pi}{3}x$}
+ \label{fig:exmp2m3sinx}
+\end{figure}
+\end{exmp}\vspace{-5mm}
+\divider\vspace{-2mm}
+\newpage
+\begin{exmp}\label{exmp:2sinx2}
+ Find the amplitude and period of $y=2\,\sin\;( x^2 )$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} This is not a periodic function, since the angle that we are taking
+ the sine of, $x^2$, is not a \emph{linear} function of $x$, i.e. is not of the form $ax+b$ for some
+ constants $a$ and $b$. Recall how we argued that $\sin\;2x$ was ``twice as fast'' as $\sin\;x$, so
+ that its period was $\pi$ instead of $2\pi$. Can we say that $\sin\;( x^2 )$ is some
+ \emph{constant}
+ times as fast as $\sin\;x\,$? No. In fact, we see that the ``speed'' of the curve keeps increasing
+ as $x$ gets larger, since $x^2$ grows at a variable rate, not a constant rate. This can be seen in
+ the graph of $y=2\,\sin\;( x^2 )$, shown in Figure \ref{fig:exmp2sinx2}:\footnote{This graph was
+ created using Gnuplot, an open-source graphing program which is freely available at
+ \url{http://gnuplot.info}. See Appendix B for a brief tutorial on how to use Gnuplot.}\vspace{-1mm}
+ 
+\begin{figure}[h]
+ \begin{center}
+  \input{sinx2.tex}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad $y=2\,\sin\;( x^2 )$}
+ \label{fig:exmp2sinx2}
+\end{figure}
+
+ Notice how the curve ``speeds up'' as $x$ gets larger, making the ``waves'' narrower and narrower.
+ Thus, $y=2\,\sin\;( x^2 )$ has no period. Despite this, it appears that the function does have an
+ amplitude, namely $2$. To see why, note that since $\abs{\sin\;\theta} \le 1$ for all $\theta$, we
+ have
+ \begin{displaymath}
+  \abs{2\,\sin\;( x^2 )} ~=~ \abs{2} \;\cdot\; \abs{\sin\;( x^2 )} ~\le~ 2 \;\cdot\; 1 ~=~ 2 ~.
+ \end{displaymath}
+ In the exercises you will be asked to find values of $x$ such that $2\,\sin\;( x^2 )$ reaches the
+ maximum value $2$ and the minimum value $-2$. Thus, the amplitude is indeed $2$.\\Note: This curve
+ is still sinusoidal despite not being periodic, since the general shape is still that of a ``sine
+ wave'', albeit one with variable \emph{cycles}.
+\end{exmp}\vspace{-3mm}
+\divider
+\vspace{1mm}
+
+So far in our examples we have been able to determine the amplitudes of sinusoidal curves fairly
+easily. This will not always be the case.
+\newpage
+\begin{exmp}\label{exmp:3sinx4cosx}
+  Find the amplitude and period of $y=3\,\sin\;x + 4\,\cos\;x$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} This is sometimes called a \emph{combination} sinusoidal curve, since
+ it is the sum of two such curves. The period is still simple to determine: since
+ $\sin\;x$ and $\cos\;x$ each repeat every $2\pi$ radians, then so does the combination
+ $3\,\sin\;x + 4\,\cos\;x$. Thus, $y=3\,\sin\;x + 4\,\cos\;x$ has period $2\pi$. We can see this in
+ the graph, shown in Figure \ref{fig:exmp3sinx4cosx}:\vspace{-1mm}
+
+\begin{figure}[h]
+ \begin{center}
+  \input{3sinx4cosx.tex}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad $y=3\,\sin\;x + 4\,\cos\;x$}
+ \label{fig:exmp3sinx4cosx}
+\end{figure}
+
+The graph suggests that the amplitude is $5$, which may not be immediately obvious just by looking at
+how the function is defined. In fact, the definition $y=3\,\sin\;x + 4\,\cos\;x$ may tempt you to
+think that the amplitude is $7$, since the largest that $3\,\sin\;x$ could be is $3$ and the largest
+that $4\,\cos\;x$ could be is $4$, so that the largest their sum could be is $3+4=7$. However,
+$3\,\sin\;x$ can never equal $3$ for the same $x$ that makes $4\,\cos\;x$ equal to $4$ (why?).
+
+\piccaption[]{\label{fig:tri345}}\parpic[r]{\begin{tikzpicture}[scale=0.5,
+ every node/.style={font=\small}]
+ \fill [fill=fillcolor] (0,0) -- (3,0) -- (3,4) -- (0,0);
+ \draw (0:1.5) arc (0:53.13:1.5);
+ \draw [line width=0.5pt] (2.625,0) -- (2.625,0.375) -- (3,0.375);
+ \draw [linecolor,line width=1.5pt] (0,0) -- (3,0) -- (3,4) -- cycle;
+ \node [below] at (1.5,0) {$3$};
+ \node [right] at (3,2) {$4$};
+ \node [above left] at (1.5,2) {$5$};
+ \node at (0.9,0.4) {$\theta$};
+\end{tikzpicture}}
+\picskip{4}
+There is a useful technique (which we will discuss further in Chapter 6) for showing that the
+amplitude of $y=3\,\sin\;x + 4\,\cos\;x$ is $5$. Let $\theta$ be the angle shown in the right
+triangle in Figure \ref{fig:tri345}. Then $\cos\;\theta = \frac{3}{5}$ and $\sin\;\theta =
+\frac{4}{5}$. We can use this as follows:
+\begin{align*}
+ y ~&=~ 3\,\sin\;x ~+~ 4\,\cos\;x\\
+ &=~ 5\,\left( \tfrac{3}{5}\,\sin\;x ~+~ \tfrac{4}{5}\,\cos\;x \right)\\
+ &=~ 5\,( \cos\;\theta\;\sin\;x ~+~ \sin\;\theta\;\cos\;x )\\
+ &=~ 5\,\sin\;(x+\theta)\quad\text{(by the sine addition formula)}
+\end{align*}
+Thus, $\abs{y} = \abs{5\,\sin\;(x+\theta)} = \abs{5}\,\cdot\,\abs{\sin\;(x+\theta)} \le (5)(1) = 5$,
+so the amplitude of $y=3\,\sin\;x + 4\,\cos\;x$ is $5$.
+\end{exmp}\vspace{-3mm}
+\divider\vspace{-2mm}
+\newpage
+In general, a combination of sines and cosines will have a period equal to the \emph{lowest common
+multiple} of the periods of the sines and cosines being added. In Example \ref{exmp:3sinx4cosx},
+$\sin\;x$ and $\cos\;x$ each have period $2\pi$, so the lowest common multiple (which is always an
+\emph{integer} multiple) is $1 \,\cdot\, 2\pi = 2\pi$.
+
+\begin{exmp}\label{exmp:cos6xsin4x}
+ Find the period of $y=\cos\;6x + \sin\;4x$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} The period of $\cos\;6x$ is $\frac{2\pi}{6} = \frac{\pi}{3}$, and the
+ period of $\sin\;4x$ is $\frac{2\pi}{4} = \frac{\pi}{2}$. The lowest common multiple of
+ $\frac{\pi}{3}$ and $\frac{\pi}{2}$ is $\pi$:
+ \begin{alignat*}{4}
+  1 \;\cdot\; \tfrac{\pi}{3} ~&=~ \tfrac{\pi}{3} \quad\quad\quad
+   &1 \;&\cdot\; \tfrac{\pi}{2} ~&=~ \tfrac{\pi}{2}\\
+  2 \;\cdot\; \tfrac{\pi}{3} ~&=~ \tfrac{2\pi}{3} \quad\quad\quad
+   &2 \;&\cdot\; \tfrac{\pi}{2} ~&=~ \pi\\
+  3 \;\cdot\; \tfrac{\pi}{3} ~&=~ \pi \quad\quad\quad &{} &{}\\
+ \end{alignat*}
+ Thus, the period of $y=\cos\;6x + \sin\;4x$ is $\pi$. We can see this from its graph in Figure
+ \ref{fig:exmpcos6xsin4x}:
+ 
+\begin{figure}[h]
+ \begin{center}
+  \input{cos6xsin4x.tex}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad $y=\cos\;6x + \sin\;4x$}
+ \label{fig:exmpcos6xsin4x}
+\end{figure}
+
+ What about the amplitude? Unfortunately we can not use the technique from Example
+ \ref{exmp:3sinx4cosx}, since we are not taking the cosine and sine of the same angle; we are
+ taking the cosine of $6x$ but the sine of $4x$. In this case, it appears from the graph that the
+ maximum is close to $2$ and the minimum is close to $-2$. In Chapter 6, we will describe how to
+ use a numerical computation program to show that the maximum and minimum are
+ $\pm\,1.90596111871578$, respectively (accurate to within $\approx 2.2204 \times 10^{-16}$). Hence,
+ the amplitude is $1.90596111871578$.
+\end{exmp}\vspace{-3mm}
+\divider\vspace{-2mm}
+\newpage
+Generalizing Example \ref{exmp:3sinx4cosx}, an expression of the form
+$a\,\sin\;\omega x \;+\; b\,\cos\;\omega x$ is equivalent to
+$\sqrt{a^2 + b^2}\;\sin\;(x+\theta)$, where $\theta$ is an angle such that
+$\cos\;\theta = \frac{a}{\sqrt{a^2 + b^2}}$ and $\sin\;\theta = \frac{b}{\sqrt{a^2 + b^2}}$. So
+$y=a\,\sin\;\omega x \;+\; b\,\cos\;\omega x$ will have amplitude $\sqrt{a^2 + b^2}$. Note that this
+method only works when the angle $\omega x$ is the same in both the sine and cosine terms.
+
+We have seen how adding a constant to a function shifts the entire graph vertically. We will now see
+how to shift the entire graph of a periodic curve horizontally.
+
+\piccaption[]{\enskip $y=A\,\sin\;\omega x$\label{fig:phasenone}}\parpic[r]{\begin{tikzpicture}[scale=1.2,
+ every node/.style={font=\small}]
+ \begin{scope}[shift={(0,0)},color=linecolor,line width=1.5pt,x=3cm/360]
+  \draw[black!60,line width=0.3pt,dotted] (0,-1) grid[xstep=90,ystep=1] (360,1);
+  \draw[black!60,line width=0.3pt,-latex] (0,0) -- (380,0) node[right] {$x$};
+  \draw[black!60,line width=0.3pt,-latex] (0,-1.2) -- (0,1.6) node[above] {$y$};
+  \pgfplothandlerlineto
+  \pgfplotfunction{\x}{0,5,...,360}{\pgfpointxy{\x}{sin(\x)}}
+  \pgfusepath{stroke}
+  \node[black,left] at (0,0) {$0$};
+  \foreach \pos in {90,180,270,360}
+   \draw[black!60,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+  \foreach \pos in {-1,1}
+   \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt);
+  \node[black,left] at (0,1) {$A$};
+  \node[black,left] at (0,-1) {$-A$};
+  \node[black,below] at (180,-0.1) {$\tfrac{\pi}{\omega}$};
+  \node[black,below] at (360,-0.1) {$\tfrac{2\pi}{\omega}$};
+ \end{scope}
+ \begin{scope}[>=latex]
+  \draw [<->|] (0,1.3) -- (3,1.3) node[midway,fill=white] {period $= \tfrac{2\pi}{\omega}$};
+ \end{scope}
+\end{tikzpicture}}
+Consider a function of the form $y=A\,\sin\;\omega x$, where $A$ and $\omega$ are nonzero constants.
+For simplicity we will assume that $A >0$ and $\omega > 0$ (in general either one could be
+negative). Then the amplitude is $A$ and the period is $\frac{2\pi}{\omega}$. The graph is shown in
+Figure \ref{fig:phasenone}.
+
+Now consider the function $y=A\,\sin\;(\omega x - \phi)$, where $\phi$ is some constant. The
+amplitude is still $A$, and the period is still $\frac{2\pi}{\omega}$, since $\omega x - \phi$ is a
+linear function of $x$. Also, we know that the sine function goes through an entire cycle when its
+angle goes from $0$ to $2\pi$. Here, we are taking the sine of the angle $\omega x - \phi$. So as
+$\omega x - \phi$ goes from $0$ to $2\pi$, an entire cycle of the function
+$y=A\,\sin\;(\omega x - \phi)$ will be traced out. That cycle starts when
+\begin{align*}
+ \omega x - \phi ~=~ 0 \quad&\Rightarrow\quad x ~=~ \frac{\phi}{\omega}\\
+\intertext{and ends when}
+ \omega x - \phi ~=~ 2\pi \quad&\Rightarrow\quad x ~=~ \frac{2\pi}{\omega}\;+\;\frac{\phi}{\omega}~.
+\end{align*}
+Thus, the graph of $y=A\,\sin\;(\omega x - \phi)$ is just the graph of $y=A\,\sin\;\omega x$
+shifted horizontally by $\frac{\phi}{\omega}$, as in Figure \ref{fig:phaseshift}. The graph is
+shifted to the right when $\phi >0$, and to the left when $\phi <0$. The amount
+$\frac{\phi}{\omega}$ of the shift is called the \textbf{phase shift}\index{phase shift} of the
+graph.
+
+\begin{figure}[h]
+ \centering
+ \subfloat[][ $\phi >0$: right shift]{
+  \begin{tikzpicture}[scale=1.2,every node/.style={font=\small}]
+   \begin{scope}[shift={(0,0)},color=linecolor,line width=1.5pt,x=3cm/360]
+	\draw[black!60,line width=0.3pt,-latex] (0,0) -- (500,0) node[right] {$x$};
+	\draw[black!60,line width=0.3pt,-latex] (0,-1.2) -- (0,1.7) node[above] {$y$};
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{90,95,...,450}{\pgfpointxy{\x}{sin(-90+\x)}}
+	\pgfusepath{stroke}
+	\node[black,left] at (0,0) {$0$};
+	\foreach \pos in {90,180,270,360,450}
+	 \draw[black!60,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {-1,1}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt);
+	\node[black,left] at (0,1) {$A$};
+	\node[black,left] at (0,-1) {$-A$};
+	\node[black,below right] at (425,-0.1) {$\tfrac{2\pi}{\omega}+\tfrac{\phi}{\omega}$};
+	\node[black,below] at (90,-0.1) {$\tfrac{\phi}{\omega}$};
+   \end{scope}
+   \begin{scope}[>=latex]
+    \draw [|<->|] (0.75,1.4) -- (3.75,1.4) node[midway,fill=white]
+	 {period $= \tfrac{2\pi}{\omega}$};
+    \draw [<->|] (0,-0.9) -- (0.75,-0.9);
+	\node[below right] at (0,-0.9) {phase shift};
+   \end{scope}
+  \end{tikzpicture}}
+ \qquad\qquad
+ \subfloat[][ $\phi <0$: left shift]{
+  \begin{tikzpicture}[scale=1.2,every node/.style={font=\small}]
+   \begin{scope}[shift={(0,0)},color=linecolor,line width=1.5pt,x=3cm/360]
+	\draw[black!60,line width=0.3pt,-latex] (-120,0) -- (320,0) node[right] {$x$};
+	\draw[black!60,line width=0.3pt,-latex] (0,-1.2) -- (0,1.7) node[above] {$y$};
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{-90,-85,...,270}{\pgfpointxy{\x}{sin(90+\x)}}
+	\pgfusepath{stroke}
+	\node[black,below right] at (0,0) {$0$};
+	\foreach \pos in {-90,90,180,270}
+	 \draw[black!60,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {-1,1}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt);
+	\node[black,left] at (0,1.1) {$A$};
+	\node[black,right] at (0,-1) {$-A$};
+	\node[black,below right] at (245,-0.1) {$\tfrac{2\pi}{\omega}+\tfrac{\phi}{\omega}$};
+	\node[black,below] at (-90,-0.1) {$\tfrac{\phi}{\omega}$};
+   \end{scope}
+   \begin{scope}[>=latex]
+    \draw [|<->|] (-0.75,1.4) -- (2.25,1.4) node[pos=0.6,fill=white]
+	 {period $= \tfrac{2\pi}{\omega}$};
+    \draw [|<->] (-0.75,-0.9) -- (0,-0.9);
+	\node[below left] at (0,-0.9) {phase shift};
+   \end{scope}
+  \end{tikzpicture}}\vspace{-2mm}
+ \caption[]{\quad Phase shift for $y=A\,\sin\;(\omega x - \phi)$}
+ \label{fig:phaseshift}
+\end{figure}
+\newpage
+The phase shift is defined similarly for the other trigonometric functions.
+
+\begin{exmp}
+ Find the amplitude, period, and phase shift of $y=3\,\cos\;(2x - \pi)$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} The amplitude is $3$, the period is $\frac{2\pi}{2} = \pi$, and the
+ phase shift is $\frac{\pi}{2}$. The graph is shown in Figure \ref{fig:exmp3cos2mpi}:\vspace{-1mm}
+
+\begin{figure}[h]
+ \begin{center}
+  \begin{tikzpicture}[scale=1.2,every node/.style={font=\small}]
+   \begin{scope}[shift={(0,0)},color=linecolor,line width=1.5pt,x=8cm/360,y=1.5cm/3]
+    \draw[black!60,line width=0.3pt,dotted] (0,-3) grid[xstep=90,ystep=1] (360,3);
+	\draw[black!60,line width=0.3pt,-latex] (0,0) -- (380,0) node[right] {$x$};
+	\draw[black!60,line width=0.3pt,-latex] (0,-3.8) -- (0,3.8) node[above] {$y$};
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{0,5,...,360}{\pgfpointxy{\x}{3*cos(-180+2*\x)}}
+	\pgfusepath{stroke}
+	\node[black,left] at (0,0) {$0$};
+	\foreach \pos in {90,180,270,360}
+	 \draw[black!60,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {-3,-2,-1,1,2,3}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt) node[black,left]
+	  {$\pos$};
+	\node[black,below] at (90,-0.1) {$\tfrac{\pi}{2}$};
+	\node[black,below] at (180,-0.1) {$\pi$};
+	\node[black,below] at (270,-0.1) {$\tfrac{3\pi}{2}$};
+	\node[black,below] at (360,-0.1) {$2\pi$};
+   \end{scope}
+   \begin{scope}[>=latex]
+    \draw [|<->|] (2,1.9) -- (6,1.9) node[midway,fill=white] {period $= \pi$};
+    \draw [<->|] (0,-1.7) -- (2,-1.7);
+	\node[below right] at (0,-1.7) {phase shift $= \tfrac{\pi}{2}$};
+    \draw [|<->|] (-0.9,0) -- (-0.9,1.5) node[midway,left] {amplitude $= 3$};
+   \end{scope}
+  \end{tikzpicture}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad $y=3\,\cos\;(2x - \pi)$}
+ \label{fig:exmp3cos2mpi}
+\end{figure}
+
+Notice that the graph is the same as the graph of $y=3\,\cos\;2x$ shifted to the right by
+$\frac{\pi}{2}$, the amount of the phase shift.
+\end{exmp}
+\begin{exmp}
+ Find the amplitude, period, and phase shift of $y=-2\,\sin\;\left(3x +
+ \frac{\pi}{2}\right)$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} The amplitude is $2$, the period is $\frac{2\pi}{3}$, and the
+ phase shift is $\frac{-\frac{\pi}{2}}{3} = -\frac{\pi}{6}$. Notice the negative sign in the phase
+ shift, since $3x+\pi=3x-(-\pi)$ is in the form $\omega x - \phi$. The graph is shown in Figure
+ \ref{fig:exmpm2sin3ppi2}:\vspace{-1mm}
+
+\begin{figure}[h]
+ \begin{center}
+  \begin{tikzpicture}[scale=1.1,every node/.style={font=\small}]
+   \begin{scope}[shift={(0,0)},color=linecolor,line width=1.5pt,x=8cm/240,y=1.5cm/2]
+    \draw[black!60,line width=0.3pt,dotted] (-30,-2) grid[xstep=30,ystep=1] (240,2);
+	\draw[black!60,line width=0.3pt,-latex] (-50,0) -- (250,0) node[right] {$x$};
+	\draw[black!60,line width=0.3pt,-latex] (0,-2.8) -- (0,2.8) node[above] {$y$};
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{-30,-25,...,240}{\pgfpointxy{\x}{-2*sin(90+3*\x)}}
+	\pgfusepath{stroke}
+	\node[black,below left] at (0,0) {$0$};
+	\foreach \pos in {-30,30,60,90,120,150,180,210,240}
+	 \draw[black!60,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {-2,-1,1,2}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt) node[black,left]
+	  {$\pos$};
+	\node[black,below] at (-35,-0.1) {$-\tfrac{\pi}{6}$};
+	\node[black,below] at (30,-0.1) {$\tfrac{\pi}{6}$};
+	\node[black,below] at (60,-0.1) {$\tfrac{\pi}{3}$};
+	\node[black,below] at (90,-0.1) {$\tfrac{\pi}{2}$};
+	\node[black,below] at (120,-0.1) {$\tfrac{2\pi}{3}$};
+	\node[black,below] at (150,-0.1) {$\tfrac{5\pi}{6}$};
+	\node[black,below] at (180,-0.1) {$\pi$};
+	\node[black,below] at (210,-0.1) {$\tfrac{7\pi}{6}$};
+	\node[black,below] at (240,-0.1) {$\tfrac{4\pi}{3}$};
+   \end{scope}
+   \begin{scope}[>=latex]
+    \draw [|<->|] (-1,1.9) -- (3,1.9) node[pos=0.55,fill=white] {period $= \frac{2\pi}{3}$};
+    \draw [|<->] (-1,-1.7) -- (0,-1.7);
+	\node[below left] at (0,-1.75) {phase shift $= -\tfrac{\pi}{6}$};
+    \draw [|<->|] (-1.1,0) -- (-1.1,1.5) node[midway,left] {amplitude $= 2$};
+   \end{scope}
+  \end{tikzpicture}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad $y=-2\,\sin\;\left( 3x + \frac{\pi}{2} \right)$}
+ \label{fig:exmpm2sin3ppi2}
+\end{figure}
+\end{exmp}\vspace{-4mm}
+\divider\vspace{-2mm}
+\newpage
+In engineering two periodic functions with the same period are said to be \emph{out of
+phase} if their phase shifts differ. For example, $\sin\;\left( x -
+\frac{\pi}{6} \right)$ and $\sin\;x$ would be $\frac{\pi}{6}$ radians (or $30\Degrees$) out of
+phase, and $\sin\;x$ would be said to \emph{lag} $\sin\;\left( x - \frac{\pi}{6} \right)$ by
+$\frac{\pi}{6}$ radians, while $\sin\;\left( x - \frac{\pi}{6} \right)$ \emph{leads}
+$\sin\;x$ by $\frac{\pi}{6}$ radians. Periodic functions with the same period and the same phase
+shift are \emph{in phase}.\index{phase, out of or in}
+
+The following is a summary of the properties of trigonometric graphs:
+
+\begin{center}\statecomment{For any constants $A \ne 0$, $\omega \ne 0$, and $\phi$:
+\begin{align*}
+ y = A\,\sin\;(\omega x - \phi) ~~&\text{has amplitude $\abs{A}$, period $\tfrac{2\pi}{\omega}$, and
+  phase shift $\tfrac{\phi}{\omega}$}\\
+ y = A\,\cos\;(\omega x - \phi) ~~&\text{has amplitude $\abs{A}$, period $\tfrac{2\pi}{\omega}$, and
+  phase shift $\tfrac{\phi}{\omega}$}\\
+ y = A\,\tan\;(\omega x - \phi) ~~&\text{has undefined amplitude, period $\tfrac{\pi}{\omega}$, and
+  phase shift $\tfrac{\phi}{\omega}$}\\
+ y = A\,\csc\;(\omega x - \phi) ~~&\text{has undefined amplitude, period $\tfrac{2\pi}{\omega}$, and
+  phase shift $\tfrac{\phi}{\omega}$}\\
+ y = A\,\sec\;(\omega x - \phi) ~~&\text{has undefined amplitude, period $\tfrac{2\pi}{\omega}$, and
+  phase shift $\tfrac{\phi}{\omega}$}\\
+ y = A\,\cot\;(\omega x - \phi) ~~&\text{has undefined amplitude, period $\tfrac{\pi}{\omega}$, and
+  phase shift $\tfrac{\phi}{\omega}$}
+\end{align*}}\end{center}\vspace{-4mm}
+
+\divider
+\vspace{2mm}
+
+\startexercises\label{sec5dot2}
+\vspace{5mm}
+{\small
+\par\noindent For Exercises 1-12, find the amplitude, period, and phase shift of the given function.
+Then graph one cycle of the function, either by hand or by using Gnuplot (see Appendix B).
+\begin{enumerate}[\bfseries 1.]
+\begin{multicols}{4}
+ \item $y=3\,\cos\;\pi x$
+ \item $y=\sin\;(2\pi x - \pi)$
+ \item $y=-\sin\;(5x + 3)$
+ \item $y=1+8\,\cos\;(6x- \pi)$
+\end{multicols}
+\begin{multicols}{4}
+ \item $y=2+\cos\;(5x + \pi)$
+ \item $y=1-\sin\;(3\pi - 2x)$
+ \item $y=1-\cos\;(3\pi - 2x)$
+ \item $y=2\,\tan\;(x - 1)$
+\end{multicols}
+\begin{multicols}{4}
+ \item $y=1-\tan\;(3\pi - 2x)$
+ \item $y=\sec\;(2x + 1)$
+ \item $y=2\csc\;(2x - 1)$
+ \item $y=2+4\,\cot\;(1-x)$
+\end{multicols}
+ \item For the function $y=2\,\sin\;( x^2 )$ in Example \ref{exmp:2sinx2}, for which values of $x$
+  does the function reach its maximum value $2$, and for which values of $x$ does it reach
+  its minimum value $-2\,$?
+ \item For the function $y=3\,\sin\;x + 4\,\cos\;x$ in Example \ref{exmp:3sinx4cosx}, for which
+  values of $x$ does the function reach its maximum value $5$, and for which values of $x$ does it
+  reach its minimum value $-5\,$? You can restrict your answers to be between $0$ and $2\pi$.
+ \item Graph the function $y=\sin^2 \,x$ from $x=0$ to $x=2\pi$, either by hand or by using Gnuplot.
+  What are the amplitude and period of this function?
+ \item\label{exer:circuitphase}
+  The current $i(t)$ in an AC electrical circuit at time $t\ge 0$ is given by
+  $i(t) = I_m \,\sin\;\omega t$, and the voltage $v(t)$ is given by $v(t) = V_m \,\sin\;\omega t$,
+  where $V_m > I_m > 0$ and $\omega > 0$ are constants.
+  Sketch one cycle of both $i(t)$ and $v(t)$ \emph{together on the same graph} (i.e. on the same set
+  of axes). Are the current and voltage in phase or out of phase?
+ \item Repeat Exercise \ref{exer:circuitphase} with $i(t)$ the same as before but with $v(t)=
+  V_m \,\sin\;\left(\omega t + \frac{\pi}{4}\right)$.
+ \item Repeat Exercise \ref{exer:circuitphase} with
+  $i(t)=-I_m \,\cos\;\left(\omega t - \frac{\pi}{3}\right)$ and $v(t)=
+  V_m \,\sin\;\left(\omega t - \frac{5\pi}{6}\right)$.
+\suspend{enumerate}
+ For Exercises \ref{exer:ampcombostart}-\ref{exer:ampcomboend}, find the amplitude and period of
+ the given function. Then graph one cycle of the function, either by hand or by using Gnuplot.
+\resume{enumerate}[{[\bfseries 1.]}]
+\begin{multicols}{3}
+ \item\label{exer:ampcombostart} $y=3\,\sin\;\pi x \;-\; 5\,\cos\;\pi x$
+ \item $y=-5\,\sin\;3x \;+\; 12\,\cos\;3x$
+ \item\label{exer:ampcomboend} $y=2\,\cos\;x \;+\; 2\,\sin\;x$
+\end{multicols}
+ \item Find the amplitude of the function $y=2\,\sin\;( x^2 ) \;+\; \cos\;( x^2 )$.
+\suspend{enumerate}
+ For Exercises \ref{exer:percombostart}-\ref{exer:percomboend}, find the period of the given
+ function. Graph one cycle using Gnuplot.
+\resume{enumerate}[{[\bfseries 1.]}]
+\begin{multicols}{3}
+ \item\label{exer:percombostart} $y=\sin\;3x \;-\; \cos\;5x$
+ \item $y=\sin\;\frac{x}{3} \;+\; 2\,\cos\;\frac{3x}{4}$
+ \item\label{exer:percomboend} $y=2\,\sin\;\pi x \;+\; 3\,\cos\;\frac{\pi}{3}x$
+\end{multicols}
+ \item Let $y = 0.5\,\sin\;x ~\sin\;12x\,$. Its graph for $x$ from $0$ to $4\pi$ is shown in
+  Figure \ref{fig:modulated}:
+
+\begin{figure}[h]
+ \begin{center}
+  \input{modulated.tex}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad Modulated wave $y=0.5\,\sin\;x ~\sin\;12x$}
+ \label{fig:modulated}
+\end{figure}
+
+  You can think of this function as $\sin\;12x$ with a sinusoidally varying ``amplitude''of
+  $0.5\,\sin\;x$. What is the period of this function?
+  From the graph it looks like the amplitude may be $0.5$.
+  Without finding the exact amplitude, explain why the amplitude is in fact \emph{less} than $0.5$.
+  The function above is known as a \emph{modulated wave}\index{modulated wave}, and the functions
+  $\pm\,0.5\,\sin\;x$ form an \emph{amplitude envelope}\index{amplitude envelope} for the wave (i.e.
+  they enclose the wave). Use an identity from Section 3.4 to write this function as a sum of
+  sinusoidal curves.
+ \item Use Gnuplot to graph the function $y= x^2 \,\sin\;10x$ from $x = -2\pi$ to $x=2\pi$. What
+  functions form its amplitude envelope? (Note: Use \texttt{set samples 500} in Gnuplot.)
+ \item Use Gnuplot to graph the function $y= \frac{1}{x^2} \,\sin\;80x$ from $x = 0.2$ to $x=\pi$.
+  What functions form its amplitude envelope? (Note: Use \texttt{set samples 500} in Gnuplot.)
+ \item Does the function $y=\sin\;\pi x \;+\; \cos\;x$ have a period? Explain your answer.
+ \item Use Gnuplot to graph the function $y=\frac{\sin\;x}{x}$ from $x=-4\pi$ to $x=4\pi$. What
+  happens at $x=0$?
+\end{enumerate}}
+\newpage
+%Begin Section 5.3
+\section{Inverse Trigonometric Functions}
+We have briefly mentioned the inverse trigonometric functions before, for example in Section 1.3
+when we discussed how to use the {\setlength\fboxsep{1pt}\ovalbox{\footnotesize $\sin^{-1}$}},
+{\setlength\fboxsep{1pt}\ovalbox{\footnotesize $\cos^{-1}$}}, and
+{\setlength\fboxsep{1pt}\ovalbox{\footnotesize $\tan^{-1}$}} buttons on a calculator to find
+an angle that has a certain trigonometric function value. We will now define those inverse
+functions and determine their graphs.\index{inverse trigonometric functions}
+
+\piccaption[]{\label{fig:function}}\parpic[r]{\begin{tikzpicture}[every node/.style={font=\small}]
+ \draw [line width=1pt] (0,0) ellipse (0.8 and 0.5);
+ \fill (0,0) circle (2pt);
+ \node [below] at (0,0) {$x$};
+ \node [above] at (0,0.6) {Domain};
+ \draw [line width=1pt] (3,0) ellipse (0.8 and 0.5);
+ \fill (3,0) circle (2pt);
+ \node [below] at (3,0) {$y$};
+ \node [above] at (3,0.53) {Range};
+ \draw [-latex,line width=1.5pt] (1,0) -- (2,0) node[midway,above] {$f$}
+  node[midway,below] {$y=f(x)$};
+\end{tikzpicture}}
+Recall that a \textbf{function}\index{function} is a rule that assigns a single object $y$ from one
+set (the \textbf{range})\index{range} to each object $x$ from another set (the
+\textbf{domain}).\index{domain} We can write that rule as $y = f(x)$, where $f$ is the function (see
+Figure \ref{fig:function}). There is a simple \emph{vertical rule} for determining whether a rule
+$y=f(x)$ is a function: $f$ is a function if and only if every vertical line intersects the graph of
+$y=f(x)$ in the $xy$-coordinate plane at most once (see  Figure \ref{fig:verticalrule}).
+
+\begin{figure}[h]
+ \centering
+ \subfloat[][ $f$ is a function]{
+  \begin{tikzpicture}[every node/.style={font=\small}]
+   \draw[latex-latex,black!60,line width=0.3pt] (0,2) node[above] {$y$} |- (4,0) node[right] {$x$};
+   \draw [linecolor,line width=1.5pt] (0.5,0.5) parabola[bend at end] (3.5,1.5);
+   \node[above] at (3.5,1.5) {$y=f(x)$};
+   \draw (1.5,0.5) -- (1.5,2);
+  \end{tikzpicture}}
+ \qquad\qquad
+ \subfloat[][ $f$ is not a function]{
+  \begin{tikzpicture}[every node/.style={font=\small}]
+   \draw[latex-latex,black!60,line width=0.3pt] (0,2) node[above] {$y$} |- (4,0) node[right] {$x$};
+   \draw [linecolor,line width=1.5pt] (0.5,1.5) parabola bend  (3.5,1) (2.5,0.5);
+   \node[above] at (1.5,1.5) {$y=f(x)$};
+   \draw (2.8,0.2) -- (2.8,2);
+  \end{tikzpicture}}\vspace{-2mm}
+ \caption[]{\quad Vertical rule for functions}
+ \label{fig:verticalrule}
+\end{figure}
+
+Recall that a function $f$ is \textbf{one-to-one}\index{one-to-one} (often written as $1-1$) if
+it assigns distinct values of $y$ to distinct values of $x$. In other words, if $x_1 \ne x_2$ then
+$f(x_1 ) \ne f(x_2 )$. Equivalently, $f$ is one-to-one if $f(x_1 ) = f(x_2 )$ implies $x_1 = x_2$.
+There is a simple \emph{horizontal rule} for determining whether a function $y=f(x)$ is one-to-one:
+$f$ is one-to-one if and only if every horizontal line intersects the graph of $y=f(x)$ in the
+$xy$-coordinate plane at most once (see Figure \ref{fig:horizontalrule}).
+
+\begin{figure}[h]
+ \centering
+ \subfloat[][ $f$ is one-to-one]{
+  \begin{tikzpicture}[every node/.style={font=\small}]
+   \draw[latex-latex,black!60,line width=0.3pt] (0,2) node[above] {$y$} |- (4,0) node[right] {$x$};
+   \draw [linecolor,line width=1.5pt] (0.5,0.5) parabola[bend at end] (3.5,1.5);
+   \node[above] at (3.5,1.5) {$y=f(x)$};
+   \draw (0.5,1) -- (2.5,1);
+  \end{tikzpicture}}
+ \qquad\qquad
+ \subfloat[][ $f$ is not one-to-one]{
+  \begin{tikzpicture}[every node/.style={font=\small}]
+   \draw[latex-latex,black!60,line width=0.3pt] (0,2) node[above] {$y$} |- (4,0) node[right] {$x$};
+   \draw [linecolor,line width=1.5pt] (0.5,0.5) parabola bend  (2,1.5) (3.5,0.5);
+   \node[above] at (2,1.5) {$y=f(x)$};
+   \draw (0.5,1) -- (3.5,1);
+  \end{tikzpicture}}\vspace{-2mm}
+ \caption[]{\quad Horizontal rule for one-to-one functions}
+ \label{fig:horizontalrule}
+\end{figure}
+
+If a function $f$ is one-to-one on its domain, then $f$ has an \textbf{inverse function}, denoted
+by $f^{-1}$, such that $y=f(x)$ if and only if $f^{-1}(y) = x$. The domain of $f^{-1}$ is the
+range of $f$.
+
+The basic idea is that $f^{-1}$ ``undoes'' what $f$ does, and vice versa. In other words,
+\begin{alignat*}{3}
+ f^{-1}(f(x)) ~&=~ x \quad&&\text{for all $x$ in the domain of $f$, and}\\
+ f(f^{-1}(y)) ~&=~ y \quad&&\text{for all $y$ in the range of $f$.}
+\end{alignat*}
+
+We know from their graphs that none of the trigonometric functions are one-to-one over their entire
+domains. However, we can restrict those functions to \emph{subsets} of their domains where they
+\emph{are} one-to-one. For example, $y=\sin\;x$ is one-to-one over the interval
+$\left[ -\frac{\pi}{2},\frac{\pi}{2} \right]$, as we see in the graph below:
+
+\begin{figure}[h]
+ \begin{center}
+  \begin{tikzpicture}[scale=1.2,every node/.style={font=\small}]
+   \begin{scope}[dashed,line width=1pt,x=6cm/360]
+	\draw[black!60,solid,line width=0.3pt,-latex] (-200,0) -- (220,0) node[right] {$x$};
+	\draw[black!60,solid,line width=0.3pt,-latex] (0,-1.5) -- (0,1.5) node[above] {$y$};
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{-180,-175,...,180}{\pgfpointxy{\x}{sin(\x)}}
+	\pgfusepath{stroke}
+	\node[black,below right] at (0,0) {$0$};
+	\foreach \pos in {-180,-90,90,180}
+	 \draw[black!60,line width=0.3pt,solid,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {-1,1}
+	 \draw[black!60,line width=0.3pt,solid,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt)
+	  node[black,left] {$\pos$};
+	\node[black,below] at (90,-0.1) {$\tfrac{\pi}{2}$};
+	\node[black,below] at (180,-0.1) {$\pi$};
+	\node[black,below] at (-90,-0.1) {$-\tfrac{\pi}{2}$};
+	\node[black,below] at (-180,-0.1) {$-\pi$};
+	\node[black,above] at (180,1) {$y=\sin\;x$};
+   \end{scope}
+   \begin{scope}[color=linecolor,line width=1.5pt,x=6cm/360]
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{-90,-85,...,90}{\pgfpointxy{\x}{sin(\x)}}
+	\pgfusepath{stroke}
+	\fill (-90,-1) circle (2pt);
+	\fill (90,1) circle (2pt);
+   \end{scope}
+  \end{tikzpicture}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad $y=\sin\;x$ with $x$ restricted to $\left[ -\frac{\pi}{2},\frac{\pi}{2} \right]$}
+ \label{fig:sinerestricted}
+\end{figure}
+
+For $-\frac{\pi}{2} \le x \le \frac{\pi}{2}$ we have $-1 \le \sin\;x \le 1$, so we can define the
+\textbf{inverse sine}\index{inverse sine} function $y=\sin^{-1} x$ (sometimes called the \textbf{arc
+sine}\index{arc sine} and denoted by $y=\arcsin\;x$) whose domain is the interval $\ival{-1}{1}$ and
+whose range is the interval $\left[ -\frac{\pi}{2},\frac{\pi}{2} \right]$. In other words:
+
+\begin{center}\statecomment{\vspace{-4mm}\begin{alignat}{3}
+ \sin^{-1} (\sin\;y) ~&=~ y \quad&&\text{for $-\tfrac{\pi}{2} \le y \le
+  \tfrac{\pi}{2}$}\label{eqn:arcsin1}\\
+ \sin\;(\sin^{-1} x) ~&=~ x \quad&&\text{for $-1 \le x \le 1$}\label{eqn:arcsin2}
+\end{alignat}}\end{center}
+
+\begin{exmp}
+ Find $\sin^{-1} \left(\sin\;\frac{\pi}{4}\right)$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Since $-\frac{\pi}{2} \le \frac{\pi}{4} \le \frac{\pi}{2}$, we know
+ that $\sin^{-1} \left(\sin\;\frac{\pi}{4}\right) = \boxed{\frac{\pi}{4}}\;$, by formula
+ (\ref{eqn:arcsin1}).
+\end{exmp}
+\begin{exmp}\label{exmp:arcsin5pi4}
+ Find $\sin^{-1} \left(\sin\;\frac{5\pi}{4}\right)$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Since $\frac{5\pi}{4} > \frac{\pi}{2}$, we can not use formula
+ (\ref{eqn:arcsin1}). But we know that $\sin\;\frac{5\pi}{4} = -\frac{1}{\sqrt{2}}$. Thus,
+ $\sin^{-1} \left(\sin\;\frac{5\pi}{4}\right) = \sin^{-1} \left( -\frac{1}{\sqrt{2}} \right)$ is, by
+ definition, the angle $y$ such that $-\frac{\pi}{2} \le y \le \frac{\pi}{2}$ and $\sin\;y =
+ -\frac{1}{\sqrt{2}}$. That angle is $y=-\frac{\pi}{4}$, since
+ \begin{displaymath}
+  \sin\;\left( -\tfrac{\pi}{4} \right) ~=~ -\sin\;\left( \tfrac{\pi}{4} \right) ~=~
+  -\tfrac{1}{\sqrt{2}} ~.
+ \end{displaymath}
+ Thus, $\sin^{-1} \left(\sin\;\frac{5\pi}{4}\right) = \boxed{-\tfrac{\pi}{4}}\;$.
+\end{exmp}
+\divider
+\newpage
+Example \ref{exmp:arcsin5pi4} illustrates an important point: $\sin^{-1} x$ should \emph{always}
+be a number between $-\frac{\pi}{2}$ and $\frac{\pi}{2}$. If you get a number outside that range,
+then you made a mistake somewhere. This why in Example \ref{exmp:sinneg0682} in Section 1.5 we got
+$\sin^{-1}(-0.682) = -43\Degrees$ when using the
+{\setlength\fboxsep{1pt}\ovalbox{\footnotesize $\sin^{-1}$}} button on a calculator. Instead of
+an angle between $0\Degrees$ and $360\Degrees$ (i.e. $0$ to $2\pi$ radians) we got an angle
+between $-90\Degrees$ and $90\Degrees$ (i.e. $-\frac{\pi}{2}$ to $\frac{\pi}{2}$ radians).
+
+In general, the graph of an inverse function $f^{-1}$ is the reflection of the graph of $f$ around
+the line $y=x$. The graph of $y=\sin^{-1} x$ is shown in Figure \ref{fig:arcsine}. Notice the
+symmetry about the line $y=x$ with the graph of $y=\sin\;x$.
+
+\begin{figure}[h]
+ \begin{center}
+  \begin{tikzpicture}[scale=1.2,every node/.style={font=\small}]
+   \begin{scope}[dashed,line width=1pt,x=6cm/360]
+	\draw[black!60,solid,line width=0.3pt,-latex] (-110,0) -- (110,0) node[right] {$x$};
+	\draw[black!60,solid,line width=0.3pt,-latex] (0,-2) -- (0,2) node[above] {$y$};
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{-90,-85,...,90}{\pgfpointxy{\x}{sin(\x)}}
+	\pgfusepath{stroke}
+	\node[black,below right] at (0,0) {$0$};
+	\foreach \pos in {-90,-57.3,57.3,90}
+	 \draw[black!60,line width=0.3pt,solid,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {-1,1}
+	 \draw[black!60,line width=0.3pt,solid,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt)
+	  node[black,left] {$\pos$};
+	\foreach \pos in {-1.57}
+	 \draw[black!60,line width=0.3pt,solid,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt)
+	  node[black,left] {$-\tfrac{\pi}{2}$};
+	\foreach \pos in {1.57}
+	 \draw[black!60,line width=0.3pt,solid,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt)
+	  node[black,left] {$\tfrac{\pi}{2}$};
+	\node[black,below] at (90,-0.1) {$\tfrac{\pi}{2}$};
+	\node[black,below] at (57.3,-0.1) {$1$};
+	\node[black,below] at (-90,-0.1) {$-\tfrac{\pi}{2}$};
+	\node[black,below] at (-57.3,-0.1) {$-1$};
+	\node[linecolor,above] at (57.3,1.58) {$y=\sin^{-1} x$};
+	\node[black,right] at (90,1) {$y=\sin\;x$};
+	\draw[black!60] (-90,-1.57) -- (90,1.57) node[pos=0.0,left] {$y=x$};
+   \end{scope}
+   \begin{scope}[color=linecolor,line width=1.5pt,x=6cm/360,cm={0,1,1,0,(0,0)}]
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{-90,-85,...,90}{\pgfpointxy{\x}{sin(\x)}}
+	\pgfusepath{stroke}
+	\fill (-90,-1) circle (2pt);
+	\fill (90,1) circle (2pt);
+   \end{scope}
+  \end{tikzpicture}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad Graph of $y=\sin^{-1} x$}
+ \label{fig:arcsine}
+\end{figure}
+
+The \textbf{inverse cosine}\index{inverse cosine} function $y=\cos^{-1} x$ (sometimes called the
+\textbf{arc cosine}\index{arc cosine} and denoted by $y=\arccos\;x$) can be determined in a similar
+fashion. The function $y=\cos\;x$ is one-to-one over the interval $\ival{0}{\pi}$, as we see in the
+graph below:
+
+\begin{figure}[h]
+ \begin{center}
+  \begin{tikzpicture}[scale=1.2,every node/.style={font=\small}]
+   \begin{scope}[dashed,line width=1pt,x=6cm/360]
+	\draw[black!60,solid,line width=0.3pt,-latex] (-110,0) -- (290,0) node[right] {$x$};
+	\draw[black!60,solid,line width=0.3pt,-latex] (0,-1.5) -- (0,1.5) node[above] {$y$};
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{-90,-85,...,270}{\pgfpointxy{\x}{cos(\x)}}
+	\pgfusepath{stroke}
+	\node[black,below right] at (0,0) {$0$};
+	\foreach \pos in {-90,90,180,270}
+	 \draw[black!60,line width=0.3pt,solid,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {-1,1}
+	 \draw[black!60,line width=0.3pt,solid,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt)
+	  node[black,left] {$\pos$};
+	\node[black,below] at (90,-0.1) {$\tfrac{\pi}{2}$};
+	\node[black,below] at (180,-0.1) {$\pi$};
+	\node[black,below] at (-90,-0.1) {$-\tfrac{\pi}{2}$};
+	\node[black,below] at (270,-0.1) {$\tfrac{3\pi}{2}$};
+	\node[black,above] at (90,1) {$y=\cos\;x$};
+   \end{scope}
+   \begin{scope}[color=linecolor,line width=1.5pt,x=6cm/360]
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{0,5,...,180}{\pgfpointxy{\x}{cos(\x)}}
+	\pgfusepath{stroke}
+	\fill (0,1) circle (2pt);
+	\fill (180,-1) circle (2pt);
+   \end{scope}
+  \end{tikzpicture}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad $y=\cos\;x$ with $x$ restricted to $\ival{0}{\pi}$}
+ \label{fig:cosinerestricted}
+\end{figure}
+
+Thus, $y=\cos^{-1} x$ is a function whose domain is the interval $\ival{-1}{1}$ and whose range is
+the interval $\ival{0}{\pi}$. In other words:
+\newpage
+\begin{center}\statecomment{\vspace{-4mm}\begin{alignat}{3}
+ \cos^{-1} (\cos\;y) ~&=~ y \quad&&\text{for $0 \le y \le \pi$}\label{eqn:arccos1}\\
+ \cos\;(\cos^{-1} x) ~&=~ x \quad&&\text{for $-1 \le x \le 1$}\label{eqn:arccos2}
+\end{alignat}}\end{center}
+
+The graph of $y=\cos^{-1} x$ is shown below in Figure \ref{fig:arccosine}. Notice the
+symmetry about the line $y=x$ with the graph of $y=\cos\;x$.
+
+\begin{figure}[h]
+ \begin{center}
+  \begin{tikzpicture}[scale=1.2,every node/.style={font=\small}]
+   \begin{scope}[dashed,line width=1pt,x=6cm/360]
+	\draw[black!60,solid,line width=0.3pt,-latex] (-110,0) -- (200,0) node[right] {$x$};
+	\draw[black!60,solid,line width=0.3pt,-latex] (0,-1.2) -- (0,3.5) node[above] {$y$};
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{0,5,...,180}{\pgfpointxy{\x}{cos(\x)}}
+	\pgfusepath{stroke}
+	\node[black,below right] at (0,0) {$0$};
+	\foreach \pos in {-90,-57.3,57.3,90,180}
+	 \draw[black!60,line width=0.3pt,solid,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {-1,1}
+	 \draw[black!60,line width=0.3pt,solid,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt)
+	  node[black,left] {$\pos$};
+	\foreach \pos in {3.14}
+	 \draw[black!60,line width=0.3pt,solid,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt)
+	  node[black,left] {$\pi$};
+	\node[black,below] at (90,-0.1) {$\tfrac{\pi}{2}$};
+	\node[black,below] at (57.3,-0.1) {$1$};
+	\node[black,below] at (180,-0.1) {$\pi$};
+	\node[black,below] at (-90,-0.1) {$-\tfrac{\pi}{2}$};
+	\node[black,below] at (-57.3,-0.1) {$-1$};
+	\node[linecolor,above left] at (-57.3,3.14) {$y=\cos^{-1} x$};
+	\node[black,above right] at (90,0) {$y=\cos\;x$};
+	\draw[black!60] (-57.3,-1) -- (90,1.57) node[pos=0.0,left] {$y=x$};
+   \end{scope}
+   \begin{scope}[color=linecolor,line width=1.5pt,x=6cm/360,cm={0,1,1,0,(0,0)}]
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{0,5,...,180}{\pgfpointxy{\x}{cos(\x)}}
+	\pgfusepath{stroke}
+	\fill (0,1) circle (2pt);
+	\fill (180,-1) circle (2pt);
+   \end{scope}
+  \end{tikzpicture}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad Graph of $y=\cos^{-1} x$}
+ \label{fig:arccosine}
+\end{figure}
+
+\begin{exmp}
+ Find $\cos^{-1} \left(\cos\;\frac{\pi}{3}\right)$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Since $0 \le \frac{\pi}{3} \le \pi$, we know
+ that $\cos^{-1} \left(\cos\;\frac{\pi}{3}\right) = \boxed{\frac{\pi}{3}}\;$, by formula
+ (\ref{eqn:arccos1}).
+\end{exmp}
+\begin{exmp}\label{exmp:arccos4pi3}
+ Find $\cos^{-1} \left(\cos\;\frac{4\pi}{3}\right)$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Since $\frac{4\pi}{3} > \pi$, we can not use formula
+ (\ref{eqn:arccos1}). But we know that $\cos\;\frac{4\pi}{3} = -\frac{1}{2}$. Thus,
+ $\cos^{-1} \left(\cos\;\frac{4\pi}{3}\right) = \cos^{-1} \left( -\frac{1}{2} \right)$ is, by
+ definition, the angle $y$ such that $0 \le y \le \pi$ and $\cos\;y =
+ -\frac{1}{2}$. That angle is $y=\frac{2\pi}{3}$ (i.e. $120\Degrees$).
+ Thus, $\cos^{-1} \left(\cos\;\frac{4\pi}{3}\right) = \boxed{\tfrac{2\pi}{3}}\;$.
+\end{exmp}
+\divider
+\vspace{1mm}
+
+Examples \ref{exmp:arcsin5pi4} and \ref{exmp:arccos4pi3} may be confusing, since they seem to
+violate the general rule for inverse functions that $f^{-1}(f(x)) = x$ for all $x$ in the domain of
+$f$. But that rule only applies when the function $f$ is one-to-one over its \emph{entire} domain.
+We had to restrict the sine and cosine functions to very small subsets of their entire domains in
+order for those functions to be one-to-one. That general rule, therefore, only holds for $x$ in
+those small subsets in the case of the inverse sine and inverse cosine.
+\newpage
+The \textbf{inverse tangent}\index{inverse tangent} function $y=\tan^{-1} x$ (sometimes called the
+\textbf{arc tangent}\index{arc tangent} and denoted by $y=\arctan\;x$) can be determined similarly.
+The function $y=\tan\;x$ is one-to-one over the interval $\left( -\frac{\pi}{2},\frac{\pi}{2}
+\right)$, as we see in Figure \ref{fig:tangentrestricted}:
+
+\begin{figure}[h]
+ \begin{center}
+  \begin{tikzpicture}[scale=1.0,every node/.style={font=\small}]
+   \begin{scope}[shift={(3,0)},color=linecolor,line width=1.5pt,x=6cm/360,y=3cm/6]
+	\draw[black!60,line width=0.3pt,-latex] (-110,0) -- (110,0) node[right] {$x$};
+	\draw[black!60,line width=0.3pt,-latex] (0,-6) -- (0,6.5) node[above] {$y$};
+	\draw[linecolor,line width=0.5pt,dashed] (90,-6) -- (90,6);
+	\draw[linecolor,line width=0.5pt,dashed] (-90,-6) -- (-90,6);
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{-80,-75,...,80}{\pgfpointxy{\x}{tan(\x)}}
+	\pgfusepath{stroke}
+	\node[black,below right] at (0,0) {$0$};
+	\foreach \pos in {-90,-45,45,90}
+	 \draw[black!60,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {-6}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt) node[black,left]
+      {$-3$};
+	\foreach \pos in {-4}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt) node[black,left]
+      {$-2$};
+	\foreach \pos in {-2}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt) node[black,left]
+      {$-1$};
+	\foreach \pos in {2}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt) node[black,left]
+      {$1$};
+	\foreach \pos in {4}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt) node[black,left]
+      {$2$};
+	\foreach \pos in {6}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt) node[black,left]
+      {$3$};
+	\node[black,below] at (45,-0.1) {$\tfrac{\pi}{4}$};
+	\node[black,below right] at (90,-0.1) {$\tfrac{\pi}{2}$};
+	\node[black,below] at (-45,-0.1) {$-\tfrac{\pi}{4}$};
+	\node[black,below left] at (-90,-0.1) {$-\tfrac{\pi}{2}$};
+	\node[black,below] at (45,-1) {$y=\tan\;x$};
+   \end{scope}
+  \end{tikzpicture}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad $y=\tan\;x$ with $x$ restricted to $\left( -\frac{\pi}{2},\frac{\pi}{2} \right)$}
+ \label{fig:tangentrestricted}
+\end{figure}
+
+The graph of $y=\tan^{-1} x$ is shown below in Figure \ref{fig:arctangent}. Notice that the vertical
+asymptotes for $y=\tan\;x$ become horizontal asymptotes for $y=\tan^{-1} x$.
+Note also the symmetry about the line $y=x$ with the graph of $y=\tan\;x$.\index{horizontal
+asymptote}\index{asymptote!horizontal}
+
+\begin{figure}[H]
+ \begin{center}
+  \begin{tikzpicture}[scale=1.1,every node/.style={font=\small}]
+   \begin{scope}[dashed,line width=1pt,x=6cm/360,y=3cm/6]
+	\draw[black!60,solid,line width=0.3pt,-latex] (-180,0) -- (200,0) node[right] {$x$};
+	\draw[black!60,solid,line width=0.3pt,-latex] (0,-6) -- (0,6.5) node[above] {$y$};
+	\draw[line width=0.5pt] (90,-6) -- (90,6.5);
+	\draw[line width=0.5pt] (-90,-6) -- (-90,6.5);
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{-80,-75,...,80}{\pgfpointxy{\x}{tan(\x)}}
+	\pgfusepath{stroke}
+	\node[black,below right] at (0,0) {$0$};
+	\foreach \pos in {-90,-45,45,90}
+	 \draw[black!60,solid,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {-6}
+	 \draw[black!60,solid,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt)
+	  node[black,left] {$-3$};
+	\foreach \pos in {-4}
+	 \draw[black!60,solid,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt)
+	  node[black,left] {$-2$};
+	\foreach \pos in {-2}
+	 \draw[black!60,solid,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt)
+	  node[black,left] {$-1$};
+	\foreach \pos in {2}
+	 \draw[black!60,solid,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt)
+	  node[black,left] {$1$};
+	\foreach \pos in {4}
+	 \draw[black!60,solid,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt)
+	  node[black,left] {$2$};
+	\foreach \pos in {6}
+	 \draw[black!60,solid,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt)
+	  node[black,left] {$3$};
+	\foreach \pos in {3.14}
+	 \draw[black!60,solid,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt)
+	  node[black,left] {$\tfrac{\pi}{2}$};
+	\foreach \pos in {-3.14}
+	 \draw[black!60,solid,line width=0.3pt,shift={(0,\pos)}] (3pt,0pt) -- (-3pt,0pt)
+	  node[black,left] {$-\tfrac{\pi}{2}$};
+	\node[black,below] at (45,-0.1) {$\tfrac{\pi}{4}$};
+	\node[black,below right] at (90,-0.1) {$\tfrac{\pi}{2}$};
+	\node[black,below] at (-45,-0.1) {$-\tfrac{\pi}{4}$};
+	\node[black,below left] at (-90,-0.1) {$-\tfrac{\pi}{2}$};
+	\node[black] at (45,6) {$y=\tan\;x$};
+	\node[linecolor,below] at (160,2.4) {$y=\tan^{-1} x$};
+	\draw[black!60] (-100,-3.49) -- (100,3.49) node[pos=0.0,below left] {$y=x$};
+	\draw[linecolor,line width=0.5pt] (-180,-3.14) -- (180,-3.14);
+	\draw[linecolor,line width=0.5pt] (-180,3.14) -- (180,3.14);
+   \end{scope}
+   \begin{scope}[color=linecolor,line width=1.5pt,x=6cm/360,y=3cm/6,cm={0,1,1,0,(0,0)}]
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{-80,-75,...,80}{\pgfpointxy{\x}{tan(\x)}}
+	\pgfusepath{stroke}
+   \end{scope}
+  \end{tikzpicture}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad Graph of $y=\tan^{-1} x$}
+ \label{fig:arctangent}
+\end{figure}
+\newpage
+Thus, $y=\tan^{-1} x$ is a function whose domain is the set of all real numbers and whose range is
+the interval $\left( -\frac{\pi}{2},\frac{\pi}{2} \right)$. In other words:
+
+\begin{center}\statecomment{\vspace{-4mm}\begin{alignat}{3}
+ \tan^{-1} (\tan\;y) ~&=~ y \quad&&\text{for $-\tfrac{\pi}{2} < y <
+  \tfrac{\pi}{2}$}\label{eqn:arctan1}\\
+ \tan\;(\tan^{-1} x) ~&=~ x \quad&&\text{for all real $x$}\label{eqn:arctan2}
+\end{alignat}}\end{center}
+
+\begin{exmp}
+ Find $\tan^{-1} \left(\tan\;\frac{\pi}{4}\right)$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Since $-\tfrac{\pi}{2} \le \tfrac{\pi}{4} \le \tfrac{\pi}{2}$, we
+ know that $\tan^{-1} \left(\tan\;\frac{\pi}{4}\right) = \boxed{\frac{\pi}{4}}\;$, by formula
+ (\ref{eqn:arctan1}).
+\end{exmp}
+\begin{exmp}\label{exmp:arctanpi}
+ Find $\tan^{-1} \left(\tan\;\pi\right)$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Since $\pi > \tfrac{\pi}{2}$, we can not use formula
+ (\ref{eqn:arctan1}). But we know that $\tan\;\pi = 0$. Thus,
+ $\tan^{-1} \left(\tan\;\pi\right) = \tan^{-1} 0$ is, by
+ definition, the angle $y$ such that $-\tfrac{\pi}{2} \le y \le \tfrac{\pi}{2}$ and $\tan\;y =
+ 0$. That angle is $y=0$.
+ Thus, $\tan^{-1} \left(\tan\;\pi \right) = \boxed{0}\;$.
+\end{exmp}
+\begin{exmp}
+ Find the exact value of $\cos\;\left(\sin^{-1}\;\left(-\frac{1}{4}\right)\right)$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Let $\theta = \sin^{-1}\;\left(-\frac{1}{4}\right)$. We know that
+ $-\tfrac{\pi}{2} \le \theta \le \tfrac{\pi}{2}$, so since $\sin\;\theta = -\frac{1}{4} < 0$,
+ $\theta$ must be in QIV. Hence $\cos\;\theta > 0$. Thus,
+ \begin{displaymath}
+  \cos^2 \;\theta ~=~ 1 ~-~ \sin^2 \;\theta ~=~ 1 ~-~ \left( -\frac{1}{4} \right)^2 ~=~\frac{15}{16}
+   \quad\Rightarrow\quad \cos\;\theta ~=~ \frac{\sqrt{15}}{4} ~.
+ \end{displaymath}
+ Note that we took the positive square root above since $\cos\;\theta > 0$. Thus,
+ $\cos\;\left(\sin^{-1}\;\left(-\frac{1}{4}\right)\right) = \boxed{\frac{\sqrt{15}}{4}}\;$.
+\end{exmp}
+\begin{exmp}\label{exmp:tanarcsin}
+ Show that $\tan\;(\sin^{-1} x) = \dfrac{x}{\sqrt{1 - x^2}}$ for $-1 < x < 1$.
+
+\piccaption[]{\label{fig:tanarcsin}}\parpic[r]{\begin{tikzpicture}[scale=0.5,
+ every node/.style={font=\small}]
+ \fill [fill=fillcolor] (0,0) -- (3,0) -- (3,4) -- (0,0);
+ \draw (0:1.5) arc (0:53.13:1.5);
+ \draw [line width=0.5pt] (2.625,0) -- (2.625,0.375) -- (3,0.375);
+ \draw [linecolor,line width=1.5pt] (0,0) -- (3,0) -- (3,4) -- cycle;
+ \node [below] at (1.5,0) {$\sqrt{1 - x^2}$};
+ \node [right] at (3,2) {$x$};
+ \node [above left] at (1.5,2) {$1$};
+ \node at (0.9,0.4) {$\theta$};
+ \draw [white] (-0.2,0) -- (-1.2,0);
+\end{tikzpicture}}
+ \par\noindent\textbf{Solution:} When $x=0$, the formula holds trivially, since
+ \begin{displaymath}
+  \tan\;(\sin^{-1} 0) ~=~ \tan\;0 ~=~ 0 ~=~ \dfrac{0}{\sqrt{1 - 0^2}} ~.
+ \end{displaymath}
+ Now suppose that $0 < x < 1$.
+ Let $\theta = \sin^{-1} x$. Then $\theta$ is in QI and $\sin\;\theta = x$. Draw a right
+ triangle with an angle $\theta$ such that the opposite leg has length $x$ and the hypotenuse has
+ length $1$, as in Figure \ref{fig:tanarcsin} (note that this is possible since $0 < x < 1$). Then
+ $\sin\;\theta = \frac{x}{1} = x$. By the Pythagorean Theorem, the adjacent leg has length
+ $\sqrt{1 - x^2}$. Thus, $\tan\;\theta = \frac{x}{\sqrt{1 - x^2}}$.
+ 
+ If $-1 < x < 0$ then $\theta = \sin^{-1} x$ is in QIV. So we can draw the same triangle
+ except that it would be ``upside down'' and we would again have $\tan\;\theta = \frac{x}{\sqrt{1 - x^2}}$,
+ since the tangent and sine have the same sign (negative) in QIV. Thus,
+ $\tan\;(\sin^{-1} x) = \dfrac{x}{\sqrt{1 - x^2}}$ for $-1 < x < 1$.
+\end{exmp}
+\divider
+\newpage
+The inverse functions for cotangent, cosecant, and secant can be determined by looking at their
+graphs. For example, the function $y=\cot\;x$ is one-to-one in the interval $(0,\pi)$, where it
+has a range equal to the set of all real numbers. Thus, the \textbf{inverse cotangent}\index{inverse
+cotangent} $y=\cot^{-1} x$ is a function whose domain
+is the set of all real numbers and whose range is the interval $(0,\pi)$. In other words:
+
+\begin{center}\statecomment{\vspace{-4mm}\begin{alignat}{3}
+ \cot^{-1} (\cot\;y) ~&=~ y \quad&&\text{for $0 < y < \pi$}\label{eqn:arccot1}\\
+ \cot\;(\cot^{-1} x) ~&=~ x \quad&&\text{for all real $x$}\label{eqn:arccot2}
+\end{alignat}}\end{center}
+
+The graph of $y=\cot^{-1} x$ is shown below in Figure \ref{fig:arccotangent}.
+
+\begin{figure}[h]
+ \begin{center}
+  \begin{tikzpicture}[scale=1.2,every node/.style={font=\small}]
+   \begin{scope}[line width=1pt,x=6cm/360,y=3cm/6]
+	\draw[black!60,solid,line width=0.3pt,-latex] (-180,0) -- (200,0) node[right] {$x$};
+	\draw[black!60,solid,line width=0.3pt,-latex] (0,-0.5) -- (0,7.2) node[above] {$y$};
+	\node[black,below left] at (0,0) {$0$};
+	\foreach \pos in {-135,-90,-45,45,90,135}
+	 \draw[black!60,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {3.14}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (-3pt,0pt) -- (3pt,0pt) node[black,right]
+      {$\tfrac{\pi}{2}$};
+	\foreach \pos in {6.28}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (-3pt,0pt) -- (3pt,0pt)
+	  node[black,above right] {$\pi$};
+	\node[black,below] at (45,-0.1) {$\tfrac{\pi}{4}$};
+	\node[black,below] at (90,-0.1) {$\tfrac{\pi}{2}$};
+	\node[black,below] at (135,-0.1) {$\tfrac{3\pi}{4}$};
+	\node[black,below] at (-135,-0.1) {$-\tfrac{3\pi}{4}$};
+	\node[black,below] at (-45,-0.1) {$-\tfrac{\pi}{4}$};
+	\node[black,below] at (-90,-0.1) {$-\tfrac{\pi}{2}$};
+	\node[linecolor,below] at (100,2.4) {$y=\cot^{-1} x$};
+	\draw[linecolor,dashed,line width=0.5pt] (-180,6.28) -- (180,6.28);
+   \end{scope}
+   \begin{scope}[color=linecolor,line width=1.5pt,x=6cm/360,y=3cm/6,cm={0,1,1,0,(0,0)}]
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{10,15,...,170}{\pgfpointxy{\x}{-tan(90+\x)}}
+	\pgfusepath{stroke}
+   \end{scope}
+  \end{tikzpicture}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad Graph of $y=\cot^{-1} x$}
+ \label{fig:arccotangent}
+\end{figure}
+
+Similarly, it can be shown that the \textbf{inverse cosecant}\index{inverse cosecant}
+$y=\csc^{-1} x$ is a function whose domain is $\abs{x} \ge 1$ and whose range is $-\frac{\pi}{2} \le
+y \le \frac{\pi}{2}$, $y \ne 0$. Likewise, the \textbf{inverse secant}\index{inverse secant}
+$y=\sec^{-1} x$ is a function whose domain is $\abs{x} \ge 1$ and whose range is $0 \le y \le \pi$,
+$y \ne \frac{\pi}{2}$.
+
+\begin{center}\statecomment{\vspace{-4mm}\begin{alignat}{3}
+ \csc^{-1} (\csc\;y) ~&=~ y \quad&&\text{for $-\frac{\pi}{2} \le
+  y \le \frac{\pi}{2}$, $y \ne 0$}\label{eqn:arccsc1}\\
+ \csc\;(\csc^{-1} x) ~&=~ x \quad&&\text{for $\abs{x} \ge 1$}\label{eqn:arccsc2}
+\end{alignat}}\end{center}
+
+\begin{center}\statecomment{\vspace{-4mm}\begin{alignat}{3}
+ \sec^{-1} (\sec\;y) ~&=~ y \quad&&\text{for $0 \le y \le \pi$, $y \ne
+  \frac{\pi}{2}$}\label{eqn:arcsec1}\\
+ \sec\;(\sec^{-1} x) ~&=~ x \quad&&\text{for $\abs{x} \ge 1$}\label{eqn:arcsec2}
+\end{alignat}}\end{center}
+
+It is also common to call $\cot^{-1} x$, $\csc^{-1} x$, and $\sec^{-1} x$ the \textbf{arc
+cotangent}\index{arc cotangent}, \textbf{arc cosecant}\index{arc cosecant}, and
+\textbf{arc secant}\index{arc secant}, respectively, of $x$. The graphs of $y=\csc^{-1} x$ and
+$y=\sec^{-1} x$ are shown in Figure \ref{fig:arccscsec}:
+\newpage
+\begin{figure}[h]
+ \centering
+ \subfloat[][ Graph of $y=\csc^{-1} x$]{
+  \begin{tikzpicture}[scale=0.8,every node/.style={font=\small}]
+   \begin{scope}[line width=1pt,x=6cm/360]
+	\draw[black!60,solid,line width=0.3pt,-latex] (-240,0) -- (250,0) node[right] {$x$};
+	\draw[black!60,solid,line width=0.3pt,-latex] (0,-2) -- (0,2.5) node[above] {$y$};
+	\node[black,below left] at (0,0) {$0$};
+	\foreach \pos in {-57.3,57.3}
+	 \draw[black!60,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {1.57}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (-3pt,0pt) -- (3pt,0pt) node[black,left]
+      {$\tfrac{\pi}{2}$};
+	\foreach \pos in {-1.57}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (-3pt,0pt) -- (3pt,0pt) node[black,left]
+      {$-\tfrac{\pi}{2}$};
+	\node[black,below] at (57.3,-0.1) {$1$};
+	\node[black,below] at (-57.3,-0.1) {$-1$};
+	\node[linecolor] at (140,1.4) {$y=\csc^{-1} x$};
+   \end{scope}
+   \begin{scope}[color=linecolor,line width=1.5pt,x=6cm/360,cm={0,1,1,0,(0,0)}]
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{-90,-85,...,-15}{\pgfpointxy{\x}{1/sin(\x)}}
+	\pgfplotfunction{\x}{15,20,...,90}{\pgfpointxy{\x}{1/sin(\x)}}
+	\pgfusepath{stroke}
+    \fill (90,1) circle (2pt);
+    \fill (-90,-1) circle (2pt);
+   \end{scope}
+  \end{tikzpicture}}
+ \quad
+ \subfloat[][ Graph of $y=\sec^{-1} x$]{
+  \begin{tikzpicture}[scale=0.8,every node/.style={font=\small}]
+   \begin{scope}[line width=1pt,x=6cm/360]
+	\draw[black!60,solid,line width=0.3pt,-latex] (-240,0) -- (250,0) node[right] {$x$};
+	\draw[black!60,solid,line width=0.3pt,-latex] (0,-0.7) -- (0,3.8) node[above] {$y$};
+	\node[black,below left] at (0,0) {$0$};
+	\foreach \pos in {-57.3,57.3}
+	 \draw[black!60,line width=0.3pt,shift={(\pos,0)}] (0pt,3pt) -- (0pt,-3pt);
+	\foreach \pos in {1.57}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (-3pt,0pt) -- (3pt,0pt) node[black,left]
+      {$\tfrac{\pi}{2}$};
+	\foreach \pos in {3.14}
+	 \draw[black!60,line width=0.3pt,shift={(0,\pos)}] (-3pt,0pt) -- (3pt,0pt) node[black,left]
+      {$\pi$};
+	\node[black,below] at (57.3,-0.1) {$1$};
+	\node[black,below] at (-57.3,-0.1) {$-1$};
+	\node[linecolor] at (140,2.3) {$y=\sec^{-1} x$};
+	\draw[linecolor,dashed,line width=0.5pt] (-240,1.57) -- (250,1.57);
+   \end{scope}
+   \begin{scope}[color=linecolor,line width=1.5pt,x=6cm/360,cm={0,1,1,0,(0,0)}]
+	\pgfplothandlerlineto
+	\pgfplotfunction{\x}{0,5,...,75}{\pgfpointxy{\x}{1/cos(\x)}}
+	\pgfplotfunction{\x}{105,110,...,180}{\pgfpointxy{\x}{1/cos(\x)}}
+	\pgfusepath{stroke}
+    \fill (0,1) circle (2pt);
+    \fill (180,-1) circle (2pt);
+   \end{scope}
+  \end{tikzpicture}}\vspace{-2mm}
+ \caption[]{}
+ \label{fig:arccscsec}
+\end{figure}
+
+\begin{exmp}
+ Prove the identity $\tan^{-1} x \;+\; \cot^{-1} x ~=~ \frac{\pi}{2}$.\vspace{1mm}
+ \par\noindent\textbf{Solution:} Let $\theta = \cot^{-1} x$. Using relations from Section 1.5, we have
+ \begin{displaymath}
+  \tan\;\left( \tfrac{\pi}{2} - \theta \right) ~=~ -\tan\;\left( \theta - \tfrac{\pi}{2} \right)
+   ~=~ \cot\;\theta ~=~ \cot\;(\cot^{-1} x) ~=~ x ~,
+ \end{displaymath}
+ by formula (\ref{eqn:arccot2}). So since $\tan\;(\tan^{-1} x) = x$ for all $x$, this means that
+ $\tan\;(\tan^{-1} x) = \tan\;\left( \tfrac{\pi}{2} - \theta \right)$. Thus,
+ $\tan\;(\tan^{-1} x) = \tan\;\left( \tfrac{\pi}{2} - \cot^{-1} x \right)$. Now, we know that
+ $0 < \cot^{-1} x < \pi$, so $-\tfrac{\pi}{2} < \tfrac{\pi}{2} - \cot^{-1} x < \tfrac{\pi}{2}$, i.e.
+ $\tfrac{\pi}{2} - \cot^{-1} x$ is in the restricted subset on which the tangent function is
+ one-to-one. Hence, $\tan\;(\tan^{-1} x) = \tan\;\left( \tfrac{\pi}{2} - \cot^{-1} x \right)$
+ implies that $\tan^{-1} x = \tfrac{\pi}{2} - \cot^{-1} x$, which proves the identity.
+\end{exmp}
+\begin{exmp}\label{exmp:arctanab}
+ Is $\;\tan^{-1} a \;+\; \tan^{-1} b ~=~ \tan^{-1} \left( \dfrac{a+b}{1-ab} \right)\;$ an
+ identity?\vspace{1mm}
+ \par\noindent\textbf{Solution:} In the tangent addition formula $\tan\;(A+B) = \dfrac{\tan\;A \;+\;
+ \tan\;B}{1 \;-\; \tan\;A~\tan\;B}$, let $A = \tan^{-1} a$ and $B = \tan^{-1} b$. Then
+ \begin{align*}
+  \tan\;(\tan^{-1} a \;+\; \tan^{-1} b ) ~&=~ \dfrac{\tan\;(\tan^{-1} a) \;+\; \tan\;(\tan^{-1}
+   b)}{1 \;-\; \tan\;(\tan^{-1} a)~\tan\;(\tan^{-1} b)}\\
+  &=~ \dfrac{a+b}{1-ab}\qquad\text{by formula (\ref{eqn:arctan2}), so it seems that we have}\\
+  \tan^{-1} a \;+\; \tan^{-1} b ~&=~ \tan^{-1} \left( \dfrac{a+b}{1-ab} \right)
+ \end{align*}
+ by definition of the inverse tangent. However, recall that
+ $-\tfrac{\pi}{2} < \tan^{-1} x < \tfrac{\pi}{2}$ for all real numbers $x$. So in particular,
+ we must have $-\tfrac{\pi}{2} < \tan^{-1} \left( \frac{a+b}{1-ab} \right) < \tfrac{\pi}{2}$. But
+ it is possible that $\tan^{-1} a \;+\; \tan^{-1} b$ is \emph{not} in the interval
+ $\left(-\tfrac{\pi}{2},\tfrac{\pi}{2}\right)$. For example,
+ \begin{displaymath}
+  \tan^{-1} 1 \;+\; \tan^{-1} 2 ~=~ 1.892547 ~>~ \tfrac{\pi}{2} \approx 1.570796 ~.
+ \end{displaymath}
+ And we see that $\tan^{-1} \left( \frac{1+2}{1-(1)(2)} \right) = \tan^{-1} (-3) = -1.249045 \ne
+ \tan^{-1} 1 \;+\; \tan^{-1} 2$. So the formula is only true when
+ $-\tfrac{\pi}{2} < \tan^{-1} a \;+\; \tan^{-1} b < \tfrac{\pi}{2}$.
+\end{exmp}
+\divider
+\newpage
+\startexercises\label{sec5dot3}
+\vspace{5mm}
+{\small
+\par\noindent For Exercises 1-25, find the exact value of the given expression in radians.
+\begin{enumerate}[\bfseries 1.]
+\begin{multicols}{5}
+ \item $\tan^{-1} 1$
+ \item $\tan^{-1} \,(-1)$
+ \item $\tan^{-1} 0$
+ \item $\cos^{-1} 1$
+ \item $\cos^{-1} \,(-1)$
+\end{multicols}
+\begin{multicols}{5}
+ \item $\cos^{-1} 0$
+ \item $\sin^{-1} 1$
+ \item $\sin^{-1} \,(-1)$
+ \item $\sin^{-1} 0$
+ \item $\sin^{-1} \left(\sin\;\frac{\pi}{3}\right)$
+\end{multicols}
+\begin{multicols}{4}
+ \item $\sin^{-1} \left(\sin\;\frac{4\pi}{3}\right)$
+ \item $\sin^{-1} \left(\sin\;\left(-\frac{5\pi}{6}\right)\right)$
+ \item $\cos^{-1} \left(\cos\;\frac{\pi}{7}\right)$
+ \item $\cos^{-1} \left(\cos\;\left(-\frac{\pi}{10}\right)\right)$
+\end{multicols}
+\begin{multicols}{4}
+ \item $\cos^{-1} \left(\cos\;\frac{6\pi}{5}\right)$
+ \item $\tan^{-1} \left(\tan\;\frac{4\pi}{3}\right)$
+ \item $\tan^{-1} \left(\tan\;\left(-\frac{5\pi}{6}\right)\right)$
+ \item $\cot^{-1} \left(\cot\;\frac{4\pi}{3}\right)$
+\end{multicols}
+\begin{multicols}{4}
+ \item $\csc^{-1} \left(\csc\;\left(-\frac{\pi}{9}\right)\right)$
+ \item $\sec^{-1} \left(\sec\;\frac{6\pi}{5}\right)$
+ \item $\cos\;\left(\sin^{-1}\;\left(\frac{5}{13}\right)\right)$
+ \item $\cos\;\left(\sin^{-1}\;\left(-\frac{4}{5}\right)\right)$
+\end{multicols}
+\begin{multicols}{3}
+ \item $\sin^{-1}\;\frac{3}{5} \;+\; \sin^{-1}\;\frac{4}{5}$
+ \item $\sin^{-1}\;\frac{5}{13} \;+\; \cos^{-1}\;\frac{5}{13}$
+ \item $\tan^{-1}\;\frac{3}{5} \;+\; \cot^{-1}\;\frac{3}{5}$
+\end{multicols}
+\suspend{enumerate}
+ For Exercises 26-33, prove the given identity.
+\resume{enumerate}[{[\bfseries 1.]}]
+\begin{multicols}{2}
+ \item $\cos\;(\sin^{-1} x) ~=~ \sqrt{1 - x^2}$
+ \item $\sin\;(\cos^{-1} x) ~=~ \sqrt{1 - x^2}$
+\end{multicols}
+\begin{multicols}{2}
+ \item $\sin^{-1} x \;+\; \cos^{-1} x ~=~ \frac{\pi}{2}$
+ \item $\sec^{-1} x \;+\; \csc^{-1} x ~=~ \frac{\pi}{2}$
+\end{multicols}
+\begin{multicols}{2}
+ \item $\sin^{-1} (-x) ~=~ -\sin^{-1} x$
+ \item $\cos^{-1} (-x) \;+\; \cos^{-1} x ~=~ \pi$
+\end{multicols}
+\begin{multicols}{2}
+ \item $\cot^{-1} x ~=~ \tan^{-1} \,\frac{1}{x}~$ for $x>0$
+ \item $\tan^{-1} x \;+\; \tan^{-1} \,\frac{1}{x} ~=~ \frac{\pi}{2}~$ for $x>0$
+\end{multicols}
+ \item In Example \ref{exmp:arctanab} we showed that the formula
+  $\;\tan^{-1} a \;+\; \tan^{-1} b ~=~ \tan^{-1} \left( \dfrac{a+b}{1-ab} \right)\;$ does not
+  always hold. Does the formula
+  $\tan\;(\tan^{-1} a \;+\; \tan^{-1} b ) ~=~ \dfrac{a+b}{1-ab}$, which was part of that example,
+  always hold? Explain your answer.
+ \item Show that $\;\tan^{-1}\;\frac{1}{3}\;+\;\tan^{-1}\;\frac{1}{5} ~=~ \tan^{-1}\;\frac{4}{7}\;$.
+ \item Show that $\;\tan^{-1}\;\frac{1}{4}\;+\;\tan^{-1}\;\frac{2}{9} ~=~ \tan^{-1}\;\frac{1}{2}\;$.
+ \item\label{exer:3squares}
+  Figure \ref{fig:3squares} shows three equal squares lined up against each other. For the
+  angles $\alpha$, $\beta$, and $\gamma$ in the picture, show that $\alpha = \beta + \gamma$.
+  (\emph{Hint: Consider the tangents of the angles.})
+
+\begin{figure}[h]
+ \begin{center}
+  \begin{tikzpicture}[every node/.style={font=\small}]
+   \draw [line width=1pt] (0,0) rectangle (6,2);
+   \draw [line width=1pt] (2,0) -- (2,2);
+   \draw [line width=1pt] (4,0) -- (4,2);
+   \draw (0,0) -- (6,2);
+   \draw (2,0) -- (6,2);
+   \draw (4,0) -- (6,2);
+   \node at (4.5,0.2) {$\alpha$};
+   \node at (2.9,0.2) {$\beta$};
+   \node at (1.15,0.2) {$\gamma$};
+   \draw ([shift={(4,0)}] 0:0.8) arc (0:45:0.8);
+   \draw ([shift={(2,0)}] 0:1.2) arc (0:26.565:1.2);
+   \draw (0:1.4) arc (0:18.435:1.4);
+  \end{tikzpicture}\vspace{-6mm}
+ \end{center}
+ \caption[]{\quad Exercise \ref{exer:3squares}}
+ \label{fig:3squares}
+\end{figure}
+ \item Sketch the graph of $y=\sin^{-1} 2x$.
+ \item Write a computer program to solve a triangle in the case where you are given three sides.
+  Your program should read in the three sides as input parameters and print the three
+  angles in degrees as output if a solution exists. Note that since most computer languages use
+  radians for their inverse trigonometric functions, you will likely have to do the conversion from
+  radians to degrees yourself in the program.
+\end{enumerate}}

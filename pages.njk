@@ -1,0 +1,17 @@
+---js
+{
+  pagination: {
+    data: "book.pages",
+    size: 1,
+    alias: "pg",
+    addAllPagesToCollections: false,
+  },
+  permalink: "{{ pg.permalink }}",
+  layout: "page",
+  eleventyExcludeFromCollections: true,
+  eleventyComputed: {
+    title: data => data.pg.displayTitle,
+  },
+}
+---
+{{ pg.html | safe }}

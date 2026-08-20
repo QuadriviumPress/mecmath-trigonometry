@@ -1,0 +1,55 @@
+# CI for pull requests: convert figures, build the Eleventy site, verify.
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build & Verify (Eleventy)
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: "npm"
+
+      - name: Install TeX + figure toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            ghostscript dvisvgm mupdf-tools \
+            texlive-latex-base texlive-latex-recommended \
+            texlive-fonts-recommended texlive-latex-extra texlive-pictures
+
+      - name: Cache converted figures
+        uses: actions/cache@v4
+        with:
+          path: generated/figures
+          key: figures-trig-v1-${{ hashFiles('mecmath-trigonometry/**', 'lib/figures.js') }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Copy self-hosted MathJax + MiniSearch bundles
+        run: npm run update:vendor
+
+      - name: Build with Eleventy (figures + search index)
+        run: npm run build
+
+      - name: Verify build
+        run: npm run verify

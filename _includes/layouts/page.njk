@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en-us">
+  {% include "head.njk" %}
+
+  <body>
+    {# htmlTitle carries inline-rendered LaTeX (e.g. math in section titles) for
+       MathJax to typeset; displayTitle/title is the plain-text fallback. #}
+    <h1 class="page-title">{% if pg and pg.htmlTitle %}{{ pg.htmlTitle | safe }}{% else %}{{ title }}{% endif %}</h1>
+
+    {{ content | safe }} {% include "foot.njk" %}
+  </body>
+</html>
