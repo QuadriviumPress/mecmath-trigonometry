@@ -35,7 +35,7 @@ npm install
 npm run update:vendor   # populate self-hosted MathJax + MiniSearch (once)
 npm run build           # figures → Eleventy → search index
 npm run verify          # integrity checks over _site
-npm run serve           # dev server at http://localhost:4000/MecmathTrigonometryTextbook/
+npm run serve           # dev server at http://localhost:4000/mecmath-trigonometry/
 ```
 
 ## Deployment

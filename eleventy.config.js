@@ -1,7 +1,7 @@
-// GitHub Pages serves this project site under /MecmathTrigonometryTextbook/. Vercel
+// GitHub Pages serves this project site under /mecmath-trigonometry/. Vercel
 // serves it at a domain root, so it must build with no path prefix — detected via the
 // VERCEL env var that Vercel sets automatically.
-const PATH_PREFIX = process.env.VERCEL ? '/' : '/MecmathTrigonometryTextbook/';
+const PATH_PREFIX = process.env.VERCEL ? '/' : '/mecmath-trigonometry/';
 
 export default function (eleventyConfig) {
   eleventyConfig.setUseGitIgnore(false);

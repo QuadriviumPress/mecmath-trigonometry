@@ -14,7 +14,7 @@ const argIdx = process.argv.indexOf('--base-url');
 const baseUrl =
   argIdx !== -1
     ? process.argv[argIdx + 1].replace(/\/$/, '')
-    : 'http://localhost:4000/MecmathTrigonometryTextbook';
+    : 'http://localhost:4000/mecmath-trigonometry';
 const maxConcurrency = Number(process.env.MAX_CONCURRENCY || 4);
 
 const manifestPath = path.join(baseDir, 'generated', 'print-manifest.json');

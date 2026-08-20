@@ -12,7 +12,7 @@ import { printHeader, printDivider, printSuccess, printSummary } from './lib/rep
 import { runCli } from './lib/cli.js';
 import { getBaseDir, readFile, writeFile } from './lib/files.js';
 
-const DEFAULT_BASE_URL = process.env.VERCEL ? '/' : '/MecmathTrigonometryTextbook/';
+const DEFAULT_BASE_URL = process.env.VERCEL ? '/' : '/mecmath-trigonometry/';
 
 class SearchIndexBuilder {
   constructor(options = {}) {

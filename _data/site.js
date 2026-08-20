@@ -8,7 +8,7 @@ export default {
     'inverse functions, and additional topics.',
   author: 'Michael Corral',
   url: 'https://quadriviumpress.github.io',
-  baseUrl: 'https://quadriviumpress.github.io/MecmathTrigonometryTextbook',
-  repositoryUrl: 'https://github.com/QuadriviumPress/MecmathTrigonometryTextbook',
+  baseUrl: 'https://quadriviumpress.github.io/mecmath-trigonometry',
+  repositoryUrl: 'https://github.com/QuadriviumPress/mecmath-trigonometry',
   sourceUrl: 'https://www.mecmath.net/trig/',
 };

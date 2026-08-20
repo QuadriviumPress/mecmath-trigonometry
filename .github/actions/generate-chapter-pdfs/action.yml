@@ -26,7 +26,7 @@ runs:
 
         nohup npx @11ty/eleventy --serve --port=4000 > /tmp/eleventy-serve.log 2>&1 &
         for i in $(seq 1 30); do
-          if curl -sf http://localhost:4000/MecmathTrigonometryTextbook/ > /dev/null; then
+          if curl -sf http://localhost:4000/mecmath-trigonometry/ > /dev/null; then
             echo "Eleventy server is ready"
             break
           fi
