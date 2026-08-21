@@ -1,0 +1,357 @@
+%%
+%% trigfig.sty -- text-wrapped figures for trigbook.tex
+%%
+%% Replaces picins, which TeX Live dropped in 2014 over its licence ("Aenderungen
+%% nur mit Zustimmung der Autoren") and which no distribution has shipped since.
+%%
+%% The book uses a narrow slice of that package: 83 \parpic, of which 81 are a
+%% plain right-hand wrap and 2 are a full-width box that is immediately
+%% un-wrapped again; 43 \piccaption, 41 of them a bare \label; 21 \picskip.  No
+%% frames, no shadows, no ovals, no (xoff,yoff), and \picchangemode is never
+%% switched on.  So this implements that slice and refuses the rest, rather than
+%% reproducing a 1992 package nobody needs in full.
+%%
+%% The method is the ordinary TeX idiom for the job and is written here from
+%% scratch: set the picture at the top of the paragraph flush to one margin,
+%% then let \hangindent/\hangafter reserve the notch beside it, and hook \par so
+%% a notch taller than one paragraph carries into the next.
+%%
+%%   \parpic[r]{<content>}          wrap the following text on the right
+%%   \parpic[l]{<content>}          ... on the left (the default with no [])
+%%   \parpic(<w>,<h>){<content>}    force the reserved size; 0pt means "measure"
+%%   \piccaption[<short>]{<text>}   caption for the next \parpic
+%%   \piccaptioninside              caption inside the picture area
+%%   \picskip{<n>}                  n>0: notch <n> further lines; n=0: end it
+%%   \pichskip{<dimen>}             gutter, picture to text (default 1em)
+%%
+%% The externally visible control sequences deliberately keep picins' names, and
+%% \@piccaption, \make@piccaption and \ivparpic keep its argument signatures.
+%% That is not nostalgia: caption.sty carries a picins compatibility layer which
+%% patches exactly those three, and letting it do so is what gets these captions
+%% their type, their \captionsetup[parpic]{...} options, their below-the-picture
+%% position, and -- the part easy to miss -- hyperref anchors that point at the
+%% picture instead of at the paragraph after it.
+%%
+%% Verified against picins by scripts/wrap-ab.sh, which builds the book both
+%% ways and compares all 270 pages as images.  269 of them come out with an RMSE
+%% of exactly zero.  The exception is printed page 233 (PDF page 241), where the
+%% gap between equation 6.10 and the paragraph after it is about 3.6pt wider,
+%% which the rest of the page's glue absorbs by the foot of the page.  Same line
+%% breaks, same text, same page count.  Every measurable quantity this package
+%% computes matches picins at all 83 \parpic, all 130 \par hooks and all 16
+%% \picskip, so whatever is left is downstream of that and is not yet
+%% understood; it is recorded here rather than papered over.
+%%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{trigfig}[2026/08/20 v1.0 wrapped figures for trigbook (picins replacement)]
+
+\makeatletter
+
+\newbox\tf@pic
+\newbox\tf@cap
+\newdimen\tf@width      % width of the reserved area
+\newdimen\tf@height     % height of it; the caption adds to this, \par eats it
+\newcount\tf@boxw       % \tf@width  in whole points -- drawing only
+\newcount\tf@boxh       % \tf@height in whole points -- drawing only
+\newdimen\tf@gutter     % \pichskip
+\newdimen\tf@indent     % signed \hangindent: negative notches on the right
+\newdimen\tf@backskip
+\newdimen\tf@tmp
+\newdimen\tf@pagetotal  % \pagetotal as the picture was set, for \picskip{0}
+\newskip\tf@leftskip    % \leftskip saved across the list fiddling below
+\newcount\tf@lines      % signed \hangafter
+\newcount\tf@cappos
+\newif\iftf@caption
+\newif\iftf@right
+\newif\iftf@inlist
+
+\tf@gutter=1em
+\tf@cappos=1
+\let\tf@par@orig\par
+
+%% \caption outside a float needs to be told what it is captioning.  When
+%% caption.sty is around it undefines this again and drives \@piccaptype
+%% instead, which is why this is a plain \def and not a guarded one.
+\def\@captype{figure}
+
+\newcommand\pichskip[1]{\tf@gutter#1\relax}
+
+%% caption.sty's picins compatibility layer wraps \make@piccaption and, among
+%% other things, tells the caption it sits below the picture.  That layer only
+%% fires when this package is loaded under the name picins -- which is how the
+%% book loads it, through tex/wrap-trigfig/picins.sty.  Loaded directly as
+%% trigfig the layer is absent, caption.sty has to guess the position outside a
+%% float, and it guesses "above": \abovecaptionskip lands under the label
+%% instead of over it and the label rides up into the picture.  Cover that case
+%% ourselves, and stay out of the way when the layer is there.
+\let\tf@capsetup\@empty
+\AtBeginDocument{%
+  \@ifundefined{caption@ORI@make@piccaption}{%
+    \@ifundefined{captionsetup}{}{%
+      \def\tf@capsetup{\captionsetup{position=bottom}}%
+    }%
+  }{}%
+}
+
+\def\tf@unsupported#1{%
+  \PackageError{trigfig}{\string#1\space is not supported}%
+    {trigfig implements only the subset of picins that trigbook.tex uses.}%
+}
+\def\picchangemode{\tf@unsupported\picchangemode}
+\def\nopicchangemode{\tf@unsupported\nopicchangemode}
+\def\piccaptionside{\tf@unsupported\piccaptionside}
+\def\piccaptiontopside{\tf@unsupported\piccaptiontopside}
+\def\shadowthickness{\tf@unsupported\shadowthickness}
+\def\dashlength{\tf@unsupported\dashlength}
+\def\boxlength{\tf@unsupported\boxlength}
+
+%% ---------------------------------------------------------------------------
+%% Captions.
+%%
+%% \piccaptioninside is a local assignment, and the two places the book uses it
+%% put it at the very end of the \parpic body -- inside the \hbox group, so it
+%% is undone before anything reads it.  It has never had an effect there and
+%% does not gain one here: those two figures caption below the picture like all
+%% the others.  Keeping the assignment local preserves that.
+%% ---------------------------------------------------------------------------
+\newcommand\piccaptionoutside{\tf@cappos\@ne}
+\newcommand\piccaptioninside{\tf@cappos\tw@}
+
+\def\piccaption{\@ifnextchar[\@piccaption{\@piccaption[]}}
+\def\@piccaption[#1]#2{%
+  \tf@captiontrue
+  \def\tf@cap@short{#1}%
+  \def\tf@cap@text{#2}%
+}
+
+%% Set the caption to the width of the picture, so it centres under it.  This
+%% must call \caption, not some saved copy: caption.sty's picins layer wraps
+%% this macro and hands it a \caption of its own.
+\def\make@piccaption{%
+  \tf@tmp\tf@width
+  \ifnum\tf@cappos=\tw@ \advance\tf@tmp-\tw@\fboxsep \fi
+  \setbox\tf@cap\vbox{\hsize\tf@tmp \tf@capsetup
+    \caption[\tf@cap@short]{\tf@cap@text}}%
+}
+
+%% ---------------------------------------------------------------------------
+%% \parpic
+%%
+%% picins' grammar is \parpic(w,h)(xoff,yoff)[flags][pos]{body} with everything
+%% before the body optional.  Parse the whole shape even though most of it is
+%% then refused, so that \ivparpic keeps the signature caption.sty patches.
+%% ---------------------------------------------------------------------------
+\def\parpic{\@ifnextchar(\tf@parpic@i{\tf@parpic@i(\z@,\z@)}}
+\def\tf@parpic@i(#1,#2){%
+  \@ifnextchar(%
+    {\tf@parpic@ii(#1,#2)}%
+    {\tf@parpic@ii(#1,#2)(\z@,\z@)}%
+}
+\def\tf@parpic@ii(#1,#2)(#3,#4){%
+  \@ifnextchar[%
+    {\tf@parpic@iii(#1,#2)(#3,#4)}%
+    {\tf@parpic@iii(#1,#2)(#3,#4)[l]}%
+}
+\def\tf@parpic@iii(#1,#2)(#3,#4)[#5]{%
+  \@ifnextchar[%
+    {\ivparpic(#1,#2)(#3,#4)[#5]}%
+    {\ivparpic(#1,#2)(#3,#4)[#5][]}%
+}
+
+\def\ivparpic(#1,#2)(#3,#4)[#5][#6]#7{%
+  %% Close any notch still open from an earlier \parpic.
+  \let\par\tf@par@orig \par
+  \hangindent\z@ \hangafter\@ne
+  %
+  %% 1. Placement.  picins also has f/s/o/d/x for frames and shadows, and #6
+  %%    positions the picture inside the reserved area; the book asks for none
+  %%    of it, so neither do we.
+  \ifdim#3=\z@\else\tf@unsupported\parpic\fi
+  \ifdim#4=\z@\else\tf@unsupported\parpic\fi
+  \def\tf@tempa{#6}%
+  \ifx\tf@tempa\@empty\else\tf@unsupported\parpic\fi
+  \tf@rightfalse
+  \@tfor\tf@flag:=#5\do{%
+    \if\tf@flag l\tf@rightfalse\else
+      \if\tf@flag r\tf@righttrue\else
+        \PackageError{trigfig}{Unsupported \protect\parpic\space option
+          `\tf@flag'}{Only [l] and [r] are implemented.}%
+      \fi
+    \fi}%
+  %
+  %% 2. Measure.  A zero argument means "use the natural size".
+  \setbox\tf@pic\hbox{#7}%
+  \tf@width#1\relax
+  \ifdim\tf@width=\z@ \tf@width\wd\tf@pic \fi
+  \tf@height#2\relax
+  \ifdim\tf@height=\z@ \tf@height\ht\tf@pic \advance\tf@height\dp\tf@pic \fi
+  %
+  %% Centre the picture in an area of its own size, rounded down to whole
+  %% points, with the depth folded into the height.  Every layout decision below
+  %% keeps using the exact size instead -- the book's page breaks were tuned
+  %% against that pair of numbers, so keep both.  The kernel picture environment
+  %% is what produces this geometry; hand-rolling the equivalent \vbox is a
+  %% point-for-point match on 269 of the book's 270 pages but not on all of them.
+  %% Assigning a dimen to a count yields scaled points; 65536 of them per point.
+  \tf@boxw\tf@width  \divide\tf@boxw65536\relax
+  \tf@boxh\tf@height \divide\tf@boxh65536\relax
+  \setbox\tf@pic\hbox{%
+    \unitlength\p@
+    \begin{picture}(\tf@boxw,\tf@boxh)%
+      \put(0,0){\makebox(\tf@boxw,\tf@boxh){\box\tf@pic}}%
+    \end{picture}}%
+  %
+  %% 3. Caption, which makes the reserved area taller.
+  \iftf@caption
+    \make@piccaption
+    \advance\tf@height\ht\tf@cap
+    \advance\tf@height\dp\tf@cap
+    \setbox\tf@pic\vbox{%
+      \box\tf@pic
+      \vskip-5\p@
+      \hbox{\ifnum\tf@cappos=\tw@\hskip\fboxsep\fi\box\tf@cap}%
+      \vskip4\p@}%
+  \fi
+  %
+  %% 4. If the picture would not fit in what is left of the page, offer a break
+  %%    before it -- infinitely stretchable glue that is immediately cancelled,
+  %%    so the offer costs nothing if it is declined.
+  \tf@tmp\pagegoal \advance\tf@tmp-\pagetotal \advance\tf@tmp-\baselineskip
+  \ifdim\tf@height>\tf@tmp
+    \vskip\z@\@plus\tf@height\relax
+    \pagebreak[3]%
+    \vskip\z@\@plus-\tf@height\relax
+  \fi
+  %
+  %% 5. Inside a list the paragraph shape is the list's, not the page's.  Drop
+  %%    to explicit margins for the duration and put them back when the notch
+  %%    closes.  63 of the book's 83 \parpic sit inside an exmp or an enumerate,
+  %%    which is exactly why wrapfig is not an option here.
+  \ifnum\@listdepth>\z@
+    \tf@inlisttrue
+    \parshape\z@
+    \advance\hsize-\rightmargin
+    \tf@leftskip\leftskip
+    \leftskip\@totalleftmargin
+    \if@inlabel \rule{\linewidth}{\z@}\vskip-\baselineskip\relax \fi
+  \else
+    \tf@inlistfalse
+    \medskip
+  \fi
+  %
+  %% 6. Set the picture as a one-line paragraph, then back up over it so the
+  %%    text that follows starts level with its top.  caption.sty hooks the
+  %%    \noindent below to plant the hyperref anchor, so keep it here and keep
+  %%    it after the caption box has been built.
+  \iftf@inlist \tf@tmp\linewidth \else \tf@tmp\hsize \fi
+  \tf@indent\tf@width
+  \iftf@right
+    \advance\tf@tmp-\wd\tf@pic
+    \tf@indent-\tf@indent
+  \else
+    \tf@tmp\z@
+  \fi
+  \tf@pagetotal\pagetotal
+  \tf@backskip\tf@height
+  \advance\tf@backskip\parskip
+  \advance\tf@backskip.3\baselineskip
+  {\noindent\hspace*{\tf@tmp}\relax
+   \box\tf@pic\nopagebreak\vskip-\tf@backskip\relax\nopagebreak}%
+  %
+  %% 7. Reserve the notch.  \tf@lines wants ceil(height/baselineskip) lines,
+  %%    negative because \hangafter<0 hangs the *first* |n| lines.  The division
+  %%    is dimen-by-dimen: \baselineskip coerces to its value in sp, so the
+  %%    result is a dimen whose sp count is the integer quotient, which then
+  %%    coerces to \tf@lines.  Truncation toward zero of a negative number is
+  %%    what turns floor into ceil.
+  \tf@tmp-\tf@height
+  \divide\tf@tmp\baselineskip
+  \tf@lines\tf@tmp
+  \advance\tf@lines\m@ne
+  \ifdim\tf@indent<\z@
+    \advance\tf@indent-\tf@gutter
+  \else
+    \advance\tf@indent\tf@gutter
+  \fi
+  \hangindent\tf@indent
+  \hangafter\tf@lines
+  \let\par\tf@par
+  \tf@captionfalse
+}
+
+
+
+%% ---------------------------------------------------------------------------
+%% \par while a notch is open.
+%%
+%% \hangindent/\hangafter last for one paragraph only, so re-arm them for the
+%% next one against whatever height the paragraph just ended did not consume.
+%% ---------------------------------------------------------------------------
+\def\tf@par{%
+  \tf@tmp\pagetotal
+  \tf@par@orig
+  \ifdim\tf@tmp=\pagetotal
+    %% Nothing was contributed -- an empty \par -- so the notch is untouched.
+    \tf@tmp\tf@height
+  \else
+    \tf@tmp\baselineskip
+    \multiply\tf@tmp\prevgraf
+    \advance\tf@tmp\parskip
+    \global\advance\tf@height-\tf@tmp
+    \tf@tmp\tf@height
+  \fi
+  \ifdim\tf@height>\z@
+    \divide\tf@tmp\baselineskip
+    \tf@lines-\tf@tmp
+    \advance\tf@lines\m@ne
+  \else
+    \tf@lines\z@
+  \fi
+  \ifnum\tf@lines<\z@
+    \hangafter\tf@lines
+    \hangindent\tf@indent
+  \else
+    \tf@closenotch
+  \fi
+}
+
+\def\tf@closenotch{%
+  \let\par\tf@par@orig
+  \hangindent\z@
+  \leftskip\tf@leftskip
+  \iftf@inlist
+    \parshape\@ne\@totalleftmargin\linewidth
+    \advance\hsize\rightmargin
+  \fi
+}
+
+%% ---------------------------------------------------------------------------
+%% \picskip{n}: n>0 notches n further lines; n=0 ends the notch and drops past
+%% whatever of the picture the text did not reach.
+%% ---------------------------------------------------------------------------
+\newcommand\picskip[1]{%
+  \let\par\tf@par@orig \par
+  \ifnum#1>\z@
+    \hangafter-#1\relax
+    \hangindent\tf@indent
+  \else
+    %% Skip the leftover height -- unless the page broke under us, in which case
+    %% the picture is on the previous page and there is nothing to clear.
+    \ifdim\tf@pagetotal>\pagetotal\else
+      \tf@tmp\baselineskip
+      \multiply\tf@tmp\prevgraf
+      \advance\tf@tmp\parskip
+      \advance\tf@height-\tf@tmp
+      \advance\tf@height1ex
+      \ifdim\tf@height>\z@ \vspace*{\tf@height}\fi
+    \fi
+  \fi
+  \leftskip\tf@leftskip
+  \iftf@inlist
+    \parshape\@ne\@totalleftmargin\linewidth
+    \advance\hsize\rightmargin
+  \fi
+}
+
+\makeatother
+\endinput

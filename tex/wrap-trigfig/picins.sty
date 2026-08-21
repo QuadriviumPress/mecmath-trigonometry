@@ -1,0 +1,10 @@
+%%
+%% Shadow picins.sty, used only when scripts/build-book.sh runs with
+%% BOOK_WRAP=trigfig.  The book's source is ground truth and still says
+%% \usepackage{picins}; putting this directory first on TEXINPUTS makes that
+%% resolve to our replacement, so the nonfree vendored picins is never read.
+%%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{picins}[2026/08/20 v1.0 forwards to trigfig]
+\RequirePackage{trigfig}
+\endinput

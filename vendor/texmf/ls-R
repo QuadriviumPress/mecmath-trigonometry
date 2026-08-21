@@ -349,6 +349,7 @@ latex
 fourier
 fouriernc
 phaistos
+picins
 
 ./tex/latex/fourier:
 fmlfutm.fd
@@ -376,6 +377,10 @@ ts1fnc.fd
 
 ./tex/latex/phaistos:
 phaistos.sty
+
+./tex/latex/picins:
+picins.sty
+picins.txt
 
 ./web2c:
 updmap.cfg

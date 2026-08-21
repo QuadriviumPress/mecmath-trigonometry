@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Populate vendor/texmf with the small CTAN font set needed for TikZ figures
-# (fouriernc + fourier + phaistos) so CI need not install texlive-fonts-extra.
+# (fouriernc + fourier + phaistos) so CI need not install texlive-fonts-extra,
+# plus picins, which the book preamble needs and which TeX Live dropped in 2014.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -51,6 +52,16 @@ cp phaistos/tfm/phaistos.tfm "$TEXMF/fonts/tfm/public/phaistos/"
 cp phaistos/type1/phaistos.pfb "$TEXMF/fonts/type1/public/phaistos/"
 cp phaistos/afm/phaistos.afm "$TEXMF/fonts/afm/public/phaistos/"
 cp phaistos/dvips/phaistos.map "$TEXMF/fonts/map/dvips/phaistos/"
+
+# picins was removed from TeX Live in 2014: its licence ("Aenderungen nur mit
+# Zustimmung der Autoren") is not free, so no distribution ships it any more.
+# trigbook.tex uses \parpic/\piccaption/\picskip in 83 places, so the book
+# cannot be typeset without it.  Redistributed here verbatim and unmodified.
+echo "Downloading picins.zip…"
+curl -fsSL 'https://mirrors.ctan.org/macros/latex209/contrib/picins.zip' -o picins.zip
+unzip -q picins.zip
+mkdir -p "$TEXMF/tex/latex/picins"
+cp picins/picins.sty picins/picins.txt "$TEXMF/tex/latex/picins/"
 
 mkdir -p "$TEXMF/web2c"
 cat > "$TEXMF/web2c/updmap.cfg" <<'EOF'

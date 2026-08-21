@@ -1,0 +1,50 @@
+%%
+%% trigbook-compat.sty -- compile mecmath-trigonometry on TeX Live 2023+
+%%
+%% The LaTeX source in mecmath-trigonometry/ is ground truth and is never
+%% modified.  This package supplies the handful of shims that a modern TeX
+%% Live needs, and is injected on the command line by scripts/build-book.sh:
+%%
+%%     latex -jobname=trigbook '\RequirePackage{trigbook-compat}\input{trigbook.tex}'
+%%
+%% Loading it *before* \documentclass lets it register kernel hooks that fire
+%% at the right moment without any edit to trigbook.tex.
+%%
+\NeedsTeXFormat{LaTeX2e}[2020/10/01]
+\ProvidesPackage{trigbook-compat}[2026/08/20 v1.0 TeX Live 2023+ shims for trigbook.tex]
+
+\makeatletter
+
+%% ---------------------------------------------------------------------------
+%% 1. Old two-letter font commands.
+%%
+%% gnufdl.tex uses {\Large\bf ...} in 13 places.  Since KOMA-Script 3.x these
+%% raise "undefined old font command `\bf'" -- an error, not a warning, so the
+%% run is dirty and -halt-on-error stops it.  Reinstate the LaTeX 2.09
+%% compatibility definitions after scrbook has loaded.
+%% ---------------------------------------------------------------------------
+\AddToHook{class/scrbook/after}{%
+  \DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}%
+  \DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf}%
+  \DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\mathtt}%
+  \DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}%
+  \DeclareOldFontCommand{\it}{\normalfont\itshape}{\mathit}%
+  \DeclareOldFontCommand{\sl}{\normalfont\slshape}{\@nomath\sl}%
+  \DeclareOldFontCommand{\sc}{\normalfont\scshape}{\@nomath\sc}%
+}
+
+%% ---------------------------------------------------------------------------
+%% 2. Phaistos in the LPH encoding.
+%%
+%% phaistos.sty only declares LPH/cmr, but the book's \rmdefault is fnc
+%% (fouriernc), so \PHcat in Figure 1.5.x triggers "Font shape `LPH/fnc/m/n'
+%% undefined".  NFSS already substitutes LPH/cmr -- which is the real Phaistos
+%% font -- so the glyph is correct; declare the substitution explicitly to make
+%% that intentional rather than a warning.
+%% ---------------------------------------------------------------------------
+\AddToHook{package/phaistos/after}{%
+  \DeclareFontFamilySubstitution{LPH}{fnc}{cmr}%
+}
+
+\makeatother
+\endinput
