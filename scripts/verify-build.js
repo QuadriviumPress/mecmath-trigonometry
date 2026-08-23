@@ -127,7 +127,7 @@ for (const [file, { $ }] of pages) {
   const clone = cheerio.load($.html());
   clone('.equation-block, script, style').remove();
   const text = clone('body').text().replace(/\\\((?:[^\\]|\\[^)])*\\\)/g, ' ');
-  const m = text.match(/\\(emph|index|input|begin|ref|label|href|hyperref|caption|includegraphics)\{/);
+  const m = text.match(/\\(emph|index|input|begin|ref|label|href|hyperref|caption|includegraphics|intertext)\{/);
   if (m) {
     fail(`${file}: LaTeX leakage "${m[0]}"`);
     leaks++;
@@ -174,6 +174,7 @@ for (const file of [
   'summary.json',
   'assets/js/mathjax/tex-chtml.js',
   'assets/js/mathjax/input/tex/extensions/cancel.js',
+  'assets/js/mathjax/input/tex/extensions/ams.js',
   'assets/js/mathjax/input/tex/extensions/enclose.js',
   'assets/js/vendor/minisearch.js',
   'assets/icons/icon-192.png',

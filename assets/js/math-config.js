@@ -1,5 +1,5 @@
 MathJax = {
-  loader: { load: ['[tex]/cancel'] },
+  loader: { load: ['[tex]/cancel', '[tex]/ams'] },
   options: {
     ignoreHtmlClass: 'mathjax-skip',
     enableMenu: true,
@@ -20,7 +20,7 @@ MathJax = {
     },
   },
   tex: {
-    packages: { '[+]': ['cancel'] },
+    packages: { '[+]': ['cancel', 'ams'] },
     inlineMath: [
       ['$', '$'],
       ['\\(', '\\)'],
