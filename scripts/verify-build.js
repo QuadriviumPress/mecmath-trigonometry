@@ -11,6 +11,7 @@ import * as cheerio from 'cheerio';
 import { parseBook } from '../lib/parse/book.js';
 import { buildModel } from '../lib/model/numbering.js';
 import { collectBookAssets } from '../lib/figures.js';
+import { checkMath, reportMath } from './check-math.js';
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const siteDir = path.join(root, '_site');
@@ -121,19 +122,11 @@ if (missingFigs > 0) {
 }
 if (figureRefs.size < 200) note(`only ${figureRefs.size} figure refs (expected ~${assets.length})`);
 
-console.log('\nlatex leakage');
-let leaks = 0;
-for (const [file, { $ }] of pages) {
-  const clone = cheerio.load($.html());
-  clone('.equation-block, script, style').remove();
-  const text = clone('body').text().replace(/\\\((?:[^\\]|\\[^)])*\\\)/g, ' ');
-  const m = text.match(/\\(emph|index|input|begin|ref|label|href|hyperref|caption|includegraphics|intertext)\{/);
-  if (m) {
-    fail(`${file}: LaTeX leakage "${m[0]}"`);
-    leaks++;
-  }
-}
-if (leaks === 0) pass('no LaTeX commands outside math containers');
+// Typeset every math span with the shipped MathJax config and scan the prose
+// around it: a preamble macro missing from assets/js/math-config.js is not a
+// build error, it just reaches the reader as red LaTeX. See check-math.js.
+console.log('\nmath rendering');
+reportMath(await checkMath({ root, siteDir }), { pass, fail }); // fail() counts
 
 console.log('\nreferences');
 let missingRefs = 0;
@@ -176,6 +169,8 @@ for (const file of [
   'assets/js/mathjax/input/tex/extensions/cancel.js',
   'assets/js/mathjax/input/tex/extensions/ams.js',
   'assets/js/mathjax/input/tex/extensions/enclose.js',
+  'assets/js/mathjax/input/tex/extensions/mathtools.js',
+  'assets/js/mathjax/input/tex/extensions/textmacros.js',
   'assets/js/vendor/minisearch.js',
   'assets/icons/icon-192.png',
   'assets/icons/icon-512.png',

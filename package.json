@@ -13,6 +13,7 @@
     "postbuild": "node scripts/build-index.js",
     "serve": "eleventy --serve --port=4000",
     "verify": "node scripts/verify-build.js",
+    "verify:math": "node scripts/check-math.js",
     "clean": "rm -rf _site generated/figures",
     "generate:pdf": "node scripts/generate-pdf-parallel.js",
     "update:vendor": "npm run update:mathjax && npm run update:minisearch",

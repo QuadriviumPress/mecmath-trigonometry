@@ -145,6 +145,18 @@ npm run serve
 # http://localhost:4000/MecmathTrigonometryTextbook/
 ```
 
+Math rendering check (also part of `npm run verify`, so CI covers it):
+
+```
+npm run verify:math
+```
+
+`assets/js/math-config.js` holds the MathJax mirror of the `trigbook.tex`
+preamble. `scripts/check-math.js` typesets every math span in `_site` with that
+exact file and fails on any control sequence MathJax cannot resolve — an
+unmirrored macro is not a build error, it just reaches the reader as red
+LaTeX — plus any backslash command left in the prose.
+
 Engine-only check:
 
 ```
