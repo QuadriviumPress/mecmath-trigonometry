@@ -33,7 +33,7 @@ Requires Node ≥ 22. For figure conversion also install TeX Live plus
 figures missing.
 
 ```sh
-npm install
+npm ci
 npm run update:vendor   # populate self-hosted MathJax + MiniSearch (once)
 npm run build           # figures → Eleventy → search index
 npm run verify          # integrity checks over _site
