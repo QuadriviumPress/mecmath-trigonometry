@@ -2,7 +2,7 @@
 
 Building an Eleventy website that renders the mecmath *Trigonometry* textbook
 (Michael Corral) with the LaTeX source as ground truth, mirroring the
-`ElectromagneticsVolOneTextbook` project architecture, deployable to GitHub
+`electromagneticsVolOneTextbook` project architecture, deployable to GitHub
 Pages under the `QuadriviumPress` org.
 
 ## Status
@@ -169,5 +169,5 @@ node --input-type=module -e "import { buildBook } from './lib/book-data.js'; bui
 - `lib/parse/tokenizer.js` — main parser (block/env/item math/table logic).
 - `lib/parse/book.js`, `lib/model/{numbering,content,slugs,book-index}.js`.
 - `lib/render/{inline,transform}.js`, `lib/figures.js`, `lib/paths.js`.
-- Reference project: `/home/veillette/QuadriviumPress/ElectromagneticsVolOneTextbook/`
+- Reference project: `/home/veillette/QuadriviumPress/electromagneticsVolOneTextbook/`
   (assets, JS, MathJax, templates, workflows adapted from this).
