@@ -44,7 +44,7 @@ jobs:
         run: mktexlsr "$TEXMFHOME"
 
       - name: Cache converted figures
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: generated/figures
           key: figures-trig-v1-${{ hashFiles('mecmath-trigonometry/**', 'lib/figures.js', 'vendor/texmf/**') }}
