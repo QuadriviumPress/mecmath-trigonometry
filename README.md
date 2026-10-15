@@ -26,6 +26,9 @@ scripts/                figure conversion (pdflatex + dvisvgm), search index,
 assets/                 viewer JS, CSS, self-hosted MathJax v4 + MiniSearch
 ```
 
+See [ARCHITECTURE.md](ARCHITECTURE.md) for parser stages, numbering rules,
+and source constructs that need special handling.
+
 ## Developing
 
 Requires Node ≥ 22. For figure conversion also install TeX Live plus
