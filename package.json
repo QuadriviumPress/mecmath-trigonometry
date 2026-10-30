@@ -4,8 +4,10 @@
   "description": "Eleventy build of Michael Corral's Trigonometry (LaTeX source rendered to HTML)",
   "type": "module",
   "private": true,
+  "packageManager": "npm@11.20.0",
   "engines": {
-    "node": ">=26"
+    "node": ">=26",
+    "npm": ">=11 <12"
   },
   "scripts": {
     "prebuild": "node scripts/convert-figures.js",
