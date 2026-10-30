@@ -5,7 +5,7 @@
   "type": "module",
   "private": true,
   "engines": {
-    "node": ">=22"
+    "node": ">=26"
   },
   "scripts": {
     "prebuild": "node scripts/convert-figures.js",
