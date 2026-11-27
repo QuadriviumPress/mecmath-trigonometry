@@ -24,7 +24,7 @@
   },
   "license": "CC-BY-SA-4.0",
   "devDependencies": {
-    "@11ty/eleventy": "4.0.0-alpha.10",
+    "@11ty/eleventy": "4.0.0-alpha.12",
     "@playwright/test": "^1.65.1",
     "chalk": "^6.0.1",
     "cheerio": "^1.2.0",
